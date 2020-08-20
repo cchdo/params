@@ -19,7 +19,6 @@ def _name_getter(cf_name, names_list):
     return names
 
 
-
 class WHPNameMixin:
     @cached_property
     def whp(self):
@@ -42,7 +41,7 @@ class CFStandardName(WHPNameMixin):
 
 
 @dataclass(frozen=True)
-class WHPName():
+class WHPName:
     """Wrapper for WHP parameters.json
     """
 
@@ -111,18 +110,17 @@ def _load_cf_standard_names(__versions__):
 
         from .models import CFName as CFNameDB
 
-        engine = create_engine(f'sqlite:///{f}', echo=False)
+        engine = create_engine(f"sqlite:///{f}", echo=False)
         Session = sessionmaker(bind=engine)
         session = Session()
 
         for record in session.query(CFNameDB).all():
             cf_standard_names[record.standard_name] = record.dataclass
 
-        #if element.tag == "alias":
+        # if element.tag == "alias":
         #    cf_standard_names[name] = cf_standard_names[name_info["entry_id"]]
 
     return cf_standard_names
-
 
 
 def _load_whp_names():
@@ -132,7 +130,7 @@ def _load_whp_names():
         from sqlalchemy import create_engine
         from sqlalchemy.orm import sessionmaker
 
-        engine = create_engine(f'sqlite:///{f}', echo=False)
+        engine = create_engine(f"sqlite:///{f}", echo=False)
         Session = sessionmaker(bind=engine)
         session = Session()
 

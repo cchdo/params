@@ -1,1 +1,2 @@
 include cchdo/params/*.sqlite3
+include cchdo/params/py.typed
