@@ -1,6 +1,4 @@
 from sqlalchemy import (
-    UniqueConstraint,
-    CheckConstraint,
     Column,
     Integer,
     String,

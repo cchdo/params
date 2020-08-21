@@ -125,7 +125,6 @@ def _load_cf_standard_names(__versions__):
 
 
 def _load_whp_names():
-    _dtype_map = {"string": str, "decimal": float, "integer": int}
     whp_name = {}
     with path("cchdo.params", "params.sqlite3") as f:
         from sqlalchemy import create_engine
