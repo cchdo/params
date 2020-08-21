@@ -82,3 +82,16 @@ def test_whp_cf_property(whpname):
 @pytest.mark.parametrize("whpname", data.WHPNames.values(), ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]")
 def test_whp_has_nc_name(whpname):
     assert whpname.nc_name is not None
+
+def test_db_dump_matches_files():
+    from importlib.resources import path, read_text
+    import sqlite3
+
+    db_file = []
+    with path("cchdo.params", "params.sqlite3") as p:
+        with sqlite3.connect(p) as conn:
+            for line in conn.iterdump():
+                db_file.append(f"{line}\n")
+    db_file = "".join(db_file)
+    db_text = read_text("cchdo.params", "params.sqlite3.sql")
+    assert db_file == db_text
