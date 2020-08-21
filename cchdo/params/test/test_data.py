@@ -39,10 +39,10 @@ cf_alias_data = [
 
 @pytest.mark.parametrize("alias,canonical", cf_alias_data)
 def test_cf_standard_name_alias(alias, canonical):
-   assert alias in data.CFStandardNames
-   assert canonical in data.CFStandardNames
+    assert alias in data.CFStandardNames
+    assert canonical in data.CFStandardNames
 
-   assert data.CFStandardNames[alias] == data.CFStandardNames[canonical]
+    assert data.CFStandardNames[alias] == data.CFStandardNames[canonical]
 
 
 whp_cf_names = [value for value in data.WHPNames.values() if value.cf_name is not None]
@@ -79,9 +79,13 @@ def test_whp_no_unit_params(whpname):
 def test_whp_cf_property(whpname):
     assert isinstance(whpname.cf, data.CFStandardName)
 
-@pytest.mark.parametrize("whpname", data.WHPNames.values(), ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]")
+
+@pytest.mark.parametrize(
+    "whpname", data.WHPNames.values(), ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]"
+)
 def test_whp_has_nc_name(whpname):
     assert whpname.nc_name is not None
+
 
 def test_db_dump_matches_files():
     from importlib.resources import path, read_text

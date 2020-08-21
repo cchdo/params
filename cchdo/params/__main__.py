@@ -1,8 +1,10 @@
 import click
 
+
 @click.group()
 def cli():
     pass
+
 
 @cli.command()
 def dump_db():
@@ -14,5 +16,6 @@ def dump_db():
             with open(f"{p}.sql", "w") as f:
                 for line in conn.iterdump():
                     f.write(f"{line}\n")
+
 
 cli()
