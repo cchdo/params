@@ -109,6 +109,7 @@ def _load_cf_standard_names(__versions__):
         from sqlalchemy.orm import sessionmaker
 
         from .models import CFName as CFNameDB
+        from .models import CFAlias as CFAliasDB
 
         engine = create_engine(f"sqlite:///{f}", echo=False)
         Session = sessionmaker(bind=engine)
@@ -117,8 +118,8 @@ def _load_cf_standard_names(__versions__):
         for record in session.query(CFNameDB).all():
             cf_standard_names[record.standard_name] = record.dataclass
 
-        # if element.tag == "alias":
-        #    cf_standard_names[name] = cf_standard_names[name_info["entry_id"]]
+        for record in session.query(CFAliasDB).all():
+            cf_standard_names[record.alias] = cf_standard_names[record.standard_name]
 
     return cf_standard_names
 
