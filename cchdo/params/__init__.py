@@ -159,9 +159,6 @@ class _LazyMapping(Mapping):
     def _cached_dict(self):
         return self._loader()
 
-    def _load_data(self):
-        self._cached_dict
-
     def __getitem__(self, key):
         return self._cached_dict[key]
 

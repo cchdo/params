@@ -87,6 +87,14 @@ def test_whp_has_nc_name(whpname):
     assert whpname.nc_name is not None
 
 
+@pytest.mark.parametrize(
+    "whpname", data.WHPNames.values(), ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]"
+)
+def test_whp_name_can_make_nc_attrs(whpname):
+    data = whpname.get_nc_attrs()
+    assert isinstance(data, dict)
+
+
 def test_db_dump_matches_files():
     from importlib.resources import path, read_text
     import sqlite3
