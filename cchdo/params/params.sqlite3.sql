@@ -5331,7 +5331,7 @@ INSERT INTO "whp_names" VALUES('PH_TMP','DEG C','temperature_of_analysis_of_sea_
 INSERT INTO "whp_names" VALUES('DOC','UMOL/KG',NULL,'dissolved_organic_carbon',30.0,80.0,NULL,NULL,NULL,8,2);
 INSERT INTO "whp_names" VALUES('TRITUM','TU',NULL,'tritium',-1.0,100.0,'TRITER',NULL,NULL,8,3);
 INSERT INTO "whp_names" VALUES('HELIUM','NMOL/KG',NULL,'helium',1.0,3.0,'HELIER',NULL,NULL,8,4);
-INSERT INTO "whp_names" VALUES('DELHE3','PERCNT',NULL,'delta_helium_3',-10.0,100.0,NULL,NULL,NULL,8,2);
+INSERT INTO "whp_names" VALUES('DELHE3','PERCNT',NULL,'delta_helium_3',-10.0,100.0,'DELHER',NULL,NULL,8,2);
 INSERT INTO "whp_names" VALUES('REFTMP','ITS-90','sea_water_temperature','reference_temperature',-3.0,35.0,NULL,NULL,NULL,8,4);
 INSERT INTO "whp_names" VALUES('REFTMP','DEG C','sea_water_temperature','reference_temperature_c',-3.0,35.0,NULL,NULL,NULL,8,4);
 INSERT INTO "whp_names" VALUES('REVPRS','DBAR','sea_water_pressure','revprs',0.0,11000.0,NULL,NULL,NULL,8,1);

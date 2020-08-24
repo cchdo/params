@@ -63,6 +63,8 @@ class WHPName:
     reference_scale: Optional[str] = field(default=None, repr=False)
     whp_number: Optional[int] = field(default=None, repr=False)
     scope: str = field(default="sample", repr=False)
+    analytical_temperature_name: Optional[str] = field(default=None, repr=False)
+    analytical_temperature_units: Optional[str] = field(default=None, repr=False)
 
     @property
     def key(self):

@@ -143,6 +143,8 @@ class WHPName(Base):
             reference_scale=reference_scale,
             whp_number=self.param.whp_number,
             scope=self.param.scope,
+            analytical_temperature_name=self.analytical_temperature_name,
+            analytical_temperature_units=self.analytical_temperature_units,
         )
 
 
