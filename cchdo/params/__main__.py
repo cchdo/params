@@ -17,11 +17,13 @@ def dump_db():
                 for line in conn.iterdump():
                     f.write(f"{line}\n")
 
+
 @cli.command()
 def params_to_json():
     import json
     from . import WHPNames
-    
+
     print(json.dumps(WHPNames.legacy_json, indent=2))
+
 
 cli()

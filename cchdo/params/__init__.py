@@ -188,6 +188,7 @@ class _WHPNames(_LazyMapping):
             for ex in self._cached_dict.values()
             if ex.error_name is not None
         }
+
     @cached_property
     def legacy_json_schema(self):
         return loads(read_text("cchdo.params", "parameters.schema.json"))
