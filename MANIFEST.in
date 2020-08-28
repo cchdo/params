@@ -1,3 +1,5 @@
 include cchdo/params/*.sqlite3
 include cchdo/params/*.json
 include cchdo/params/py.typed
+
+prune legacy
