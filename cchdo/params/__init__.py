@@ -1,8 +1,9 @@
 from dataclasses import dataclass, field
-from importlib.resources import path
+from importlib.resources import path, read_text
 from typing import Optional, Callable, Union
 from collections.abc import Mapping
 from functools import cached_property
+from json import loads
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
@@ -187,6 +188,71 @@ class _WHPNames(_LazyMapping):
             for ex in self._cached_dict.values()
             if ex.error_name is not None
         }
+    @cached_property
+    def legacy_json_schema(self):
+        return loads(read_text("cchdo.params", "parameters.schema.json"))
+
+    @cached_property
+    def legacy_json(self):
+        with path("cchdo.params", "params.sqlite3") as p:
+            from sqlalchemy import create_engine
+            from sqlalchemy.orm import sessionmaker
+
+            from .models import WHPName, Param, Unit
+
+            engine = create_engine(f"sqlite:///{p}", echo=False)
+            Session = sessionmaker(bind=engine)
+            session = Session()
+
+            results = session.query(
+                WHPName.whp_name,
+                WHPName.whp_unit,
+                Param.whp_number,
+                WHPName.error_name,
+                Param.flag.label("flag_w"),
+                WHPName.standard_name.label("cf_name"),
+                Unit.cf_unit,
+                Unit.reference_scale,
+                Param.dtype.label("data_type"),
+                WHPName.numeric_min,
+                WHPName.numeric_max,
+                WHPName.numeric_precision,
+                WHPName.field_width,
+                Param.description,
+                Param.note,
+                Param.warning,
+                Param.scope,
+            ).join(Param).outerjoin(Unit).all()
+
+            required = [
+                "whp_name",
+                "whp_unit",
+                "flag_w",
+                "data_type",
+                "field_width"
+            ]
+            params = []
+            for result in results:
+                p_dict = result._asdict()
+
+                if p_dict["data_type"] == "string":
+                    del p_dict["numeric_min"]
+                    del p_dict["numeric_max"]
+                    del p_dict["numeric_precision"]
+
+                if p_dict["flag_w"] == "no_flags":
+                    p_dict["flag_w"] = None
+
+                keys_to_del = []
+                for k, v in p_dict.items():
+                    if v is None and k not in required:
+                        keys_to_del.append(k)
+                for k in keys_to_del:
+                    del p_dict[k]
+
+                params.append(p_dict)
+
+        return params
 
 
 class _CFStandardNames(_LazyMapping):

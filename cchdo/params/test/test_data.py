@@ -1,6 +1,8 @@
 import pytest
 import cchdo.params as data
 
+from jsonschema import validate
+
 CF_VERSION = "72"
 
 
@@ -107,3 +109,7 @@ def test_db_dump_matches_files():
     db_file = "".join(db_file)
     db_text = read_text("cchdo.params", "params.sqlite3.sql")
     assert db_file == db_text
+
+def test_legacy_json():
+    ## Validate will raise if this fails
+    validate(data.WHPNames.legacy_json, data.WHPNames.legacy_json_schema)
