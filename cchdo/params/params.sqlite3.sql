@@ -5052,10 +5052,10 @@ INSERT INTO "ex_params" VALUES('DEPTH',NULL,'The reported depth to the bottom. C
 INSERT INTO "ex_params" VALUES('CTDPRS',NULL,'The corrected pressure as measured by the CTD.','Typically does not have quality flags.',NULL,'sample','decimal','woce_ctd',0,16.0);
 INSERT INTO "ex_params" VALUES('CTDRAW',NULL,'The uncorrected pressure as measured by the CTD. Uncorrected means that no processing has been done (e.g. deck pressure offsets) other than manufacturer calibrations applied.','Typically does not have quality flags.',NULL,'sample','decimal','woce_ctd',0,17.0);
 INSERT INTO "ex_params" VALUES('CTDTMP',NULL,'The corrected temperature as measured by the CTD.','Typically does not have quality flags.',NULL,'sample','decimal','woce_ctd',0,18.0);
-INSERT INTO "ex_params" VALUES('CTDSAL',NULL,'The corrected salinity as measured (calculated) by the CTD.',NULL,NULL,'sample','decimal','woce_ctd',0,19.0);
-INSERT INTO "ex_params" VALUES('SALNTY',1,'The salinity measured from a bottle sample.',NULL,NULL,'sample','decimal','woce_discrete',0,20.0);
-INSERT INTO "ex_params" VALUES('DNSSAL',92,'Salinity calculated from direct density measurements, also called absolute salinity.',NULL,NULL,'sample','decimal','woce_discrete',0,21.0);
-INSERT INTO "ex_params" VALUES('CTDSVLSAL',92,'Salinity calculated from sound velocity and temperature, also called absolute salinity.',NULL,NULL,'sample','decimal','woce_ctd',0,22.0);
+INSERT INTO "ex_params" VALUES('CTDSAL',NULL,'The corrected practical salinity as measured (calculated) by the CTD.',NULL,NULL,'sample','decimal','woce_ctd',0,19.0);
+INSERT INTO "ex_params" VALUES('SALNTY',1,'The practical salinity measured from a bottle sample.',NULL,NULL,'sample','decimal','woce_discrete',0,20.0);
+INSERT INTO "ex_params" VALUES('DNSSAL',92,'Absolute salinity calculated from direct density measurements, also called absolute salinity.',NULL,NULL,'sample','decimal','woce_discrete',0,21.0);
+INSERT INTO "ex_params" VALUES('CTDSVLSAL',92,'Absolute salinity calculated from sound velocity and temperature, also called absolute salinity.',NULL,NULL,'sample','decimal','woce_ctd',0,22.0);
 INSERT INTO "ex_params" VALUES('CTDOXY',NULL,'The corrected oxygen measured by the CTD.',NULL,NULL,'sample','decimal','woce_ctd',0,23.0);
 INSERT INTO "ex_params" VALUES('OXYGEN',2,'The dissolved oxygen measured in a discrete sample, typically using the Winkler test for dissolved oxygen.',NULL,NULL,'sample','decimal','woce_discrete',0,24.0);
 INSERT INTO "ex_params" VALUES('SILCAT',3,'The concentration of dissolved silicate in sea water.',NULL,NULL,'sample','decimal','woce_discrete',0,25.0);
