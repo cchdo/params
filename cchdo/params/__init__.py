@@ -205,33 +205,32 @@ class _WHPNames(_LazyMapping):
             Session = sessionmaker(bind=engine)
             session = Session()
 
-            results = session.query(
-                WHPName.whp_name,
-                WHPName.whp_unit,
-                Param.whp_number,
-                WHPName.error_name,
-                Param.flag.label("flag_w"),
-                WHPName.standard_name.label("cf_name"),
-                Unit.cf_unit,
-                Unit.reference_scale,
-                Param.dtype.label("data_type"),
-                WHPName.numeric_min,
-                WHPName.numeric_max,
-                WHPName.numeric_precision,
-                WHPName.field_width,
-                Param.description,
-                Param.note,
-                Param.warning,
-                Param.scope,
-            ).join(Param).outerjoin(Unit).all()
+            results = (
+                session.query(
+                    WHPName.whp_name,
+                    WHPName.whp_unit,
+                    Param.whp_number,
+                    WHPName.error_name,
+                    Param.flag.label("flag_w"),
+                    WHPName.standard_name.label("cf_name"),
+                    Unit.cf_unit,
+                    Unit.reference_scale,
+                    Param.dtype.label("data_type"),
+                    WHPName.numeric_min,
+                    WHPName.numeric_max,
+                    WHPName.numeric_precision,
+                    WHPName.field_width,
+                    Param.description,
+                    Param.note,
+                    Param.warning,
+                    Param.scope,
+                )
+                .join(Param)
+                .outerjoin(Unit)
+                .all()
+            )
 
-            required = [
-                "whp_name",
-                "whp_unit",
-                "flag_w",
-                "data_type",
-                "field_width"
-            ]
+            required = ["whp_name", "whp_unit", "flag_w", "data_type", "field_width"]
             params = []
             for result in results:
                 p_dict = result._asdict()
