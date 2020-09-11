@@ -114,7 +114,9 @@ def _load_cf_standard_names(__versions__):
         from .models import CFName as CFNameDB
         from .models import CFAlias as CFAliasDB
 
-        engine = create_engine(f"sqlite:///{f}", echo=False)
+        engine = create_engine(
+            f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
+        )
         Session = sessionmaker(bind=engine)
         session = Session()
 
@@ -133,7 +135,9 @@ def _load_whp_names():
         from sqlalchemy import create_engine
         from sqlalchemy.orm import sessionmaker
 
-        engine = create_engine(f"sqlite:///{f}", echo=False)
+        engine = create_engine(
+            f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
+        )
         Session = sessionmaker(bind=engine)
         session = Session()
 
