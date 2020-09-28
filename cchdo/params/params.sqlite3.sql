@@ -5263,6 +5263,9 @@ INSERT INTO "whp_alias" VALUES('CTDPAR','UMOL/M^2/S','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('PAR','UEINSTEINS/M2.SEC','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('PAR','uE/m^2/sec','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('CTDNOBS','ARBITRARY','CTDNOBS',NULL);
+INSERT INTO "whp_alias" VALUES('TCO2','UMOL/KG','TCARBN','UMOL/KG');
+INSERT INTO "whp_alias" VALUES('BTLNBR','ID','BTLNBR',NULL);
+INSERT INTO "whp_alias" VALUES('PHAEO','UG/L','PPHYTN','UG/L');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5357,7 +5360,7 @@ INSERT INTO "whp_names" VALUES('FE','NMOL/L','mole_concentration_of_dissolved_ir
 INSERT INTO "whp_names" VALUES('MN','NMOL/L',NULL,'manganese',0.0,5.0,NULL,NULL,NULL,8,1);
 INSERT INTO "whp_names" VALUES('CTDFLUOR','MG/M^3',NULL,'ctd_fluor',0.0,50.0,NULL,NULL,NULL,8,4);
 INSERT INTO "whp_names" VALUES('CTDFLUOR','0-5VDC',NULL,'ctd_fluor_raw',0.0,5.0,NULL,NULL,NULL,8,4);
-INSERT INTO "whp_names" VALUES('CTDFLUOR',NULL,NULL,'ctd_fluor_ arbitrary',NULL,NULL,NULL,NULL,NULL,8,4);
+INSERT INTO "whp_names" VALUES('CTDFLUOR',NULL,NULL,'ctd_fluor_arbitrary',NULL,NULL,NULL,NULL,NULL,8,4);
 INSERT INTO "whp_names" VALUES('PAR','UMOL/M^2/SEC','downwelling_photosynthetic_photon_flux_in_sea_water','par',NULL,NULL,NULL,NULL,NULL,8,3);
 INSERT INTO "whp_names" VALUES('I-129',NULL,NULL,'iodine_129',NULL,NULL,'I129ER',NULL,NULL,11,NULL);
 INSERT INTO "whp_names" VALUES('RA-226','DM/.1MG',NULL,'radium_226',3.0,80.0,'RA-226E',NULL,NULL,8,2);
@@ -5424,4 +5427,6 @@ INSERT INTO "whp_names" VALUES('INSTRUMENT_ID',NULL,NULL,'instrument_id',NULL,NU
 INSERT INTO "whp_names" VALUES('THETA','DEG C','sea_water_potential_temperature','potential_temperature_c',-2.0,35.0,NULL,NULL,NULL,8,4);
 INSERT INTO "whp_names" VALUES('THETA','ITS-90','sea_water_potential_temperature','potential_temperature',-2.0,35.0,NULL,NULL,NULL,8,4);
 INSERT INTO "whp_names" VALUES('THETA','IPTS-68','sea_water_potential_temperature','potential_temperature_68',-2.0,35.0,NULL,NULL,NULL,8,4);
+INSERT INTO "whp_names" VALUES('OXYGEN','ML/L','volume_fraction_of_oxygen_in_sea_water','oxygen_ml_l',0.0,NULL,NULL,NULL,NULL,9,NULL);
+INSERT INTO "whp_names" VALUES('PPHYTN','UG/L',NULL,'phaeophytin_ug_l',NULL,NULL,NULL,NULL,NULL,8,2);
 COMMIT;

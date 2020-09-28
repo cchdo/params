@@ -1,3 +1,5 @@
+import string
+
 import pytest
 import cchdo.params as data
 
@@ -111,6 +113,27 @@ def test_db_dump_matches_files():
     assert db_file == db_text
 
 
+def test_db_fk_ok():
+    from importlib.resources import path, read_text
+    import sqlite3
+
+    with path("cchdo.params", "params.sqlite3") as p:
+        with sqlite3.connect(p) as conn:
+            cursor = conn.execute("PRAGMA foreign_key_check;")
+            assert len(cursor.fetchall()) == 0
+
+
+allowed = set(string.ascii_lowercase + string.digits + "_")
+
+
+@pytest.mark.parametrize(
+    "whpname", data.WHPNames.values(), ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]"
+)
+def test_nc_names_ok(whpname):
+    assert set(whpname.nc_name) <= allowed
+
+
 def test_legacy_json():
-    ## Validate will raise if this fails
+    # Validate will raise if this fails
     validate(data.WHPNames.legacy_json, data.WHPNames.legacy_json_schema)
+    assert True
