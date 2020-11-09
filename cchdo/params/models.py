@@ -15,6 +15,11 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 Base = declarative_base()
 
+class Config(Base):
+    __tablename__ = "config"
+
+    key = Column(String, primary_key=True)
+    value = Column(String, nullable=False)
 
 class Unit(Base):
     __tablename__ = "ex_units"

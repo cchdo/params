@@ -1,12 +1,63 @@
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
 from typing import Optional, Callable, Union
-from collections.abc import Mapping
+from collections.abc import Mapping, MutableMapping
 from functools import cached_property
 from json import loads
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
+_mode = "production"
+
+class Config(MutableMapping):
+    def __init__(self):
+        with path("cchdo.params", "params.sqlite3") as f:
+            from sqlalchemy import create_engine
+            from sqlalchemy.orm import sessionmaker
+
+            from .models import Config
+
+            engine = create_engine(
+                f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
+            )
+            Session = sessionmaker(bind=engine)
+            session = Session()
+
+            self._config = {record.key: record.value for record in session.query(Config).all()}
+    
+    def __getitem__(self, key):
+        return self._config[key]
+    def __setitem__(self, key, value):
+        if _mode != "production":
+            with path("cchdo.params", "params.sqlite3") as f:
+                from sqlalchemy import create_engine
+                from sqlalchemy.orm import sessionmaker
+                from sqlalchemy.orm.exc import NoResultFound
+
+                from .models import Config
+
+                engine = create_engine(
+                    f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
+                )
+                Session = sessionmaker(bind=engine)
+                session = Session()
+                try:
+                    existing = session.query(Config).filter(Config.key==key).one()
+                    existing.value = value
+                    session.add(existing)
+                    session.commit()
+                    self._config[key] = value
+                except NoResultFound:
+                    raise NotImplementedError("keys can only be updated, not added")
+        else:
+            raise NotImplementedError("Cannot edit the internal DB in production mode")
+    def __delitem__(self, key):
+        # For now, lets allow updaing but not removal of config records
+        raise NotImplementedError()
+    def __iter__(self):
+        return iter(self._config)
+    def __len__(self):
+        return len(self._config)
 
 def _name_getter(cf_name, names_list):
     if cf_name is None:

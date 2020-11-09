@@ -4995,6 +4995,9 @@ INSERT INTO "cf_names" VALUES('y_heat_flux_in_sea_water_due_to_advection','W m-2
 INSERT INTO "cf_names" VALUES('y_wind','m s-1',NULL,NULL,'"y" indicates a vector component along the grid y-axis, positive with increasing y. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name upward_air_velocity.)');
 INSERT INTO "cf_names" VALUES('y_wind_gust','m s-1',NULL,NULL,'"y" indicates a vector component along the grid y-axis, positive with increasing y. Wind is defined as a two-dimensional (horizontal) air velocity vector, with no vertical component. (Vertical motion in the atmosphere has the standard name upward_air_velocity.) A gust is a sudden brief period of high wind speed. In an observed time series of wind speed, the gust wind speed can be indicated by a cell_methods of maximum for the time-interval. In an atmospheric model which has a parametrised calculation of gustiness, the gust wind speed may be separately diagnosed from the wind speed.');
 INSERT INTO "cf_names" VALUES('zenith_angle','degree',NULL,NULL,'Zenith angle is the angle to the local vertical; a value of zero is directly overhead.');
+CREATE TABLE "config" ("key" text,"value" text NOT NULL DEFAULT NULL, PRIMARY KEY (key));
+INSERT INTO "config" VALUES('cf_version_number','74');
+INSERT INTO "config" VALUES('cf_last_modified','2020-08-04T14:43:55Z');
 CREATE TABLE ex_params (
 	whp_name VARCHAR NOT NULL, 
 	whp_number INTEGER, 
