@@ -15,11 +15,13 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 Base = declarative_base()
 
+
 class Config(Base):
     __tablename__ = "config"
 
     key = Column(String, primary_key=True)
     value = Column(String, nullable=False)
+
 
 class Unit(Base):
     __tablename__ = "ex_units"
@@ -72,6 +74,9 @@ class CFName(Base):
             description=self.description,
         )
 
+    def __repr__(self):
+        return f"<CFName {self.standard_name=} {self.canonical_units=}>"
+
 
 class CFAlias(Base):
     __tablename__ = "cf_aliases"
@@ -83,6 +88,9 @@ class CFAlias(Base):
     standard_name = Column(
         String, ForeignKey(CFName.__table__.c.standard_name), nullable=False
     )
+
+    def __repr__(self):
+        return f"<CFAlias {self.alias=} {self.standard_name=}>"
 
 
 class WHPName(Base):
