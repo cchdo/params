@@ -29,9 +29,11 @@ def database():
 class Config(MutableMapping):
     def __init__(self):
         from .models import Config
+
         with database() as session:
             self._config = {
-                record.key: record.value for record in session.query(Config).all()}
+                record.key: record.value for record in session.query(Config).all()
+            }
 
     def __getitem__(self, key):
         return self._config[key]
@@ -240,6 +242,7 @@ class _WHPNames(_LazyMapping):
         with database() as session:
 
             from .models import WHPName, Param, Unit
+
             results = (
                 session.query(
                     WHPName.whp_name,

@@ -36,7 +36,8 @@ def cf_update(cf_xml):
             version_number = int(element.text)
             if int(current_cf_version_number) >= version_number:
                 click.echo(
-                    f"Internal CF Version ({current_cf_version_number}) is the same or newer than the cf xml ({version_number})")
+                    f"Internal CF Version ({current_cf_version_number}) is the same or newer than the cf xml ({version_number})"
+                )
                 quit(1)
         if element.tag == "last_modified":
             last_mod = element.text
@@ -98,6 +99,7 @@ def cf_update(cf_xml):
                 print(obj)
         session.commit()
     import cchdo.params as params
+
     params._mode = "dev"
     conf["cf_version_number"] = version_number
     conf["cf_last_modified"] = last_mod
