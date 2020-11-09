@@ -4,45 +4,46 @@ from typing import Optional, Callable, Union
 from collections.abc import Mapping, MutableMapping
 from functools import cached_property
 from json import loads
+from contextlib import contextmanager
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
 _mode = "production"
 
+
+@contextmanager
+def database():
+    with path("cchdo.params", "params.sqlite3") as f:
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+
+        engine = create_engine(
+            f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
+        )
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        yield session
+        session.close()
+
+
 class Config(MutableMapping):
     def __init__(self):
-        with path("cchdo.params", "params.sqlite3") as f:
-            from sqlalchemy import create_engine
-            from sqlalchemy.orm import sessionmaker
+        from .models import Config
+        with database() as session:
+            self._config = {
+                record.key: record.value for record in session.query(Config).all()}
 
-            from .models import Config
-
-            engine = create_engine(
-                f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
-            )
-            Session = sessionmaker(bind=engine)
-            session = Session()
-
-            self._config = {record.key: record.value for record in session.query(Config).all()}
-    
     def __getitem__(self, key):
         return self._config[key]
+
     def __setitem__(self, key, value):
         if _mode != "production":
-            with path("cchdo.params", "params.sqlite3") as f:
-                from sqlalchemy import create_engine
-                from sqlalchemy.orm import sessionmaker
-                from sqlalchemy.orm.exc import NoResultFound
+            from sqlalchemy.orm.exc import NoResultFound
+            from .models import Config
 
-                from .models import Config
-
-                engine = create_engine(
-                    f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
-                )
-                Session = sessionmaker(bind=engine)
-                session = Session()
+            with database() as session:
                 try:
-                    existing = session.query(Config).filter(Config.key==key).one()
+                    existing = session.query(Config).filter(Config.key == key).one()
                     existing.value = value
                     session.add(existing)
                     session.commit()
@@ -51,13 +52,17 @@ class Config(MutableMapping):
                     raise NotImplementedError("keys can only be updated, not added")
         else:
             raise NotImplementedError("Cannot edit the internal DB in production mode")
+
     def __delitem__(self, key):
         # For now, lets allow updaing but not removal of config records
         raise NotImplementedError()
+
     def __iter__(self):
         return iter(self._config)
+
     def __len__(self):
         return len(self._config)
+
 
 def _name_getter(cf_name, names_list):
     if cf_name is None:
@@ -158,18 +163,9 @@ class WHPName:
 def _load_cf_standard_names(__versions__):
     cf_standard_names = {}
 
-    with path("cchdo.params", "params.sqlite3") as f:
-        from sqlalchemy import create_engine
-        from sqlalchemy.orm import sessionmaker
-
+    with database() as session:
         from .models import CFName as CFNameDB
         from .models import CFAlias as CFAliasDB
-
-        engine = create_engine(
-            f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
-        )
-        Session = sessionmaker(bind=engine)
-        session = Session()
 
         for record in session.query(CFNameDB).all():
             cf_standard_names[record.standard_name] = record.dataclass
@@ -182,16 +178,7 @@ def _load_cf_standard_names(__versions__):
 
 def _load_whp_names():
     whp_name = {}
-    with path("cchdo.params", "params.sqlite3") as f:
-        from sqlalchemy import create_engine
-        from sqlalchemy.orm import sessionmaker
-
-        engine = create_engine(
-            f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
-        )
-        Session = sessionmaker(bind=engine)
-        session = Session()
-
+    with database() as session:
         from .models import WHPName as WHPNameDB
         from .models import Alias as AliasDB
 
@@ -250,16 +237,9 @@ class _WHPNames(_LazyMapping):
 
     @cached_property
     def legacy_json(self):
-        with path("cchdo.params", "params.sqlite3") as p:
-            from sqlalchemy import create_engine
-            from sqlalchemy.orm import sessionmaker
+        with database() as session:
 
             from .models import WHPName, Param, Unit
-
-            engine = create_engine(f"sqlite:///{p}", echo=False)
-            Session = sessionmaker(bind=engine)
-            session = Session()
-
             results = (
                 session.query(
                     WHPName.whp_name,
