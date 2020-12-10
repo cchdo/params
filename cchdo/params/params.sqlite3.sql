@@ -5216,7 +5216,7 @@ INSERT INTO "ex_params" VALUES('SALTREF',NULL,'Salinity reported on the Referenc
 INSERT INTO "ex_params" VALUES('SF5CF3',NULL,'Concentration of Trifluoromethyl Sulfur Pentafluoride',NULL,NULL,'sample','decimal','woce_discrete',0,149.0);
 INSERT INTO "ex_params" VALUES('DWNPRS',NULL,'Pressure on the downcast for the same isopycnal as the upcast',NULL,NULL,'sample','decimal','woce_ctd',0,150.0);
 INSERT INTO "ex_params" VALUES('DWNOXY',NULL,'CTD Oxygen on the downcast for the same isopycnal as the upcast',NULL,NULL,'sample','decimal','woce_ctd',0,151.0);
-INSERT INTO "ex_params" VALUES('SIG0',NULL,'Potential density anomaly referenced to 0 dbar (ocean surface)',NULL,NULL,'sample','decimal','no_flags',0,152.0);
+INSERT INTO "ex_params" VALUES('SIG0',NULL,'Potential density anomaly referenced to 0 dbar (ocean surface)',NULL,NULL,'sample','decimal','woce_ctd',0,152.0);
 INSERT INTO "ex_params" VALUES('SOMSAL',NULL,'Salinity measured by a Single-Operator Multiparameter Metabolic Analyzer (SOMMA), used in sea water CO2 analysis',NULL,NULL,'sample','decimal','woce_discrete',0,153.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
@@ -5337,6 +5337,8 @@ INSERT INTO "whp_alias" VALUES('FLUOR','MG/M^3','CTDFLUOR','MG/M^3');
 INSERT INTO "whp_alias" VALUES('FLUORO','VOLTS','CTDFLUOR','0-5VDC');
 INSERT INTO "whp_alias" VALUES('POC','ug/kg','POC','UG/KG');
 INSERT INTO "whp_alias" VALUES('CTDXMISSCP','/METER','CTDBEAMCP','/METER');
+INSERT INTO "whp_alias" VALUES('PON','ug/kg','PON','UG/KG');
+INSERT INTO "whp_alias" VALUES('BLACKC',NULL,'BLACKC','UMOL/L');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5525,4 +5527,5 @@ INSERT INTO "whp_names" VALUES('SF5CF3','FMOL/KG',NULL,'trifluoromethylsulfur_pe
 INSERT INTO "whp_names" VALUES('DWNPRS','DBAR',NULL,'downcast_pressure',NULL,NULL,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('SIG0','KG/M^3','sea_water_sigma_theta','sigma0',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('SOMSAL','PSS-78','sea_water_practical_salinity','somma_salinity',0.0,42.0,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('DWNOXY','UMOL/KG','moles_of_oxygen_per_unit_mass_in_sea_water','downcast_oxygen',NULL,NULL,NULL,NULL,NULL,9,1);
 COMMIT;
