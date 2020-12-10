@@ -5214,6 +5214,10 @@ INSERT INTO "ex_params" VALUES('PIGMENTS',NULL,'Phytoplankton pigments','This is
 INSERT INTO "ex_params" VALUES('RHAM',NULL,'Concetration of Rhamnose after hydrolysis',NULL,NULL,'sample','decimal','woce_discrete',0,145.7);
 INSERT INTO "ex_params" VALUES('SALTREF',NULL,'Salinity reported on the Reference-Composition Salinity Scale, reported in units of "absolute salinity" (g/kg). If a sea water sample has the Reference Composition (defined in Millero et al., 2008), then its Reference Salinity is the best available estimate of its Absolute Salinity. For general purposes, Reference Salinity is (35.16504 g kg-1)/35 times Practical Salinity. Reference: www.teos-10.org; Millero et al., 2008 doi: 10.1016/j.dsr.2007.10.001. ','See "The composition of Standard Seawater and the definition of the Reference-Composition Salinity Scale" by Millero et. al (2007) 10.1016/j.dsr.2007.10.001',NULL,'sample','decimal','woce_discrete',0,148.0);
 INSERT INTO "ex_params" VALUES('SF5CF3',NULL,'Concentration of Trifluoromethyl Sulfur Pentafluoride',NULL,NULL,'sample','decimal','woce_discrete',0,149.0);
+INSERT INTO "ex_params" VALUES('DWNPRS',NULL,'Pressure on the downcast for the same isopycnal as the upcast',NULL,NULL,'sample','decimal','woce_ctd',0,150.0);
+INSERT INTO "ex_params" VALUES('DWNOXY',NULL,'CTD Oxygen on the downcast for the same isopycnal as the upcast',NULL,NULL,'sample','decimal','woce_ctd',0,151.0);
+INSERT INTO "ex_params" VALUES('SIG0',NULL,'Potential density anomaly referenced to 0 dbar (ocean surface)',NULL,NULL,'sample','decimal','no_flags',0,152.0);
+INSERT INTO "ex_params" VALUES('SOMSAL',NULL,'Salinity measured by a Single-Operator Multiparameter Metabolic Analyzer (SOMMA), used in sea water CO2 analysis',NULL,NULL,'sample','decimal','woce_discrete',0,153.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5322,6 +5326,17 @@ INSERT INTO "whp_alias" VALUES('CTDNOBS','ARBITRARY','CTDNOBS',NULL);
 INSERT INTO "whp_alias" VALUES('TCO2','UMOL/KG','TCARBN','UMOL/KG');
 INSERT INTO "whp_alias" VALUES('BTLNBR','ID','BTLNBR',NULL);
 INSERT INTO "whp_alias" VALUES('PHAEO','UG/L','PPHYTN','UG/L');
+INSERT INTO "whp_alias" VALUES('LAB_DEN',NULL,'LAB_DEN','KG/M^3');
+INSERT INTO "whp_alias" VALUES('THETA','DEG','THETA','DEG C');
+INSERT INTO "whp_alias" VALUES('O18O16','MILLE','DELO18','/MILLE');
+INSERT INTO "whp_alias" VALUES('O18O16','/MILLE','DELO18','/MILLE');
+INSERT INTO "whp_alias" VALUES('POC','uG/KG','POC','UG/KG');
+INSERT INTO "whp_alias" VALUES('FCO2_TMP','DEG C','FCO2TMP','DEG C');
+INSERT INTO "whp_alias" VALUES('FLUOR',NULL,'CTDFLUOR',NULL);
+INSERT INTO "whp_alias" VALUES('FLUOR','MG/M^3','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('FLUORO','VOLTS','CTDFLUOR','0-5VDC');
+INSERT INTO "whp_alias" VALUES('POC','ug/kg','POC','UG/KG');
+INSERT INTO "whp_alias" VALUES('CTDXMISSCP','/METER','CTDBEAMCP','/METER');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5406,7 +5421,7 @@ INSERT INTO "whp_names" VALUES('PON','UG/KG',NULL,'particulate_organic_nitrogen'
 INSERT INTO "whp_names" VALUES('TDN','UMOL/KG',NULL,'total_dissolved_nitrogen',3.0,20.0,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('TON','UMOL/KG',NULL,'total_organic_nitrogen',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('NEON','NMOL/KG',NULL,'neon',0.0,10.0,'NEONER',NULL,NULL,9,3);
-INSERT INTO "whp_names" VALUES('DELO18','/MILLE',NULL,'del_oxygen_18',-6.0,5.0,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('DELO18','/MILLE',NULL,'del_oxygen_18',-6.0,5.0,'O18ERR',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('CCL4','PMOL/KG',NULL,'carbon_tetrachloride',-0.1,20.0,'CCL4ER',NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('NI','UMOL/L',NULL,'nickel',NULL,NULL,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('ALUMIN','NMOL/L',NULL,'dissolved_aluminum',0.3,25.0,NULL,NULL,NULL,9,1);
@@ -5505,6 +5520,9 @@ INSERT INTO "whp_names" VALUES('LAB_DEN','KG/M^3',NULL,'density',NULL,NULL,NULL,
 INSERT INTO "whp_names" VALUES('MAN','NMOL/KG',NULL,'mannose',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('PIGMENTS',NULL,NULL,'pigments',NULL,NULL,NULL,NULL,NULL,9,0);
 INSERT INTO "whp_names" VALUES('RHAM','NMOL/KG',NULL,'rhamnose',NULL,NULL,NULL,NULL,NULL,9,4);
-INSERT INTO "whp_names" VALUES('SALTREF','G/KG','sea_water_reference_salinity','reference_salinity',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('SALTREF','G/KG','sea_water_reference_salinity','reference_salinity',0.0,42.0,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('SF5CF3','FMOL/KG',NULL,'trifluoromethylsulfur_pentafluoride',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('DWNPRS','DBAR',NULL,'downcast_pressure',NULL,NULL,NULL,NULL,NULL,9,1);
+INSERT INTO "whp_names" VALUES('SIG0','KG/M^3','sea_water_sigma_theta','sigma0',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('SOMSAL','PSS-78','sea_water_practical_salinity','somma_salinity',0.0,42.0,NULL,NULL,NULL,9,4);
 COMMIT;
