@@ -5118,7 +5118,7 @@ INSERT INTO "ex_params" VALUES('PON',41,'Particulate organic nitrogen',NULL,NULL
 INSERT INTO "ex_params" VALUES('TDN',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,57.0);
 INSERT INTO "ex_params" VALUES('TON',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,58.0);
 INSERT INTO "ex_params" VALUES('NEON',17,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,59.0);
-INSERT INTO "ex_params" VALUES('DELO18',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,60.0);
+INSERT INTO "ex_params" VALUES('DELO18',NULL,'Enrichment of the 18O/16O isotopic ratio of the sea water itself compared to VSMOW (Vienna Standard Mean Ocean Water).',NULL,NULL,'sample','decimal','woce_discrete',0,60.0);
 INSERT INTO "ex_params" VALUES('CCL4',28,'Carbon tetrachloride',NULL,NULL,'sample','decimal','woce_discrete',0,61.0);
 INSERT INTO "ex_params" VALUES('NI',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,62.0);
 INSERT INTO "ex_params" VALUES('ALUMIN',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,63.0);
@@ -5203,6 +5203,17 @@ INSERT INTO "ex_params" VALUES('BRDU',NULL,'Bacterial Production via BrdU (Bromo
 INSERT INTO "ex_params" VALUES('CH3BR',NULL,'Concentration of Methyl Bromide',NULL,NULL,'sample','decimal','woce_discrete',0,139.0);
 INSERT INTO "ex_params" VALUES('CH3I',NULL,'Concentration of Methyl Iodide',NULL,NULL,'sample','decimal','woce_discrete',0,140.0);
 INSERT INTO "ex_params" VALUES('DCNS',NULL,'Dissolved Combined Neutral Sugars',NULL,NULL,'sample','decimal','woce_discrete',0,141.0);
+INSERT INTO "ex_params" VALUES('DELO17',NULL,'Enrichment of the 17O/16O isotopic ratio of the sea water itself compared to VSMOW (Vienna Standard Mean Ocean Water).',NULL,NULL,'sample','decimal','woce_discrete',0,142.0);
+INSERT INTO "ex_params" VALUES('FCO2IN',NULL,'In situ fugacity of CO2 gas','Usually calcualted',NULL,'sample','decimal','woce_discrete',0,37.5);
+INSERT INTO "ex_params" VALUES('FUCO',NULL,'Concentration of Fucose after hydrolyses',NULL,NULL,'sample','decimal','woce_discrete',0,143.0);
+INSERT INTO "ex_params" VALUES('GALA',NULL,'Concentration of Galactose after hydrolysis',NULL,NULL,'sample','decimal','woce_discrete',0,144.0);
+INSERT INTO "ex_params" VALUES('GLUC',NULL,'Concentration of Glucose after hydrolysis',NULL,NULL,'sample','decimal','woce_discrete',0,145.0);
+INSERT INTO "ex_params" VALUES('LAB_DEN',NULL,'Density measured in a lab, not calcualted from temperature, salinity, and pressure',NULL,NULL,'sample','decimal','woce_discrete',0,146.0);
+INSERT INTO "ex_params" VALUES('MAN',NULL,'Concentration of Mannose after hydrolysis',NULL,NULL,'sample','decimal','woce_discrete',0,145.5);
+INSERT INTO "ex_params" VALUES('PIGMENTS',NULL,'Phytoplankton pigments','This is almost always a placeholder for samples collected for HPLC analysis later, the results of which are published at NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,147.0);
+INSERT INTO "ex_params" VALUES('RHAM',NULL,'Concetration of Rhamnose after hydrolysis',NULL,NULL,'sample','decimal','woce_discrete',0,145.7);
+INSERT INTO "ex_params" VALUES('SALTREF',NULL,'Salinity reported on the Reference-Composition Salinity Scale, reported in units of "absolute salinity" (g/kg). If a sea water sample has the Reference Composition (defined in Millero et al., 2008), then its Reference Salinity is the best available estimate of its Absolute Salinity. For general purposes, Reference Salinity is (35.16504 g kg-1)/35 times Practical Salinity. Reference: www.teos-10.org; Millero et al., 2008 doi: 10.1016/j.dsr.2007.10.001. ','See "The composition of Standard Seawater and the definition of the Reference-Composition Salinity Scale" by Millero et. al (2007) 10.1016/j.dsr.2007.10.001',NULL,'sample','decimal','woce_discrete',0,148.0);
+INSERT INTO "ex_params" VALUES('SF5CF3',NULL,'Concentration of Trifluoromethyl Sulfur Pentafluoride',NULL,NULL,'sample','decimal','woce_discrete',0,149.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5248,6 +5259,7 @@ INSERT INTO "ex_units" VALUES(33,'E7/L','1e7 l-1',NULL,'This is a "count" of thi
 INSERT INTO "ex_units" VALUES(34,'E6/L','1e6 l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(35,'UMOL/L/H','umol l-1 h-1',NULL,'This unit represents a rate');
 INSERT INTO "ex_units" VALUES(36,'MMOL/KG','mmol kg-1',NULL,NULL);
+INSERT INTO "ex_units" VALUES(37,'KG/M^3','kg m-3',NULL,'density');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5368,7 +5380,7 @@ INSERT INTO "whp_names" VALUES('CFC113','PMOL/KG',NULL,'cfc_113',-0.1,1.5,NULL,N
 INSERT INTO "whp_names" VALUES('SF6','FMOL/KG',NULL,'sulfur_hexifluoride',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('TCARBN','UMOL/KG',NULL,'total_carbon',1100.0,2600.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('ALKALI','UMOL/KG',NULL,'total_alkalinity',100.0,2800.0,NULL,NULL,NULL,9,1);
-INSERT INTO "whp_names" VALUES('FCO2','UATM','fugacity_of_carbon_dioxide_in_sea_water','fugacity',NULL,NULL,NULL,'FCO2TMP','DEG C',9,1);
+INSERT INTO "whp_names" VALUES('FCO2','UATM','fugacity_of_carbon_dioxide_in_sea_water','fco2',NULL,NULL,NULL,'FCO2TMP','DEG C',9,1);
 INSERT INTO "whp_names" VALUES('FCO2TMP','DEG C','temperature_of_analysis_of_sea_water','fco2_temperature',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('PCO2','UATM','partial_pressure_of_carbon_dioxide_in_sea_water','partial_pressure_of_co2',50.0,2000.0,NULL,'PCO2TMP','DEG C',9,1);
 INSERT INTO "whp_names" VALUES('PCO2TMP','DEG C','temperature_of_analysis_of_sea_water','partial_co2_temperature',NULL,NULL,NULL,NULL,NULL,9,2);
@@ -5484,4 +5496,15 @@ INSERT INTO "whp_names" VALUES('BRDU','UMOL/L/H',NULL,'brdu_uptake',NULL,NULL,NU
 INSERT INTO "whp_names" VALUES('CH3BR','PMOL/KG',NULL,'methyl_bromide',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('CH3I','PMOL/KG',NULL,'methyl_iodide',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('DCNS','NMOL/KG',NULL,'dcns',NULL,NULL,NULL,NULL,NULL,9,0);
+INSERT INTO "whp_names" VALUES('DELO17','/MILLE',NULL,'del_oxygen_17',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('FCO2IN','UATM','fugacity_of_carbon_dioxide_in_sea_water','fco2_in_situ',NULL,NULL,NULL,NULL,NULL,9,1);
+INSERT INTO "whp_names" VALUES('FUCO','NMOL/KG',NULL,'fucose',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('GALA','NMOL/KG',NULL,'galactose',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('GLUC','NMOL/KG',NULL,'glucose',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('LAB_DEN','KG/M^3',NULL,'density',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('MAN','NMOL/KG',NULL,'mannose',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('PIGMENTS',NULL,NULL,'pigments',NULL,NULL,NULL,NULL,NULL,9,0);
+INSERT INTO "whp_names" VALUES('RHAM','NMOL/KG',NULL,'rhamnose',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('SALTREF','G/KG','sea_water_reference_salinity','reference_salinity',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('SF5CF3','FMOL/KG',NULL,'trifluoromethylsulfur_pentafluoride',NULL,NULL,NULL,NULL,NULL,9,2);
 COMMIT;
