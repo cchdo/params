@@ -5413,7 +5413,7 @@ INSERT INTO "whp_names" VALUES('REFTMP','DEG C','sea_water_temperature','ref_tem
 INSERT INTO "whp_names" VALUES('REVPRS','DBAR','sea_water_pressure','rev_pressure',0.0,11000.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('REVTMP','ITS-90','sea_water_temperature','rev_temperature_90',-2.0,35.0,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('REVTMP','IPTS-68','sea_water_temperature','rev_temperature',-2.0,35.0,NULL,NULL,NULL,9,3);
-INSERT INTO "whp_names" VALUES('REVTMP','DEG C','sea_water_temperature','rev_temerature_c',-2.0,35.0,NULL,NULL,NULL,9,3);
+INSERT INTO "whp_names" VALUES('REVTMP','DEG C','sea_water_temperature','rev_temperature_c',-2.0,35.0,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('DELC13','/MILLE',NULL,'del_carbon_13_dic',-5.0,5.0,'C13ERR',NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('DELC14','/MILLE',NULL,'del_carbon_14_dic',-300.0,250.0,'C14ERR',NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('DON','UMOL/KG',NULL,'dissolved_organic_nitrogen',200.0,900.0,NULL,NULL,NULL,9,1);
