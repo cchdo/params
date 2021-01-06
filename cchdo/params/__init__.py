@@ -101,8 +101,7 @@ class CFStandardName(WHPNameMixin):
 
 @dataclass(frozen=True)
 class WHPName:
-    """Wrapper for WHP parameters.json
-    """
+    """Wrapper for WHP parameters.json"""
 
     whp_name: str
     data_type: Callable[[str], Union[str, float, int]] = field(repr=False)
@@ -158,6 +157,9 @@ class WHPName:
 
         if self.reference_scale is not None:
             attrs["reference_scale"] = self.reference_scale
+
+        if self.field_width is not None and self.numeric_precision is not None:
+            attrs["C_format"] = f"%{self.field_width}.{self.numeric_precision}f"
 
         return attrs
 
