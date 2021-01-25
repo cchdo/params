@@ -1,6 +1,7 @@
+from collections import namedtuple
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
-from typing import Optional, Callable, Union
+from typing import cast, Optional, Callable, Union, Tuple
 from collections.abc import Mapping, MutableMapping
 from functools import cached_property
 from json import loads
@@ -244,6 +245,20 @@ class _WHPNames(_LazyMapping):
             for ex in self._cached_dict.values()
             if ex.error_name is not None
         }
+
+    def _scope_filter(self, scope: str = "cruise") -> Tuple[WHPName, ...]:
+        return tuple(
+            sorted(cast(WHPName, name) for name in self.values() if name.scope == scope)
+        )
+
+    @cached_property
+    def groups(self):
+        WHPNameGroups = namedtuple("WHPNameGroups", "cruise, profile, sample")
+        return WHPNameGroups(
+            cruise=self._scope_filter("cruise"),
+            profile=self._scope_filter("profile"),
+            sample=self._scope_filter("sample"),
+        )
 
     @cached_property
     def legacy_json_schema(self):
