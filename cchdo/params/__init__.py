@@ -104,9 +104,11 @@ class WHPName:
     """Wrapper for WHP parameters.json"""
 
     whp_name: str
+    nc_name: str = field(repr=False)
+    rank: float = field(repr=False)  # used for sorting in the "classic" WHP order
     data_type: Callable[[str], Union[str, float, int]] = field(repr=False)
+
     whp_unit: Optional[str] = None
-    nc_name: Optional[str] = None
     flag_w: Optional[str] = field(default=None, repr=False)
     cf_name: Optional[str] = None
     numeric_min: Optional[float] = field(default=None, repr=False)
@@ -132,6 +134,14 @@ class WHPName:
     @property
     def cf(self):
         return CFStandardNames.get(self.cf_name)
+
+    def __eq__(self, other):
+        return (self.whp_name == other.whp_name) and (self.whp_unit == other.whp_unit)
+
+    def __lt__(self, other):
+        if self.rank == other.rank:
+            return str(self.whp_unit) < str(other.whp_unit)
+        return self.rank < other.rank
 
     def get_nc_attrs(self, error=False):
         attrs = {

@@ -44,7 +44,10 @@ class Param(Base):
     scope = Column(
         Enum("cruise", "profile", "sample"), nullable=False, server_default="sample"
     )
-    dtype = Column(Enum("decimal", "integer", "string"), nullable=False,)
+    dtype = Column(
+        Enum("decimal", "integer", "string"),
+        nullable=False,
+    )
     flag = Column(
         Enum("woce_bottle", "woce_ctd", "woce_discrete", "no_flags"), nullable=False
     )
@@ -158,6 +161,7 @@ class WHPName(Base):
             scope=self.param.scope,
             analytical_temperature_name=self.analytical_temperature_name,
             analytical_temperature_units=self.analytical_temperature_units,
+            rank=self.param.rank,
         )
 
 
@@ -170,6 +174,7 @@ class Alias(Base):
 
     __table_args__ = (
         ForeignKeyConstraint(
-            ["whp_name", "whp_unit"], ["whp_names.whp_name", "whp_names.whp_unit"],
+            ["whp_name", "whp_unit"],
+            ["whp_names.whp_name", "whp_names.whp_unit"],
         ),
     )
