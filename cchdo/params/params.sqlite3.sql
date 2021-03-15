@@ -5218,6 +5218,8 @@ INSERT INTO "ex_params" VALUES('DWNPRS',NULL,'Pressure on the downcast for the s
 INSERT INTO "ex_params" VALUES('DWNOXY',NULL,'CTD Oxygen on the downcast for the same isopycnal as the upcast',NULL,NULL,'sample','decimal','woce_ctd',0,151.0);
 INSERT INTO "ex_params" VALUES('SIG0',NULL,'Potential density anomaly referenced to 0 dbar (ocean surface)',NULL,NULL,'sample','decimal','woce_ctd',0,152.0);
 INSERT INTO "ex_params" VALUES('SOMSAL',NULL,'Salinity measured by a Single-Operator Multiparameter Metabolic Analyzer (SOMMA), used in sea water CO2 analysis',NULL,NULL,'sample','decimal','woce_discrete',0,153.0);
+INSERT INTO "ex_params" VALUES('CTDSA',NULL,'Absolute salinity calculated using TEOS-10',NULL,'This is provided as a convienence, the TEOS-10 manual strongly recomends against including this in observational data.','sample','decimal','woce_ctd',0,19.3);
+INSERT INTO "ex_params" VALUES('CTDCT',NULL,'Conservative temperature calcualted using TEOS-10',NULL,'This is provided as a convienence, the TEOS-10 manual strongly recomends against including this in observational data.','sample','decimal','woce_ctd',0,19.6);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5528,4 +5530,6 @@ INSERT INTO "whp_names" VALUES('DWNPRS','DBAR',NULL,'downcast_pressure',NULL,NUL
 INSERT INTO "whp_names" VALUES('SIG0','KG/M^3','sea_water_sigma_theta','sigma0',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('SOMSAL','PSS-78','sea_water_practical_salinity','somma_salinity',0.0,42.0,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('DWNOXY','UMOL/KG','moles_of_oxygen_per_unit_mass_in_sea_water','downcast_oxygen',NULL,NULL,NULL,NULL,NULL,9,1);
+INSERT INTO "whp_names" VALUES('CTDCT','ITS-90','sea_water_conservative_temperature','ctd_conservative_temperature',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('CTDSA','G/KG','sea_water_absolute_salinity','ctd_absolute_salinity',NULL,NULL,NULL,NULL,NULL,9,4);
 COMMIT;
