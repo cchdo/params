@@ -292,6 +292,7 @@ class _WHPNames(_LazyMapping):
                 )
                 .join(Param)
                 .outerjoin(Unit)
+                .order_by(Param.rank)
                 .all()
             )
 
