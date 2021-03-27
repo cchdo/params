@@ -5395,7 +5395,7 @@ INSERT INTO "whp_names" VALUES('PHSPHT','UMOL/KG','moles_of_phosphate_per_unit_m
 INSERT INTO "whp_names" VALUES('NO2+NO3','UMOL/KG','moles_of_nitrate_and_nitrite_per_unit_mass_in_sea_water','nitrite_nitrate',0.0,5.0,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('CFC-11','PMOL/KG','moles_of_cfc11_per_unit_mass_in_sea_water','cfc_11',-0.1,15.0,'CF11ER',NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('CFC-12','PMOL/KG',NULL,'cfc_12',-0.1,15.0,'CF12ER',NULL,NULL,9,3);
-INSERT INTO "whp_names" VALUES('CFC113','PMOL/KG',NULL,'cfc_113',-0.1,1.5,NULL,NULL,NULL,9,3);
+INSERT INTO "whp_names" VALUES('CFC113','PMOL/KG',NULL,'cfc_113',-0.1,1.5,'CF113ER',NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('SF6','FMOL/KG',NULL,'sulfur_hexifluoride',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('TCARBN','UMOL/KG',NULL,'total_carbon',1100.0,2600.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('ALKALI','UMOL/KG',NULL,'total_alkalinity',100.0,2800.0,NULL,NULL,NULL,9,1);
