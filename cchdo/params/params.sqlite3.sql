@@ -5220,6 +5220,10 @@ INSERT INTO "ex_params" VALUES('SIG0',NULL,'Potential density anomaly referenced
 INSERT INTO "ex_params" VALUES('SOMSAL',NULL,'Salinity measured by a Single-Operator Multiparameter Metabolic Analyzer (SOMMA), used in sea water CO2 analysis',NULL,NULL,'sample','decimal','woce_discrete',0,153.0);
 INSERT INTO "ex_params" VALUES('CTDSA',NULL,'Absolute salinity calculated using TEOS-10',NULL,'This is provided as a convienence, the TEOS-10 manual strongly recomends against including this in observational data.','sample','decimal','woce_ctd',0,19.3);
 INSERT INTO "ex_params" VALUES('CTDCT',NULL,'Conservative temperature calcualted using TEOS-10',NULL,'This is provided as a convienence, the TEOS-10 manual strongly recomends against including this in observational data.','sample','decimal','woce_ctd',0,19.6);
+INSERT INTO "ex_params" VALUES('HPLC',NULL,'High-performance liquid chromatography','This is a placeholder parameter which indicates water collected from a bottle for analysis','These data do not get submitted to CCHDO, most are sent to NASA SeaBASS','sample','string','woce_discrete',0,154.0);
+INSERT INTO "ex_params" VALUES('D15N_NO2+NO3',NULL,'Ratio of 15N to 14N of nitrite+nitrate in the sample vs the ratio of 15N to 14N in a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.5);
+INSERT INTO "ex_params" VALUES('D18O_NO2+NO3',NULL,'Ratio of 18O to 16O of nitrite+nitrate in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.75);
+INSERT INTO "ex_params" VALUES('MICROGELS',NULL,'Count of microgels per liter (abundance). Microgels are small organic particles formed by self-assembly and ionic bridging between organic macromolecules.',NULL,NULL,'sample','decimal','woce_discrete',0,155.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5266,6 +5270,7 @@ INSERT INTO "ex_units" VALUES(34,'E6/L','1e6 l-1',NULL,'This is a "count" of thi
 INSERT INTO "ex_units" VALUES(35,'UMOL/L/H','umol l-1 h-1',NULL,'This unit represents a rate');
 INSERT INTO "ex_units" VALUES(36,'MMOL/KG','mmol kg-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(37,'KG/M^3','kg m-3',NULL,'density');
+INSERT INTO "ex_units" VALUES(38,'1E6 GELS/L','1e6 l-1',NULL,'This is a "count" of things per volume');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5532,4 +5537,8 @@ INSERT INTO "whp_names" VALUES('SOMSAL','PSS-78','sea_water_practical_salinity',
 INSERT INTO "whp_names" VALUES('DWNOXY','UMOL/KG','moles_of_oxygen_per_unit_mass_in_sea_water','downcast_oxygen',NULL,NULL,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('CTDCT','ITS-90','sea_water_conservative_temperature','ctd_conservative_temperature',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('CTDSA','G/KG','sea_water_absolute_salinity','ctd_absolute_salinity',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('HPLC',NULL,NULL,'hplc_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL);
+INSERT INTO "whp_names" VALUES('D15N_NO2+NO3','/MILLE',NULL,'d15n_nitrite_nitrate',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('D18O_NO2+NO3','/MILLE',NULL,'d18o_nitrite_nitrate',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('MICROGELS','1E6 GELS/L',NULL,'microgel_abundance',NULL,NULL,NULL,NULL,NULL,9,2);
 COMMIT;
