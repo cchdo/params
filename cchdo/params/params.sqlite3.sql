@@ -5438,7 +5438,7 @@ INSERT INTO "whp_names" VALUES('BARIUM','NMOL/KG',NULL,'barium',NULL,NULL,NULL,N
 INSERT INTO "whp_names" VALUES('CU','UMOL/L',NULL,'copper',NULL,NULL,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('FE','NMOL/L','mole_concentration_of_dissolved_iron_in_sea_water','iron',0.02,2.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('MN','NMOL/L',NULL,'manganese',0.0,5.0,NULL,NULL,NULL,9,1);
-INSERT INTO "whp_names" VALUES('CTDFLUOR','MG/M^3',NULL,'ctd_fluor',0.0,50.0,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('CTDFLUOR','MG/M^3','mass_concentration_of_chlorophyll_in_sea_water','ctd_fluor',0.0,50.0,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('CTDFLUOR','0-5VDC',NULL,'ctd_fluor_raw',0.0,5.0,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('CTDFLUOR',NULL,NULL,'ctd_fluor_arbitrary',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('PAR','UMOL/M^2/SEC','downwelling_photosynthetic_photon_flux_in_sea_water','par',NULL,NULL,NULL,NULL,NULL,9,3);
@@ -5471,7 +5471,7 @@ INSERT INTO "whp_names" VALUES('ARGON','UMOL/KG',NULL,'argon',5.0,25.0,NULL,NULL
 INSERT INTO "whp_names" VALUES('14C-DOC','/MILLE',NULL,'dissolved_organic_carbon_14',-1000.0,100.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('D15N_NO3',NULL,NULL,'d15n_no3',-5.0,30.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('UREA','UMOL/KG',NULL,'urea',NULL,NULL,NULL,NULL,NULL,9,2);
-INSERT INTO "whp_names" VALUES('TOT_CHL_A','MG/M^3',NULL,'hplc_tot_chl_a',NULL,NULL,NULL,NULL,NULL,9,3);
+INSERT INTO "whp_names" VALUES('TOT_CHL_A','MG/M^3','mass_concentration_of_chlorophyll_a_in_sea_water','hplc_tot_chl_a',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('TOT_CHL_B','MG/M^3',NULL,'hplc_tot_chl_b',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('TOT_CHL_C','MG/M^3',NULL,'hplc_tot_chl_c',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('ALPHA-BETA-CAR','MG/M^3',NULL,'hplc_alpha_beta_carotenes',NULL,NULL,NULL,NULL,NULL,9,3);
