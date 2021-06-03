@@ -5446,7 +5446,7 @@ INSERT INTO "whp_names" VALUES('I-129','BQ/M^3',NULL,'iodine_129',NULL,NULL,'I12
 INSERT INTO "whp_names" VALUES('RA-226','DM/.1MG',NULL,'radium_226',3.0,80.0,'RA-226E',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('RA-228','DM/.1MG',NULL,'radium_228',-1.0,10.0,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('CTDXMISS','%TRANS',NULL,'ctd_transmissometer',0.0,100.0,NULL,NULL,NULL,9,2);
-INSERT INTO "whp_names" VALUES('CTDXMISS','0-5VDC',NULL,'ctd_transmissometer_raw',0.0,5.0,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('CTDXMISS','0-5VDC',NULL,'ctd_transmissometer_raw',0.0,5.0,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('CTDBEAMCP','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water_corrected_for_pure_water_attenuance','ctd_beamcp',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('AR-39','PCTMOD',NULL,'argon_39',0.0,100.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('CS-137','DM/.1MG',NULL,'cesium_137',0.0,100.0,NULL,NULL,NULL,9,2);
