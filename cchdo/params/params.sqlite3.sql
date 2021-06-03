@@ -5497,8 +5497,8 @@ INSERT INTO "whp_names" VALUES('PHYTIN_A','MG/M^3',NULL,'hplc_pheophytin_a',NULL
 INSERT INTO "whp_names" VALUES('PHIDE_A','MG/M^3',NULL,'hplc_pheophorbide_a',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('PRAS','MG/M^3',NULL,'hplc_prasinoxanthin',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('GYRO','MG/M^3',NULL,'hplc_gyroxanthin_diester',NULL,NULL,NULL,NULL,NULL,9,3);
-INSERT INTO "whp_names" VALUES('BTL_DATE',NULL,NULL,'bottle_date',NULL,NULL,NULL,NULL,NULL,9,NULL);
-INSERT INTO "whp_names" VALUES('BTL_TIME',NULL,NULL,'bottle_time',NULL,NULL,NULL,NULL,NULL,9,NULL);
+INSERT INTO "whp_names" VALUES('BTL_DATE',NULL,NULL,'bottle_date',NULL,NULL,NULL,NULL,NULL,8,NULL);
+INSERT INTO "whp_names" VALUES('BTL_TIME',NULL,NULL,'bottle_time',NULL,NULL,NULL,NULL,NULL,4,NULL);
 INSERT INTO "whp_names" VALUES('BTL_LAT',NULL,'latitude','bottle_latitude',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('BTL_LON',NULL,'longitude','bottle_longitude',NULL,NULL,NULL,NULL,NULL,9,4);
 INSERT INTO "whp_names" VALUES('CTDNOBS',NULL,'number_of_observations','ctd_number_of_observations',0.0,10000.0,NULL,NULL,NULL,9,0);
