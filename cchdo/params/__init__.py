@@ -6,6 +6,8 @@ from collections.abc import Mapping, MutableMapping
 from functools import cached_property
 from json import loads
 from contextlib import contextmanager
+from math import isnan
+from datetime import date, time
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
@@ -173,6 +175,34 @@ class WHPName:
             attrs["C_format"] = f"%{self.field_width}.{self.numeric_precision}f"
 
         return attrs
+
+    def strfex(self, value, flag=False):
+        if flag is True and not isnan(value):
+            return f"{int(value):d}"
+        elif flag is True:
+            return "9"
+
+        # https://github.com/python/mypy/issues/5485
+        if self.data_type == str:  # type: ignore
+            if isinstance(value, date):
+                return f"{value:%Y%m%d}"
+            if isinstance(value, time):
+                return f"{value:%H%M}"
+            formatted = f"{str(value):{self.field_width}s}"
+            # having empty cells is undesireable
+            if formatted.strip() == "":
+                return f"{'-999':{self.field_width}s}"
+
+            return formatted
+        if self.data_type == int:  # type: ignore
+            if isnan(value):
+                return f"{-999:{self.field_width}d}"
+            return f"{int(value):{self.field_width}d}"
+        if self.data_type == float:  # type: ignore
+            if isnan(value):
+                return f"{-999:{self.field_width}.0f}"
+
+            return f"{value:{self.field_width}.{self.numeric_precision}f}"
 
 
 def _load_cf_standard_names(__versions__):
