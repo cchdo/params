@@ -176,7 +176,12 @@ class WHPName:
 
         return attrs
 
-    def strfex(self, value, flag=False):
+    def strfex(
+        self,
+        value,
+        flag: bool = False,
+        numeric_precision_override: Optional[int] = None,
+    ):
         if flag is True and not isnan(value):
             return f"{int(value):d}"
         elif flag is True:
@@ -202,7 +207,11 @@ class WHPName:
             if isnan(value):
                 return f"{-999:{self.field_width}.0f}"
 
-            return f"{value:{self.field_width}.{self.numeric_precision}f}"
+            numeric_precision = self.numeric_precision
+            if numeric_precision_override is not None:
+                numeric_precision = numeric_precision_override
+
+            return f"{value:{self.field_width}.{numeric_precision}f}"
 
 
 def _load_cf_standard_names(__versions__):
