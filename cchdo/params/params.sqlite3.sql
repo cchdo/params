@@ -5224,6 +5224,7 @@ INSERT INTO "ex_params" VALUES('HPLC',NULL,'High-performance liquid chromatograp
 INSERT INTO "ex_params" VALUES('D15N_NO2+NO3',NULL,'Ratio of 15N to 14N of nitrite+nitrate in the sample vs the ratio of 15N to 14N in a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.5);
 INSERT INTO "ex_params" VALUES('D18O_NO2+NO3',NULL,'Ratio of 18O to 16O of nitrite+nitrate in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.75);
 INSERT INTO "ex_params" VALUES('MICROGELS',NULL,'Count of microgels per liter (abundance). Microgels are small organic particles formed by self-assembly and ionic bridging between organic macromolecules.',NULL,NULL,'sample','decimal','woce_discrete',0,155.0);
+INSERT INTO "ex_params" VALUES('PLUTO',NULL,'Plutonium decay rate from all isotopes',NULL,NULL,'sample','decimal','woce_discrete',0,70.5);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5271,6 +5272,7 @@ INSERT INTO "ex_units" VALUES(35,'UMOL/L/H','umol l-1 h-1',NULL,'This unit repre
 INSERT INTO "ex_units" VALUES(36,'MMOL/KG','mmol kg-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(37,'KG/M^3','kg m-3',NULL,'density');
 INSERT INTO "ex_units" VALUES(38,'1E6 GELS/L','1e6 l-1',NULL,'This is a "count" of things per volume');
+INSERT INTO "ex_units" VALUES(39,'MBQ/M^3','mBq m-3',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5546,4 +5548,6 @@ INSERT INTO "whp_names" VALUES('HPLC',NULL,NULL,'hplc_placeholder',NULL,NULL,NUL
 INSERT INTO "whp_names" VALUES('D15N_NO2+NO3','/MILLE',NULL,'d15n_nitrite_nitrate',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('D18O_NO2+NO3','/MILLE',NULL,'d18o_nitrite_nitrate',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('MICROGELS','1E6 GELS/L',NULL,'microgel_abundance',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('CS-137','BQ/M^3',NULL,'cesium_137_bq',NULL,NULL,'CS137ER',NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('PLUTO','MBQ/M^3',NULL,'plutonium',NULL,NULL,'PLUTOER',NULL,NULL,9,2);
 COMMIT;
