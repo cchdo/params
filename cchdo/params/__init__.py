@@ -1,7 +1,6 @@
-from collections import namedtuple
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
-from typing import cast, Optional, Callable, Union, Tuple
+from typing import cast, Optional, Callable, Union, Tuple, NamedTuple
 from collections.abc import Mapping, MutableMapping
 from functools import cached_property
 from json import loads
@@ -91,7 +90,8 @@ class WHPNameMixin:
 class CFStandardName(WHPNameMixin):
     """Wrapper for CF Standard Names"""
 
-    name: str  # is the 'id' property in the xml
+    #: name is the cf standard name itself, comes from the "id" property in the XML
+    name: str
     canonical_units: str
     grib: Optional[str]
     amip: Optional[str]
@@ -181,7 +181,7 @@ class WHPName:
         value,
         flag: bool = False,
         numeric_precision_override: Optional[int] = None,
-    ):
+    ) -> str:
         if flag is True and not isnan(value):
             return f"{int(value):d}"
         elif flag is True:
@@ -203,15 +203,16 @@ class WHPName:
             if isnan(value):
                 return f"{-999:{self.field_width}d}"
             return f"{int(value):{self.field_width}d}"
-        if self.data_type == float:  # type: ignore
-            if isnan(value):
-                return f"{-999:{self.field_width}.0f}"
 
-            numeric_precision = self.numeric_precision
-            if numeric_precision_override is not None:
-                numeric_precision = numeric_precision_override
+        # we must have a float
+        if isnan(value):
+            return f"{-999:{self.field_width}.0f}"
 
-            return f"{value:{self.field_width}.{numeric_precision}f}"
+        numeric_precision = self.numeric_precision
+        if numeric_precision_override is not None:
+            numeric_precision = numeric_precision_override
+
+        return f"{value:{self.field_width}.{numeric_precision}f}"
 
 
 def _load_cf_standard_names(__versions__):
@@ -267,8 +268,14 @@ class _LazyMapping(Mapping):
         return len(self._cached_dict)
 
 
+class WHPNameGroups(NamedTuple):
+    cruise: Tuple[WHPName, ...]
+    profile: Tuple[WHPName, ...]
+    sample: Tuple[WHPName, ...]
+
+
 class _WHPNames(_LazyMapping):
-    def __getitem__(self, key):
+    def __getitem__(self, key) -> WHPName:
         if isinstance(key, str):
             key = (key, None)
 
@@ -292,7 +299,6 @@ class _WHPNames(_LazyMapping):
 
     @cached_property
     def groups(self):
-        WHPNameGroups = namedtuple("WHPNameGroups", "cruise, profile, sample")
         return WHPNameGroups(
             cruise=self._scope_filter("cruise"),
             profile=self._scope_filter("profile"),
