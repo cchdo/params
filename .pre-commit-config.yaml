@@ -15,4 +15,4 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies:
-          - 'sqlalchemy-stubs'
+          - 'sqlalchemy[mypy]'

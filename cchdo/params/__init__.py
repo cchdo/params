@@ -1,12 +1,14 @@
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
-from typing import TypeVar, Optional, Callable, Union, Tuple, NamedTuple, Mapping
+from typing import TypeVar, Optional, Callable, Union, Tuple, NamedTuple, Mapping, Dict
 from collections.abc import MutableMapping
 from functools import cached_property
 from json import loads
 from contextlib import contextmanager
 from math import isnan
 from datetime import date, time
+
+from sqlalchemy import select
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
@@ -20,12 +22,14 @@ def database():
         from sqlalchemy.orm import sessionmaker
 
         engine = create_engine(
-            f"sqlite:///{f}", echo=False, connect_args={"check_same_thread": False}
+            f"sqlite:///{f}",
+            echo=False,
+            connect_args={"check_same_thread": False},
+            future=True,
         )
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        yield session
-        session.close()
+        Session = sessionmaker(bind=engine, future=True)
+        with Session() as session:
+            yield session
 
 
 class Config(MutableMapping):
@@ -135,7 +139,7 @@ class WHPName:
         return (self.whp_name, self.whp_unit)
 
     @property
-    def cf(self):
+    def cf(self) -> Optional[CFStandardName]:
         return CFStandardNames.get(self.cf_name)
 
     def __eq__(self, other):
@@ -220,16 +224,16 @@ class WHPName:
 
 
 def _load_cf_standard_names(__versions__):
-    cf_standard_names = {}
+    cf_standard_names: Dict[str, CFStandardName] = {}
 
     with database() as session:
         from .models import CFName as CFNameDB
         from .models import CFAlias as CFAliasDB
 
-        for record in session.query(CFNameDB).all():
+        for record in session.execute(select(CFNameDB)).scalars().all():
             cf_standard_names[record.standard_name] = record.dataclass
 
-        for record in session.query(CFAliasDB).all():
+        for record in session.execute(select(CFAliasDB)).scalars().all():
             cf_standard_names[record.alias] = cf_standard_names[record.standard_name]
 
     return cf_standard_names
@@ -241,11 +245,11 @@ def _load_whp_names():
         from .models import WHPName as WHPNameDB
         from .models import Alias as AliasDB
 
-        for record in session.query(WHPNameDB).all():
+        for record in session.execute(select(WHPNameDB)).scalars().all():
             param = record.dataclass
             whp_name[param.key] = param
 
-        for record in session.query(AliasDB).all():
+        for record in session.execute(select(AliasDB)).scalars().all():
             whp_name[(record.old_name, record.old_unit)] = whp_name[
                 (record.whp_name, record.whp_unit)
             ]
@@ -321,8 +325,8 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
 
             from .models import WHPName, Param, Unit
 
-            results = (
-                session.query(
+            results = session.execute(
+                select(
                     WHPName.whp_name,
                     WHPName.whp_unit,
                     Param.whp_number,
@@ -344,8 +348,7 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
                 .join(Param)
                 .outerjoin(Unit)
                 .order_by(Param.rank)
-                .all()
-            )
+            ).all()
 
             required = ["whp_name", "whp_unit", "flag_w", "data_type", "field_width"]
             params = []
@@ -372,7 +375,7 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
         return params
 
 
-class _CFStandardNames(_LazyMapping[str, CFStandardName]):
+class _CFStandardNames(_LazyMapping[Optional[str], CFStandardName]):
     def __init__(self, loader):
         self._loader = loader
         self.__versions__ = {}

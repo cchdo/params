@@ -9,8 +9,7 @@ from sqlalchemy import (
     ForeignKey,
     ForeignKeyConstraint,
 )
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
 
 from . import WHPName as WHPNameDC
@@ -121,8 +120,8 @@ class WHPName(Base):
     field_width = Column(Integer, nullable=False)
     numeric_precision = Column(Integer, nullable=True)
 
-    param = relationship("Param")
-    unit = relationship("Unit")
+    param: Param = relationship("Param")
+    unit: Unit = relationship("Unit")
     cf_unit = association_proxy("unit", "cf_unit")
 
     __table_args__ = (
