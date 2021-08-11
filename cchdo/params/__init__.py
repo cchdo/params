@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
-from typing import cast, Optional, Callable, Union, Tuple, NamedTuple
-from collections.abc import Mapping, MutableMapping
+from typing import TypeVar, Optional, Callable, Union, Tuple, NamedTuple, Mapping
+from collections.abc import MutableMapping
 from functools import cached_property
 from json import loads
 from contextlib import contextmanager
@@ -139,9 +139,13 @@ class WHPName:
         return CFStandardNames.get(self.cf_name)
 
     def __eq__(self, other):
+        if not isinstance(other, WHPName):
+            raise NotImplementedError("Can only compare two WHPName objects")
         return (self.whp_name == other.whp_name) and (self.whp_unit == other.whp_unit)
 
     def __lt__(self, other):
+        if not isinstance(other, WHPName):
+            raise NotImplementedError("Can only compare two WHPName objects")
         if self.rank == other.rank:
             return str(self.whp_unit) < str(other.whp_unit)
         return self.rank < other.rank
@@ -249,22 +253,26 @@ def _load_whp_names():
     return whp_name
 
 
-class _LazyMapping(Mapping):
+K = TypeVar("K")
+V = TypeVar("V")
+
+
+class _LazyMapping(Mapping[K, V]):
     def __init__(self, loader):
         self._loader = loader
 
     @cached_property
-    def _cached_dict(self):
+    def _cached_dict(self) -> Mapping[K, V]:
         return self._loader()
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: K) -> V:
         return self._cached_dict[key]
 
     def __iter__(self):
         for key in self._cached_dict:
             yield key
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self._cached_dict)
 
 
@@ -274,7 +282,7 @@ class WHPNameGroups(NamedTuple):
     sample: Tuple[WHPName, ...]
 
 
-class _WHPNames(_LazyMapping):
+class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
     def __getitem__(self, key) -> WHPName:
         if isinstance(key, str):
             key = (key, None)
@@ -293,9 +301,7 @@ class _WHPNames(_LazyMapping):
         }
 
     def _scope_filter(self, scope: str = "cruise") -> Tuple[WHPName, ...]:
-        return tuple(
-            sorted(cast(WHPName, name) for name in self.values() if name.scope == scope)
-        )
+        return tuple(sorted(name for name in self.values() if name.scope == scope))
 
     @cached_property
     def groups(self):
@@ -366,7 +372,7 @@ class _WHPNames(_LazyMapping):
         return params
 
 
-class _CFStandardNames(_LazyMapping):
+class _CFStandardNames(_LazyMapping[str, CFStandardName]):
     def __init__(self, loader):
         self._loader = loader
         self.__versions__ = {}

@@ -13,6 +13,10 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
 
+from . import WHPName as WHPNameDC
+from . import CFStandardName as CFStandardNameDC
+
+
 Base = declarative_base()
 
 
@@ -67,8 +71,6 @@ class CFName(Base):
 
     @property
     def dataclass(self):
-        from . import CFStandardName as CFStandardNameDC
-
         return CFStandardNameDC(
             name=self.standard_name,
             canonical_units=self.canonical_units,
@@ -132,7 +134,6 @@ class WHPName(Base):
 
     @property
     def dataclass(self):
-        from . import WHPName as WHPNameDC
 
         _dtype_map = {"string": str, "decimal": float, "integer": int}
 
