@@ -2,6 +2,7 @@ import string
 
 import pytest
 import cchdo.params as data
+from datetime import date, time
 
 from jsonschema import validate
 
@@ -114,7 +115,7 @@ def test_db_dump_matches_files():
 
 
 def test_db_fk_ok():
-    from importlib.resources import path, read_text
+    from importlib.resources import path
     import sqlite3
 
     with path("cchdo.params", "params.sqlite3") as p:
@@ -137,3 +138,119 @@ def test_legacy_json():
     # Validate will raise if this fails
     validate(data.WHPNames.legacy_json, data.WHPNames.legacy_json_schema)
     assert True
+
+
+def test_whpname_groups():
+    groups = data.WHPNames.groups
+    assert isinstance(groups, tuple)
+    assert hasattr(groups, "cruise")
+    assert hasattr(groups, "profile")
+    assert hasattr(groups, "sample")
+
+
+@pytest.mark.parametrize(
+    "whpname", data.WHPNames.values(), ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]"
+)
+def test_nc_attrs(whpname: data.WHPName):
+    attrs = whpname.get_nc_attrs()
+    assert "whp_name" in attrs
+
+    if whpname.whp_unit is not None:
+        assert "whp_unit" in attrs
+
+    if whpname.field_width is not None and whpname.numeric_precision is not None:
+        assert "C_format" in attrs
+
+    if whpname.cf_name is None:
+        assert "standard_name" not in attrs
+
+    if whpname.error_name is not None:
+        err_attrs = whpname.get_nc_attrs(error=True)
+
+        assert err_attrs["whp_name"] == whpname.error_name
+
+        if whpname.cf_name is not None:
+            assert whpname.cf_name in err_attrs["standard_name"]
+            assert " standard_error" in err_attrs["standard_name"]
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    data.WHPNames.values(),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+def test_strfex_fill(whpname: data.WHPName):
+    result = whpname.strfex(float("nan"))
+    if whpname.data_type is str:
+        assert "nan" == result.strip()
+    else:
+        assert "-999" == result.strip()
+
+    # castno can never be empty
+    if whpname.whp_name != "CASTNO":
+        assert len(result) == whpname.field_width
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    filter(lambda x: x.data_type is float, data.WHPNames.values()),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+@pytest.mark.parametrize("value", (10, 10.1))
+@pytest.mark.parametrize("override", (None, 15))
+def test_strfex_floaty(whpname: data.WHPName, value, override):
+    result = whpname.strfex(value, numeric_precision_override=override)
+
+    if whpname.numeric_precision > 0 and override is None:
+        assert "." in result
+        assert len(result.split(".")[1]) == whpname.numeric_precision
+    elif override is None:
+        assert "." not in result
+
+    if override is not None:
+        if override > 0:
+            assert "." in result
+            assert len(result.split(".")[1]) == override
+        elif override == 0:
+            assert "." not in result
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    filter(lambda x: x.data_type is str, data.WHPNames.values()),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+def test_strfex_special(whpname: data.WHPName):
+    result = whpname.strfex(date(2020, 1, 1))
+    assert result == "20200101"
+
+    result = whpname.strfex(time(13, 14, 15, 16))
+    assert result == "1314"
+
+    result = whpname.strfex("")
+    assert result.strip() == "-999"
+    assert len(result) == whpname.field_width
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    filter(lambda x: x.data_type is int, data.WHPNames.values()),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+def test_strfex_ints(whpname: data.WHPName):
+    result = whpname.strfex(1)
+    assert result.strip() == "1"
+    assert len(result) == whpname.field_width
+    assert "." not in result
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    data.WHPNames.values(),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+@pytest.mark.parametrize("flag", (float("nan"), 2))
+def test_strfex_flags(whpname: data.WHPName, flag):
+    result = whpname.strfex(flag, flag=True)
+
+    assert result in {"2", "9"}
