@@ -181,7 +181,7 @@ def test_nc_attrs(whpname: data.WHPName):
 )
 def test_strfex_fill(whpname: data.WHPName):
     result = whpname.strfex(float("nan"))
-    if whpname.data_type is str:
+    if whpname.data_type is str:  # type: ignore
         assert "nan" == result.strip()
     else:
         assert "-999" == result.strip()
@@ -193,7 +193,7 @@ def test_strfex_fill(whpname: data.WHPName):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(lambda x: x.data_type is float, data.WHPNames.values()),
+    filter(lambda x: x.data_type is float, data.WHPNames.values()),  # type: ignore
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 @pytest.mark.parametrize("value", (10, 10.1))
@@ -201,7 +201,7 @@ def test_strfex_fill(whpname: data.WHPName):
 def test_strfex_floaty(whpname: data.WHPName, value, override):
     result = whpname.strfex(value, numeric_precision_override=override)
 
-    if whpname.numeric_precision > 0 and override is None:
+    if whpname.numeric_precision > 0 and override is None:  # type: ignore
         assert "." in result
         assert len(result.split(".")[1]) == whpname.numeric_precision
     elif override is None:
@@ -217,7 +217,7 @@ def test_strfex_floaty(whpname: data.WHPName, value, override):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(lambda x: x.data_type is str, data.WHPNames.values()),
+    filter(lambda x: x.data_type is str, data.WHPNames.values()),  # type: ignore
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 def test_strfex_special(whpname: data.WHPName):
@@ -234,7 +234,7 @@ def test_strfex_special(whpname: data.WHPName):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(lambda x: x.data_type is int, data.WHPNames.values()),
+    filter(lambda x: x.data_type is int, data.WHPNames.values()),  # type: ignore
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 def test_strfex_ints(whpname: data.WHPName):
