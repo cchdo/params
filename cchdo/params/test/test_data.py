@@ -193,7 +193,7 @@ def test_strfex_fill(whpname: data.WHPName):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(lambda x: x.data_type is float, data.WHPNames.values()),
+    [whpname for whpname in data.WHPNames.values() if whpname.data_type is float],
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 @pytest.mark.parametrize("value", (10, 10.1))
@@ -217,7 +217,7 @@ def test_strfex_floaty(whpname: data.WHPName, value, override):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(lambda x: x.data_type is str, data.WHPNames.values()),
+    [whpname for whpname in data.WHPNames.values() if whpname.data_type is str],
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 def test_strfex_special(whpname: data.WHPName):
@@ -234,7 +234,7 @@ def test_strfex_special(whpname: data.WHPName):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(lambda x: x.data_type is int, data.WHPNames.values()),
+    [whpname for whpname in data.WHPNames.values() if whpname.data_type is int],
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 def test_strfex_ints(whpname: data.WHPName):
