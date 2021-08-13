@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
-from typing import TypeVar, Optional, Callable, Union, Tuple, NamedTuple, Mapping, Dict
+from typing import Literal, TypeVar, Optional, Union, Tuple, NamedTuple, Mapping, Dict
 from collections.abc import MutableMapping
 from functools import cached_property
 from json import loads
@@ -113,7 +113,7 @@ class WHPName:
     whp_name: str
     nc_name: str = field(repr=False)
     rank: float = field(repr=False)  # used for sorting in the "classic" WHP order
-    data_type: Callable[[str], Union[str, float, int]] = field(repr=False)
+    dtype: Literal["string", "decimal", "int"] = field(repr=False)
 
     whp_unit: Optional[str] = None
     flag_w: Optional[str] = field(default=None, repr=False)
@@ -137,6 +137,14 @@ class WHPName:
     def key(self):
         """This is the thing that uniquely identifies"""
         return (self.whp_name, self.whp_unit)
+
+    @cached_property
+    def data_type(self):
+        if self.dtype == "decimal":
+            return float
+        if self.dtype == "integer":
+            return int
+        return str
 
     @property
     def cf(self) -> Optional[CFStandardName]:

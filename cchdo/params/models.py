@@ -134,15 +134,13 @@ class WHPName(Base):
     @property
     def dataclass(self):
 
-        _dtype_map = {"string": str, "decimal": float, "integer": int}
-
         reference_scale = None
         if self.unit is not None:
             reference_scale = self.unit.reference_scale
 
         return WHPNameDC(
             whp_name=self.whp_name,
-            data_type=_dtype_map[self.param.dtype],
+            dtype=self.param.dtype,
             whp_unit=self.whp_unit,
             nc_name=self.nc_name,
             flag_w=self.param.flag,
