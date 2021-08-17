@@ -103,6 +103,7 @@ class CFStandardName(WHPNameMixin):
 
     @property
     def cf(self):
+        """Part of the `cf` interface, for :class:`CFStandardName` instances, just returns self"""
         return self
 
 
@@ -110,36 +111,75 @@ class CFStandardName(WHPNameMixin):
 class WHPName:
     """Wrapper for WHP parameters.json"""
 
+    #: the WOCE style parameter "mnemonic", older names were limited to 6 charicters
+    #: so funny things like "SALNTY" rather than "SALINITY" occur
     whp_name: str
+    #: the variable name to use in cf compliant netcdf files, must be unique
     nc_name: str = field(repr=False)
-    rank: float = field(repr=False)  # used for sorting in the "classic" WHP order
+    #: The historic ordering of columns in a file are determined by this rank, lower rank comes first.
+    #: used for sorting the parameters
+    rank: float = field(repr=False)
+    #: the string name of the data type of this parameter
     dtype: Literal["string", "decimal", "int"] = field(repr=False)
 
+    #: string of the units for this parameter.
+    #:
+    #: .. warning::
+    #:   Not all unitless parameters will have a value of `None`.
+    #:   For example, practical salinity will have "PSS-78" rather than
+    #:   empty units.
     whp_unit: Optional[str] = None
+    #: Which set of woce flag definitions to use for this parameter
     flag_w: Optional[str] = field(default=None, repr=False)
+    #: if one exists, the cf standard name for this parameter/unit pair
     cf_name: Optional[str] = None
+    #: The expected minimum value for this parameter/unit pair
     numeric_min: Optional[float] = field(default=None, repr=False)
+    #: The expected maximum value for this parameter/unit pair
     numeric_max: Optional[float] = field(default=None, repr=False)
+    #: The historic print precision for this parameter
+    #:
+    #: .. danger::
+    #:   The use of print precisions as an approximation for uncertainty should only be used if there is no other source of uncertainty.
     numeric_precision: Optional[int] = field(default=None, repr=False)
+    #: The print field width
     field_width: Optional[int] = field(default=None, repr=False)
+    #: A brief description of the parameter, this is the definition of the parameter
     description: Optional[str] = field(default=None, repr=False)
+    #: Any additional notes that are not really part of the definition
     note: Optional[str] = field(default=None, repr=False)
+    #: If there is something tricky about this parameter, it should be a warning.
+    #: for example, you might interpret the NBR part of the two parameters BTLNBR and STNNBR
+    #: as meaning that this field can only have numeric value, this is not correct.
     warning: Optional[str] = field(default=None, repr=False)
+    #: Due to historic limitations, there is no standard way of having an error (uncertanty) parameter.
+    #: so a mapping is needed.
     error_name: Optional[str] = field(default=None, repr=False)
+    #: What the units sould be in a netcdf file, these must be readable by UDUNITS2
     cf_unit: Optional[str] = field(default=None, repr=False)
+    #: The calibration scale if not tied to the units, e.g. temperature has ITS-90 and IPTS-68 but bother are deg C or K
     reference_scale: Optional[str] = field(default=None, repr=False)
+    #: In woce sum files, the parameters were numbered. Not all parameters have a number, and some parameter numbers present classes
+    #: e.g. "hydrocarbon" parameters might all have the same whp_number
     whp_number: Optional[int] = field(default=None, repr=False)
+    #: does this parameter apply to an entire cruise, a single profile, or a single sample record (bottle closure or ctd scan)
     scope: str = field(default="sample", repr=False)
+    #: If reporting temperature is important, the name of the variable which will have that temperature
     analytical_temperature_name: Optional[str] = field(default=None, repr=False)
+    #: If reporting temperature is important, the units of the variable which has the temperature
     analytical_temperature_units: Optional[str] = field(default=None, repr=False)
 
     @property
     def key(self):
-        """This is the thing that uniquely identifies"""
+        """WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values"""
         return (self.whp_name, self.whp_unit)
 
     @cached_property
     def data_type(self):
+        """the actual python class for this WHPName's dtype
+
+        This is useufl for parsing string values for this WHPName
+        """
         if self.dtype == "decimal":
             return float
         if self.dtype == "integer":
@@ -148,14 +188,20 @@ class WHPName:
 
     @property
     def cf(self) -> Optional[CFStandardName]:
+        """The :class:`CFStandardName` equivalent to this WHPName
+
+        Returns none if there does not exist an equivalent :class:`CFStandardName`.
+        """
         return CFStandardNames.get(self.cf_name)
 
     def __eq__(self, other):
+        """:class:`WHPName`s are equivalent if their whp_name and whp_unit properties are equivalent"""
         if not isinstance(other, WHPName):
             raise NotImplementedError("Can only compare two WHPName objects")
         return (self.whp_name == other.whp_name) and (self.whp_unit == other.whp_unit)
 
     def __lt__(self, other):
+        """Sorts WHPNames based on their rank property"""
         if not isinstance(other, WHPName):
             raise NotImplementedError("Can only compare two WHPName objects")
         if self.rank == other.rank:
@@ -163,6 +209,7 @@ class WHPName:
         return self.rank < other.rank
 
     def get_nc_attrs(self, error=False):
+        """a dict containing the netCDF variable attributes needed for CF compliance for this variable"""
         attrs = {
             "whp_name": self.whp_name,
         }
@@ -198,6 +245,23 @@ class WHPName:
         flag: bool = False,
         numeric_precision_override: Optional[int] = None,
     ) -> str:
+        """Format a value using standard WHP Exchange conventions:
+
+        * dates are formatted as %Y%m%d
+        * times are formatted as %H%M
+        * fill values are "-999" for data, 9 for flags
+        * for floating points, only NaN values are considered to be "fill", there
+          are parameters which can have -999 as a real value
+
+        :param value: the value to format as a string, the accepted inputs depends on the :class:`WHPName.dtype`,
+                      dates and times are expected to be real `datetime.date` and `datetime.time` objects
+        :param boolean flag: should `value` be interpreted as a WOCE flag
+        :param int numeric_precision_override: if not None, will overrride the builtin databases :class:`WHPName.numeric_precision`
+                                               when formatting floats
+
+        :returns: `value` as a string for printing in a WHP Exchange file
+        :rtype: str
+        """
         if flag is True and not isnan(value):
             return f"{int(value):d}"
         elif flag is True:
