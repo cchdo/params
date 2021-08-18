@@ -25,3 +25,9 @@ API reference
   :members:
   :undoc-members:
   :inherited-members:
+
+.. py:data:: cchdo.params.WHPNames
+  :value: <cchdo.params._WHPNames object>
+
+.. py:data:: cchdo.params.CFStandardNames
+  :value: <cchdo.params._CFStandardNames object>

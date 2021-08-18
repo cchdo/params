@@ -1,6 +1,16 @@
 from dataclasses import dataclass, field
 from importlib.resources import path, read_text
-from typing import Literal, TypeVar, Optional, Union, Tuple, NamedTuple, Mapping, Dict
+from typing import (
+    Literal,
+    TypeVar,
+    Optional,
+    Union,
+    Tuple,
+    NamedTuple,
+    Mapping,
+    Dict,
+    FrozenSet,
+)
 from collections.abc import MutableMapping
 from functools import cached_property
 from json import loads
@@ -353,12 +363,18 @@ class _LazyMapping(Mapping[K, V]):
 
 
 class WHPNameGroups(NamedTuple):
-    cruise: Tuple[WHPName, ...]
-    profile: Tuple[WHPName, ...]
-    sample: Tuple[WHPName, ...]
+    cruise: FrozenSet[WHPName]
+    profile: FrozenSet[WHPName]
+    sample: FrozenSet[WHPName]
 
 
 class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
+    """A Mapping providing a lookup between a WOCE style param and unit to an instance of :class:`WHPName`
+
+    .. warning::
+      This class should not be directly used, instead use the premade `WHPNames` instance from this module
+    """
+
     def __getitem__(self, key) -> WHPName:
         if isinstance(key, str):
             key = (key, None)
@@ -369,7 +385,12 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
         return self._cached_dict[key]
 
     @property
-    def error_cols(self):
+    def error_cols(self) -> Dict[str, WHPName]:
+        """A mapping of all the error names to their corresponding WHPName
+
+        >>> WHPNames.error_cols["C14ERR"]
+        WHPName(whp_name='DELC14', whp_unit='/MILLE', cf_name=None)
+        """
         return {
             ex.error_name: ex
             for ex in self._cached_dict.values()
@@ -380,19 +401,41 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
         return tuple(sorted(name for name in self.values() if name.scope == scope))
 
     @cached_property
-    def groups(self):
+    def groups(self) -> WHPNameGroups:
+        """A namedtuple with the properties: cruise, profile, sample
+
+        Each property is a frozen set of WHPName instances.
+        The grouping is by what "scope" the parameter applies to.
+        For example, the station id (STNNBR) applies to an entire profile.
+        Only "profile" level parameters are allowed to be in CTD headers.
+
+        There are currently no "cruise" level parameters.
+        All parameters have a scope.
+
+        >>> WHPNames["EXPOCODE"] in WHPNames.groups.profile
+        True
+        """
         return WHPNameGroups(
-            cruise=self._scope_filter("cruise"),
-            profile=self._scope_filter("profile"),
-            sample=self._scope_filter("sample"),
+            cruise=frozenset(self._scope_filter("cruise")),
+            profile=frozenset(self._scope_filter("profile")),
+            sample=frozenset(self._scope_filter("sample")),
         )
 
     @cached_property
     def legacy_json_schema(self):
+        """A JSONSchema draft-04 which describes a valid :class:`_WHPNames.legacy_json` document"""
         return loads(read_text("cchdo.params", "parameters.schema.json"))
 
     @cached_property
     def legacy_json(self):
+        """Provides the params database in the format expected in the old json database
+
+        The order of the objects is guaranteed to be in the preferred WOCE order by parameter name.
+        The ordering of parameters with the same name but different units is arbitrary.
+
+        This property is the corresponding python object and not JSON text, it must still be serialized.
+        This property will validate against the schema in :class:`_WHPNames.legacy_json_schema`
+        """
         with database() as session:
 
             from .models import WHPName, Param, Unit
