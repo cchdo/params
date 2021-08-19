@@ -1,0 +1,110 @@
+v0.1.14 (unreleased)
+====================
+
+Parameter Changes
+-----------------
+* None yet
+
+API Changes
+-----------
+* The types of the ``WHPNames.groups`` properties was changed from ``tuple`` to ``frozenset`` to speed up ``in`` operations.
+* Added a ``WHPName.dtype`` field containing the data type of the parameter as a string.
+  The ``data_type`` field has been changed to a computed class property.
+  The API of ``data_type`` has not changed, but your static type checkers might be much happier.
+
+v0.1.13 (2021-08-12)
+====================
+
+This release focused mostly on code maintainability. 
+Lots of tests written for the public API interface and a whole bunch of improvements to the type hints. 
+The scaffold for docs has been set up, though content is still being written.
+
+Parameter Changes
+-----------------
+* The CF Standard Name table was updated to v77
+* Added PLUTO [BQ/M^3] which is the activity of from all isotopes of plutonium in the sample
+* BQ/M^3 was added as a possible unit for CS-137
+* Added some aliases (alias -> canonical):
+
+  * XMISSCP [/METER] -> CTDBEAMCP [/METER]
+  * PAR [UE/SQM/S] -> PAR [UMOL/M^2/SEC]
+  * TRANSM [VDC] -> CTDXMISS [0-5VDC]
+  * FLUORM [VDC] -> CTDFLUOR [0-5VDC]
+  * FLUOR [MG/CUM] -> CTDFLUOR [MG/M^3]
+
+API Changes
+-----------
+* The minimum sqlalchemy version is now 1.4
+* An optional ``numeric_precision_override`` keyword arg was added to the ``WHPName.strfex`` method to allow the overriding of builtin print format database.
+* Lots of Type Hint (PEP 484) improvements. Most of the instance methods should know what they will return.
+
+v0.1.12 (2021-06-03)
+====================
+
+Parameter Changes
+-----------------
+* The cf standard name mass_concentration_of_chlorophyll_in_sea_water was added to CTDFLUOR [MG/M^3]
+* The cf standard name mass_concentration_of_chlorophyll_a_in_sea_water was added to TOT_CHL_A [MG/M^3]
+* The field width of BTL_DATE was changed to 8 to match DATE
+* The field width of BTL_TIME was changed to 4 to match TIME
+* The print precision of CTDXMISS [0-5VDC] was increased to 4.
+
+API Changes
+-----------
+* A ``WHPName.strfex()`` method was added which formats values passed into it according to the values of ``WHPName.data_type``, ``WHPName.field_width``, and ``WHPName.numeric_precision``. 
+  It will convert NaNs, and anything resulting in an empty string to ``-999``. 
+  The method name was inspired by the datetime method ``strftime``.
+
+v0.1.11 (2021-05-27)
+====================
+
+Parameter Changes
+-----------------
+* Added HPLC as a placeholder param in exchange files
+* Added D15N_NO2+NO3 [/MILLE] and D18O_NO2+NO3[/MILLE] which describe the isotopic enrichment of the elements in NO2+NO3
+* Added MICROGELS [1E6 GELS/L] which is the abundance of self assembling organic particles called microgels.
+* Added CF113ER as the uncertainty name for CFC113 [PMOL/KG].
+
+API Changes
+-----------
+* the output of ``WHPNames.legacy_json`` is now guaranteed to be ordered in "preferred" GO-SHIP order rather than database order. 
+  The order may change between releasees as the preferred parameter order of GO-SHIP evolves and as new parameters are added.
+
+v0.1.10 (2021-03-15)
+====================
+
+Parameter Changes
+-----------------
+* Added CTDCT [ITS-90] for calculated conservative temperature from CTD sensors
+* Added CTDSA [G/KG] for calculated absolute salinity from CTD sensors
+
+Note that these two calculated parameters may appear in data products, but the reported and stored data must continue to be PSS-78 for Salinity and in situ ITS-90 for temperature (see the TEOS-10 user manual).
+
+API Changes
+-----------
+None
+
+v0.1.9 (2021-01-27)
+===================
+
+Parameter Changes
+-----------------
+None
+
+API Changes
+-----------
+* WHPNames now has a property ``groups`` with a named tuple containing collections of parameters with the scopes of ``cruise``, ``profile``, and ``sample``. 
+  As of release, there were no "cruise" level parameter names in the database. 
+  "profile" scoped parameters can/should be in exchange CTD headers. 
+  "sample" scoped params must have their values appear in the data block of an exchange file.
+
+v0.1.8 (2021-01-06)
+===================
+
+Parameter Changes
+-----------------
+* (BREAKING) the netcdf variable name for REVTMP [DEG C] has been changed from ``rev_temerature_c`` to ``rev_temperature_c``
+
+API Changes
+-----------
+* The dict returned by ``WHPName.get_nc_attrs()`` will now include a ``"C_format"`` key if the parameter has both a ``field_width`` and ``numeric_precision``
