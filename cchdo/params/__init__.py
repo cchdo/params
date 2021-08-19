@@ -102,7 +102,10 @@ class WHPNameMixin:
 
 @dataclass(frozen=True)
 class CFStandardName(WHPNameMixin):
-    """Wrapper for CF Standard Names"""
+    """Dataclass representing a single CF Standard Name
+
+    This class captures the information in the standard name table as properties.
+    """
 
     #: name is the cf standard name itself, comes from the "id" property in the XML
     name: str
@@ -119,7 +122,10 @@ class CFStandardName(WHPNameMixin):
 
 @dataclass(frozen=True)
 class WHPName:
-    """Wrapper for WHP parameters.json"""
+    """Dataclass representing a single exchange/WOCE style name + unit pair
+
+    There is a ton of extra information that is meant for use in making CF/netCDF files.
+    """
 
     #: the WOCE style parameter "mnemonic", older names were limited to 6 charicters
     #: so funny things like "SALNTY" rather than "SALINITY" occur
@@ -369,10 +375,25 @@ class WHPNameGroups(NamedTuple):
 
 
 class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
-    """A Mapping providing a lookup between a WOCE style param and unit to an instance of :class:`WHPName`
+    """A Mapping (i.e. dict) providing a lookup between a WOCE style param and unit to an instance of :class:`WHPName`
 
     .. warning::
-      This class should not be directly used, instead use the premade `WHPNames` instance from this module
+      This class should not be directly used, instead use the premade :data:`WHPNames` instance from this module
+
+    Parameters are looked up using a tuple of `(name, unit)` as strings.
+
+    >>> WHPNames[("CTDPRS", "DBARS")]
+    WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
+
+    If the parameter is unitless use ``None``.:
+
+    >>> WHPNames[("EXPOCODE", None)]
+    WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
+
+    As a convience, unitless params may be looked up via their name alone:
+
+    >>> WHPNames["EXPOCODE"]
+    WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
     """
 
     def __getitem__(self, key) -> WHPName:
