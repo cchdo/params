@@ -10,6 +10,7 @@ Welcome to cchdo.params's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   user_guide
    changelog
    api
 
