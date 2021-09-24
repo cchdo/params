@@ -3,6 +3,10 @@ v0.1.15 (unreleased)
 
 Parameter Changes
 -----------------
+* Added N2/ARGON and N2/ARGON_UNSTRIPPED which represent the ratio of dissolved N2 gas to ARGON gas, both are unitless ratios.
+
+  * The _UNSTRIPPED name refers to a measurement that has not been stripped of dissolved O2.
+
 * AZOTE has been renamed to N2 [UMOL/KG]
 
   * AZOTE [UMOL/KG] has been added as an alias

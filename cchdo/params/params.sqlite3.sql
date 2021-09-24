@@ -5240,6 +5240,8 @@ INSERT INTO "ex_params" VALUES('D15N_NO2+NO3',NULL,'Ratio of 15N to 14N of nitri
 INSERT INTO "ex_params" VALUES('D18O_NO2+NO3',NULL,'Ratio of 18O to 16O of nitrite+nitrate in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.75);
 INSERT INTO "ex_params" VALUES('MICROGELS',NULL,'Count of microgels per liter (abundance). Microgels are small organic particles formed by self-assembly and ionic bridging between organic macromolecules.',NULL,NULL,'sample','decimal','woce_discrete',0,155.0);
 INSERT INTO "ex_params" VALUES('PLUTO',NULL,'Plutonium decay rate from all isotopes',NULL,NULL,'sample','decimal','woce_discrete',0,70.5);
+INSERT INTO "ex_params" VALUES('N2/ARGON',NULL,'Ratio of dissolved elemental nitrogen to dissolved argon',NULL,NULL,'sample','decimal','woce_discrete',0,156.0);
+INSERT INTO "ex_params" VALUES('N2/ARGON_UNSTRIPPED',NULL,'Ratio of dissolved elemental nitrogen to dissolved argon that has not been stripped of dissolved oxygen','This is still fundamentally an N2/ARGON measurement and is a variation on an analytical technique. If following the corrections described in Charoenpong et al 2014 (DOI: 10.4319/lom.2014.12.323) then this should be comparable with any other N2/ARGON measurement but have a slightly larger uncertainty.',NULL,'sample','decimal','woce_discrete',0,156.1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5566,4 +5568,6 @@ INSERT INTO "whp_names" VALUES('D18O_NO2+NO3','/MILLE',NULL,'d18o_nitrite_nitrat
 INSERT INTO "whp_names" VALUES('MICROGELS','1E6 GELS/L',NULL,'microgel_abundance',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('CS-137','BQ/M^3',NULL,'cesium_137_bq',NULL,NULL,'CS137ER',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('PLUTO','MBQ/M^3',NULL,'plutonium',NULL,NULL,'PLUTOER',NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('N2/ARGON',NULL,NULL,'n2_argon_ratio',NULL,NULL,'N2/ARGON_ERROR',NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('N2/ARGON_UNSTRIPPED',NULL,NULL,'n2_argon_ratio_unstripped',NULL,NULL,'N2/ARGON_UNSTRIPPED_ERROR',NULL,NULL,9,2);
 COMMIT;
