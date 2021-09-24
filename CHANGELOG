@@ -3,6 +3,7 @@ v0.1.15 (unreleased)
 
 Parameter Changes
 -----------------
+* Added D15N_N2 [/MILLE] which describes the isotopic enrichment of dissolved N2 gas.
 * Added N2/ARGON and N2/ARGON_UNSTRIPPED which represent the ratio of dissolved N2 gas to ARGON gas, both are unitless ratios.
 
   * The _UNSTRIPPED name refers to a measurement that has not been stripped of dissolved O2.

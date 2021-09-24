@@ -5242,6 +5242,7 @@ INSERT INTO "ex_params" VALUES('MICROGELS',NULL,'Count of microgels per liter (a
 INSERT INTO "ex_params" VALUES('PLUTO',NULL,'Plutonium decay rate from all isotopes',NULL,NULL,'sample','decimal','woce_discrete',0,70.5);
 INSERT INTO "ex_params" VALUES('N2/ARGON',NULL,'Ratio of dissolved elemental nitrogen to dissolved argon',NULL,NULL,'sample','decimal','woce_discrete',0,156.0);
 INSERT INTO "ex_params" VALUES('N2/ARGON_UNSTRIPPED',NULL,'Ratio of dissolved elemental nitrogen to dissolved argon that has not been stripped of dissolved oxygen','This is still fundamentally an N2/ARGON measurement and is a variation on an analytical technique. If following the corrections described in Charoenpong et al 2014 (DOI: 10.4319/lom.2014.12.323) then this should be comparable with any other N2/ARGON measurement but have a slightly larger uncertainty.',NULL,'sample','decimal','woce_discrete',0,156.1);
+INSERT INTO "ex_params" VALUES('D15N_N2',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved elemental nitrogen. The usual reference material is the atmosphere of Earth (AIR).',NULL,NULL,'sample','decimal','woce_discrete',0,157.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5570,4 +5571,5 @@ INSERT INTO "whp_names" VALUES('CS-137','BQ/M^3',NULL,'cesium_137_bq',NULL,NULL,
 INSERT INTO "whp_names" VALUES('PLUTO','MBQ/M^3',NULL,'plutonium',NULL,NULL,'PLUTOER',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('N2/ARGON',NULL,NULL,'n2_argon_ratio',NULL,NULL,'N2/ARGON_ERROR',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('N2/ARGON_UNSTRIPPED',NULL,NULL,'n2_argon_ratio_unstripped',NULL,NULL,'N2/ARGON_UNSTRIPPED_ERROR',NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('D15N_N2','/MILLE',NULL,'d15n_n2',NULL,NULL,'D15N_N2_ERROR',NULL,NULL,9,2);
 COMMIT;
