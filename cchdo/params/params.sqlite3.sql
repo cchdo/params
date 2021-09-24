@@ -5164,7 +5164,7 @@ INSERT INTO "ex_params" VALUES('PPHYTN',35,'Phaeophytin',NULL,NULL,'sample','dec
 INSERT INTO "ex_params" VALUES('CH3CL',NULL,'Concentration of Methyl Chloride',NULL,NULL,'sample','decimal','woce_discrete',0,88.0);
 INSERT INTO "ex_params" VALUES('CH4',31,'Methane',NULL,NULL,'sample','decimal','woce_discrete',0,89.0);
 INSERT INTO "ex_params" VALUES('DMS',NULL,'The chemical formula for dimethyl sulfide is (CH3)2S. Dimethyl sulfide is sometimes referred to as DMS.',NULL,NULL,'sample','decimal','woce_discrete',0,90.0);
-INSERT INTO "ex_params" VALUES('AZOTE',NULL,'Dissolved N2 Gas in sea water.',NULL,NULL,'sample','decimal','woce_discrete',0,91.0);
+INSERT INTO "ex_params" VALUES('N2',NULL,'Dissolved elemental nitrogen gas (N2) in sea water.',NULL,NULL,'sample','decimal','woce_discrete',0,91.0);
 INSERT INTO "ex_params" VALUES('CALCIUM',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,92.0);
 INSERT INTO "ex_params" VALUES('ARGON',15,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,93.0);
 INSERT INTO "ex_params" VALUES('14C-DOC',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,94.0);
@@ -5368,6 +5368,7 @@ INSERT INTO "whp_alias" VALUES('PAR','UE/SQM/S','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('TRANSM','VDC','CTDXMISS','0-5VDC');
 INSERT INTO "whp_alias" VALUES('FLUORM','VDC','CTDFLUOR','0-5VDC');
 INSERT INTO "whp_alias" VALUES('FLUOR','MG/CUM','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('AZOTE','UMOL/KG','N2','UMOL/KG');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5487,7 +5488,7 @@ INSERT INTO "whp_names" VALUES('PPHYTN','UG/KG',NULL,'phaeophytin',NULL,NULL,NUL
 INSERT INTO "whp_names" VALUES('CH3CL','PMOL/KG',NULL,'methyl_chloride',NULL,NULL,NULL,NULL,NULL,9,3);
 INSERT INTO "whp_names" VALUES('CH4','NMOL/KG',NULL,'methane',1.0,20.0,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('DMS','NMOL/L',NULL,'dimethyl_sulfide',NULL,NULL,NULL,NULL,NULL,9,2);
-INSERT INTO "whp_names" VALUES('AZOTE',NULL,NULL,'nitrogen',NULL,NULL,NULL,NULL,NULL,9,1);
+INSERT INTO "whp_names" VALUES('N2','UMOL/KG',NULL,'nitrogen',NULL,NULL,'N2_ERROR',NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('CALCIUM','MMOL/KG',NULL,'calcium',NULL,NULL,NULL,NULL,NULL,9,5);
 INSERT INTO "whp_names" VALUES('ARGON','UMOL/KG',NULL,'argon',5.0,25.0,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('14C-DOC','/MILLE',NULL,'dissolved_organic_carbon_14',-1000.0,100.0,NULL,NULL,NULL,9,1);

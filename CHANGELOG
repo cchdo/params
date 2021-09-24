@@ -3,7 +3,10 @@ v0.1.15 (unreleased)
 
 Parameter Changes
 -----------------
-* None yet
+* AZOTE has been renamed to N2 [UMOL/KG]
+
+  * AZOTE [UMOL/KG] has been added as an alias
+  * Added N2_ERROR as the uncertanty name for N2
 
 API Changes
 -----------
