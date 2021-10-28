@@ -137,14 +137,15 @@ def gen_code():
 
     template = Template(
         dedent(
-            """
+            """\
+    # pylint: skip-file
     # auto generated, do not modify
     from cchdo.params import WHPName as WHPNameDC
     whp_names = dict()
     names = [
-        {% for name in  whpnames -%}
-        {{name.code}},
-        {% endfor -%}
+    {% for name in  whpnames -%}
+    {{name.code}},
+    {% endfor -%}
     ]
     for name in names:
         whp_names[name.key] = name
@@ -167,14 +168,15 @@ def gen_code():
     # CF names
     template = Template(
         dedent(
-            """
+            """\
+    # pylint: skip-file
     # auto generated, do not modify
     from cchdo.params import CFStandardName as CFStandardNameDC
     cf_standard_names = dict()
     names = [
-        {% for name in  cfnames -%}
-        {{name.code}},
-        {% endfor -%}
+    {% for name in  cfnames -%}
+    {{name.code}},
+    {% endfor -%}
     ]
     for name in names:
         cf_standard_names[name.name] = name

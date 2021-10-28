@@ -1,3 +1,4 @@
+from textwrap import dedent
 from sqlalchemy import (
     Column,
     Integer,
@@ -81,13 +82,16 @@ class CFName(Base):
 
     @property
     def code(self):
-        return f"""CFStandardNameDC(
+        return dedent(
+            f"""\
+            CFStandardNameDC(
             name={_str_or_type(self.standard_name)},
             canonical_units={_str_or_type(self.canonical_units)},
             grib={_str_or_type(self.grib)},
             amip={_str_or_type(self.amip)},
             description={_str_or_type(self.description)},
-        )"""
+            )"""
+        )
 
     def __repr__(self):
         return f"<CFName {self.standard_name=} {self.canonical_units=}>"
@@ -152,29 +156,32 @@ class WHPName(Base):
         if self.unit is not None:
             reference_scale = self.unit.reference_scale
 
-        return f"""WHPNameDC(
-            whp_name={_str_or_type(self.whp_name)},
-            dtype={_str_or_type(self.param.dtype)},
-            whp_unit={_str_or_type(self.whp_unit)},
-            nc_name={_str_or_type(self.nc_name)},
-            flag_w={_str_or_type(self.param.flag)},
-            cf_name={_str_or_type(self.standard_name)},
-            numeric_min={_str_or_type(self.numeric_min)},
-            numeric_max={_str_or_type(self.numeric_max)},
-            numeric_precision={_str_or_type(self.numeric_precision)},
-            field_width={_str_or_type(self.field_width)},
-            description={_str_or_type(self.param.description)},
-            note={_str_or_type(self.param.note)},
-            warning={_str_or_type(self.param.warning)},
-            error_name={_str_or_type(self.error_name)},
-            cf_unit={_str_or_type(self.cf_unit)},
-            reference_scale={_str_or_type(reference_scale)},
-            whp_number={_str_or_type(self.param.whp_number)},
-            scope={_str_or_type(self.param.scope)},
-            analytical_temperature_name={_str_or_type(self.analytical_temperature_name)},
-            analytical_temperature_units={_str_or_type(self.analytical_temperature_units)},
-            rank={_str_or_type(self.param.rank)},
-        )"""
+        return dedent(
+            f"""\
+                WHPNameDC(
+                whp_name={_str_or_type(self.whp_name)},
+                dtype={_str_or_type(self.param.dtype)},
+                whp_unit={_str_or_type(self.whp_unit)},
+                nc_name={_str_or_type(self.nc_name)},
+                flag_w={_str_or_type(self.param.flag)},
+                cf_name={_str_or_type(self.standard_name)},
+                numeric_min={_str_or_type(self.numeric_min)},
+                numeric_max={_str_or_type(self.numeric_max)},
+                numeric_precision={_str_or_type(self.numeric_precision)},
+                field_width={_str_or_type(self.field_width)},
+                description={_str_or_type(self.param.description)},
+                note={_str_or_type(self.param.note)},
+                warning={_str_or_type(self.param.warning)},
+                error_name={_str_or_type(self.error_name)},
+                cf_unit={_str_or_type(self.cf_unit)},
+                reference_scale={_str_or_type(reference_scale)},
+                whp_number={_str_or_type(self.param.whp_number)},
+                scope={_str_or_type(self.param.scope)},
+                analytical_temperature_name={_str_or_type(self.analytical_temperature_name)},
+                analytical_temperature_units={_str_or_type(self.analytical_temperature_units)},
+                rank={_str_or_type(self.param.rank)},
+                )"""
+        )
 
 
 class Alias(Base):
