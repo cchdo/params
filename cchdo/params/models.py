@@ -12,11 +12,18 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
 
-from . import WHPName as WHPNameDC
-from . import CFStandardName as CFStandardNameDC
+# these are used in code generators
+from . import WHPName as WHPNameDC  # noqa
+from . import CFStandardName as CFStandardNameDC  # noqa
 
 
 Base = declarative_base()
+
+
+def _str_or_type(val):
+    if isinstance(val, str):
+        return repr(val)
+    return val
 
 
 class Config(Base):
@@ -70,13 +77,17 @@ class CFName(Base):
 
     @property
     def dataclass(self):
-        return CFStandardNameDC(
-            name=self.standard_name,
-            canonical_units=self.canonical_units,
-            grib=self.grib,
-            amip=self.amip,
-            description=self.description,
-        )
+        return eval(self.code)  # noqa
+
+    @property
+    def code(self):
+        return f"""CFStandardNameDC(
+            name={_str_or_type(self.standard_name)},
+            canonical_units={_str_or_type(self.canonical_units)},
+            grib={_str_or_type(self.grib)},
+            amip={_str_or_type(self.amip)},
+            description={_str_or_type(self.description)},
+        )"""
 
     def __repr__(self):
         return f"<CFName {self.standard_name=} {self.canonical_units=}>"
@@ -133,34 +144,37 @@ class WHPName(Base):
 
     @property
     def dataclass(self):
+        return eval(self.code)  # noqa
 
+    @property
+    def code(self) -> str:
         reference_scale = None
         if self.unit is not None:
             reference_scale = self.unit.reference_scale
 
-        return WHPNameDC(
-            whp_name=self.whp_name,
-            dtype=self.param.dtype,
-            whp_unit=self.whp_unit,
-            nc_name=self.nc_name,
-            flag_w=self.param.flag,
-            cf_name=self.standard_name,
-            numeric_min=self.numeric_min,
-            numeric_max=self.numeric_max,
-            numeric_precision=self.numeric_precision,
-            field_width=self.field_width,
-            description=self.param.description,
-            note=self.param.note,
-            warning=self.param.warning,
-            error_name=self.error_name,
-            cf_unit=self.cf_unit,
-            reference_scale=reference_scale,
-            whp_number=self.param.whp_number,
-            scope=self.param.scope,
-            analytical_temperature_name=self.analytical_temperature_name,
-            analytical_temperature_units=self.analytical_temperature_units,
-            rank=self.param.rank,
-        )
+        return f"""WHPNameDC(
+            whp_name={_str_or_type(self.whp_name)},
+            dtype={_str_or_type(self.param.dtype)},
+            whp_unit={_str_or_type(self.whp_unit)},
+            nc_name={_str_or_type(self.nc_name)},
+            flag_w={_str_or_type(self.param.flag)},
+            cf_name={_str_or_type(self.standard_name)},
+            numeric_min={_str_or_type(self.numeric_min)},
+            numeric_max={_str_or_type(self.numeric_max)},
+            numeric_precision={_str_or_type(self.numeric_precision)},
+            field_width={_str_or_type(self.field_width)},
+            description={_str_or_type(self.param.description)},
+            note={_str_or_type(self.param.note)},
+            warning={_str_or_type(self.param.warning)},
+            error_name={_str_or_type(self.error_name)},
+            cf_unit={_str_or_type(self.cf_unit)},
+            reference_scale={_str_or_type(reference_scale)},
+            whp_number={_str_or_type(self.param.whp_number)},
+            scope={_str_or_type(self.param.scope)},
+            analytical_temperature_name={_str_or_type(self.analytical_temperature_name)},
+            analytical_temperature_units={_str_or_type(self.analytical_temperature_units)},
+            rank={_str_or_type(self.param.rank)},
+        )"""
 
 
 class Alias(Base):

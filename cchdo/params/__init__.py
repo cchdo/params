@@ -18,7 +18,6 @@ from contextlib import contextmanager
 from math import isnan
 from datetime import date, time
 
-from sqlalchemy import select
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
@@ -312,37 +311,15 @@ class WHPName:
 
 
 def _load_cf_standard_names(__versions__):
-    cf_standard_names: Dict[str, CFStandardName] = {}
-
-    with database() as session:
-        from .models import CFName as CFNameDB
-        from .models import CFAlias as CFAliasDB
-
-        for record in session.execute(select(CFNameDB)).scalars().all():
-            cf_standard_names[record.standard_name] = record.dataclass
-
-        for record in session.execute(select(CFAliasDB)).scalars().all():
-            cf_standard_names[record.alias] = cf_standard_names[record.standard_name]
+    from ._cf_names import cf_standard_names
 
     return cf_standard_names
 
 
 def _load_whp_names():
-    whp_name = {}
-    with database() as session:
-        from .models import WHPName as WHPNameDB
-        from .models import Alias as AliasDB
+    from ._whp_names import whp_names
 
-        for record in session.execute(select(WHPNameDB)).scalars().all():
-            param = record.dataclass
-            whp_name[param.key] = param
-
-        for record in session.execute(select(AliasDB)).scalars().all():
-            whp_name[(record.old_name, record.old_unit)] = whp_name[
-                (record.whp_name, record.whp_unit)
-            ]
-
-    return whp_name
+    return whp_names
 
 
 K = TypeVar("K")
@@ -457,56 +434,40 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
         This property is the corresponding python object and not JSON text, it must still be serialized.
         This property will validate against the schema in :class:`_WHPNames.legacy_json_schema`
         """
-        with database() as session:
+        from dataclasses import asdict
 
-            from .models import WHPName, Param, Unit
+        results = list(
+            dict.fromkeys(sorted(self.values(), key=lambda x: x.rank)).keys()
+        )
 
-            results = session.execute(
-                select(
-                    WHPName.whp_name,
-                    WHPName.whp_unit,
-                    Param.whp_number,
-                    WHPName.error_name,
-                    Param.flag.label("flag_w"),
-                    WHPName.standard_name.label("cf_name"),
-                    Unit.cf_unit,
-                    Unit.reference_scale,
-                    Param.dtype.label("data_type"),
-                    WHPName.numeric_min,
-                    WHPName.numeric_max,
-                    WHPName.numeric_precision,
-                    WHPName.field_width,
-                    Param.description,
-                    Param.note,
-                    Param.warning,
-                    Param.scope,
-                )
-                .join(Param)
-                .outerjoin(Unit)
-                .order_by(Param.rank)
-            ).all()
+        required = ["whp_name", "whp_unit", "flag_w", "data_type", "field_width"]
+        params = []
+        for result in results:
+            p_dict = asdict(result)
+            p_dict["data_type"] = p_dict.pop("dtype")
 
-            required = ["whp_name", "whp_unit", "flag_w", "data_type", "field_width"]
-            params = []
-            for result in results:
-                p_dict = result._asdict()
+            # cleanup things
+            del p_dict["nc_name"]
+            del p_dict["rank"]
+            del p_dict["analytical_temperature_name"]
+            del p_dict["analytical_temperature_units"]
 
-                if p_dict["data_type"] == "string":
-                    del p_dict["numeric_min"]
-                    del p_dict["numeric_max"]
-                    del p_dict["numeric_precision"]
+            if p_dict["data_type"] == "string":
+                del p_dict["numeric_min"]
+                del p_dict["numeric_max"]
+                del p_dict["numeric_precision"]
 
-                if p_dict["flag_w"] == "no_flags":
-                    p_dict["flag_w"] = None
+            if p_dict["flag_w"] == "no_flags":
+                p_dict["flag_w"] = None
 
-                keys_to_del = []
-                for k, v in p_dict.items():
-                    if v is None and k not in required:
-                        keys_to_del.append(k)
-                for k in keys_to_del:
-                    del p_dict[k]
+            keys_to_del = []
+            for k, v in p_dict.items():
+                if v is None and k not in required:
+                    keys_to_del.append(k)
+            for k in keys_to_del:
+                del p_dict[k]
 
-                params.append(p_dict)
+            params.append(p_dict)
 
         return params
 

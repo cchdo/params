@@ -1,3 +1,7 @@
+import json
+from textwrap import dedent
+from importlib.resources import path
+
 import click
 
 
@@ -107,15 +111,13 @@ def cf_update(cf_xml):
 
 @whp.command(name="json")
 def ex_json():
-    import json
     from . import WHPNames
 
-    print(json.dumps(WHPNames.legacy_json, indent=2))
+    print(json.dumps(WHPNames.legacy_json, indent=2, sort_keys=True))
 
 
 @cli.command()
 def dump_db():
-    from importlib.resources import path
     import sqlite3
 
     with path("cchdo.params", "params.sqlite3") as p:
@@ -125,4 +127,72 @@ def dump_db():
                     f.write(f"{line}\n")
 
 
-cli()
+@cli.command()
+def gen_code():
+    from jinja2 import Template
+    from sqlalchemy import select
+
+    from . import database
+    from .models import WHPName, Alias, CFName, CFAlias
+
+    template = Template(
+        dedent(
+            """
+    # auto generated, do not modify
+    from cchdo.params import WHPName as WHPNameDC
+    whp_names = dict()
+    names = [
+        {% for name in  whpnames -%}
+        {{name.code}},
+        {% endfor -%}
+    ]
+    for name in names:
+        whp_names[name.key] = name
+    {% for alias in aliases -%}
+    whp_names[{{"(%r, %r)"| format(alias.old_name, alias.old_unit)}}] = whp_names[{{"(%r, %r)"| format(alias.whp_name, alias.whp_unit)}}]
+    {% endfor -%}
+    """
+        )
+    )
+
+    with database() as session:
+        whpnames = session.execute(select(WHPName)).scalars().all()
+        aliases = session.execute(select(Alias)).scalars().all()
+        whp_names_code = template.render(whpnames=whpnames, aliases=aliases)
+
+    with path("cchdo.params", "_whp_names.py") as p:
+        with open(p, "w") as f:
+            f.write(whp_names_code)
+
+    # CF names
+    template = Template(
+        dedent(
+            """
+    # auto generated, do not modify
+    from cchdo.params import CFStandardName as CFStandardNameDC
+    cf_standard_names = dict()
+    names = [
+        {% for name in  cfnames -%}
+        {{name.code}},
+        {% endfor -%}
+    ]
+    for name in names:
+        cf_standard_names[name.name] = name
+    {% for alias in aliases -%}
+    cf_standard_names["{{alias.alias}}"] = cf_standard_names["{{alias.standard_name}}"]
+    {% endfor -%}
+    """
+        )
+    )
+    with database() as session:
+        cfnames = session.execute(select(CFName)).scalars().all()
+        aliases = session.execute(select(CFAlias)).scalars().all()
+        cf_names_code = template.render(cfnames=cfnames, aliases=aliases)
+
+    with path("cchdo.params", "_cf_names.py") as p:
+        with open(p, "w") as f:
+            f.write(cf_names_code)
+
+
+if __name__ == "__main__":
+    cli()
