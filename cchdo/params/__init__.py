@@ -108,7 +108,7 @@ class CFStandardName(WHPNameMixin):
 
     #: name is the cf standard name itself, comes from the "id" property in the XML
     name: str
-    canonical_units: str
+    canonical_units: Optional[str]
     grib: Optional[str]
     amip: Optional[str]
     description: str = field(repr=False, hash=False)
@@ -135,7 +135,7 @@ class WHPName:
     #: used for sorting the parameters
     rank: float = field(repr=False)
     #: the string name of the data type of this parameter
-    dtype: Literal["string", "decimal", "int"] = field(repr=False)
+    dtype: Literal["string", "decimal", "integer"] = field(repr=False)
 
     #: string of the units for this parameter.
     #:
