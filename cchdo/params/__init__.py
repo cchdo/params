@@ -111,7 +111,7 @@ class CFStandardName(WHPNameMixin):
     canonical_units: Optional[str]
     grib: Optional[str]
     amip: Optional[str]
-    description: str = field(repr=False, hash=False)
+    description: Optional[str] = field(repr=False, hash=False)
 
     @property
     def cf(self):
