@@ -7,7 +7,8 @@ Parameter Changes
 
 API Changes
 -----------
-* None yet
+* Removed sqlalchemy as an install/runtime dependency, it is still required for dev tasks.
+  This has two rather nice effects: only the python standard library is needed for install and import/loading parameters gets a ~10x speed up.
 
 v0.1.15 (2021-09-29)
 ====================
