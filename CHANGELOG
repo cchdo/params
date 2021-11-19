@@ -8,6 +8,23 @@ Parameter Changes
   * CHLORA [MG/CUM]
   * CHLORA [MG/M^3]
 
+* Add descriptions to DELC13 and DELC12 names
+* Add description to 14C-DOC
+
+  * Add 14C-DOCERR as the uncertanty name
+
+* Add 13C-DOC [/MILLE] as a parameter
+
+  * Add 13C-DOCERR as the uncertanty name
+
+* Add D18O_NO3 as a parameter
+
+  * Add D18O_NO3_ERROR as the uncertanty name
+
+* Changed the units of D15N_NO3 from unitless to /MILLE
+* Add D18O_NO2+NO3_ERROR as the uncertanty parameter for D18O_NO2+NO3
+* Add D15N_NO2+NO3_ERROR as the uncertanty parameter for D15N_NO2+NO3
+
 API Changes
 -----------
 * Removed sqlalchemy as an install/runtime dependency, it is still required for dev tasks.
