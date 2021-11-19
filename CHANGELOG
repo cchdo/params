@@ -3,7 +3,10 @@ v0.1.16 (unreleased)
 
 Parameter Changes
 -----------------
-* None yet
+* Add the following aliases for CHLORA [UG/L]
+
+  * CHLORA [MG/CUM]
+  * CHLORA [MG/M^3]
 
 API Changes
 -----------
