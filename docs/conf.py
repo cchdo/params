@@ -19,7 +19,7 @@ from cchdo.params._version import version
 # -- Project information -----------------------------------------------------
 
 project = "cchdo.params"
-copyright = "2021, Regents of the University of California"
+copyright = "2022, Regents of the University of California"
 author = "Andrew Barna"
 
 # The full version, including alpha/beta/rc tags

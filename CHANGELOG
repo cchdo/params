@@ -3,7 +3,10 @@ v0.1.17 (unreleased)
 
 Parameter Changes
 -----------------
-* None yet
+* Changed the following param units from 0-5VDC to just VOLTS.
+
+  * CTDXMISS
+  * CTDFLUOR
 
 API Changes
 -----------
