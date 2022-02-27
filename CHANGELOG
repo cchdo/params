@@ -3,6 +3,7 @@ v0.1.17 (unreleased)
 
 Parameter Changes
 -----------------
+* Add UMOL/L as a valid unit for CTDOXY
 * Changed the following param units from 0-5VDC to just VOLTS.
 
   * CTDXMISS

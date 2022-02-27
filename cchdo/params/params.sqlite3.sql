@@ -5580,4 +5580,5 @@ INSERT INTO "whp_names" VALUES('N2/ARGON_UNSTRIPPED',NULL,NULL,'n2_argon_ratio_u
 INSERT INTO "whp_names" VALUES('D15N_N2','/MILLE',NULL,'d15n_n2',NULL,NULL,'D15N_N2_ERROR',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('13C-DOC','/MILLE',NULL,'dissolved_organic_carbon_13',NULL,NULL,'13C-DOCERR',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('D18O_NO3','/MILLE',NULL,'d18o_nitrate',NULL,NULL,'D18O_NO3_ERROR',NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('CTDOXY','UMOL/L','mole_concentration_of_dissolved_molecular_oxygen_in_sea_water','ctd_oxygen_umol_l',0.0,500.0,NULL,NULL,NULL,9,1);
 COMMIT;
