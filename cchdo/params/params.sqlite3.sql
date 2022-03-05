@@ -5245,6 +5245,8 @@ INSERT INTO "ex_params" VALUES('N2/ARGON_UNSTRIPPED',NULL,'Ratio of dissolved el
 INSERT INTO "ex_params" VALUES('D15N_N2',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved elemental nitrogen. The usual reference material is the atmosphere of Earth (AIR).',NULL,NULL,'sample','decimal','woce_discrete',0,157.0);
 INSERT INTO "ex_params" VALUES('13C-DOC',NULL,'Enrichment of :sup:`13`\ C vs :sup:`12`\ C in DOC compared to a reference standard usually VPDB. This is usually written as lower case delta δ\ :sup:`13`\ C.',NULL,NULL,'sample','decimal','woce_discrete',0,94.1);
 INSERT INTO "ex_params" VALUES('D18O_NO3',NULL,'Ratio of 18O to 16O of nitrate in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.76);
+INSERT INTO "ex_params" VALUES('SAMPLING_RATE',NULL,'The sampling rate of the CTD',NULL,NULL,'profile','decimal','no_flags',0,129.5);
+INSERT INTO "ex_params" VALUES('EVENT_NUMBER',NULL,'Non program specific event number. Some cruises or programs keep track of sequential events that occur on a cruise or across multiple cruises of the same program. There exists program specific event number names of GEOTR_EVENT, BIONBR, and BIOS_CASTID that should be used if they are more appropriate.',NULL,NULL,'profile','decimal','no_flags',0,9.5);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5293,6 +5295,7 @@ INSERT INTO "ex_units" VALUES(36,'MMOL/KG','mmol kg-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(37,'KG/M^3','kg m-3',NULL,'density');
 INSERT INTO "ex_units" VALUES(38,'1E6 GELS/L','1e6 l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(39,'MBQ/M^3','mBq m-3',NULL,NULL);
+INSERT INTO "ex_units" VALUES(40,'HZ','1/s',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5378,6 +5381,11 @@ INSERT INTO "whp_alias" VALUES('CHLORA','MG/CUM','CHLORA','UG/L');
 INSERT INTO "whp_alias" VALUES('CHLORA','MG/M^3','CHLORA','UG/L');
 INSERT INTO "whp_alias" VALUES('CTDFLUOR','0-5VDC','CTDFLUOR','VOLTS');
 INSERT INTO "whp_alias" VALUES('CTDXMISS','0-5VDC','CTDXMISS','VOLTS');
+INSERT INTO "whp_alias" VALUES('_INSTRUMENT_NO',NULL,'INSTRUMENT_ID',NULL);
+INSERT INTO "whp_alias" VALUES('_SAMPLING_RATE',NULL,'SAMPLING_RATE','HZ');
+INSERT INTO "whp_alias" VALUES('PAR','UE/m^2/sec','PAR','UMOL/M^2/SEC');
+INSERT INTO "whp_alias" VALUES('CTDPAR','UE/SQM/S','PAR','UMOL/M^2/SEC');
+INSERT INTO "whp_alias" VALUES('CTDOXY','ml/l','CTDOXY','ML/L');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5581,4 +5589,6 @@ INSERT INTO "whp_names" VALUES('D15N_N2','/MILLE',NULL,'d15n_n2',NULL,NULL,'D15N
 INSERT INTO "whp_names" VALUES('13C-DOC','/MILLE',NULL,'dissolved_organic_carbon_13',NULL,NULL,'13C-DOCERR',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('D18O_NO3','/MILLE',NULL,'d18o_nitrate',NULL,NULL,'D18O_NO3_ERROR',NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('CTDOXY','UMOL/L','mole_concentration_of_dissolved_molecular_oxygen_in_sea_water','ctd_oxygen_umol_l',0.0,500.0,NULL,NULL,NULL,9,1);
+INSERT INTO "whp_names" VALUES('SAMPLING_RATE','HZ',NULL,'ctd_sampling_rate',NULL,NULL,NULL,NULL,NULL,9,2);
+INSERT INTO "whp_names" VALUES('EVENT_NUMBER',NULL,NULL,'event_number',NULL,NULL,NULL,NULL,NULL,9,0);
 COMMIT;

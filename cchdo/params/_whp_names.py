@@ -4235,6 +4235,52 @@ analytical_temperature_name=None,
 analytical_temperature_units=None,
 rank=23.0,
 ),
+WHPNameDC(
+whp_name='SAMPLING_RATE',
+dtype='decimal',
+whp_unit='HZ',
+nc_name='ctd_sampling_rate',
+flag_w='no_flags',
+cf_name=None,
+numeric_min=None,
+numeric_max=None,
+numeric_precision=2,
+field_width=9,
+description='The sampling rate of the CTD',
+note=None,
+warning=None,
+error_name=None,
+cf_unit='1/s',
+reference_scale=None,
+whp_number=None,
+scope='profile',
+analytical_temperature_name=None,
+analytical_temperature_units=None,
+rank=129.5,
+),
+WHPNameDC(
+whp_name='EVENT_NUMBER',
+dtype='decimal',
+whp_unit=None,
+nc_name='event_number',
+flag_w='no_flags',
+cf_name=None,
+numeric_min=None,
+numeric_max=None,
+numeric_precision=0,
+field_width=9,
+description='Non program specific event number. Some cruises or programs keep track of sequential events that occur on a cruise or across multiple cruises of the same program. There exists program specific event number names of GEOTR_EVENT, BIONBR, and BIOS_CASTID that should be used if they are more appropriate.',
+note=None,
+warning=None,
+error_name=None,
+cf_unit=None,
+reference_scale=None,
+whp_number=None,
+scope='profile',
+analytical_temperature_name=None,
+analytical_temperature_units=None,
+rank=9.5,
+),
 ]
 for name in names:
     whp_names[name.key] = name
@@ -4315,3 +4361,8 @@ whp_names[('CHLORA', 'MG/CUM')] = whp_names[('CHLORA', 'UG/L')]
 whp_names[('CHLORA', 'MG/M^3')] = whp_names[('CHLORA', 'UG/L')]
 whp_names[('CTDFLUOR', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
 whp_names[('CTDXMISS', '0-5VDC')] = whp_names[('CTDXMISS', 'VOLTS')]
+whp_names[('_INSTRUMENT_NO', None)] = whp_names[('INSTRUMENT_ID', None)]
+whp_names[('_SAMPLING_RATE', None)] = whp_names[('SAMPLING_RATE', 'HZ')]
+whp_names[('PAR', 'UE/m^2/sec')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
+whp_names[('CTDPAR', 'UE/SQM/S')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
+whp_names[('CTDOXY', 'ml/l')] = whp_names[('CTDOXY', 'ML/L')]

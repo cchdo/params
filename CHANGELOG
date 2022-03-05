@@ -3,7 +3,16 @@ v0.1.17 (unreleased)
 
 Parameter Changes
 -----------------
-* Add UMOL/L as a valid unit for CTDOXY
+* Add the following aliases:
+
+  * _INSTRUMENT_NO for INSTRUMENT_ID.
+  * PAR [UE/m^2/sec] for PAR [UMOL/M^2/SEC]
+  * CTDPAR [UE/SQM/S] for PAR [UMOL/M^2/SEC]
+  * CTDOXY [ml/l] for CTDOXY [ML/L]
+
+* Add generic EVENT_NUMBER name used by some cruises.
+* Add the old WOCE CTD header name SAMPLING_RATE [HZ].
+* Add UMOL/L as a valid unit for CTDOXY.
 * Changed the following param units from 0-5VDC to just VOLTS.
 
   * CTDXMISS
