@@ -9,6 +9,7 @@ Parameter Changes
   * PAR [UE/m^2/sec] for PAR [UMOL/M^2/SEC]
   * CTDPAR [UE/SQM/S] for PAR [UMOL/M^2/SEC]
   * CTDOXY [ml/l] for CTDOXY [ML/L]
+  * CTDDOXY [UMOL/LG] for CTDOXY [UMOL/KG]
 
 * Add generic EVENT_NUMBER name used by some cruises.
 * Add the old WOCE CTD header name SAMPLING_RATE [HZ].
