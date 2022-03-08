@@ -325,13 +325,15 @@ def _load_whp_names():
 K = TypeVar("K")
 V = TypeVar("V")
 
+WHPNameKey = Union[str, Tuple[str, str], Tuple[str, None], Tuple[str]]
+
 
 class _LazyMapping(Mapping[K, V]):
     def __init__(self, loader):
         self._loader = loader
 
     @cached_property
-    def _cached_dict(self) -> Mapping[K, V]:
+    def _cached_dict(self) -> MutableMapping[K, V]:
         return self._loader()
 
     def __getitem__(self, key: K) -> V:
@@ -351,7 +353,7 @@ class WHPNameGroups(NamedTuple):
     sample: FrozenSet[WHPName]
 
 
-class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
+class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
     """A Mapping (i.e. dict) providing a lookup between a WOCE style param and unit to an instance of :class:`WHPName`
 
     .. warning::
@@ -373,12 +375,12 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
     WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
     """
 
-    def __getitem__(self, key) -> WHPName:
+    def __getitem__(self, key: WHPNameKey) -> WHPName:
         if isinstance(key, str):
             key = (key, None)
 
         if isinstance(key, tuple) and len(key) == 1:
-            key = (*key, None)
+            key = (key[0], None)
 
         return self._cached_dict[key]
 
@@ -470,6 +472,29 @@ class _WHPNames(_LazyMapping[Union[str, tuple], WHPName]):
             params.append(p_dict)
 
         return params
+
+    def add_alias(
+        self, alias: Union[Tuple[str, str], Tuple[str, None]], current: WHPNameKey
+    ):
+        """Adds an alias to the WHPNames dict for this session only
+
+        Some alias names are a little dangerous to add without larger context.
+        For example, in the HOT program, nitrate sensors were tested on the CTD using the name NITRATE [UMOL/KG]
+        This cannot be unambigiously mapped to either the CTD or the more common Bottle parameter names.
+
+        :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
+        :param currnet: any valid existing WHPNames key
+        """
+        if not isinstance(alias, tuple):
+            raise TypeError("Alias key must be a tuple")
+        if len(alias) != 2:
+            raise ValueError("Alias key must have two elements")
+        if not isinstance(alias[0], str) or not isinstance(alias[1], (str, type(None))):
+            raise TypeError("Alias key must be either (str. str) or (str, None)")
+        if alias in self._cached_dict:
+            raise ValueError("Cannot add duplicate key")
+
+        self._cached_dict[alias] = self[current]
 
 
 class _CFStandardNames(_LazyMapping[Optional[str], CFStandardName]):

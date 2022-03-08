@@ -21,7 +21,7 @@ Parameter Changes
 
 API Changes
 -----------
-* None yet
+* Add the ability to add custom aliases to ``WHPNames`` using ``WHPNames.add_alias``
 
 v0.1.16 (2021-11-19)
 ====================
