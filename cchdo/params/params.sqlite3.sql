@@ -5247,6 +5247,7 @@ INSERT INTO "ex_params" VALUES('13C-DOC',NULL,'Enrichment of :sup:`13`\ C vs :su
 INSERT INTO "ex_params" VALUES('D18O_NO3',NULL,'Ratio of 18O to 16O of nitrate in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.76);
 INSERT INTO "ex_params" VALUES('SAMPLING_RATE',NULL,'The sampling rate of the CTD',NULL,NULL,'profile','decimal','no_flags',0,129.5);
 INSERT INTO "ex_params" VALUES('EVENT_NUMBER',NULL,'Non program specific event number. Some cruises or programs keep track of sequential events that occur on a cruise or across multiple cruises of the same program. There exists program specific event number names of GEOTR_EVENT, BIONBR, and BIOS_CASTID that should be used if they are more appropriate.',NULL,NULL,'profile','decimal','no_flags',0,9.5);
+INSERT INTO "ex_params" VALUES('CTDNITRATE',4,'The concentration of dissolved nitrate in sea water measured by an in situ sensor. The chemical formula for the nitrate anion is NO3-.',NULL,NULL,'sample','decimal','woce_ctd',0,27.5);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5592,4 +5593,5 @@ INSERT INTO "whp_names" VALUES('D18O_NO3','/MILLE',NULL,'d18o_nitrate',NULL,NULL
 INSERT INTO "whp_names" VALUES('CTDOXY','UMOL/L','mole_concentration_of_dissolved_molecular_oxygen_in_sea_water','ctd_oxygen_umol_l',0.0,500.0,NULL,NULL,NULL,9,1);
 INSERT INTO "whp_names" VALUES('SAMPLING_RATE','HZ',NULL,'ctd_sampling_rate',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('EVENT_NUMBER',NULL,NULL,'event_number',NULL,NULL,NULL,NULL,NULL,9,0);
+INSERT INTO "whp_names" VALUES('CTDNITRATE','UMOL/KG','moles_of_nitrate_per_unit_mass_in_sea_water','ctd_nitrate',9.0,47.0,NULL,NULL,NULL,9,3);
 COMMIT;

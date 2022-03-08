@@ -3,6 +3,7 @@ v0.1.17 (unreleased)
 
 Parameter Changes
 -----------------
+* Add name CTDNITRATE [UMOL/KG] for an in situ nitrate sensor.
 * Add the following aliases:
 
   * _INSTRUMENT_NO for INSTRUMENT_ID.

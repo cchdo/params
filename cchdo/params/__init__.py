@@ -8,10 +8,10 @@ from typing import (
     Tuple,
     NamedTuple,
     Mapping,
+    MutableMapping,
     Dict,
     FrozenSet,
 )
-from collections.abc import MutableMapping
 from functools import cached_property
 from json import loads
 from contextlib import contextmanager
