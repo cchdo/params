@@ -137,6 +137,9 @@ class WHPName:
     #: the string name of the data type of this parameter
     dtype: Literal["string", "decimal", "integer"] = field(repr=False)
 
+    #: The print field width
+    field_width: int = field(repr=False)
+
     #: string of the units for this parameter.
     #:
     #: .. warning::
@@ -157,8 +160,6 @@ class WHPName:
     #: .. danger::
     #:   The use of print precisions as an approximation for uncertainty should only be used if there is no other source of uncertainty.
     numeric_precision: Optional[int] = field(default=None, repr=False)
-    #: The print field width
-    field_width: Optional[int] = field(default=None, repr=False)
     #: A brief description of the parameter, this is the definition of the parameter
     description: Optional[str] = field(default=None, repr=False)
     #: Any additional notes that are not really part of the definition
@@ -251,6 +252,7 @@ class WHPName:
 
         if self.field_width is not None and self.numeric_precision is not None:
             attrs["C_format"] = f"%{self.field_width}.{self.numeric_precision}f"
+            attrs["C_format_source"] = "database"
 
         return attrs
 
@@ -259,6 +261,7 @@ class WHPName:
         value,
         flag: bool = False,
         numeric_precision_override: Optional[int] = None,
+        date_or_time: Optional[Literal["date", "time"]] = None,
     ) -> str:
         """Format a value using standard WHP Exchange conventions:
 
@@ -284,9 +287,9 @@ class WHPName:
 
         # https://github.com/python/mypy/issues/5485
         if self.data_type == str:  # type: ignore
-            if isinstance(value, date):
+            if isinstance(value, date) or date_or_time == "date":
                 return f"{value:%Y%m%d}"
-            if isinstance(value, time):
+            if isinstance(value, time) or date_or_time == "time":
                 return f"{value:%H%M}"
             formatted = f"{str(value):{self.field_width}s}"
             # having empty cells is undesireable
