@@ -4,6 +4,10 @@ v0.1.17 (unreleased)
 Parameter Changes
 -----------------
 * The CF Standard Name table was updated to v79
+
+  * Added the new standard names to CCHDO params if appropriate
+  * Of particular note is that TCARBN [UMOL/KG] has the standard name: moles_of_dissolved_inorganic_carbon_per_unit_mass_in_sea_water
+
 * Add name CTDNITRATE [UMOL/KG] for an in situ nitrate sensor.
 * Add the following aliases:
 
@@ -38,19 +42,19 @@ Parameter Changes
 * Add descriptions to DELC13 and DELC12 names
 * Add description to 14C-DOC
 
-  * Add 14C-DOCERR as the uncertanty name
+  * Add 14C-DOCERR as the uncertainty name
 
 * Add 13C-DOC [/MILLE] as a parameter
 
-  * Add 13C-DOCERR as the uncertanty name
+  * Add 13C-DOCERR as the uncertainty name
 
 * Add D18O_NO3 as a parameter
 
-  * Add D18O_NO3_ERROR as the uncertanty name
+  * Add D18O_NO3_ERROR as the uncertainty name
 
 * Changed the units of D15N_NO3 from unitless to /MILLE
-* Add D18O_NO2+NO3_ERROR as the uncertanty parameter for D18O_NO2+NO3
-* Add D15N_NO2+NO3_ERROR as the uncertanty parameter for D15N_NO2+NO3
+* Add D18O_NO2+NO3_ERROR as the uncertainty parameter for D18O_NO2+NO3
+* Add D15N_NO2+NO3_ERROR as the uncertainty parameter for D15N_NO2+NO3
 
 API Changes
 -----------
@@ -70,7 +74,7 @@ Parameter Changes
 * AZOTE has been renamed to N2 [UMOL/KG]
 
   * AZOTE [UMOL/KG] has been added as an alias
-  * Added N2_ERROR as the uncertanty name for N2
+  * Added N2_ERROR as the uncertainty name for N2
 
 API Changes
 -----------
