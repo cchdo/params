@@ -3,6 +3,7 @@ v0.1.17 (unreleased)
 
 Parameter Changes
 -----------------
+* The CF Standard Name table was updated to v79
 * Add name CTDNITRATE [UMOL/KG] for an in situ nitrate sensor.
 * Add the following aliases:
 
