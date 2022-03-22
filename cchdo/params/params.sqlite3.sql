@@ -5124,7 +5124,7 @@ INSERT INTO "ex_params" VALUES('SAMPNO',NULL,'The sample number. Often it is the
 INSERT INTO "ex_params" VALUES('GEOTR_EVENT',NULL,'The GEOTRACES Event number. Along with the GEOTRACES sample number, it is used by the GEOTRACES community for sample identification.',NULL,NULL,'profile','integer','no_flags',0,7.0);
 INSERT INTO "ex_params" VALUES('GEOTR_SAMPNO',NULL,'The GEOTRACES Sample number. Along with the GEOTRACES Event number, it is used by the GEOTRACES community for sample identification.',NULL,NULL,'sample','integer','no_flags',0,8.0);
 INSERT INTO "ex_params" VALUES('BIONBR',NULL,'Sample identification number used by the Bedford Institute of Oceanography (BIO)',NULL,NULL,'sample','string','no_flags',0,9.0);
-INSERT INTO "ex_params" VALUES('BTLNBR',NULL,'The bottle identification number. This is intended to be a permanent, unique serial number fixed to the sampling device. It may also be the an identifier fixed for the duration of a single expedition. Allowed characters are U+0030 to U+0039, U+0041 to U+005A, U+0061 to U+007A, and U+005F (``0-9``, ``a-z``, ``A-Z``, and ``_``)','The bottle number MAY have quality flags.','The value may not be numeric, ensure that any software reading the file can handle UTF-8 data of the specified allowed code points.','sample','string','woce_bottle',0,10.0);
+INSERT INTO "ex_params" VALUES('BTLNBR',NULL,'The bottle identification number. This is intended to be a permanent, unique serial number fixed to the sampling device. It may also be the an identifier fixed for the duration of a single expedition. Allowed characters are U+0030 to U+0039, U+0041 to U+005A, U+0061 to U+007A, and U+005F (``0-9``, ``a-z``, ``A-Z``, and ``_``)','The bottle number MAY have quality flags.','Despite the name, the value IS NOT numeric, ensure that any software reading the file can handle UTF-8 data of the specified allowed code points. The CF/netCDF files force the data type to be char, but for historic reasons, the variable name is maintained as bottle_number.','sample','string','woce_bottle',0,10.0);
 INSERT INTO "ex_params" VALUES('DATE',NULL,'The UTC date in zero padded YYYYMMDD format. The date reported is usually cast bottom for Bottle files and cast start for CTD files. Valid range for YYYY: 0001-9999. Valid range for MM: 01-12. Valid range for DD: 01-31 (depends on month and year). The format of dates corresponds to the C-strftime format of ``%Y%m%d``.
 
 The date should be read as a string, but be able to be cast unambiguously to an integer. To convert from integer representation, left pad zeros to match the date format description. For example, the integer ``8020202`` is the date ``08020202`` or Feb 2nd, 802. This is a very unlikely situation.',NULL,NULL,'profile','string','no_flags',0,11.0);
@@ -5311,6 +5311,7 @@ INSERT INTO "ex_params" VALUES('D18O_NO3',NULL,'Ratio of 18O to 16O of nitrate i
 INSERT INTO "ex_params" VALUES('SAMPLING_RATE',NULL,'The sampling rate of the CTD',NULL,NULL,'profile','decimal','no_flags',0,129.5);
 INSERT INTO "ex_params" VALUES('EVENT_NUMBER',NULL,'Non program specific event number. Some cruises or programs keep track of sequential events that occur on a cruise or across multiple cruises of the same program. There exists program specific event number names of GEOTR_EVENT, BIONBR, and BIOS_CASTID that should be used if they are more appropriate.',NULL,NULL,'profile','decimal','no_flags',0,9.5);
 INSERT INTO "ex_params" VALUES('CTDNITRATE',4,'The concentration of dissolved nitrate in sea water measured by an in situ sensor. The chemical formula for the nitrate anion is NO3-.',NULL,NULL,'sample','decimal','woce_ctd',0,27.5);
+INSERT INTO "ex_params" VALUES('CTDTURB',NULL,'Turbidity describes the light scattered back (or passed though depending on units) depending on particle loading in the water. It is a dimensionless quantity.',NULL,NULL,'sample','decimal','woce_ctd',0,74.5);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5360,6 +5361,8 @@ INSERT INTO "ex_units" VALUES(37,'KG/M^3','kg m-3',NULL,'density');
 INSERT INTO "ex_units" VALUES(38,'1E6 GELS/L','1e6 l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(39,'MBQ/M^3','mBq m-3',NULL,NULL);
 INSERT INTO "ex_units" VALUES(40,'HZ','1/s',NULL,NULL);
+INSERT INTO "ex_units" VALUES(41,'NTU','1',NULL,'Nephelometric Turbidity Units');
+INSERT INTO "ex_units" VALUES(42,'FTU','1',NULL,'Formazin Turbidity Unit');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5451,6 +5454,14 @@ INSERT INTO "whp_alias" VALUES('PAR','UE/m^2/sec','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('CTDPAR','UE/SQM/S','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('CTDOXY','ml/l','CTDOXY','ML/L');
 INSERT INTO "whp_alias" VALUES('CTDDOXY','UMOL/KG','CTDOXY','UMOL/KG');
+INSERT INTO "whp_alias" VALUES('CHLORA','MG/M3','CHLORA','UG/L');
+INSERT INTO "whp_alias" VALUES('PAR','uE/M^2/S','PAR','UMOL/M^2/SEC');
+INSERT INTO "whp_alias" VALUES('CTDPAR','0-5VDC','PAR','VOLTS');
+INSERT INTO "whp_alias" VALUES('PAR','0-5VDC','PAR','VOLTS');
+INSERT INTO "whp_alias" VALUES('FLUOR','0-5VDC','CTDFLUOR','VOLTS');
+INSERT INTO "whp_alias" VALUES('FLUOR','UG/L''','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('FLUORM','MG/M^3''','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('GEOTRC_EVENT',NULL,'GEOTR_EVENT',NULL);
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5657,4 +5668,7 @@ INSERT INTO "whp_names" VALUES('CTDOXY','UMOL/L','mole_concentration_of_dissolve
 INSERT INTO "whp_names" VALUES('SAMPLING_RATE','HZ',NULL,'ctd_sampling_rate',NULL,NULL,NULL,NULL,NULL,9,2);
 INSERT INTO "whp_names" VALUES('EVENT_NUMBER',NULL,NULL,'event_number',NULL,NULL,NULL,NULL,NULL,9,0);
 INSERT INTO "whp_names" VALUES('CTDNITRATE','UMOL/KG','moles_of_nitrate_per_unit_mass_in_sea_water','ctd_nitrate',9.0,47.0,NULL,NULL,NULL,9,3);
+INSERT INTO "whp_names" VALUES('PAR','VOLTS',NULL,'par_raw',0.0,5.0,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('CTDTURB','FTU',NULL,'ctd_turbidity_ftu',NULL,NULL,NULL,NULL,NULL,9,4);
+INSERT INTO "whp_names" VALUES('CTDTURB','NTU',NULL,'ctd_turbidity_ntu',NULL,NULL,NULL,NULL,NULL,9,4);
 COMMIT;
