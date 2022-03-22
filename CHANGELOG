@@ -1,4 +1,13 @@
-v0.1.17 (unreleased)
+v0.1.18 (unreleased)
+====================
+
+Parameter Changes
+-----------------
+
+API Changes
+-----------
+
+v0.1.17 (2022-03-22)
 ====================
 
 Parameter Changes
@@ -32,6 +41,7 @@ Parameter Changes
 API Changes
 -----------
 * Add the ability to add custom aliases to ``WHPNames`` using ``WHPNames.add_alias``
+* The ``WHPName.field_width`` property is now no longer optional.
 
 v0.1.16 (2021-11-19)
 ====================
