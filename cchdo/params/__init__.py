@@ -190,6 +190,17 @@ class WHPName:
         """WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values"""
         return (self.whp_name, self.whp_unit)
 
+    @property
+    def odv_key(self) -> str:
+        """An ODV style representation of the param in the form of "NAME [UNIT]"
+
+        Note that the "[UNIT]" part is omitted if there are no units
+        """
+        if self.whp_unit is None:
+            return self.whp_name
+        else:
+            return f"{self.whp_name} [{self.whp_unit}]"
+
     @cached_property
     def data_type(self):
         """the actual python class for this WHPName's dtype
@@ -362,7 +373,7 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
     .. warning::
       This class should not be directly used, instead use the premade :data:`WHPNames` instance from this module
 
-    Parameters are looked up using a tuple of `(name, unit)` as strings.
+    Parameters are looked up using a tuple of `(name, unit)`.
 
     >>> WHPNames[("CTDPRS", "DBARS")]
     WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
@@ -372,14 +383,39 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
     >>> WHPNames[("EXPOCODE", None)]
     WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
 
-    As a convience, unitless params may be looked up via their name alone:
+    Parameters may also be looked up using ODV style PARAM [UNIT] strings, omitting the [UNIT] for unitless params
 
     >>> WHPNames["EXPOCODE"]
     WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
+    >>> WHPNames["CTDPRS [DBAR]"]
+    WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
+
+    Parameter aliases also work with ODV style names:
+
+    >>> WHPNames["CTDPRS [DBARS]"]
+    WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
     """
+
+    @cached_property
+    def odv_names(self):
+        """Returns a mapping of ODV style names to WHPName instances"""
+
+        def to_odv(key):
+            name, unit = key
+            if unit is None:
+                return name
+            else:
+                return f"{name} [{unit}]"
+
+        return {to_odv(key): value for key, value in self._cached_dict.items()}
 
     def __getitem__(self, key: WHPNameKey) -> WHPName:
         if isinstance(key, str):
+            try:
+                return self.odv_names[key]
+            except KeyError:
+                pass
+
             key = (key, None)
 
         if isinstance(key, tuple) and len(key) == 1:

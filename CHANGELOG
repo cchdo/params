@@ -7,6 +7,7 @@ Parameter Changes
 
 API Changes
 -----------
+* WHPNames may now be looked up using an ODV style "NAME [UNIT]" strings, omitting the entire "[UNIT]" part with unitless parameters.
 
 v0.1.17 (2022-03-22)
 ====================

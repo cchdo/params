@@ -254,3 +254,12 @@ def test_strfex_flags(whpname: data.WHPName, flag):
     result = whpname.strfex(flag, flag=True)
 
     assert result in {"2", "9"}
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    data.WHPNames.values(),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+def test_odv_param_lookup(whpname: data.WHPName):
+    assert data.WHPNames[whpname.odv_key] == whpname
