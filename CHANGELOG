@@ -7,6 +7,7 @@ Parameter Changes
 
 API Changes
 -----------
+* (BREAKING) The error name look ups in ``WHPNames.error_names`` must now use the units as either a tuple (error_name, units) or an ODV style PARAM [UNIT] string.
 * WHPNames may now be looked up using an ODV style "NAME [UNIT]" strings, omitting the entire "[UNIT]" part with unitless parameters.
 * Add ``WHPName.nc_name_flag`` and ``WHPName.nc_name_error`` properties which will contain the netCDF variable names for the flag and uncertainty variables, respectivly.
 

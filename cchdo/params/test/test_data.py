@@ -65,7 +65,11 @@ whp_error_names = [
 
 @pytest.mark.parametrize("whpname", whp_error_names)
 def test_whp_error_names(whpname):
-    assert data.WHPNames.error_cols[whpname.error_name] is whpname
+    assert data.WHPNames.error_cols[(whpname.error_name, whpname.whp_unit)] is whpname
+    assert (
+        data.WHPNames.error_cols[data.to_odv((whpname.error_name, whpname.whp_unit))]
+        is whpname
+    )
 
 
 whp_unitless_names = [name for name in data.WHPNames.values() if name.whp_unit is None]

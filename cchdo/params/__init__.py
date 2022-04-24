@@ -9,7 +9,6 @@ from typing import (
     NamedTuple,
     Mapping,
     MutableMapping,
-    Dict,
     FrozenSet,
 )
 from functools import cached_property
@@ -349,7 +348,23 @@ def _load_whp_names():
 K = TypeVar("K")
 V = TypeVar("V")
 
-WHPNameKey = Union[str, Tuple[str, str], Tuple[str, None], Tuple[str]]
+WHPNameKey = Union[str, Tuple[str, Optional[str]], Tuple[str]]
+
+
+def to_odv(key: Tuple[str, Optional[str]]):
+    """Transform a (param, unit) tuple into the correct ODV style PARAM [UNIT] string
+
+    Does not check if the param exists
+
+    >>> to_odv(("EXPOCODE", None))
+    'EXPOCODE'
+    >>> to_odv(("CTDPRS", "DBAR"))
+    'CTDPRS [DBAR]'
+    """
+    name, unit = key
+    if unit is None:
+        return name
+    return f"{name} [{unit}]"
 
 
 class _LazyMapping(Mapping[K, V]):
@@ -410,13 +425,6 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
     def odv_names(self):
         """Returns a mapping of ODV style names to WHPName instances"""
 
-        def to_odv(key):
-            name, unit = key
-            if unit is None:
-                return name
-            else:
-                return f"{name} [{unit}]"
-
         return {to_odv(key): value for key, value in self._cached_dict.items()}
 
     def __getitem__(self, key: WHPNameKey) -> WHPName:
@@ -433,18 +441,22 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
 
         return self._cached_dict[key]
 
-    @property
-    def error_cols(self) -> Dict[str, WHPName]:
+    @cached_property
+    def error_cols(self):
         """A mapping of all the error names to their corresponding WHPName
 
         >>> WHPNames.error_cols["C14ERR"]
         WHPName(whp_name='DELC14', whp_unit='/MILLE', cf_name=None)
         """
-        return {
-            ex.error_name: ex
+        error_dict = {
+            (ex.error_name, ex.whp_unit): ex
             for ex in self._cached_dict.values()
             if ex.error_name is not None
         }
+        for key, param in list(error_dict.items()):
+            error_dict[to_odv(key)] = param
+
+        return error_dict
 
     def _scope_filter(self, scope: str = "cruise") -> Tuple[WHPName, ...]:
         return tuple(sorted(name for name in self.values() if name.scope == scope))
