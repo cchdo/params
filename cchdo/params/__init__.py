@@ -201,6 +201,16 @@ class WHPName:
         else:
             return f"{self.whp_name} [{self.whp_unit}]"
 
+    @property
+    def nc_name_flag(self) -> str:
+        """The variable name of the "flag" ancillary variable for this parameter"""
+        return f"{self.nc_name}_qc"
+
+    @property
+    def nc_name_error(self) -> str:
+        """The variable name of the uncertainty ancillary variable for this parameter"""
+        return f"{self.nc_name}_error"
+
     @cached_property
     def data_type(self):
         """the actual python class for this WHPName's dtype

@@ -8,6 +8,7 @@ Parameter Changes
 API Changes
 -----------
 * WHPNames may now be looked up using an ODV style "NAME [UNIT]" strings, omitting the entire "[UNIT]" part with unitless parameters.
+* Add ``WHPName.nc_name_flag`` and ``WHPName.nc_name_error`` properties which will contain the netCDF variable names for the flag and uncertainty variables, respectivly.
 
 v0.1.17 (2022-03-22)
 ====================

@@ -90,6 +90,8 @@ def test_whp_cf_property(whpname):
 )
 def test_whp_has_nc_name(whpname):
     assert whpname.nc_name is not None
+    assert whpname.nc_name_flag == f"{whpname.nc_name}_qc"
+    assert whpname.nc_name_error == f"{whpname.nc_name}_error"
 
 
 @pytest.mark.parametrize(
