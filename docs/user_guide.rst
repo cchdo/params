@@ -33,12 +33,19 @@ If the parameter has no units, use ``None`` in the units part of the tuple.
 >>> WHPNames[("EXPOCODE", None)]
 WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
 
-As a connivence, unitless parameters may be looked up via name alone.
+As a connivence, parameters may be looked up via ODV style PARAM [UNIT] strings, omitting the [UNIT] part for unitless parameters.
 
 >>> WHPNames["EXPOCODE"]
 WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
 >>> WHPNames["EXPOCODE"] == WHPNames[("EXPOCODE", None)]
 True
+>>> WHPNames["CTDPRS [DBAR]"]
+WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
+
+Aliases will return their canonical parameter object
+
+>>> WHPNames["CTDPRS [DBARS]"] # note the "s" at the end of the unit
+WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
 
 .. warning::
   Currently the ``(param, unit)`` tuples are case sensitive.
