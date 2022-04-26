@@ -139,6 +139,12 @@ class WHPName(Base):
     unit: Unit = relationship("Unit")
     cf_unit = association_proxy("unit", "cf_unit")
 
+    # Opticas
+    radiation_wavelength = Column(Float, nullable=True)
+    scattering_angle = Column(Float, nullable=True)
+    excitation_wavelength = Column(Float, nullable=True)
+    emission_wavelength = Column(Float, nullable=True)
+
     __table_args__ = (
         ForeignKeyConstraint(
             ["analytical_temperature_name", "analytical_temperature_units"],
@@ -180,6 +186,10 @@ class WHPName(Base):
                 analytical_temperature_name={_str_or_type(self.analytical_temperature_name)},
                 analytical_temperature_units={_str_or_type(self.analytical_temperature_units)},
                 rank={_str_or_type(self.param.rank)},
+                radiation_wavelength={_str_or_type(self.radiation_wavelength)},
+                scattering_angle={_str_or_type(self.scattering_angle)},
+                excitation_wavelength={_str_or_type(self.excitation_wavelength)},
+                emission_wavelength={_str_or_type(self.emission_wavelength)},
                 )"""
         )
 

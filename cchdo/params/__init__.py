@@ -184,6 +184,12 @@ class WHPName:
     #: If reporting temperature is important, the units of the variable which has the temperature
     analytical_temperature_units: Optional[str] = field(default=None, repr=False)
 
+    # optics stuff
+    radiation_wavelength: Optional[float] = field(default=None, repr=False)
+    scattering_angle: Optional[float] = field(default=None, repr=False)
+    excitation_wavelength: Optional[float] = field(default=None, repr=False)
+    emission_wavelength: Optional[float] = field(default=None, repr=False)
+
     @property
     def key(self):
         """WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values"""
@@ -514,6 +520,10 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
             del p_dict["rank"]
             del p_dict["analytical_temperature_name"]
             del p_dict["analytical_temperature_units"]
+            del p_dict["radiation_wavelength"]
+            del p_dict["scattering_angle"]
+            del p_dict["excitation_wavelength"]
+            del p_dict["emission_wavelength"]
 
             if p_dict["data_type"] == "string":
                 del p_dict["numeric_min"]

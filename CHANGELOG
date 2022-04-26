@@ -8,6 +8,11 @@ Parameter Changes
 API Changes
 -----------
 * (BREAKING) The error name look ups in ``WHPNames.error_names`` must now use the units as either a tuple (error_name, units) or an ODV style PARAM [UNIT] string.
+* Add the following optical properties to ``WHPName``:
+  * ``WHPName.radiation_wavelength`` - The wavelength in nm of some measured light (path, scattering, etc...), not induced or emitted.
+  * ``WHPName.scattering_angle`` - The angle in degrees of the scattered light
+  * ``WHPName.excitation_wavelengh`` - The wavelength in nm of the light used to excite some response.
+  * ``WHPName.emission_wavelengh`` - The wavelength in nm of the light measured in response to some excitation.
 * WHPNames may now be looked up using an ODV style "NAME [UNIT]" strings, omitting the entire "[UNIT]" part with unitless parameters.
 * Add ``WHPName.nc_name_flag`` and ``WHPName.nc_name_error`` properties which will contain the netCDF variable names for the flag and uncertainty variables, respectivly.
 
