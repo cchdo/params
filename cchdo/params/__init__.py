@@ -147,7 +147,9 @@ class WHPName:
     #:   empty units.
     whp_unit: Optional[str] = None
     #: Which set of woce flag definitions to use for this parameter
-    flag_w: Optional[str] = field(default=None, repr=False)
+    flag_w: Union[
+        Literal["woce_discrete", "woce_ctd", "no_flags", "woce_bottle"], None
+    ] = field(default=None, repr=False)
     #: if one exists, the cf standard name for this parameter/unit pair
     cf_name: Optional[str] = None
     #: The expected minimum value for this parameter/unit pair
