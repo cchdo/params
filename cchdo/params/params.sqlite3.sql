@@ -5312,6 +5312,9 @@ INSERT INTO "ex_params" VALUES('SAMPLING_RATE',NULL,'The sampling rate of the CT
 INSERT INTO "ex_params" VALUES('EVENT_NUMBER',NULL,'Non program specific event number. Some cruises or programs keep track of sequential events that occur on a cruise or across multiple cruises of the same program. There exists program specific event number names of GEOTR_EVENT, BIONBR, and BIOS_CASTID that should be used if they are more appropriate.',NULL,NULL,'profile','decimal','no_flags',0,9.5);
 INSERT INTO "ex_params" VALUES('CTDNITRATE',4,'The concentration of dissolved nitrate in sea water measured by an in situ sensor. The chemical formula for the nitrate anion is NO3-.',NULL,NULL,'sample','decimal','woce_ctd',0,27.5);
 INSERT INTO "ex_params" VALUES('CTDTURB',NULL,'Turbidity describes the light scattered back (or passed though depending on units) depending on particle loading in the water. It is a dimensionless quantity.',NULL,NULL,'sample','decimal','woce_ctd',0,74.5);
+INSERT INTO "ex_params" VALUES('DNA',NULL,'Genetic analysis','This is a placeholder parameter which indicates water collected from a bottle for analysis','These data to not get submitted to CCHDO','sample','string','woce_discrete',0,154.1);
+INSERT INTO "ex_params" VALUES('POP',NULL,'Particulate organic phosphorus',NULL,NULL,'sample','decimal','woce_discrete',0,56.1);
+INSERT INTO "ex_params" VALUES('PCOD',NULL,'Patriculate chemical oxygen demand',NULL,NULL,'sample','decimal','woce_discrete',0,56.2);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5671,4 +5674,9 @@ INSERT INTO "whp_names" VALUES('CTDNITRATE','UMOL/KG','moles_of_nitrate_per_unit
 INSERT INTO "whp_names" VALUES('PAR','VOLTS',NULL,'par_raw',0.0,5.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDTURB','FTU',NULL,'ctd_turbidity_ftu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDTURB','NTU',NULL,'ctd_turbidity_ntu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('POC','UG/L',NULL,'particulate_organic_carbon_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PON','UG/L',NULL,'particulate_organic_nitrogen_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DNA',NULL,NULL,'dna_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('POP','UG/L',NULL,'particulate_organic_phosphorus_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PCOD','UG/L',NULL,'particulate_chemical_oxygen_demand_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 COMMIT;
