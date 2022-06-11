@@ -5315,6 +5315,7 @@ INSERT INTO "ex_params" VALUES('CTDTURB',NULL,'Turbidity describes the light sca
 INSERT INTO "ex_params" VALUES('DNA',NULL,'Genetic analysis','This is a placeholder parameter which indicates water collected from a bottle for analysis','These data to not get submitted to CCHDO','sample','string','woce_discrete',0,154.1);
 INSERT INTO "ex_params" VALUES('POP',NULL,'Particulate organic phosphorus',NULL,NULL,'sample','decimal','woce_discrete',0,56.1);
 INSERT INTO "ex_params" VALUES('PCOD',NULL,'Patriculate chemical oxygen demand',NULL,NULL,'sample','decimal','woce_discrete',0,56.2);
+INSERT INTO "ex_params" VALUES('FCM',NULL,'Flow Cytometry','This is a placeholder parameter which indicates water collected from a bottle for analysis','These data to not get submitted to CCHDO','sample','string','woce_discrete',0,154.2);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5679,4 +5680,5 @@ INSERT INTO "whp_names" VALUES('PON','UG/L',NULL,'particulate_organic_nitrogen_l
 INSERT INTO "whp_names" VALUES('DNA',NULL,NULL,'dna_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('POP','UG/L',NULL,'particulate_organic_phosphorus_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PCOD','UG/L',NULL,'particulate_chemical_oxygen_demand_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('FCM',NULL,NULL,'flow_cytometry_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
