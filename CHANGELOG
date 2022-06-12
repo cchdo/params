@@ -4,6 +4,13 @@ v0.1.18 (unreleased)
 Parameter Changes
 -----------------
 * Add ARGONERR as the uncertainty name for ARGON
+* Add new params for P02W
+  * DNA for a placeholder parameter indicating samples for genetic analysis were taken
+  * FCM for a placeholder parameter indicating samples for flow cytometry were taken
+  * POP [UG/L] for particulate organic phosphorus
+  * PCOD [UG/L] for particulate chemical oxygen demand
+  * Additionally, the units of [UG/L] for POC and PON were added
+
 
 API Changes
 -----------
