@@ -3,6 +3,12 @@ v0.1.18 (unreleased)
 
 Parameter Changes
 -----------------
+* Move rank of DELO17 to be right after DELO18
+* Add O2/AR name for oxygen to argon ratio
+
+  * Add O2-AR as an Alias
+  * The ncname of o2_ar was taken from the old libcchdo params database
+
 * Add ARGONERR as the uncertainty name for ARGON
 * Add new params for P02W
 
