@@ -3,6 +3,7 @@ v0.1.18 (unreleased)
 
 Parameter Changes
 -----------------
+* Add SIP as a placeholder for samples taken for stable isotope probing
 * Move rank of DELO17 to be right after DELO18
 * Add O2/AR name for oxygen to argon ratio
 
