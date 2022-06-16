@@ -48,7 +48,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pips install --user -e '.[complete]' && pre-commit && pre-commit install",
+	"postCreateCommand": "pip install --user -e '.[complete]' && pre-commit && pre-commit install",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
