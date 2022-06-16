@@ -5317,6 +5317,9 @@ INSERT INTO "ex_params" VALUES('POP',NULL,'Particulate organic phosphorus',NULL,
 INSERT INTO "ex_params" VALUES('PCOD',NULL,'Patriculate chemical oxygen demand',NULL,NULL,'sample','decimal','woce_discrete',0,56.2);
 INSERT INTO "ex_params" VALUES('FCM',NULL,'Flow Cytometry','This is a placeholder parameter which indicates water collected from a bottle for analysis','These data to not get submitted to CCHDO','sample','string','woce_discrete',0,154.2);
 INSERT INTO "ex_params" VALUES('O2/AR',NULL,'Oxygen to Argon radtio',NULL,NULL,'sample','decimal','woce_discrete',0,158.0);
+INSERT INTO "ex_params" VALUES('SIP',NULL,'Stable isotope probing.
+
+This describes samples taken for an uptake analysis which introduces stable isotopes and measures their uptake over a period of time.','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.3);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5684,4 +5687,5 @@ INSERT INTO "whp_names" VALUES('POP','UG/L',NULL,'particulate_organic_phosphorus
 INSERT INTO "whp_names" VALUES('PCOD','UG/L',NULL,'particulate_chemical_oxygen_demand_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('FCM',NULL,NULL,'flow_cytometry_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('O2/AR',NULL,NULL,'o2_ar',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SIP',NULL,NULL,'stable_isotope_probing_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
