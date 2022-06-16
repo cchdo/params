@@ -5295,6 +5295,33 @@ scattering_angle=None,
 excitation_wavelength=None,
 emission_wavelength=None,
 ),
+WHPNameDC(
+whp_name='O2/AR',
+dtype='decimal',
+whp_unit=None,
+nc_name='o2_ar',
+flag_w='woce_discrete',
+cf_name=None,
+numeric_min=None,
+numeric_max=None,
+numeric_precision=3,
+field_width=9,
+description='Oxygen to Argon radtio',
+note=None,
+warning=None,
+error_name=None,
+cf_unit=None,
+reference_scale=None,
+whp_number=None,
+scope='sample',
+analytical_temperature_name=None,
+analytical_temperature_units=None,
+rank=158.0,
+radiation_wavelength=None,
+scattering_angle=None,
+excitation_wavelength=None,
+emission_wavelength=None,
+),
 ]
 for name in names:
     whp_names[name.key] = name
@@ -5389,3 +5416,4 @@ whp_names[('FLUOR', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
 whp_names[('FLUOR', "UG/L'")] = whp_names[('CTDFLUOR', 'MG/M^3')]
 whp_names[('FLUORM', "MG/M^3'")] = whp_names[('CTDFLUOR', 'MG/M^3')]
 whp_names[('GEOTRC_EVENT', None)] = whp_names[('GEOTR_EVENT', None)]
+whp_names[('O2-AR', None)] = whp_names[('O2/AR', None)]
