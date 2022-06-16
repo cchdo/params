@@ -5281,7 +5281,7 @@ INSERT INTO "ex_params" VALUES('BRDU',NULL,'Bacterial Production via BrdU (Bromo
 INSERT INTO "ex_params" VALUES('CH3BR',NULL,'Concentration of Methyl Bromide',NULL,NULL,'sample','decimal','woce_discrete',0,139.0);
 INSERT INTO "ex_params" VALUES('CH3I',NULL,'Concentration of Methyl Iodide',NULL,NULL,'sample','decimal','woce_discrete',0,140.0);
 INSERT INTO "ex_params" VALUES('DCNS',NULL,'Dissolved Combined Neutral Sugars',NULL,NULL,'sample','decimal','woce_discrete',0,141.0);
-INSERT INTO "ex_params" VALUES('DELO17',NULL,'Enrichment of the 17O/16O isotopic ratio of the sea water itself compared to VSMOW (Vienna Standard Mean Ocean Water).',NULL,NULL,'sample','decimal','woce_discrete',0,142.0);
+INSERT INTO "ex_params" VALUES('DELO17',NULL,'Enrichment of the 17O/16O isotopic ratio of the sea water itself compared to VSMOW (Vienna Standard Mean Ocean Water).',NULL,NULL,'sample','decimal','woce_discrete',0,60.1);
 INSERT INTO "ex_params" VALUES('FCO2IN',NULL,'In situ fugacity of CO2 gas','Usually calcualted',NULL,'sample','decimal','woce_discrete',0,37.5);
 INSERT INTO "ex_params" VALUES('FUCO',NULL,'Concentration of Fucose after hydrolyses',NULL,NULL,'sample','decimal','woce_discrete',0,143.0);
 INSERT INTO "ex_params" VALUES('GALA',NULL,'Concentration of Galactose after hydrolysis',NULL,NULL,'sample','decimal','woce_discrete',0,144.0);
