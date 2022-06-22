@@ -5320,6 +5320,10 @@ INSERT INTO "ex_params" VALUES('O2/AR',NULL,'Oxygen to Argon radtio',NULL,NULL,'
 INSERT INTO "ex_params" VALUES('SIP',NULL,'Stable isotope probing.
 
 This describes samples taken for an uptake analysis which introduces stable isotopes and measures their uptake over a period of time.','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.3);
+INSERT INTO "ex_params" VALUES('PH',26,'The measure of acidity of seawater reported on an unknown scale',NULL,'The reporting scale is not known. Use caution when comparing this pH to any other pH','sample','decimal','woce_discrete',0,41.1);
+INSERT INTO "ex_params" VALUES('XCO2',NULL,'The mole fraction of CO2 in air, wet or dry is unknown.',NULL,'This parameter was added because we found several cruises with "PCO2" reported as ppm. The only notes that could we could find where questioning if the values were "wet" or "dry", which is wondering if pH2O was taken into account. XCO2 as a name was taken from the definition of CO2 expressed as PPM in CO2SYS V25.
+
+Use caution if you are trying to compare this parameter to other (p/f/x)CO2 data','sample','decimal','woce_discrete',0,39.1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5371,6 +5375,7 @@ INSERT INTO "ex_units" VALUES(39,'MBQ/M^3','mBq m-3',NULL,NULL);
 INSERT INTO "ex_units" VALUES(40,'HZ','1/s',NULL,NULL);
 INSERT INTO "ex_units" VALUES(41,'NTU','1',NULL,'Nephelometric Turbidity Units');
 INSERT INTO "ex_units" VALUES(42,'FTU','1',NULL,'Formazin Turbidity Unit');
+INSERT INTO "ex_units" VALUES(43,'PPM','1e-6',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5471,6 +5476,20 @@ INSERT INTO "whp_alias" VALUES('FLUOR','UG/L''','CTDFLUOR','MG/M^3');
 INSERT INTO "whp_alias" VALUES('FLUORM','MG/M^3''','CTDFLUOR','MG/M^3');
 INSERT INTO "whp_alias" VALUES('GEOTRC_EVENT',NULL,'GEOTR_EVENT',NULL);
 INSERT INTO "whp_alias" VALUES('O2-AR',NULL,'O2/AR',NULL);
+INSERT INTO "whp_alias" VALUES('FLUOR','VOLTS','CTDFLUOR','VOLTS');
+INSERT INTO "whp_alias" VALUES('SIG0','KG/CUM','SIG0','KG/M^3');
+INSERT INTO "whp_alias" VALUES('PHTEMP','DEC C','PH_TMP','DEG C');
+INSERT INTO "whp_alias" VALUES('FLUORO','VOLTS','CTDFLUOR','VOLTS');
+INSERT INTO "whp_alias" VALUES('PHTEMP','DEG C','PH_TMP','DEG C');
+INSERT INTO "whp_alias" VALUES('CHLORA','MG/M**3','CHLORA','UG/L');
+INSERT INTO "whp_alias" VALUES('PPHYTN','MG/M**3','PPHYTN','UG/L');
+INSERT INTO "whp_alias" VALUES('PCO2_TMP','DEG C','PCO2TMP','DEG C');
+INSERT INTO "whp_alias" VALUES('PPHYTN','MG/M^3','PPHYTN','UG/L');
+INSERT INTO "whp_alias" VALUES('DELHE3','%','DELHE3','PERCNT');
+INSERT INTO "whp_alias" VALUES('BEDFORT','NUM','BIONBR',NULL);
+INSERT INTO "whp_alias" VALUES('XMISS','%TRANCE','CTDXMISS','%TRANS');
+INSERT INTO "whp_alias" VALUES('XMISSCP','1/M','CTDBEAMCP','/METER');
+INSERT INTO "whp_alias" VALUES('PCO2','PPM','XCO2','PPM');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5688,4 +5707,9 @@ INSERT INTO "whp_names" VALUES('PCOD','UG/L',NULL,'particulate_chemical_oxygen_d
 INSERT INTO "whp_names" VALUES('FCM',NULL,NULL,'flow_cytometry_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('O2/AR',NULL,NULL,'o2_ar',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SIP',NULL,NULL,'stable_isotope_probing_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('TOC','UMOL/L','mole_concentration_of_dissolved_organic_carbon_in_sea_water','total_organic_carbon_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('NO2+NO3','UMOL/L','mole_concentration_of_nitrate_and_nitrite_in_sea_water','nitrite_nitrate_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PHSPHT','UMOL/L','mole_concentration_of_phosphate_in_sea_water','phosphate_l',NULL,NULL,'PHPUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PH',NULL,NULL,'ph_unknown_scale',NULL,NULL,NULL,'PH_TMP','DEG C',9,4,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('XCO2','PPM',NULL,'co2_mole_fraction',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 COMMIT;
