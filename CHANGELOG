@@ -29,20 +29,20 @@ Parameter Changes
 
 * Added some aliases:
 
- * FLUOR [VOLTS] for CTDFLUOR [VOLTS]
- * SIG0 [KG/CUM] for SIG0 [KG/M^3]
- * PHTEMP [DEC C] for PH_TMP [DEG C]
- * PHTEMP [DEG C] for PH_TMP [DEG C]
- * FLUORO [VOLTS] for CTDFLUOR [VOLTS]
- * CHLORA [MG/M**3] for CHLORA [UG/L]
- * PPHYTN [MG/M**3] for PPHYTN [UG/L]
- * PPHYTN [MG/M^] for PPHYTN [UG/L] 
- * PCO2_TMP [DEG C] for PCO2TMP [DEG C]
- * DELHE3 [%] for DELHE3 [PERCNT]
- * BEDFORT [NUM] for BIONBR
- * XMISS [%TRANCE] for CTDXMISS [%TRANS]
- * XMISSCP [1/M] for CTDBEAMCP [/METER]
- * PCO2 [PPM] for XCO2 [PPM]
+  * FLUOR [VOLTS] for CTDFLUOR [VOLTS]
+  * SIG0 [KG/CUM] for SIG0 [KG/M^3]
+  * PHTEMP [DEC C] for PH_TMP [DEG C]
+  * PHTEMP [DEG C] for PH_TMP [DEG C]
+  * FLUORO [VOLTS] for CTDFLUOR [VOLTS]
+  * CHLORA [MG/M**3] for CHLORA [UG/L]
+  * PPHYTN [MG/M**3] for PPHYTN [UG/L]
+  * PPHYTN [MG/M^] for PPHYTN [UG/L] 
+  * PCO2_TMP [DEG C] for PCO2TMP [DEG C]
+  * DELHE3 [%] for DELHE3 [PERCNT]
+  * BEDFORT [NUM] for BIONBR
+  * XMISS [%TRANCE] for CTDXMISS [%TRANS]
+  * XMISSCP [1/M] for CTDBEAMCP [/METER]
+  * PCO2 [PPM] for XCO2 [PPM]
 
 
 API Changes
