@@ -5333,6 +5333,10 @@ Mantyla, A. W., 1982-1983. Private correspondence.
 ',NULL,NULL,'sample','decimal','woce_ctd',0,159.0);
 INSERT INTO "ex_params" VALUES('FMDEPTH',NULL,'Depth calculated from pressure using the Fofonoff and Millard method, also known as the UNESCO 1983 formula',NULL,NULL,'sample','decimal','woce_ctd',0,159.1);
 INSERT INTO "ex_params" VALUES('CTDCDOM',NULL,'In situ CDOM measured via a uv fluorometer',NULL,NULL,'sample','decimal','woce_ctd',0,74.6);
+INSERT INTO "ex_params" VALUES('KRYPTON',NULL,'Dissolved krypton gas in seawater',NULL,NULL,'sample','decimal','woce_discrete',0,146.1);
+INSERT INTO "ex_params" VALUES('XENON',NULL,'Dissolved xenon gas in sea water',NULL,NULL,'sample','decimal','woce_discrete',0,146.2);
+INSERT INTO "ex_params" VALUES('BTLNBR_U',NULL,'User convienence bottle number, unlike the canonical BTLNBR param, this one must be an integer (so the NBR part of the name makse sense)',NULL,NULL,'sample','integer','woce_bottle',0,1000.0);
+INSERT INTO "ex_params" VALUES('STNNBR_U',NULL,'User convienence statio number, unlike the canonical STNNBT param, this one must be an integer (so the NBR part of the name makse sense)',NULL,NULL,'sample','integer','no_flags',0,999.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5511,6 +5515,9 @@ INSERT INTO "whp_alias" VALUES('CTDTHETA','DEG C','THETA','DEG C');
 INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','0-5VDC','CTDCDOM','VOLTS');
 INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','VDC','CTDCDOM','VOLTS');
 INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','V','CTDCDOM','VOLTS');
+INSERT INTO "whp_alias" VALUES('SALNTY','ISS78','SALNTY','PSS-78');
+INSERT INTO "whp_alias" VALUES('CTDSAL','ISS78','CTDSAL','PSS-78');
+INSERT INTO "whp_alias" VALUES('O18_O16','/MILLE','DELO18','/MILLE');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5737,4 +5744,11 @@ INSERT INTO "whp_names" VALUES('SMDEPTH','METERS',NULL,'sm_depth',NULL,NULL,NULL
 INSERT INTO "whp_names" VALUES('FMDEPTH','METERS',NULL,'fm_depth',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDCDOM','QSU','concentration_of_colored_dissolved_organic_matter_in_sea_water_expressed_as_equivalent_mass_fraction_of_quinine_sulfate_dihydrate','ctd_cdom',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDCDOM','VOLTS',NULL,'ctd_cdom_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('KRYPTON','NMOL/KG',NULL,'krypton',NULL,NULL,'KRYPTONER',NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('KRYPTON','NMOL/L',NULL,'krypton_l',NULL,NULL,'KRYPTONER',NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('XENON','NMOL/KG',NULL,'xenon',NULL,NULL,'XENONER',NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('XENON','NMOL/L',NULL,'xenon_l',NULL,NULL,'XENONER',NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('BTLNBR_U',NULL,NULL,'user_bottle_number',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('STNNBR_U',NULL,NULL,'user_station_number',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SILCAT','UMOL/L','mole_concentration_of_silicate_in_sea_water','silicate_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL);
 COMMIT;

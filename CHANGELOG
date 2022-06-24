@@ -3,6 +3,9 @@ v0.1.18 (unreleased)
 
 Parameter Changes
 -----------------
+* Added BTLNBR_U and SAMPNO_U as names for people who really want their NBRs to be actual numbers
+* Add XENON [NMOL/KG] and [NMOL/L] for dissolved xenon gas
+* Add KRYPTON [NMOL/KG] and [NMOL/L] for dissolved krypton gas
 * Add SIP as a placeholder for samples taken for stable isotope probing
 * Move rank of DELO17 to be right after DELO18
 * Add O2/AR name for oxygen to argon ratio
@@ -16,6 +19,7 @@ Parameter Changes
   * TOC
   * NO2+NO3
   * PHSPHT
+  * SILCAT
 
 * Add PH with no explicit scale information, include a warning about the risks of this
 * Add XCO2 [PPM] for CO2 mole fraction in air, with a warning about the lack of information on wet/dry pH2O corrections
@@ -55,6 +59,8 @@ Parameter Changes
   * CTDCDOMFRAW [0-5VDC] for CTDCDOM [VOLTS]
   * CTDCDOMFRAW [VDC] for CTDCDOM [VOLTS] 
   * CTDCDOMFRAW [V] for CTDCDOM [VOLTS] 
+  * SALNTY [ISS78] for SALNTY [PSS-78]
+  * CTDSAL [ISS78] for CTDSAL [PSS-78]
 
 
 API Changes
