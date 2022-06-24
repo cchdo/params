@@ -19,6 +19,7 @@ Parameter Changes
 
 * Add PH with no explicit scale information, include a warning about the risks of this
 * Add XCO2 [PPM] for CO2 mole fraction in air, with a warning about the lack of information on wet/dry pH2O corrections
+* Add CF standard name to CTDTURB [NTU]
 * Add new params for P02W
 
   * DNA for a placeholder parameter indicating samples for genetic analysis were taken
@@ -43,6 +44,17 @@ Parameter Changes
   * XMISS [%TRANCE] for CTDXMISS [%TRANS]
   * XMISSCP [1/M] for CTDBEAMCP [/METER]
   * PCO2 [PPM] for XCO2 [PPM]
+  * CTDTRBDTY [NTU] for CTDTURB [NTU]
+  * CTDTRBDTY [FTU] for CTDTURB [FTU]
+  * CTDBEAMCP [1/M] for CTDBEAMCP [/METER]
+  * CTDFLUOR [MG/CUM] for CTDFLUOR [MG/M^3]
+  * CTDPAR [UPHOTMS] for PAR [UMOL/M^2/SEC]
+  * CTDSAL [PSS_78] for CTDSAL [PSS-78]
+  * CTDSAL [PSS-68] for CTDSAL [PSS-78]
+  * CTDTHETA [DEG C] for THETA [DEG C]
+  * CTDCDOMFRAW [0-5VDC] for CTDCDOM [VOLTS]
+  * CTDCDOMFRAW [VDC] for CTDCDOM [VOLTS] 
+  * CTDCDOMFRAW [V] for CTDCDOM [VOLTS] 
 
 
 API Changes

@@ -5324,6 +5324,15 @@ INSERT INTO "ex_params" VALUES('PH',26,'The measure of acidity of seawater repor
 INSERT INTO "ex_params" VALUES('XCO2',NULL,'The mole fraction of CO2 in air, wet or dry is unknown.',NULL,'This parameter was added because we found several cruises with "PCO2" reported as ppm. The only notes that could we could find where questioning if the values were "wet" or "dry", which is wondering if pH2O was taken into account. XCO2 as a name was taken from the definition of CO2 expressed as PPM in CO2SYS V25.
 
 Use caution if you are trying to compare this parameter to other (p/f/x)CO2 data','sample','decimal','woce_discrete',0,39.1);
+INSERT INTO "ex_params" VALUES('SMDEPTH',NULL,'Depth calculated from pressure using the Saunders-Mantyla method. 
+
+In the ODF software this is cited as follows:
+
+Saunders, P. M., 1981. Practical Conversion of Pressure to Depth. Journal of Physical Oceanography 11, 573-574.
+Mantyla, A. W., 1982-1983. Private correspondence.
+',NULL,NULL,'sample','decimal','woce_ctd',0,159.0);
+INSERT INTO "ex_params" VALUES('FMDEPTH',NULL,'Depth calculated from pressure using the Fofonoff and Millard method, also known as the UNESCO 1983 formula',NULL,NULL,'sample','decimal','woce_ctd',0,159.1);
+INSERT INTO "ex_params" VALUES('CTDCDOM',NULL,'In situ CDOM measured via a uv fluorometer',NULL,NULL,'sample','decimal','woce_ctd',0,74.6);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5346,7 +5355,7 @@ INSERT INTO "ex_units" VALUES(10,'ML/L','ml/l',NULL,NULL);
 INSERT INTO "ex_units" VALUES(11,'PMOL/KG','pmol/kg',NULL,NULL);
 INSERT INTO "ex_units" VALUES(12,'FMOL/KG','fmol/kg',NULL,NULL);
 INSERT INTO "ex_units" VALUES(13,'UATM','uatm',NULL,NULL);
-INSERT INTO "ex_units" VALUES(14,'TU','1e-18',NULL,NULL);
+INSERT INTO "ex_units" VALUES(14,'TU','1e-18',NULL,'TU is Tridium Units');
 INSERT INTO "ex_units" VALUES(15,'NMOL/KG','nmol/kg',NULL,NULL);
 INSERT INTO "ex_units" VALUES(16,'PERCNT','percent',NULL,NULL);
 INSERT INTO "ex_units" VALUES(17,'/MILLE','1e-3',NULL,NULL);
@@ -5376,6 +5385,7 @@ INSERT INTO "ex_units" VALUES(40,'HZ','1/s',NULL,NULL);
 INSERT INTO "ex_units" VALUES(41,'NTU','1',NULL,'Nephelometric Turbidity Units');
 INSERT INTO "ex_units" VALUES(42,'FTU','1',NULL,'Formazin Turbidity Unit');
 INSERT INTO "ex_units" VALUES(43,'PPM','1e-6',NULL,NULL);
+INSERT INTO "ex_units" VALUES(44,'QSU','1',NULL,'Quinine Sulfate Unit, an equivalent equal to 1 ppb of quinine sulfate');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5490,6 +5500,17 @@ INSERT INTO "whp_alias" VALUES('BEDFORT','NUM','BIONBR',NULL);
 INSERT INTO "whp_alias" VALUES('XMISS','%TRANCE','CTDXMISS','%TRANS');
 INSERT INTO "whp_alias" VALUES('XMISSCP','1/M','CTDBEAMCP','/METER');
 INSERT INTO "whp_alias" VALUES('PCO2','PPM','XCO2','PPM');
+INSERT INTO "whp_alias" VALUES('CTDTRBDTY','NTU','CTDTURB','NTU');
+INSERT INTO "whp_alias" VALUES('CTDTURBTY','FTU','CTDTURB','FTU');
+INSERT INTO "whp_alias" VALUES('CTDBEAMCP','1/M','CTDBEAMCP','/METER');
+INSERT INTO "whp_alias" VALUES('CTDFLUOR','MG/CUM','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('CTDPAR','UPHOTMS','PAR','UMOL/M^2/SEC');
+INSERT INTO "whp_alias" VALUES('CTDSAL','PSS_78','CTDSAL','PSS-78');
+INSERT INTO "whp_alias" VALUES('CTDSAL','PSS-68','CTDSAL','PSS-78');
+INSERT INTO "whp_alias" VALUES('CTDTHETA','DEG C','THETA','DEG C');
+INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','0-5VDC','CTDCDOM','VOLTS');
+INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','VDC','CTDCDOM','VOLTS');
+INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','V','CTDCDOM','VOLTS');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5698,7 +5719,7 @@ INSERT INTO "whp_names" VALUES('EVENT_NUMBER',NULL,NULL,'event_number',NULL,NULL
 INSERT INTO "whp_names" VALUES('CTDNITRATE','UMOL/KG','moles_of_nitrate_per_unit_mass_in_sea_water','ctd_nitrate',9.0,47.0,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PAR','VOLTS',NULL,'par_raw',0.0,5.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDTURB','FTU',NULL,'ctd_turbidity_ftu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('CTDTURB','NTU',NULL,'ctd_turbidity_ntu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDTURB','NTU','sea_water_turbidity','ctd_turbidity_ntu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('POC','UG/L',NULL,'particulate_organic_carbon_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PON','UG/L',NULL,'particulate_organic_nitrogen_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DNA',NULL,NULL,'dna_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL);
@@ -5712,4 +5733,8 @@ INSERT INTO "whp_names" VALUES('NO2+NO3','UMOL/L','mole_concentration_of_nitrate
 INSERT INTO "whp_names" VALUES('PHSPHT','UMOL/L','mole_concentration_of_phosphate_in_sea_water','phosphate_l',NULL,NULL,'PHPUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PH',NULL,NULL,'ph_unknown_scale',NULL,NULL,NULL,'PH_TMP','DEG C',9,4,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('XCO2','PPM',NULL,'co2_mole_fraction',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SMDEPTH','METERS',NULL,'sm_depth',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('FMDEPTH','METERS',NULL,'fm_depth',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDCDOM','QSU','concentration_of_colored_dissolved_organic_matter_in_sea_water_expressed_as_equivalent_mass_fraction_of_quinine_sulfate_dihydrate','ctd_cdom',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDCDOM','VOLTS',NULL,'ctd_cdom_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL);
 COMMIT;
