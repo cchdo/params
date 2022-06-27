@@ -3,6 +3,8 @@ v0.1.18 (unreleased)
 
 Parameter Changes
 -----------------
+* Add CTDDEPTH [METERS] for the actual calcualted depth to the package (not the sea floor)
+* Add ODF_CTDPRS [DBAR] for a reported pressure that was calibrated using the ODF acqusition software (not the calibration software).
 * Added BTLNBR_U and SAMPNO_U as names for people who really want their NBRs to be actual numbers
 * Add XENON [NMOL/KG] and [NMOL/L] for dissolved xenon gas
 * Add KRYPTON [NMOL/KG] and [NMOL/L] for dissolved krypton gas
@@ -61,6 +63,10 @@ Parameter Changes
   * CTDCDOMFRAW [V] for CTDCDOM [VOLTS] 
   * SALNTY [ISS78] for SALNTY [PSS-78]
   * CTDSAL [ISS78] for CTDSAL [PSS-78]
+  * BTMDEPTH [METERS] for DEPTH [PSS-78]
+  * ODF_CTDPRS [DBARS] for ODF_CTDPRS [DBAR]
+  * PCO2TMP [DEC C] for PCO2TMP [DEG C]
+  * THETA [DEG_C] for THETA [DEG C]
 
 
 API Changes

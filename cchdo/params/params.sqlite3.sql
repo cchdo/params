@@ -5337,6 +5337,8 @@ INSERT INTO "ex_params" VALUES('KRYPTON',NULL,'Dissolved krypton gas in seawater
 INSERT INTO "ex_params" VALUES('XENON',NULL,'Dissolved xenon gas in sea water',NULL,NULL,'sample','decimal','woce_discrete',0,146.2);
 INSERT INTO "ex_params" VALUES('BTLNBR_U',NULL,'User convienence bottle number, unlike the canonical BTLNBR param, this one must be an integer (so the NBR part of the name makse sense)',NULL,NULL,'sample','integer','woce_bottle',0,1000.0);
 INSERT INTO "ex_params" VALUES('STNNBR_U',NULL,'User convienence statio number, unlike the canonical STNNBT param, this one must be an integer (so the NBR part of the name makse sense)',NULL,NULL,'sample','integer','no_flags',0,999.0);
+INSERT INTO "ex_params" VALUES('CTDDEPTH',NULL,'The calcualted depth of the CTD itself for this pressure level',NULL,'DEPTH without the CTD prefix is the distance to the sea floor.','sample','decimal','woce_ctd',0,124.1);
+INSERT INTO "ex_params" VALUES('ODF_CTDPRS',NULL,'The pressure as corrected by ODF acquisition software. It will often be equivalent to the reported CTDPRS value. When ODF_CTDPRS is present in a datafile, the CTDPRS value came from the instrument manufacturers acquisition software.',NULL,NULL,'sample','decimal','woce_ctd',0,124.2);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5518,6 +5520,10 @@ INSERT INTO "whp_alias" VALUES('CTDCDOMFRAW','V','CTDCDOM','VOLTS');
 INSERT INTO "whp_alias" VALUES('SALNTY','ISS78','SALNTY','PSS-78');
 INSERT INTO "whp_alias" VALUES('CTDSAL','ISS78','CTDSAL','PSS-78');
 INSERT INTO "whp_alias" VALUES('O18_O16','/MILLE','DELO18','/MILLE');
+INSERT INTO "whp_alias" VALUES('BTMDEPTH','METERS','DEPTH','METERS');
+INSERT INTO "whp_alias" VALUES('ODF_CTDPRS','DBARS','ODF_CTDPRS','DBAR');
+INSERT INTO "whp_alias" VALUES('PCO2TMP','DEC C','PCO2TMP','DEG C');
+INSERT INTO "whp_alias" VALUES('THETA','DEG_C','THETA','DEG C');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5751,4 +5757,6 @@ INSERT INTO "whp_names" VALUES('XENON','NMOL/L',NULL,'xenon_l',NULL,NULL,'XENONE
 INSERT INTO "whp_names" VALUES('BTLNBR_U',NULL,NULL,'user_bottle_number',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('STNNBR_U',NULL,NULL,'user_station_number',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SILCAT','UMOL/L','mole_concentration_of_silicate_in_sea_water','silicate_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDDEPTH','METERS','depth','package_depth',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('ODF_CTDPRS','DBAR',NULL,'odf_pressure',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL);
 COMMIT;

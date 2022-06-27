@@ -5781,6 +5781,60 @@ scattering_angle=None,
 excitation_wavelength=None,
 emission_wavelength=None,
 ),
+WHPNameDC(
+whp_name='CTDDEPTH',
+dtype='decimal',
+whp_unit='METERS',
+nc_name='package_depth',
+flag_w='woce_ctd',
+cf_name='depth',
+numeric_min=None,
+numeric_max=None,
+numeric_precision=1,
+field_width=9,
+description='The calcualted depth of the CTD itself for this pressure level',
+note=None,
+warning='DEPTH without the CTD prefix is the distance to the sea floor.',
+error_name=None,
+cf_unit='meters',
+reference_scale=None,
+whp_number=None,
+scope='sample',
+analytical_temperature_name=None,
+analytical_temperature_units=None,
+rank=124.1,
+radiation_wavelength=None,
+scattering_angle=None,
+excitation_wavelength=None,
+emission_wavelength=None,
+),
+WHPNameDC(
+whp_name='ODF_CTDPRS',
+dtype='decimal',
+whp_unit='DBAR',
+nc_name='odf_pressure',
+flag_w='woce_ctd',
+cf_name=None,
+numeric_min=None,
+numeric_max=None,
+numeric_precision=1,
+field_width=9,
+description='The pressure as corrected by ODF acquisition software. It will often be equivalent to the reported CTDPRS value. When ODF_CTDPRS is present in a datafile, the CTDPRS value came from the instrument manufacturers acquisition software.',
+note=None,
+warning=None,
+error_name=None,
+cf_unit='dbar',
+reference_scale=None,
+whp_number=None,
+scope='sample',
+analytical_temperature_name=None,
+analytical_temperature_units=None,
+rank=124.2,
+radiation_wavelength=None,
+scattering_angle=None,
+excitation_wavelength=None,
+emission_wavelength=None,
+),
 ]
 for name in names:
     whp_names[name.key] = name
@@ -5904,3 +5958,7 @@ whp_names[('CTDCDOMFRAW', 'V')] = whp_names[('CTDCDOM', 'VOLTS')]
 whp_names[('SALNTY', 'ISS78')] = whp_names[('SALNTY', 'PSS-78')]
 whp_names[('CTDSAL', 'ISS78')] = whp_names[('CTDSAL', 'PSS-78')]
 whp_names[('O18_O16', '/MILLE')] = whp_names[('DELO18', '/MILLE')]
+whp_names[('BTMDEPTH', 'METERS')] = whp_names[('DEPTH', 'METERS')]
+whp_names[('ODF_CTDPRS', 'DBARS')] = whp_names[('ODF_CTDPRS', 'DBAR')]
+whp_names[('PCO2TMP', 'DEC C')] = whp_names[('PCO2TMP', 'DEG C')]
+whp_names[('THETA', 'DEG_C')] = whp_names[('THETA', 'DEG C')]
