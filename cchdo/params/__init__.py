@@ -132,7 +132,7 @@ class WHPName:
     nc_name: str = field(repr=False)
     #: if CF wants this variable collaposed into something with extra dimmensions
     #: the final variable will have this name
-    nc_group: str = field(repr=False)
+    nc_group: Optional[str] = field(repr=False)
     #: The historic ordering of columns in a file are determined by this rank, lower rank comes first.
     #: used for sorting the parameters
     rank: float = field(repr=False)
