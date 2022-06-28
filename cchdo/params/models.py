@@ -123,6 +123,7 @@ class WHPName(Base):
         String, ForeignKey(CFName.__table__.c.standard_name), nullable=True
     )
     nc_name = Column(String, unique=True, nullable=True)
+    nc_group = Column(String, unique=True, nullable=True)
 
     numeric_min = Column(Float, nullable=True)
     numeric_max = Column(Float, nullable=True)
@@ -190,6 +191,7 @@ class WHPName(Base):
                 scattering_angle={_str_or_type(self.scattering_angle)},
                 excitation_wavelength={_str_or_type(self.excitation_wavelength)},
                 emission_wavelength={_str_or_type(self.emission_wavelength)},
+                nc_group={_str_or_type(self.nc_group)},
                 )"""
         )
 

@@ -130,6 +130,9 @@ class WHPName:
     whp_name: str
     #: the variable name to use in cf compliant netcdf files, must be unique
     nc_name: str = field(repr=False)
+    #: if CF wants this variable collaposed into something with extra dimmensions
+    #: the final variable will have this name
+    nc_group: str = field(repr=False)
     #: The historic ordering of columns in a file are determined by this rank, lower rank comes first.
     #: used for sorting the parameters
     rank: float = field(repr=False)
@@ -526,6 +529,7 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
             del p_dict["scattering_angle"]
             del p_dict["excitation_wavelength"]
             del p_dict["emission_wavelength"]
+            del p_dict["nc_group"]
 
             if p_dict["data_type"] == "string":
                 del p_dict["numeric_min"]
