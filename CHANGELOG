@@ -3,6 +3,7 @@ v0.1.18 (unreleased)
 
 Parameter Changes
 -----------------
+* Add DELSI30 [/MILLE] for silicon isotopic enrichment
 * Add many CDOM wavelength parameters
 * Add CTDDEPTH [METERS] for the actual calcualted depth to the package (not the sea floor)
 * Add ODF_CTDPRS [DBAR] for a reported pressure that was calibrated using the ODF acqusition software (not the calibration software).
