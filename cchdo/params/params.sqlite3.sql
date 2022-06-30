@@ -5340,7 +5340,15 @@ INSERT INTO "ex_params" VALUES('STNNBR_U',NULL,'User convienence statio number, 
 INSERT INTO "ex_params" VALUES('CTDDEPTH',NULL,'The calcualted depth of the CTD itself for this pressure level',NULL,'DEPTH without the CTD prefix is the distance to the sea floor.','sample','decimal','woce_ctd',0,124.1);
 INSERT INTO "ex_params" VALUES('ODF_CTDPRS',NULL,'The pressure as corrected by ODF acquisition software. It will often be equivalent to the reported CTDPRS value. When ODF_CTDPRS is present in a datafile, the CTDPRS value came from the instrument manufacturers acquisition software.',NULL,NULL,'sample','decimal','woce_ctd',0,124.2);
 INSERT INTO "ex_params" VALUES('SAMPNO_U',NULL,'User convienence sample number, unlike the canonical SAMPNO param, this one must be an integer (so the NO part of the name makse sense)',NULL,NULL,'sample','integer','woce_bottle',0,1000.0);
-INSERT INTO "ex_params" VALUES('CDOM380',NULL,'Attenuation coefficient of the sample at 380nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.01);
+INSERT INTO "ex_params" VALUES('CDOM380',NULL,'Attenuation coefficient of the sample at 380nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.03);
+INSERT INTO "ex_params" VALUES('CDOMSL',NULL,'Log spectral slope of absorption spectrum (320-400 nm) computed by linear regression of log-transformed data',NULL,NULL,'sample','decimal','woce_discrete',0,69.98);
+INSERT INTO "ex_params" VALUES('CDOMSN',NULL,'Log spectral slope if absorption spectrum (320-400 nm) computed by non-linear curve fit',NULL,NULL,'sample','decimal','woce_discrete',0,69.99);
+INSERT INTO "ex_params" VALUES('CDOM325',NULL,'Attenuation coefficient of the sample at 325nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.01);
+INSERT INTO "ex_params" VALUES('CDOM340',NULL,'Attenuation coefficient of the sample at 340nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.02);
+INSERT INTO "ex_params" VALUES('CDOM412',NULL,'Attenuation coefficient of the sample at 412nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.04);
+INSERT INTO "ex_params" VALUES('CDOM443',NULL,'Attenuation coefficient of the sample at 442nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.05);
+INSERT INTO "ex_params" VALUES('CDOM490',NULL,'Attenuation coefficient of the sample at 490nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.06);
+INSERT INTO "ex_params" VALUES('CDOM555',NULL,'Attenuation coefficient of the sample at 555nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.07);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5394,6 +5402,7 @@ INSERT INTO "ex_units" VALUES(41,'NTU','1',NULL,'Nephelometric Turbidity Units')
 INSERT INTO "ex_units" VALUES(42,'FTU','1',NULL,'Formazin Turbidity Unit');
 INSERT INTO "ex_units" VALUES(43,'PPM','1e-6',NULL,NULL);
 INSERT INTO "ex_units" VALUES(44,'QSU','1',NULL,'Quinine Sulfate Unit, an equivalent equal to 1 ppb of quinine sulfate');
+INSERT INTO "ex_units" VALUES(45,'1/NM','1/nm',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5528,6 +5537,14 @@ INSERT INTO "whp_alias" VALUES('PCO2TMP','DEC C','PCO2TMP','DEG C');
 INSERT INTO "whp_alias" VALUES('THETA','DEG_C','THETA','DEG C');
 INSERT INTO "whp_alias" VALUES('ID',NULL,'SAMPNO_U',NULL);
 INSERT INTO "whp_alias" VALUES('INDEX',NULL,'SAMPNO_U',NULL);
+INSERT INTO "whp_alias" VALUES('CDOM325','1/M','CDOM325','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM340','1/M','CDOM340','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM380','1/M','CDOM380','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM412','1/M','CDOM412','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM443','1/M','CDOM443','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM490','1/M','CDOM490','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM555','1/M','CDOM555','/METER');
+INSERT INTO "whp_alias" VALUES('CTDPAR','VOLTS','PAR','VOLTS');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5764,4 +5781,13 @@ INSERT INTO "whp_names" VALUES('SILCAT','UMOL/L','mole_concentration_of_silicate
 INSERT INTO "whp_names" VALUES('CTDDEPTH','METERS','depth','package_depth',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('ODF_CTDPRS','DBAR',NULL,'odf_pressure',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SAMPNO_U',NULL,NULL,'user_sample_number',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOMSL','1/NM',NULL,'cdomsl',0.01,0.04,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOMSN','1/NM',NULL,'cdomsn',0.01,0.04,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM325','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom325',NULL,NULL,NULL,NULL,NULL,9,4,325.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('CDOM340','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom340',NULL,NULL,NULL,NULL,NULL,9,4,340.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('CDOM380','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom380',NULL,NULL,NULL,NULL,NULL,9,4,380.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('CDOM412','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom412',NULL,NULL,NULL,NULL,NULL,9,4,412.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('CDOM443','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom443',NULL,NULL,NULL,NULL,NULL,9,4,443.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('CDOM490','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom490',NULL,NULL,NULL,NULL,NULL,9,4,490.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('CDOM555','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom555',NULL,NULL,NULL,NULL,NULL,9,4,555.0,NULL,NULL,NULL,'cdom');
 COMMIT;
