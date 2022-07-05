@@ -28,10 +28,12 @@ Parameter Changes
 * Add PH with no explicit scale information, include a warning about the risks of this
 * Add XCO2 [PPM] for CO2 mole fraction in air, with a warning about the lack of information on wet/dry pH2O corrections
 * Add CF standard name to CTDTURB [NTU]
-* Add new params for P02W
+* Add new params for P02
 
   * DNA for a placeholder parameter indicating samples for genetic analysis were taken
   * FCM for a placeholder parameter indicating samples for flow cytometry were taken
+  * IMAGES for a placeholder parameter indicating samples for microscopic imaging were taken
+  * VIRAL_ABUNDANCE for a placeholder parameter indicating samples for viral abundance were taken
   * POP [UG/L] for particulate organic phosphorus
   * PCOD [UG/L] for particulate chemical oxygen demand
   * Additionally, the units of [UG/L] for POC and PON were added

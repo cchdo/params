@@ -5350,6 +5350,8 @@ INSERT INTO "ex_params" VALUES('CDOM443',NULL,'Attenuation coefficient of the sa
 INSERT INTO "ex_params" VALUES('CDOM490',NULL,'Attenuation coefficient of the sample at 490nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.06);
 INSERT INTO "ex_params" VALUES('CDOM555',NULL,'Attenuation coefficient of the sample at 555nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.07);
 INSERT INTO "ex_params" VALUES('DELSI30',NULL,'Enrichment of the 30Si/28Si isotopic ratio in silica relative to NBS28',NULL,NULL,'sample','decimal','woce_discrete',0,60.2);
+INSERT INTO "ex_params" VALUES('IMAGES',NULL,'Imaging; for example a FlowCam','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.4);
+INSERT INTO "ex_params" VALUES('VIRAL_ABUNDANCE',NULL,'Placeholder parameter for a viral abundance analysis','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.5);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5546,6 +5548,7 @@ INSERT INTO "whp_alias" VALUES('CDOM443','1/M','CDOM443','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM490','1/M','CDOM490','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM555','1/M','CDOM555','/METER');
 INSERT INTO "whp_alias" VALUES('CTDPAR','VOLTS','PAR','VOLTS');
+INSERT INTO "whp_alias" VALUES('IMAGE_COUNT',NULL,'IMAGES',NULL);
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5792,4 +5795,6 @@ INSERT INTO "whp_names" VALUES('CDOM443','/METER','volume_beam_attenuation_coeff
 INSERT INTO "whp_names" VALUES('CDOM490','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom490',NULL,NULL,NULL,NULL,NULL,9,4,490.0,NULL,NULL,NULL,'cdom');
 INSERT INTO "whp_names" VALUES('CDOM555','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom555',NULL,NULL,NULL,NULL,NULL,9,4,555.0,NULL,NULL,NULL,'cdom');
 INSERT INTO "whp_names" VALUES('DELSI30','/MILLE',NULL,'delsi30',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('IMAGES',NULL,NULL,'image_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('VIRAL_ABUNDANCE',NULL,NULL,'viral_abundance_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
