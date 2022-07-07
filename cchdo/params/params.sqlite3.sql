@@ -5197,7 +5197,7 @@ INSERT INTO "ex_params" VALUES('TDN',NULL,NULL,NULL,NULL,'sample','decimal','woc
 INSERT INTO "ex_params" VALUES('TON',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,58.0);
 INSERT INTO "ex_params" VALUES('NEON',17,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,59.0);
 INSERT INTO "ex_params" VALUES('DELO18',NULL,'Enrichment of the 18O/16O isotopic ratio of the sea water itself compared to VSMOW (Vienna Standard Mean Ocean Water).',NULL,NULL,'sample','decimal','woce_discrete',0,60.0);
-INSERT INTO "ex_params" VALUES('CCL4',28,'Carbon tetrachloride',NULL,NULL,'sample','decimal','woce_discrete',0,61.0);
+INSERT INTO "ex_params" VALUES('CCL4',28,'Dissolved carbon tetrachloride',NULL,NULL,'sample','decimal','woce_discrete',0,61.0);
 INSERT INTO "ex_params" VALUES('NI',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,62.0);
 INSERT INTO "ex_params" VALUES('ALUMIN',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,63.0);
 INSERT INTO "ex_params" VALUES('BARIUM',39,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,64.0);
@@ -5352,6 +5352,26 @@ INSERT INTO "ex_params" VALUES('CDOM555',NULL,'Attenuation coefficient of the sa
 INSERT INTO "ex_params" VALUES('DELSI30',NULL,'Enrichment of the 30Si/28Si isotopic ratio in silica relative to NBS28',NULL,NULL,'sample','decimal','woce_discrete',0,60.2);
 INSERT INTO "ex_params" VALUES('IMAGES',NULL,'Imaging; for example a FlowCam','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.4);
 INSERT INTO "ex_params" VALUES('VIRAL_ABUNDANCE',NULL,'Placeholder parameter for a viral abundance analysis','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.5);
+INSERT INTO "ex_params" VALUES('CTDOPTOXY',NULL,'In situ oxygen from an oxygen optode','This parameter was common when optodes were newer. Today this is often just reported as CTDOXY.',NULL,'sample','decimal','woce_ctd',0,23.1);
+INSERT INTO "ex_params" VALUES('CTDBETA700',NULL,'Volume scattering function at 700nm. Depends on scattering angle.
+
+
+Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of 
+chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB 
+on profiling floats. SOCCOM Tech. Rep. 2016-1. 
+https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-primer.pdf
+',NULL,'This paramter is the bacscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.1);
+INSERT INTO "ex_params" VALUES('CTDBBP700',NULL,'Volume scattering coefficient due to particles at 700nm.
+
+
+Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of 
+chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB 
+on profiling floats. SOCCOM Tech. Rep. 2016-1. 
+http://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-opticsprimer.pdf.
+',NULL,'This paramter is the bacscattering coefficient due to particles (Bbp) it is NOT the backscattering function called Beta','sample','decimal','woce_ctd',0,74.2);
+INSERT INTO "ex_params" VALUES('HCFC-141b',NULL,'The concentration of dissolved HCFC-141b in sea water. The chemical formula of HCFC-141b is C2H3Cl2F. The IUPAC name for HCFC-141b is 1,1-Dichloro-1-fluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.2);
+INSERT INTO "ex_params" VALUES('HCFC-142b',NULL,'The concentration of dissolved HCFC-142b in sea water. The chemical formula of HCFC-142b is  CH3CClF2. The IUPAC name for HCFC-142b is 1-Chloro-1,1-difluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.3);
+INSERT INTO "ex_params" VALUES('HCFC-22',NULL,'The concentration of dissolved HCFC-22 in sea water. The chemical formula of HCFC-22 is CHClF2. The IUPAC name for HCFC-22 is Chloro(difluoro)methane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.4);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5395,7 +5415,7 @@ INSERT INTO "ex_units" VALUES(31,'UMOL/L','umol l-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(32,'E8/L','1e8 l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(33,'E7/L','1e7 l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(34,'E6/L','1e6 l-1',NULL,'This is a "count" of things per volume');
-INSERT INTO "ex_units" VALUES(35,'UMOL/L/H','umol l-1 h-1',NULL,'This unit represents a rate');
+INSERT INTO "ex_units" VALUES(35,'PMOL/L/H','pmol l-1 h-1',NULL,'This unit represents a rate');
 INSERT INTO "ex_units" VALUES(36,'MMOL/KG','mmol kg-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(37,'KG/M^3','kg m-3',NULL,'density');
 INSERT INTO "ex_units" VALUES(38,'1E6 GELS/L','1e6 l-1',NULL,'This is a "count" of things per volume');
@@ -5406,6 +5426,8 @@ INSERT INTO "ex_units" VALUES(42,'FTU','1',NULL,'Formazin Turbidity Unit');
 INSERT INTO "ex_units" VALUES(43,'PPM','1e-6',NULL,NULL);
 INSERT INTO "ex_units" VALUES(44,'QSU','1',NULL,'Quinine Sulfate Unit, an equivalent equal to 1 ppb of quinine sulfate');
 INSERT INTO "ex_units" VALUES(45,'1/NM','1/nm',NULL,NULL);
+INSERT INTO "ex_units" VALUES(46,'M^-1/SR','m-1 sr-1',NULL,NULL);
+INSERT INTO "ex_units" VALUES(47,'PMOL/L','pmol/l',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5502,8 +5524,8 @@ INSERT INTO "whp_alias" VALUES('PAR','uE/M^2/S','PAR','UMOL/M^2/SEC');
 INSERT INTO "whp_alias" VALUES('CTDPAR','0-5VDC','PAR','VOLTS');
 INSERT INTO "whp_alias" VALUES('PAR','0-5VDC','PAR','VOLTS');
 INSERT INTO "whp_alias" VALUES('FLUOR','0-5VDC','CTDFLUOR','VOLTS');
-INSERT INTO "whp_alias" VALUES('FLUOR','UG/L''','CTDFLUOR','MG/M^3');
-INSERT INTO "whp_alias" VALUES('FLUORM','MG/M^3''','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('FLUOR','UG/L','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('FLUORM','MG/M^3','CTDFLUOR','MG/M^3');
 INSERT INTO "whp_alias" VALUES('GEOTRC_EVENT',NULL,'GEOTR_EVENT',NULL);
 INSERT INTO "whp_alias" VALUES('O2-AR',NULL,'O2/AR',NULL);
 INSERT INTO "whp_alias" VALUES('FLUOR','VOLTS','CTDFLUOR','VOLTS');
@@ -5549,6 +5571,24 @@ INSERT INTO "whp_alias" VALUES('CDOM490','1/M','CDOM490','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM555','1/M','CDOM555','/METER');
 INSERT INTO "whp_alias" VALUES('CTDPAR','VOLTS','PAR','VOLTS');
 INSERT INTO "whp_alias" VALUES('IMAGE_COUNT',NULL,'IMAGES',NULL);
+INSERT INTO "whp_alias" VALUES('CTDRINKO','VOLTS','CTDOPTOXY','VOLTS');
+INSERT INTO "whp_alias" VALUES('CTDRINKO','UMOL/KG','CTDOPTOXY','UMOL/KG');
+INSERT INTO "whp_alias" VALUES('OPTOXY','UMOL/KG','CTDOPTOXY','UMOL/KG');
+INSERT INTO "whp_alias" VALUES('CTDRINKO','0-5VDC','CTDOPTOXY','VOLTS');
+INSERT INTO "whp_alias" VALUES('CTDBBP700RAW','0-5VDC','CTDBETA700','VOLTS');
+INSERT INTO "whp_alias" VALUES('CTDFLBBFLUORRAW','0-5VDC','CTDFLUOR','VOLTS');
+INSERT INTO "whp_alias" VALUES('CTDXMISS','%','CTDXMISS','%TRANS');
+INSERT INTO "whp_alias" VALUES('CTDFLUOR','MG/M3','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('CTDPAR','UMOL/M^2/SEC','PAR','UMOL/M^2/SEC');
+INSERT INTO "whp_alias" VALUES('CTDFLUOR','UG/L','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('CTDBACKSCATTER','VOLTS','CTDBETA700','VOLTS');
+INSERT INTO "whp_alias" VALUES('PH_TMP','DEGC','PH_TMP','DEG C');
+INSERT INTO "whp_alias" VALUES('FLUOR','MG/K^3','CTDFLUOR','MG/M^3');
+INSERT INTO "whp_alias" VALUES('METHANE','NMOL/L','CH4','NMOL/L');
+INSERT INTO "whp_alias" VALUES('METHAN','NMOL/KG','CH4','NMOL/KG');
+INSERT INTO "whp_alias" VALUES('CHLA','UG/L','CHLORA','UG/L');
+INSERT INTO "whp_alias" VALUES('OXYNIT','NMOL/KG','N2O','NMOL/KG');
+INSERT INTO "whp_alias" VALUES('ARABA','NMOL/KG','ARABI','NMOL/KG');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5719,7 +5759,7 @@ INSERT INTO "whp_names" VALUES('SYN','E6/L',NULL,'synechococcus_cell_count',NULL
 INSERT INTO "whp_names" VALUES('PEUK','E6/L',NULL,'picoeukaryote_cell_counts',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PROC','E7/L',NULL,'prochlorophyte_cell_count',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('BLACKC','UMOL/L',NULL,'black_carbon',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('BRDU','UMOL/L/H',NULL,'brdu_uptake',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('BRDU','PMOL/L/H',NULL,'brdu_uptake',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CH3BR','PMOL/KG',NULL,'methyl_bromide',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CH3I','PMOL/KG',NULL,'methyl_iodide',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DCNS','NMOL/KG',NULL,'dcns',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
@@ -5797,4 +5837,14 @@ INSERT INTO "whp_names" VALUES('CDOM555','/METER','volume_beam_attenuation_coeff
 INSERT INTO "whp_names" VALUES('DELSI30','/MILLE',NULL,'delsi30',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('IMAGES',NULL,NULL,'image_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('VIRAL_ABUNDANCE',NULL,NULL,'viral_abundance_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDOPTOXY','VOLTS',NULL,'ctd_optode_oxygen_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDOPTOXY','UMOL/KG',NULL,'ctd_optode_oxygen',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA700','VOLTS',NULL,'ctd_beta700_raw',NULL,NULL,NULL,NULL,NULL,9,4,700.0,140.0,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA700','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta700',NULL,NULL,NULL,NULL,NULL,9,4,700.0,140.0,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBBP700','/METER',NULL,'ctd_bbp700',NULL,NULL,NULL,NULL,NULL,9,4,700.0,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CCL4','PMOL/L',NULL,'carbon_tetrachloride_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HCFC-141b','PMOL/KG',NULL,'dichlorofluoroethane',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HCFC-142b','PMOL/KG',NULL,'chlorodifluoroethane',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HCFC-22','PMOL/KG',NULL,'chlorodifluoromethane',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CH4','NMOL/L',NULL,'methane_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

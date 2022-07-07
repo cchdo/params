@@ -3,6 +3,16 @@ v0.1.18 (unreleased)
 
 Parameter Changes
 -----------------
+* Add CH4 [NMOL/L] as an alternate unit for methane
+* Add HCFC-22 [PMOL/KG] for Chlorodifluoromethane concentration
+* Add HCFC-142b [PMOL/KG] for 1-Chloro-1,1-difluoroethane concentration
+* Add HCFC-141b [PMOL/KG] for 1,1-Dichloro-1-fluoroethane concentration
+* Add CCL4 [PMOL/L] for Carbon tetrachloride concentration
+* Add CTDBBP700 [/METER] for the volume scattering coefficient due to particles at 700nm
+* Add CTDBETA700 [VOLTS] for the raw sensor voltages of a bacscatter sensor with a wavelength of 700nm
+* Add CTDBETA700 [M^-1/SR] for the volume scattering function at 700nm
+* Add CTDOPTOXY [UMOL/KG] for the indipendently reported optode oxygen
+* Add CTDOPTOXY [VOLTS] for the raw optode oxygen voltages
 * Add DELSI30 [/MILLE] for silicon isotopic enrichment
 * Add many CDOM wavelength parameters
 * Add CTDDEPTH [METERS] for the actual calcualted depth to the package (not the sea floor)

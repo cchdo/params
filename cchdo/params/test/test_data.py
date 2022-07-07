@@ -117,7 +117,8 @@ def test_db_dump_matches_files():
                 db_file.append(f"{line}\n")
     db_file = "".join(db_file)
     db_text = read_text("cchdo.params", "params.sqlite3.sql")
-    assert db_file == db_text
+    for db, text in zip(db_file.splitlines(), db_text.splitlines()):
+        assert db == text
 
 
 def test_db_fk_ok():
