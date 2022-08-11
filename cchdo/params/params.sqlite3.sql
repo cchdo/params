@@ -5212,7 +5212,7 @@ INSERT INTO "ex_params" VALUES('RA-228',18,NULL,'units are disintegrations per m
 INSERT INTO "ex_params" VALUES('CTDXMISS',NULL,NULL,NULL,NULL,'sample','decimal','woce_ctd',0,73.0);
 INSERT INTO "ex_params" VALUES('CTDBEAMCP',NULL,'Radiative flux is the sum of shortwave and longwave radiative fluxes. In accordance with common usage in geophysical disciplines, "flux" implies per unit area, called "flux density" in physics. The volume scattering/absorption/attenuation coefficient is the fractional change of radiative flux per unit path length due to the stated process. Coefficients with canonical units of m2 s-1 i.e. multiplied by density have standard names with specific\ _ instead of volume\ _. The scattering/absorption/attenuation coefficient is assumed to be an integral over all wavelengths, unless a coordinate of radiation_wavelength is included to specify the wavelength. Attenuation is the sum of absorption and scattering. Attenuation is sometimes called "extinction". Beam attenuation refers to the decrease of radiative flux along the direction of the incident path. It is distinguished from attenuation of the downwelling component of radiative flux from any incident direction, also called "diffuse" attenuation. Corrected for pure water attendance means the attenuation coefficient has been adjusted/calibrated to remove the influence of absorption/scattering from the water itself.',NULL,NULL,'sample','decimal','woce_ctd',0,74.0);
 INSERT INTO "ex_params" VALUES('AR-39',16,NULL,'The units mean ''% modern''',NULL,'sample','decimal','woce_discrete',0,75.0);
-INSERT INTO "ex_params" VALUES('CS-137',22,NULL,'units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,76.0);
+INSERT INTO "ex_params" VALUES('CS-137',22,'Activity of 137Cs in seawater','units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,76.0);
 INSERT INTO "ex_params" VALUES('KR-85',14,NULL,'units are disintegrations per minute per 1000kg',NULL,'sample','decimal','woce_discrete',0,77.0);
 INSERT INTO "ex_params" VALUES('SR-90',21,NULL,'units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,78.0);
 INSERT INTO "ex_params" VALUES('N2O',33,'Nitrous oxide',NULL,NULL,'sample','decimal','woce_discrete',0,79.0);
@@ -5372,6 +5372,9 @@ http://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-opticsp
 INSERT INTO "ex_params" VALUES('HCFC-141b',NULL,'The concentration of dissolved HCFC-141b in sea water. The chemical formula of HCFC-141b is C2H3Cl2F. The IUPAC name for HCFC-141b is 1,1-Dichloro-1-fluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.2);
 INSERT INTO "ex_params" VALUES('HCFC-142b',NULL,'The concentration of dissolved HCFC-142b in sea water. The chemical formula of HCFC-142b is  CH3CClF2. The IUPAC name for HCFC-142b is 1-Chloro-1,1-difluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.3);
 INSERT INTO "ex_params" VALUES('HCFC-22',NULL,'The concentration of dissolved HCFC-22 in sea water. The chemical formula of HCFC-22 is CHClF2. The IUPAC name for HCFC-22 is Chloro(difluoro)methane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.4);
+INSERT INTO "ex_params" VALUES('CS-134',NULL,'Activity of 134Cs in seawater',NULL,NULL,'sample','decimal','woce_discrete',0,76.1);
+INSERT INTO "ex_params" VALUES('LINE',NULL,'A transect line identifier, examples include CalCOFI Lines or an id assigned to the lines of a cruise doing grid type work',NULL,'Use the SECT_ID parameter for WOCE/GO-SHIP section ids','profile','string','no_flags',0,2.1);
+INSERT INTO "ex_params" VALUES('PH_NBS',26,'The measure of acidity of seawater on the NBS standard pH scale',NULL,NULL,'sample','decimal','woce_discrete',0,41.1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5428,6 +5431,7 @@ INSERT INTO "ex_units" VALUES(44,'QSU','1',NULL,'Quinine Sulfate Unit, an equiva
 INSERT INTO "ex_units" VALUES(45,'1/NM','1/nm',NULL,NULL);
 INSERT INTO "ex_units" VALUES(46,'M^-1/SR','m-1 sr-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(47,'PMOL/L','pmol/l',NULL,NULL);
+INSERT INTO "ex_units" VALUES(48,'MBQ/KG','mBq kg-1',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5589,6 +5593,10 @@ INSERT INTO "whp_alias" VALUES('METHAN','NMOL/KG','CH4','NMOL/KG');
 INSERT INTO "whp_alias" VALUES('CHLA','UG/L','CHLORA','UG/L');
 INSERT INTO "whp_alias" VALUES('OXYNIT','NMOL/KG','N2O','NMOL/KG');
 INSERT INTO "whp_alias" VALUES('ARABA','NMOL/KG','ARABI','NMOL/KG');
+INSERT INTO "whp_alias" VALUES('CS-137','BQ/CUM','CS-137','BQ/M^3');
+INSERT INTO "whp_alias" VALUES('CS-134','BQ/CUM','CS-134','BQ/M^3');
+INSERT INTO "whp_alias" VALUES('REVTMP','ITS90','REVTMP','ITS-90');
+INSERT INTO "whp_alias" VALUES('REVPRS','DBR','REVPRS','DBAR');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5687,7 +5695,7 @@ INSERT INTO "whp_names" VALUES('CTDFLUOR',NULL,NULL,'ctd_fluor_arbitrary',NULL,N
 INSERT INTO "whp_names" VALUES('PAR','UMOL/M^2/SEC','downwelling_photosynthetic_photon_flux_in_sea_water','par',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('I-129','BQ/M^3',NULL,'iodine_129',NULL,NULL,'I129ER',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('RA-226','DM/.1MG',NULL,'radium_226',3.0,80.0,'RA-226E',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('RA-228','DM/.1MG',NULL,'radium_228',-1.0,10.0,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('RA-228','DM/.1MG',NULL,'radium_228',-1.0,10.0,'RA-228E',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDXMISS','%TRANS',NULL,'ctd_transmissometer',0.0,100.0,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDXMISS','VOLTS',NULL,'ctd_transmissometer_raw',0.0,5.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDBEAMCP','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water_corrected_for_pure_water_attenuance','ctd_beamcp',NULL,NULL,NULL,NULL,NULL,9,4,650.0,NULL,NULL,NULL,NULL);
@@ -5847,4 +5855,9 @@ INSERT INTO "whp_names" VALUES('HCFC-141b','PMOL/KG',NULL,'dichlorofluoroethane'
 INSERT INTO "whp_names" VALUES('HCFC-142b','PMOL/KG',NULL,'chlorodifluoroethane',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('HCFC-22','PMOL/KG',NULL,'chlorodifluoromethane',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CH4','NMOL/L',NULL,'methane_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CS-137','MBQ/KG',NULL,'cesium_137_bq_kg',NULL,NULL,'CS137ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CS-134','BQ/M^3',NULL,'cesium_134_bq',NULL,NULL,'CS134ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CS-134','MBQ/KG',NULL,'cesium_134_bq_kg',NULL,NULL,'CS134ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('LINE',NULL,NULL,'line_id',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PH_NBS',NULL,NULL,'ph_nbs',NULL,NULL,NULL,'PH_TMP','DEG C',9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

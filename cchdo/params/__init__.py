@@ -317,7 +317,7 @@ class WHPName:
             return "9"
 
         # https://github.com/python/mypy/issues/5485
-        if self.data_type == str:  # type: ignore
+        if self.dtype == "string":
             if isinstance(value, date) or date_or_time == "date":
                 return f"{value:%Y%m%d}"
             if isinstance(value, time) or date_or_time == "time":
@@ -328,7 +328,7 @@ class WHPName:
                 return f"{'-999':{self.field_width}s}"
 
             return formatted
-        if self.data_type == int:  # type: ignore
+        if self.dtype == "integer":
             if isnan(value):
                 return f"{-999:{self.field_width}d}"
             return f"{int(value):{self.field_width}d}"

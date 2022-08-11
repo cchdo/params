@@ -3,7 +3,12 @@ v0.1.19 (unreleased)
 
 Parameter Changes
 -----------------
-None Yet
+* Add RA-228E as the error name for RA-228
+* Add CS-137 [MBQ/KG] for 137Cs activity in a mass sea water
+* Add CS-134 [MBQ/KG] for 134Cs activity in a mass sea water
+* Add CS-134 [MBQ/M^3] for 134Cs activity in a volume sea water
+* Add LINE for a line transect ID that is NOT a GO-SHIP/WOCE section (e.g. CalCOFI line number)
+* Add PH_NBS for pH reported on the NBS standard scale
 
 API Changes
 -----------
