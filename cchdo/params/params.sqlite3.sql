@@ -5204,12 +5204,12 @@ INSERT INTO "ex_params" VALUES('BARIUM',39,NULL,NULL,NULL,'sample','decimal','wo
 INSERT INTO "ex_params" VALUES('CU',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,65.0);
 INSERT INTO "ex_params" VALUES('FE',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,66.0);
 INSERT INTO "ex_params" VALUES('MN',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,67.0);
-INSERT INTO "ex_params" VALUES('CTDFLUOR',NULL,NULL,NULL,NULL,'sample','decimal','woce_ctd',0,68.0);
+INSERT INTO "ex_params" VALUES('CTDFLUOR',NULL,'In situ chlorophyll measured by a fluorometer',NULL,NULL,'sample','decimal','woce_ctd',0,68.0);
 INSERT INTO "ex_params" VALUES('PAR',NULL,'Photosynthetically active radiation. The downwelling photon flux of photons with a wavelength between 400nm and 700nm.',NULL,NULL,'sample','decimal','woce_ctd',0,69.0);
 INSERT INTO "ex_params" VALUES('I-129',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,70.0);
 INSERT INTO "ex_params" VALUES('RA-226',19,NULL,'units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,71.0);
 INSERT INTO "ex_params" VALUES('RA-228',18,NULL,'units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,72.0);
-INSERT INTO "ex_params" VALUES('CTDXMISS',NULL,NULL,NULL,NULL,'sample','decimal','woce_ctd',0,73.0);
+INSERT INTO "ex_params" VALUES('CTDXMISS',NULL,'Transmissivity of light in sea water, has path length and wavelength dependencies','Standard rosette mounted transmissometers have a path length of 25cm and operate in the "red" wavelengths of around 640 to 660nm. These wavelengths provide a good estimate of the attenuation due to particles.',NULL,'sample','decimal','woce_ctd',0,73.0);
 INSERT INTO "ex_params" VALUES('CTDBEAMCP',NULL,'Radiative flux is the sum of shortwave and longwave radiative fluxes. In accordance with common usage in geophysical disciplines, "flux" implies per unit area, called "flux density" in physics. The volume scattering/absorption/attenuation coefficient is the fractional change of radiative flux per unit path length due to the stated process. Coefficients with canonical units of m2 s-1 i.e. multiplied by density have standard names with specific\ _ instead of volume\ _. The scattering/absorption/attenuation coefficient is assumed to be an integral over all wavelengths, unless a coordinate of radiation_wavelength is included to specify the wavelength. Attenuation is the sum of absorption and scattering. Attenuation is sometimes called "extinction". Beam attenuation refers to the decrease of radiative flux along the direction of the incident path. It is distinguished from attenuation of the downwelling component of radiative flux from any incident direction, also called "diffuse" attenuation. Corrected for pure water attendance means the attenuation coefficient has been adjusted/calibrated to remove the influence of absorption/scattering from the water itself.',NULL,NULL,'sample','decimal','woce_ctd',0,74.0);
 INSERT INTO "ex_params" VALUES('AR-39',16,NULL,'The units mean ''% modern''',NULL,'sample','decimal','woce_discrete',0,75.0);
 INSERT INTO "ex_params" VALUES('CS-137',22,'Activity of 137Cs in seawater','units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,76.0);
@@ -5375,6 +5375,14 @@ INSERT INTO "ex_params" VALUES('HCFC-22',NULL,'The concentration of dissolved HC
 INSERT INTO "ex_params" VALUES('CS-134',NULL,'Activity of 134Cs in seawater',NULL,NULL,'sample','decimal','woce_discrete',0,76.1);
 INSERT INTO "ex_params" VALUES('LINE',NULL,'A transect line identifier, examples include CalCOFI Lines or an id assigned to the lines of a cruise doing grid type work',NULL,'Use the SECT_ID parameter for WOCE/GO-SHIP section ids','profile','string','no_flags',0,2.1);
 INSERT INTO "ex_params" VALUES('PH_NBS',26,'The measure of acidity of seawater on the NBS standard pH scale',NULL,NULL,'sample','decimal','woce_discrete',0,41.1);
+INSERT INTO "ex_params" VALUES('CYANB',NULL,'Count of cyanobacteria',NULL,NULL,'sample','decimal','woce_discrete',0,160.0);
+INSERT INTO "ex_params" VALUES('PHYTOP',NULL,'Count of phytoplankton',NULL,NULL,'sample','decimal','woce_discrete',0,161.0);
+INSERT INTO "ex_params" VALUES('DELD',NULL,'Enrichment of deuterium of the sea water itself compared to VSMOW',NULL,NULL,'sample','decimal','woce_discrete',0,60.1);
+INSERT INTO "ex_params" VALUES('BEAMAP',NULL,'Volume beam absorption in sea water',NULL,NULL,'sample','decimal','woce_discrete',0,74.1);
+INSERT INTO "ex_params" VALUES('LDEO_SAMPNO',NULL,'Sample number used internally by LDEO',NULL,NULL,'sample','integer','no_flags',0,1001.0);
+INSERT INTO "ex_params" VALUES('FDOM',NULL,'In lab measured Fluorescent dissolved organic matter',NULL,NULL,'sample','decimal','woce_discrete',0,44.1);
+INSERT INTO "ex_params" VALUES('CDOM300',NULL,'Attenuation coefficient of the sample at 300nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.001);
+INSERT INTO "ex_params" VALUES('RIANOMALY',NULL,'Refractive indxe anomanly from pure water. Typically reported at the sodium D lines of 589.6 nm and 589.0nm',NULL,NULL,'sample','decimal','woce_discrete',0,21.1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5432,6 +5440,9 @@ INSERT INTO "ex_units" VALUES(45,'1/NM','1/nm',NULL,NULL);
 INSERT INTO "ex_units" VALUES(46,'M^-1/SR','m-1 sr-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(47,'PMOL/L','pmol/l',NULL,NULL);
 INSERT INTO "ex_units" VALUES(48,'MBQ/KG','mBq kg-1',NULL,NULL);
+INSERT INTO "ex_units" VALUES(49,'1/ML','ml-1',NULL,'Count of something per volume');
+INSERT INTO "ex_units" VALUES(50,'RFU','1',NULL,'relative fluorescence unit');
+INSERT INTO "ex_units" VALUES(51,'ND','1',NULL,'refractive index at the sodium D lines');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5597,6 +5608,22 @@ INSERT INTO "whp_alias" VALUES('CS-137','BQ/CUM','CS-137','BQ/M^3');
 INSERT INTO "whp_alias" VALUES('CS-134','BQ/CUM','CS-134','BQ/M^3');
 INSERT INTO "whp_alias" VALUES('REVTMP','ITS90','REVTMP','ITS-90');
 INSERT INTO "whp_alias" VALUES('REVPRS','DBR','REVPRS','DBAR');
+INSERT INTO "whp_alias" VALUES('CTDBACKSCATTER','0-5VDC','CTDBETA700','VOLTS');
+INSERT INTO "whp_alias" VALUES('Trans_Red_25cm','%','CTDXMISS','%TRANS');
+INSERT INTO "whp_alias" VALUES('Trans_Red_25cm','PERCNT','CTDXMISS','%TRANS');
+INSERT INTO "whp_alias" VALUES('Atten_red','/M','CTDBEAMCP','/METER');
+INSERT INTO "whp_alias" VALUES('FLUORM','0-5VDC','CTDFLUOR','VOLTS');
+INSERT INTO "whp_alias" VALUES('THETA','its-90','THETA','ITS-90');
+INSERT INTO "whp_alias" VALUES('CTDTMP','IPS-90','CTDTMP','ITS-90');
+INSERT INTO "whp_alias" VALUES('CTDTMP','IST-90','CTDTMP','ITS-90');
+INSERT INTO "whp_alias" VALUES('CTDTMP','ITP-90','CTDTMP','ITS-90');
+INSERT INTO "whp_alias" VALUES('PHYTOP','NB/ML','PHYTOP','1/ML');
+INSERT INTO "whp_alias" VALUES('CYANB','NB/ML','CYANB','1/ML');
+INSERT INTO "whp_alias" VALUES('ABSORBTION',NULL,'BEAMAP','/METER');
+INSERT INTO "whp_alias" VALUES('CYTO_COUNT',NULL,'FCM',NULL);
+INSERT INTO "whp_alias" VALUES('CDOM-300','/METER','CDOM300','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM-325','/METER','CDOM325','/METER');
+INSERT INTO "whp_alias" VALUES('CDOM-443','/METER','CDOM443','/METER');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5644,7 +5671,7 @@ INSERT INTO "whp_names" VALUES('CTDOXY','UMOL/KG','moles_of_oxygen_per_unit_mass
 INSERT INTO "whp_names" VALUES('CTDOXY','ML/L','volume_fraction_of_oxygen_in_sea_water','ctd_oxygen_ml_l',0.0,500.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('OXYGEN','UMOL/KG','moles_of_oxygen_per_unit_mass_in_sea_water','oxygen',0.0,500.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SILCAT','UMOL/KG','moles_of_silicate_per_unit_mass_in_sea_water','silicate',0.0,250.0,'SILUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('NH4','UMOL/KG',NULL,'ammonium',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('NH4','UMOL/KG',NULL,'ammonium',NULL,NULL,'NH4UNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRAT','UMOL/KG','moles_of_nitrate_per_unit_mass_in_sea_water','nitrate',-0.1,47.0,'NRAUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRIT','UMOL/KG','moles_of_nitrite_per_unit_mass_in_sea_water','nitrite',-0.1,15.0,'NRIUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PHSPHT','UMOL/KG','moles_of_phosphate_per_unit_mass_in_sea_water','phosphate',0.0,5.0,'PHPUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
@@ -5860,4 +5887,12 @@ INSERT INTO "whp_names" VALUES('CS-134','BQ/M^3',NULL,'cesium_134_bq',NULL,NULL,
 INSERT INTO "whp_names" VALUES('CS-134','MBQ/KG',NULL,'cesium_134_bq_kg',NULL,NULL,'CS134ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('LINE',NULL,NULL,'line_id',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PH_NBS',NULL,NULL,'ph_nbs',NULL,NULL,NULL,'PH_TMP','DEG C',9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PHYTOP','1/ML',NULL,'phytoplankton_cell_count',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CYANB','1/ML',NULL,'cyanobacteria_cell_count',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DELD','/MILLE',NULL,'del_deuterium',NULL,NULL,'DELDERR',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('BEAMAP','/METER','volume_absorption_coefficient_of_radiative_flux_in_sea_water','beamap',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('LDEO_SAMPNO',NULL,NULL,'ldeo_sample_number',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('FDOM','RFU',NULL,'fdom',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM300','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom300',NULL,NULL,NULL,NULL,NULL,9,4,300.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('RIANOMALY','ND',NULL,'refractive_index_anomaly',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

@@ -9,6 +9,16 @@ Parameter Changes
 * Add CS-134 [MBQ/M^3] for 134Cs activity in a volume sea water
 * Add LINE for a line transect ID that is NOT a GO-SHIP/WOCE section (e.g. CalCOFI line number)
 * Add PH_NBS for pH reported on the NBS standard scale
+* Add NH4UNC as the error name for NH4
+* Add PHYTOP [1/ML] for phytoplankton cell count
+* Add CYANB [1/ML] for cyanobacteria cell count
+* Add DELD [/MILLE] for enrichment of deuterium of the seawater itself
+* Add BEAMAP [/METER] for the volumne absorption coefficient in a discrete sample
+* Add LDEO_SAMPNO for ids used at LEDO
+* add FDOM [RFU] for fluroescent dissolved organic matter in discrete samples
+* Add CDOM300 [/METER] for the attenuation coefficient at 300nm
+* Add RIANOMALY [ND] for the refractive index anomaly from pure water at the sodium D line
+
 
 API Changes
 -----------
