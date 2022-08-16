@@ -5384,6 +5384,22 @@ INSERT INTO "ex_params" VALUES('FDOM',NULL,'In lab measured Fluorescent dissolve
 INSERT INTO "ex_params" VALUES('CDOM300',NULL,'Attenuation coefficient of the sample at 300nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.001);
 INSERT INTO "ex_params" VALUES('RIANOMALY',NULL,'Refractive indxe anomanly from pure water. Typically reported at the sodium D lines of 589.6 nm and 589.0nm',NULL,NULL,'sample','decimal','woce_discrete',0,21.1);
 INSERT INTO "ex_params" VALUES('DELN15',NULL,'Enrichment of the N15/N14 isotopic ratio when compared to the atmosphere',NULL,NULL,'sample','decimal','woce_discrete',0,60.3);
+INSERT INTO "ex_params" VALUES('BNLID',NULL,'Brookhaven National Laboratory Identification bottle number',NULL,NULL,'sample','integer','no_flags',0,1002.0);
+INSERT INTO "ex_params" VALUES('HE3_HE4_RATIO',NULL,'Ratio of the stable isotopes of Helium-3 to Helium-4 that are dissolved in seawater',NULL,NULL,'sample','decimal','woce_discrete',0,900.0);
+INSERT INTO "ex_params" VALUES('Nd_143_D_EPSILON_BOTTLE',NULL,'Atom ratio of dissolved Nd isotopes expressed in conventional notation','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.0);
+INSERT INTO "ex_params" VALUES('La_D_CONC_BOTTLE',NULL,'Dissolved Lanthanum in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,902.0);
+INSERT INTO "ex_params" VALUES('Ce_D_CONC_BOTTLE',NULL,'Dissolved Cerium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,903.0);
+INSERT INTO "ex_params" VALUES('Pr_D_CONC_BOTTLE',NULL,'Dissolved Praseodymium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,904.0);
+INSERT INTO "ex_params" VALUES('Sm_D_CONC_BOTTLE',NULL,'Dissolved Samarium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,905.0);
+INSERT INTO "ex_params" VALUES('Eu_D_CONC_BOTTLE',NULL,'Dissolved Europium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,906.0);
+INSERT INTO "ex_params" VALUES('Gd_D_CONC_BOTTLE',NULL,'Dissolved Gadolinium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,907.0);
+INSERT INTO "ex_params" VALUES('Tb_D_CONC_BOTTLE',NULL,'Dissolved Terbium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,908.0);
+INSERT INTO "ex_params" VALUES('Dy_D_CONC_BOTTLE',NULL,'Dissolved Dysprosium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,909.0);
+INSERT INTO "ex_params" VALUES('Ho_D_CONC_BOTTLE',NULL,'Dissolved Holmium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,910.0);
+INSERT INTO "ex_params" VALUES('Er_D_CONC_BOTTLE',NULL,'Dissolved Erbium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,911.0);
+INSERT INTO "ex_params" VALUES('Tm_D_CONC_BOTTLE',NULL,'Dissolved Thulium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,912.0);
+INSERT INTO "ex_params" VALUES('Yb_D_CONC_BOTTLE',NULL,'Dissolved Ytterbium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,913.0);
+INSERT INTO "ex_params" VALUES('Lu_D_CONC_BOTTLE',NULL,'Dissovled Lutetium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,914.0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5444,6 +5460,7 @@ INSERT INTO "ex_units" VALUES(48,'MBQ/KG','mBq kg-1',NULL,NULL);
 INSERT INTO "ex_units" VALUES(49,'1/ML','ml-1',NULL,'Count of something per volume');
 INSERT INTO "ex_units" VALUES(50,'RFU','1',NULL,'relative fluorescence unit');
 INSERT INTO "ex_units" VALUES(51,'ND','1',NULL,'refractive index at the sodium D lines');
+INSERT INTO "ex_units" VALUES(52,'10000','1e4',NULL,'used for isotopic enrichment in epislon notation');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5626,6 +5643,7 @@ INSERT INTO "whp_alias" VALUES('CDOM-300','/METER','CDOM300','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM-325','/METER','CDOM325','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM-443','/METER','CDOM443','/METER');
 INSERT INTO "whp_alias" VALUES('DELN15','O/OO','DELN15','/MILLE');
+INSERT INTO "whp_alias" VALUES('BARIUM','nM/L','BARIUM','NMOL/L');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5898,4 +5916,24 @@ INSERT INTO "whp_names" VALUES('FDOM','RFU',NULL,'fdom',NULL,NULL,NULL,NULL,NULL
 INSERT INTO "whp_names" VALUES('CDOM300','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom300',NULL,NULL,NULL,NULL,NULL,9,4,300.0,NULL,NULL,NULL,'cdom');
 INSERT INTO "whp_names" VALUES('RIANOMALY','ND',NULL,'refractive_index_anomaly',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DELN15','/MILLE',NULL,'del_nitrogen_15',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('BNLID',NULL,NULL,'bnlid',NULL,NULL,NULL,NULL,NULL,11,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('BARIUM','NMOL/L',NULL,'barium_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HELIUM','NMOL/L',NULL,'helium_l',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('NEON','NMOL/L',NULL,'neon_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('ARGON','UMOL/L',NULL,'argon_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HE3_HE4_RATIO',NULL,NULL,'he3_he4_ratio',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Nd_143_D_EPSILON_BOTTLE','10000',NULL,'nd_143_d_epsilon_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('La_D_CONC_BOTTLE','PMOL/L',NULL,'la_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Ce_D_CONC_BOTTLE','PMOL/L',NULL,'ce_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Pr_D_CONC_BOTTLE','PMOL/L',NULL,'pr_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Sm_D_CONC_BOTTLE','PMOL/L',NULL,'sm_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Eu_D_CONC_BOTTLE','PMOL/L',NULL,'eu_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Gd_D_CONC_BOTTLE','PMOL/L',NULL,'gd_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Tb_D_CONC_BOTTLE','PMOL/L',NULL,'tb_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Dy_D_CONC_BOTTLE','PMOL/L',NULL,'dy_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Ho_D_CONC_BOTTLE','PMOL/L',NULL,'ho_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Er_D_CONC_BOTTLE','PMOL/L',NULL,'er_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Tm_D_CONC_BOTTLE','PMOL/L',NULL,'tm_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Yb_D_CONC_BOTTLE','PMOL/L',NULL,'yb_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Lu_D_CONC_BOTTLE','PMOL/L',NULL,'lu_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

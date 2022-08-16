@@ -20,6 +20,23 @@ Parameter Changes
 * Add RIANOMALY [ND] for the refractive index anomaly from pure water at the sodium D line
 * Add DELN15 [/MILLE] for enrichment of 15N/14N as compared to the atmosphere
   * Added DELN15 [O/OO] as an alias for this
+* Add BNLID for Brookhaven National Laboratory Identification bottle number
+* Add NMOL/L as a unit for BARIUM
+  * Add nM/L as an alias for this
+* Add some rare earth element params using GEOTRACES naming conventions:
+ * Ce_D_CONC_BOTTLE [PMOL/L]
+ * Dy_D_CONC_BOTTLE [PMOL/L]
+ * Er_D_CONC_BOTTLE [PMOL/L]
+ * Eu_D_CONC_BOTTLE [PMOL/L]
+ * Gd_D_CONC_BOTTLE [PMOL/L]
+ * Ho_D_CONC_BOTTLE [PMOL/L]
+ * La_D_CONC_BOTTLE [PMOL/L]
+ * Lu_D_CONC_BOTTLE [PMOL/L]
+ * Pr_D_CONC_BOTTLE [PMOL/L]
+ * Sm_D_CONC_BOTTLE [PMOL/L]
+ * Tb_D_CONC_BOTTLE [PMOL/L]
+ * Tm_D_CONC_BOTTLE [PMOL/L]
+ * Yb_D_CONC_BOTTLE [PMOL/L]
 
 
 API Changes
