@@ -5383,6 +5383,7 @@ INSERT INTO "ex_params" VALUES('LDEO_SAMPNO',NULL,'Sample number used internally
 INSERT INTO "ex_params" VALUES('FDOM',NULL,'In lab measured Fluorescent dissolved organic matter',NULL,NULL,'sample','decimal','woce_discrete',0,44.1);
 INSERT INTO "ex_params" VALUES('CDOM300',NULL,'Attenuation coefficient of the sample at 300nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.001);
 INSERT INTO "ex_params" VALUES('RIANOMALY',NULL,'Refractive indxe anomanly from pure water. Typically reported at the sodium D lines of 589.6 nm and 589.0nm',NULL,NULL,'sample','decimal','woce_discrete',0,21.1);
+INSERT INTO "ex_params" VALUES('DELN15',NULL,'Enrichment of the N15/N14 isotopic ratio when compared to the atmosphere',NULL,NULL,'sample','decimal','woce_discrete',0,60.3);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5624,6 +5625,7 @@ INSERT INTO "whp_alias" VALUES('CYTO_COUNT',NULL,'FCM',NULL);
 INSERT INTO "whp_alias" VALUES('CDOM-300','/METER','CDOM300','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM-325','/METER','CDOM325','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM-443','/METER','CDOM443','/METER');
+INSERT INTO "whp_alias" VALUES('DELN15','O/OO','DELN15','/MILLE');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5895,4 +5897,5 @@ INSERT INTO "whp_names" VALUES('LDEO_SAMPNO',NULL,NULL,'ldeo_sample_number',NULL
 INSERT INTO "whp_names" VALUES('FDOM','RFU',NULL,'fdom',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM300','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom300',NULL,NULL,NULL,NULL,NULL,9,4,300.0,NULL,NULL,NULL,'cdom');
 INSERT INTO "whp_names" VALUES('RIANOMALY','ND',NULL,'refractive_index_anomaly',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DELN15','/MILLE',NULL,'del_nitrogen_15',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

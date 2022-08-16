@@ -18,6 +18,8 @@ Parameter Changes
 * add FDOM [RFU] for fluroescent dissolved organic matter in discrete samples
 * Add CDOM300 [/METER] for the attenuation coefficient at 300nm
 * Add RIANOMALY [ND] for the refractive index anomaly from pure water at the sodium D line
+* Add DELN15 [/MILLE] for enrichment of 15N/14N as compared to the atmosphere
+  * Added DELN15 [O/OO] as an alias for this
 
 
 API Changes

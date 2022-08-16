@@ -7059,6 +7059,34 @@ excitation_wavelength=None,
 emission_wavelength=None,
 nc_group=None,
 ),
+WHPNameDC(
+whp_name='DELN15',
+dtype='decimal',
+whp_unit='/MILLE',
+nc_name='del_nitrogen_15',
+flag_w='woce_discrete',
+cf_name=None,
+numeric_min=None,
+numeric_max=None,
+numeric_precision=2,
+field_width=9,
+description='Enrichment of the N15/N14 isotopic ratio when compared to the atmosphere',
+note=None,
+warning=None,
+error_name=None,
+cf_unit='1e-3',
+reference_scale=None,
+whp_number=None,
+scope='sample',
+analytical_temperature_name=None,
+analytical_temperature_units=None,
+rank=60.3,
+radiation_wavelength=None,
+scattering_angle=None,
+excitation_wavelength=None,
+emission_wavelength=None,
+nc_group=None,
+),
 ]
 for name in names:
     whp_names[name.key] = name
@@ -7235,3 +7263,4 @@ whp_names[('CYTO_COUNT', None)] = whp_names[('FCM', None)]
 whp_names[('CDOM-300', '/METER')] = whp_names[('CDOM300', '/METER')]
 whp_names[('CDOM-325', '/METER')] = whp_names[('CDOM325', '/METER')]
 whp_names[('CDOM-443', '/METER')] = whp_names[('CDOM443', '/METER')]
+whp_names[('DELN15', 'O/OO')] = whp_names[('DELN15', '/MILLE')]
