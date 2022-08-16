@@ -38,6 +38,16 @@ Parameter Changes
  * Tm_D_CONC_BOTTLE [PMOL/L]
  * Yb_D_CONC_BOTTLE [PMOL/L]
 
+* add UMOL/L as a valid unit for PON
+* add PON [UMOL/L] for particulate organic nitrogen
+* Add DOP [UMOL/KG] for dissolved organic phosphate
+* Add TDP [UMOL/L] for total dissolved phosphate
+* add POP [UMOL/L] for particualte organic phosphate
+* add DATP [PMOL/L] for dissolved ATP
+* add PATP [PMOL/L] for dissolved ATP
+* add CELLCOUNT [/L] for a count of all the (living) cells of a sample
+* Add DOC_NASA [UMOL/L] for DOC measured by the anciallary NASA group
+
 
 API Changes
 -----------

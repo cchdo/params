@@ -5165,7 +5165,7 @@ INSERT INTO "ex_params" VALUES('SILCAT',3,'The concentration of dissolved silica
 INSERT INTO "ex_params" VALUES('NH4',30,'The concentration of dissolved ammonium in sea water.',NULL,NULL,'sample','decimal','woce_discrete',0,26.0);
 INSERT INTO "ex_params" VALUES('NITRAT',4,'The concentration of dissolved nitrate in sea water. The chemical formula for the nitrate anion is NO3-.',NULL,NULL,'sample','decimal','woce_discrete',0,27.0);
 INSERT INTO "ex_params" VALUES('NITRIT',5,'The concentration of dissolved nitrite in sea water. The chemical formula for the nitrite anion is NO2-.',NULL,NULL,'sample','decimal','woce_discrete',0,28.0);
-INSERT INTO "ex_params" VALUES('PHSPHT',6,'The concentration of dissolved phosphate in sea water. The chemical formula for the nitrite anion is NO2-.',NULL,NULL,'sample','decimal','woce_discrete',0,29.0);
+INSERT INTO "ex_params" VALUES('PHSPHT',6,'The concentration of dissolved phosphate in sea water. The chemical formula for the phosphate anion is PO4.',NULL,NULL,'sample','decimal','woce_discrete',0,29.0);
 INSERT INTO "ex_params" VALUES('NO2+NO3',NULL,'The concentration of dissolved nitrate plus nitrite in sea water. The chemical formula for the nitrite anion is NO2-.','Most modern techniques for determining dissolved nitrate return a value of nitrate (NO3) plus nitrite (NO2). A separate determination is then done for nitrite and the result subtracted by the data originator to obtain nitrate. If no separate nitrite determination was carried out - or in rare cases the nitrite number was not subtracted - data providers should list the result as NO2+NO3. Because nitrite values are in most regions small compared to nitrate, most data users will not adversely affect their results by relabeling NO2+NO3 as NITRAT.',NULL,'sample','decimal','woce_discrete',0,30.0);
 INSERT INTO "ex_params" VALUES('CFC-11',7,'The concentration of dissolved CFC11 in sea water. The chemical formula of CFC11 is CFCl3. The IUPAC name for CFC11 is trichloro(fluoro)methane.',NULL,NULL,'sample','decimal','woce_discrete',0,31.0);
 INSERT INTO "ex_params" VALUES('CFC-12',8,'The concentration of dissolved CFC12 in sea water. The chemical formula for CFC12 is CF2Cl2. The IUPAC name for CFC12 is dichloro(difluoro)methane.',NULL,NULL,'sample','decimal','woce_discrete',0,32.0);
@@ -5400,6 +5400,12 @@ INSERT INTO "ex_params" VALUES('Er_D_CONC_BOTTLE',NULL,'Dissolved Erbium in a di
 INSERT INTO "ex_params" VALUES('Tm_D_CONC_BOTTLE',NULL,'Dissolved Thulium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,912.0);
 INSERT INTO "ex_params" VALUES('Yb_D_CONC_BOTTLE',NULL,'Dissolved Ytterbium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,913.0);
 INSERT INTO "ex_params" VALUES('Lu_D_CONC_BOTTLE',NULL,'Dissovled Lutetium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,914.0);
+INSERT INTO "ex_params" VALUES('DOP',NULL,'Dissolved organic phosphorus',NULL,NULL,'sample','decimal','woce_discrete',0,56.2);
+INSERT INTO "ex_params" VALUES('CELLCOUNT',NULL,'Count of all organic cells in a discerete sample',NULL,NULL,'sample','decimal','woce_discrete',0,133.1);
+INSERT INTO "ex_params" VALUES('TDP',NULL,'Total dissolved phosphorus, includes organic and inorganic',NULL,NULL,'sample','decimal','woce_discrete',0,56.2);
+INSERT INTO "ex_params" VALUES('DATP',NULL,'Dissovled adenosine triphosphate',NULL,NULL,'sample','decimal','woce_discrete',0,56.3);
+INSERT INTO "ex_params" VALUES('PATP',NULL,'particulate adenosine triphosphate',NULL,NULL,'sample','decimal','woce_discrete',0,56.4);
+INSERT INTO "ex_params" VALUES('DOC_NASA',NULL,'Disolved organic carbon as measured by the NASA group and not the normal GO-SHIP one',NULL,NULL,'sample','decimal','woce_discrete',0,44.1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5461,6 +5467,7 @@ INSERT INTO "ex_units" VALUES(49,'1/ML','ml-1',NULL,'Count of something per volu
 INSERT INTO "ex_units" VALUES(50,'RFU','1',NULL,'relative fluorescence unit');
 INSERT INTO "ex_units" VALUES(51,'ND','1',NULL,'refractive index at the sodium D lines');
 INSERT INTO "ex_units" VALUES(52,'10000','1e4',NULL,'used for isotopic enrichment in epislon notation');
+INSERT INTO "ex_units" VALUES(53,'/L','l-1',NULL,'This is a "count" of things per volume');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5644,6 +5651,7 @@ INSERT INTO "whp_alias" VALUES('CDOM-325','/METER','CDOM325','/METER');
 INSERT INTO "whp_alias" VALUES('CDOM-443','/METER','CDOM443','/METER');
 INSERT INTO "whp_alias" VALUES('DELN15','O/OO','DELN15','/MILLE');
 INSERT INTO "whp_alias" VALUES('BARIUM','nM/L','BARIUM','NMOL/L');
+INSERT INTO "whp_alias" VALUES('CELLCOUNT','/LITER','CELLCOUNT','/L');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5936,4 +5944,12 @@ INSERT INTO "whp_names" VALUES('Er_D_CONC_BOTTLE','PMOL/L',NULL,'er_d_conc_bottl
 INSERT INTO "whp_names" VALUES('Tm_D_CONC_BOTTLE','PMOL/L',NULL,'tm_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Yb_D_CONC_BOTTLE','PMOL/L',NULL,'yb_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Lu_D_CONC_BOTTLE','PMOL/L',NULL,'lu_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PON','UMOL/L',NULL,'particulate_organic_nitrogen_mol',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DOP','UMOL/KG',NULL,'dissolved_organic_phosphorus',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('TDP','UMOL/L',NULL,'total_dissolved_phosphorus_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('POP','UMOL/L',NULL,'particulate_organic_phosphorus',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DATP','PMOL/L',NULL,'dissolved_atp',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PATP','PMOL/L',NULL,'particulate_atp',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CELLCOUNT','/L',NULL,'cellcount',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DOC_NASA','UMOL/L',NULL,'dissolved_organic_carbon_nasa',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
