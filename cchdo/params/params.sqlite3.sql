@@ -5406,6 +5406,9 @@ INSERT INTO "ex_params" VALUES('TDP',NULL,'Total dissolved phosphorus, includes 
 INSERT INTO "ex_params" VALUES('DATP',NULL,'Dissovled adenosine triphosphate',NULL,NULL,'sample','decimal','woce_discrete',0,56.3);
 INSERT INTO "ex_params" VALUES('PATP',NULL,'particulate adenosine triphosphate',NULL,NULL,'sample','decimal','woce_discrete',0,56.4);
 INSERT INTO "ex_params" VALUES('DOC_NASA',NULL,'Disolved organic carbon as measured by the NASA group and not the normal GO-SHIP one',NULL,NULL,'sample','decimal','woce_discrete',0,44.1);
+INSERT INTO "ex_params" VALUES('ANTH',NULL,'HPLC Antheraxanthin',NULL,NULL,'sample','decimal','woce_discrete',0,103.1);
+INSERT INTO "ex_params" VALUES('CHL_C2',NULL,'HPLC Chlorophyll c2',NULL,NULL,'sample','decimal','woce_discrete',0,114.1);
+INSERT INTO "ex_params" VALUES('SPAR',NULL,'Surfance reference for PAR, usually mounted on the top of the ship with a shield to block upwelling light. The downwelling photon flux of photons with a wavelength between 400nm and 700nm.',NULL,NULL,'sample','decimal','woce_ctd',0,69.1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5652,6 +5655,7 @@ INSERT INTO "whp_alias" VALUES('CDOM-443','/METER','CDOM443','/METER');
 INSERT INTO "whp_alias" VALUES('DELN15','O/OO','DELN15','/MILLE');
 INSERT INTO "whp_alias" VALUES('BARIUM','nM/L','BARIUM','NMOL/L');
 INSERT INTO "whp_alias" VALUES('CELLCOUNT','/LITER','CELLCOUNT','/L');
+INSERT INTO "whp_alias" VALUES('CHL_B','MG/M^3','TOT_CHL_B','MG/M^3');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5952,4 +5956,7 @@ INSERT INTO "whp_names" VALUES('DATP','PMOL/L',NULL,'dissolved_atp',NULL,NULL,NU
 INSERT INTO "whp_names" VALUES('PATP','PMOL/L',NULL,'particulate_atp',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CELLCOUNT','/L',NULL,'cellcount',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DOC_NASA','UMOL/L',NULL,'dissolved_organic_carbon_nasa',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('ANTH','MG/M^3',NULL,'hpld_antheraxanthin',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CHL_C2','MG/M^3',NULL,'hplc_chlorophyll_c2',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SPAR','VOLTS',NULL,'spar_raw',0.0,5.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

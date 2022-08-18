@@ -47,6 +47,9 @@ Parameter Changes
 * add PATP [PMOL/L] for dissolved ATP
 * add CELLCOUNT [/L] for a count of all the (living) cells of a sample
 * Add DOC_NASA [UMOL/L] for DOC measured by the anciallary NASA group
+* Add ANTH [MG/M^3] for antheraxanthin measured with HPLC
+* Add CHL_C2 [MG/M^3] for chlorophyll c2 measured with HPLC
+* Add SPAR [VOLTS] for raw surface reference PAR
 
 
 API Changes
