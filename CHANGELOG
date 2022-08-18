@@ -59,6 +59,7 @@ Parameter Changes
 * Add D15N_PON [/MILLE] for isotopic enrichments of 15N in PON
 * Add D18O_NO2 [/MILLE] for isotopic enrichments of 18O in NO2
 * Add D18O_N2O [/MILLE] for isotopic enrichments of 18O in N2O
+* Add [PMOL/L] as allowed units for CFC-11, CFC-12, and CFC113
 
 API Changes
 -----------

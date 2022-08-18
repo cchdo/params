@@ -5419,6 +5419,8 @@ INSERT INTO "ex_params" VALUES('D13C_POC',NULL,'Enrichment of :sup:`13`\ C vs :s
 INSERT INTO "ex_params" VALUES('UPTAKE',NULL,'Measures of uptake in incubation experiments','This is a placeholder parameter which indicates water collected from a bottle for analysis','','sample','string','woce_discrete',0,154.1);
 INSERT INTO "ex_params" VALUES('ABUNDANCE',NULL,'Placeholder for cell counts of species','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.2);
 INSERT INTO "ex_params" VALUES('QUOTA',NULL,'Placehodler for cell-quota model measurements','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.3);
+INSERT INTO "ex_params" VALUES('CDOM2C',NULL,'CDOM2 (carbohydrate and neutral sugar) charicterization','So far CCHDO doesn''t have any data or references on how these data are report, they might go to NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,69.95);
+INSERT INTO "ex_params" VALUES('CDOM3C',NULL,'CDOM3 (photolysis) charicterization','So far CCHDO doesn''t have any data or references on how these data are report, they might go to NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,69.96);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5980,4 +5982,9 @@ INSERT INTO "whp_names" VALUES('D13C_POC','/MILLE',NULL,'d13c_poc',NULL,NULL,NUL
 INSERT INTO "whp_names" VALUES('UPTAKE',NULL,NULL,'update_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('ABUNDANCE',NULL,NULL,'abundance_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('QUOTA',NULL,NULL,'quota_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM2C',NULL,NULL,'cdom2c',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM3C',NULL,NULL,'cdom3c',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CFC-11','PMOL/L',NULL,'cfc_11_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CFC-12','PMOL/L',NULL,'cfc_12_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CFC113','PMOL/L',NULL,'cfc_113_',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
