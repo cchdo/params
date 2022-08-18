@@ -5231,7 +5231,7 @@ INSERT INTO "ex_params" VALUES('N2',NULL,'Dissolved elemental nitrogen gas (N2) 
 INSERT INTO "ex_params" VALUES('CALCIUM',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,92.0);
 INSERT INTO "ex_params" VALUES('ARGON',15,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,93.0);
 INSERT INTO "ex_params" VALUES('14C-DOC',NULL,'Enrichment of :sup:`14`\ C vs :sup:`12`\ C in DOC compared to a reference standard usually VPDB. This ratio has been corrected for isotopic fractionation and is usually written as upper case delta Δ\ :sup:`14`\ C.',NULL,NULL,'sample','decimal','woce_discrete',0,94.0);
-INSERT INTO "ex_params" VALUES('D15N_NO3',NULL,NULL,NULL,NULL,'sample','decimal','woce_discrete',0,95.0);
+INSERT INTO "ex_params" VALUES('D15N_NO3',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved nitrate',NULL,NULL,'sample','decimal','woce_discrete',0,95.0);
 INSERT INTO "ex_params" VALUES('UREA',NULL,'Urea has the chemical formula CO(NH\ :sub:`2`)\ :sub:`2`',NULL,NULL,'sample','decimal','woce_discrete',0,96.0);
 INSERT INTO "ex_params" VALUES('TOT_CHL_A',NULL,'Total chlorophyll a measured using HPLC
 
@@ -5409,6 +5409,16 @@ INSERT INTO "ex_params" VALUES('DOC_NASA',NULL,'Disolved organic carbon as measu
 INSERT INTO "ex_params" VALUES('ANTH',NULL,'HPLC Antheraxanthin',NULL,NULL,'sample','decimal','woce_discrete',0,103.1);
 INSERT INTO "ex_params" VALUES('CHL_C2',NULL,'HPLC Chlorophyll c2',NULL,NULL,'sample','decimal','woce_discrete',0,114.1);
 INSERT INTO "ex_params" VALUES('SPAR',NULL,'Surfance reference for PAR, usually mounted on the top of the ship with a shield to block upwelling light. The downwelling photon flux of photons with a wavelength between 400nm and 700nm.',NULL,NULL,'sample','decimal','woce_ctd',0,69.1);
+INSERT INTO "ex_params" VALUES('D15N_NO2',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved nitrite',NULL,NULL,'sample','decimal','woce_discrete',0,95.1);
+INSERT INTO "ex_params" VALUES('D15N_NH4',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved ammonium',NULL,NULL,'sample','decimal','woce_discrete',0,95.2);
+INSERT INTO "ex_params" VALUES('D15N_N2O',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved nitrus oxide',NULL,NULL,'sample','decimal','woce_discrete',0,95.3);
+INSERT INTO "ex_params" VALUES('D15N_PON',NULL,'Enrichment of the 15N/14N isotopic ratio of particualte organic nitrogen',NULL,NULL,'sample','decimal','woce_discrete',0,95.6);
+INSERT INTO "ex_params" VALUES('D18O_NO2',NULL,'Ratio of 18O to 16O of nitrite in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.77);
+INSERT INTO "ex_params" VALUES('D18O_N2O',NULL,'Ratio of 18O to 16O of nitrus oxide in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.78);
+INSERT INTO "ex_params" VALUES('D13C_POC',NULL,'Enrichment of :sup:`13`\ C vs :sup:`12`\ C in particulate organic carbon (POC) compared to a reference standard usually VPDB. This is usually written as lower case delta δ\ :sup:`13`\ C.',NULL,NULL,'sample','decimal','woce_discrete',0,55.1);
+INSERT INTO "ex_params" VALUES('UPTAKE',NULL,'Measures of uptake in incubation experiments','This is a placeholder parameter which indicates water collected from a bottle for analysis','','sample','string','woce_discrete',0,154.1);
+INSERT INTO "ex_params" VALUES('ABUNDANCE',NULL,'Placeholder for cell counts of species','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.2);
+INSERT INTO "ex_params" VALUES('QUOTA',NULL,'Placehodler for cell-quota model measurements','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.3);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5959,4 +5969,15 @@ INSERT INTO "whp_names" VALUES('DOC_NASA','UMOL/L',NULL,'dissolved_organic_carbo
 INSERT INTO "whp_names" VALUES('ANTH','MG/M^3',NULL,'hpld_antheraxanthin',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CHL_C2','MG/M^3',NULL,'hplc_chlorophyll_c2',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SPAR','VOLTS',NULL,'spar_raw',0.0,5.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D15N_NO2','/MILLE',NULL,'d15n_no2',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D15N_NH4','/MILLE',NULL,'d15n_nh4',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D15N_N2O','/MILLE',NULL,'d15n_n2o',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D15N_PON','/MILLE',NULL,'d15n_pon',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D18O_NO2','/MILLE',NULL,'d18o_nitrite',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D18O_N2O','/MILLE',NULL,'d18o_nitrust_oxide',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('TDP','UMOL/KG',NULL,'total_dissolved_phosphorus',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D13C_POC','/MILLE',NULL,'d13c_poc',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('UPTAKE',NULL,NULL,'update_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('ABUNDANCE',NULL,NULL,'abundance_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('QUOTA',NULL,NULL,'quota_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

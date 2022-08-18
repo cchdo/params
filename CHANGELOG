@@ -50,7 +50,15 @@ Parameter Changes
 * Add ANTH [MG/M^3] for antheraxanthin measured with HPLC
 * Add CHL_C2 [MG/M^3] for chlorophyll c2 measured with HPLC
 * Add SPAR [VOLTS] for raw surface reference PAR
-
+* Add UPTAKE placeholder for incubation samples
+* Add ABUNDANCE placehodler for counts of planton cells
+* Add QUOTA placeholder for cell-quota model uptake measurements
+* Add D15N_NO2 [/MILLE] for isotopic enrichments of 15N in NO2
+* Add D15N_NH4 [/MILLE] for isotopic enrichments of 15N in NH4
+* Add D15N_N2O [/MILLE] for isotopic enrichments of 15N in N2O
+* Add D15N_PON [/MILLE] for isotopic enrichments of 15N in PON
+* Add D18O_NO2 [/MILLE] for isotopic enrichments of 18O in NO2
+* Add D18O_N2O [/MILLE] for isotopic enrichments of 18O in N2O
 
 API Changes
 -----------
