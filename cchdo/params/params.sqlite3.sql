@@ -5423,6 +5423,9 @@ INSERT INTO "ex_params" VALUES('CDOM2C',NULL,'CDOM2 (carbohydrate and neutral su
 INSERT INTO "ex_params" VALUES('CDOM3C',NULL,'CDOM3 (photolysis) charicterization','So far CCHDO doesn''t have any data or references on how these data are report, they might go to NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,69.96);
 INSERT INTO "ex_params" VALUES('CDOM_NASA',NULL,'Placholder for CDOM spectral absoptions performed by a group from NASA','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.6);
 INSERT INTO "ex_params" VALUES('CDOM_UCSB',NULL,'Placholder for CDOM spectral absoptions performed by a group from UCSB','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.7);
+INSERT INTO "ex_params" VALUES('DNSSAL2',92,'Replicate measuremnet of DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.1);
+INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL',NULL,'A practical salinity measurement in the lab of the same water sample as DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.2);
+INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL2',NULL,'Replicate of SALNTY_DNSSAL',NULL,NULL,'sample','decimal','woce_discrete',0,21.3);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5486,6 +5489,7 @@ INSERT INTO "ex_units" VALUES(51,'ND','1',NULL,'refractive index at the sodium D
 INSERT INTO "ex_units" VALUES(52,'10000','1e4',NULL,'used for isotopic enrichment in epislon notation');
 INSERT INTO "ex_units" VALUES(53,'/L','l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(54,'KBQ/M^3','kBq m-3',NULL,NULL);
+INSERT INTO "ex_units" VALUES(55,'FMOL/L','fmol/l',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5677,6 +5681,7 @@ INSERT INTO "whp_alias" VALUES('D18O_NO3+NO2','/MILLE','D18O_NO2+NO3','/MILLE');
 INSERT INTO "whp_alias" VALUES('DSI30','/MILLE','DELSI30','/MILLE');
 INSERT INTO "whp_alias" VALUES('D14C-DOC','/MILLE','14C-DOC','/MILLE');
 INSERT INTO "whp_alias" VALUES('D13C-DOC','/MILLE','13C-DOC','/MILLE');
+INSERT INTO "whp_alias" VALUES('THETA','DEG-C','THETA','DEG C');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5999,4 +6004,10 @@ INSERT INTO "whp_names" VALUES('CFC113','PMOL/L',NULL,'cfc_113_',NULL,NULL,NULL,
 INSERT INTO "whp_names" VALUES('TRITUM','KBQ/M^3',NULL,'tritium_activity',NULL,NULL,'TRITER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM_NASA',NULL,NULL,'cdom_nasa_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM_UCSB',NULL,NULL,'cdom_ucsb_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SF6','FMOL/L',NULL,'sulfur_hexifluoride_l',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SF5CF3','FMOL/L',NULL,'trifluoromethylsulfur_pentafluoride_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('TON','UMOL/L',NULL,'total_organic_nitrogen_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('DNSSAL2','G/KG','sea_water_absolute_salinity','density_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL2','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
