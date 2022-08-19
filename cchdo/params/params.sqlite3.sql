@@ -5421,6 +5421,8 @@ INSERT INTO "ex_params" VALUES('ABUNDANCE',NULL,'Placeholder for cell counts of 
 INSERT INTO "ex_params" VALUES('QUOTA',NULL,'Placehodler for cell-quota model measurements','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.3);
 INSERT INTO "ex_params" VALUES('CDOM2C',NULL,'CDOM2 (carbohydrate and neutral sugar) charicterization','So far CCHDO doesn''t have any data or references on how these data are report, they might go to NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,69.95);
 INSERT INTO "ex_params" VALUES('CDOM3C',NULL,'CDOM3 (photolysis) charicterization','So far CCHDO doesn''t have any data or references on how these data are report, they might go to NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,69.96);
+INSERT INTO "ex_params" VALUES('CDOM_NASA',NULL,'Placholder for CDOM spectral absoptions performed by a group from NASA','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.6);
+INSERT INTO "ex_params" VALUES('CDOM_UCSB',NULL,'Placholder for CDOM spectral absoptions performed by a group from UCSB','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.7);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5483,6 +5485,7 @@ INSERT INTO "ex_units" VALUES(50,'RFU','1',NULL,'relative fluorescence unit');
 INSERT INTO "ex_units" VALUES(51,'ND','1',NULL,'refractive index at the sodium D lines');
 INSERT INTO "ex_units" VALUES(52,'10000','1e4',NULL,'used for isotopic enrichment in epislon notation');
 INSERT INTO "ex_units" VALUES(53,'/L','l-1',NULL,'This is a "count" of things per volume');
+INSERT INTO "ex_units" VALUES(54,'KBQ/M^3','kBq m-3',NULL,NULL);
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -5668,6 +5671,12 @@ INSERT INTO "whp_alias" VALUES('DELN15','O/OO','DELN15','/MILLE');
 INSERT INTO "whp_alias" VALUES('BARIUM','nM/L','BARIUM','NMOL/L');
 INSERT INTO "whp_alias" VALUES('CELLCOUNT','/LITER','CELLCOUNT','/L');
 INSERT INTO "whp_alias" VALUES('CHL_B','MG/M^3','TOT_CHL_B','MG/M^3');
+INSERT INTO "whp_alias" VALUES('TRITUM','KBQ/CUM','TRITUM','KBQ/M^3');
+INSERT INTO "whp_alias" VALUES('D15N_NO3+NO2','/MILLE','D15N_NO2+NO3','/MILLE');
+INSERT INTO "whp_alias" VALUES('D18O_NO3+NO2','/MILLE','D18O_NO2+NO3','/MILLE');
+INSERT INTO "whp_alias" VALUES('DSI30','/MILLE','DELSI30','/MILLE');
+INSERT INTO "whp_alias" VALUES('D14C-DOC','/MILLE','14C-DOC','/MILLE');
+INSERT INTO "whp_alias" VALUES('D13C-DOC','/MILLE','13C-DOC','/MILLE');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5987,4 +5996,7 @@ INSERT INTO "whp_names" VALUES('CDOM3C',NULL,NULL,'cdom3c',NULL,NULL,NULL,NULL,N
 INSERT INTO "whp_names" VALUES('CFC-11','PMOL/L',NULL,'cfc_11_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CFC-12','PMOL/L',NULL,'cfc_12_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CFC113','PMOL/L',NULL,'cfc_113_',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('TRITUM','KBQ/M^3',NULL,'tritium_activity',NULL,NULL,'TRITER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM_NASA',NULL,NULL,'cdom_nasa_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM_UCSB',NULL,NULL,'cdom_ucsb_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

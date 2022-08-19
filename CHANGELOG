@@ -60,6 +60,10 @@ Parameter Changes
 * Add D18O_NO2 [/MILLE] for isotopic enrichments of 18O in NO2
 * Add D18O_N2O [/MILLE] for isotopic enrichments of 18O in N2O
 * Add [PMOL/L] as allowed units for CFC-11, CFC-12, and CFC113
+* Add D15N_NO3+NO2 [/MILLE] as an alias for D15N_NO2+NO3 [/MILLE]
+* Add D18O_NO3+NO2 [/MILLE] as an alias for D18O_NO2+NO3 [/MILLE]
+* Add DSI30 [/MILLE] as an alias for DELSI30 [/MILLE]
+
 
 API Changes
 -----------
