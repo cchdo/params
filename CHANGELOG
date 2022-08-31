@@ -7,7 +7,7 @@ Parameter Changes
 
 API Changes
 -----------
-* None
+* Added an `in_erddap` property to WHPNames to indicate if this name should appear in the CCHDO/NOAA ERDDAP data colection
 
 
 v0.1.19 (2022-08-19)
