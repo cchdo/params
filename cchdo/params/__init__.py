@@ -139,6 +139,9 @@ class WHPName:
     #: the string name of the data type of this parameter
     dtype: Literal["string", "decimal", "integer"] = field(repr=False)
 
+    #: indicates if this variable should appear in the CCHDO/NOAA ERDDAP
+    in_erddap: bool = field(repr=False)
+
     #: The print field width
     field_width: int = field(repr=False)
 
@@ -530,6 +533,7 @@ class _WHPNames(_LazyMapping[WHPNameKey, WHPName]):
             del p_dict["excitation_wavelength"]
             del p_dict["emission_wavelength"]
             del p_dict["nc_group"]
+            del p_dict["in_erddap"]
 
             if p_dict["data_type"] == "string":
                 del p_dict["numeric_min"]

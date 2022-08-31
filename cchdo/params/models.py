@@ -66,6 +66,8 @@ class Param(Base):
 
     rank = Column(Float, nullable=False)
 
+    in_erddap = Column(Boolean, nullable=False, server_default="0")
+
 
 class CFName(Base):
     __tablename__ = "cf_names"
@@ -168,6 +170,7 @@ class WHPName(Base):
                 WHPNameDC(
                 whp_name={_str_or_type(self.whp_name)},
                 dtype={_str_or_type(self.param.dtype)},
+                in_erddap={_str_or_type(self.param.in_erddap)},
                 whp_unit={_str_or_type(self.whp_unit)},
                 nc_name={_str_or_type(self.nc_name)},
                 flag_w={_str_or_type(self.param.flag)},
