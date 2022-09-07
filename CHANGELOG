@@ -1,4 +1,15 @@
-v0.1.20 (unreleased)
+v0.1.21 (unreleased)
+====================
+
+Parameter Changes
+-----------------
+* None yet
+
+API Changes
+-----------
+* None yet
+
+v0.1.20 (2022-08-07)
 ====================
 
 Parameter Changes
@@ -8,6 +19,7 @@ Parameter Changes
 API Changes
 -----------
 * Added an `in_erddap` property to WHPNames to indicate if this name should appear in the CCHDO/NOAA ERDDAP data colection
+
   * Filled in boolean with values agreeed to at a meeting on 2022-08-30 with @purkeysg, @sdiggs, @DocOtak, and @lmerchant
 
 
