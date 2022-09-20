@@ -3,7 +3,8 @@ v0.1.21 (unreleased)
 
 Parameter Changes
 -----------------
-* None yet
+* Add CTDBETA650_124 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 124 degrees, this is from single channel ECO BB sensors.
+* Updated the CTDBTA700 [M^-1/SR] warning to indicate this is for a parameter with a centroid angle of 142 degrees.
 
 API Changes
 -----------

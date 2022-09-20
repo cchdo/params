@@ -5353,7 +5353,7 @@ INSERT INTO "ex_params" VALUES('DELSI30',NULL,'Enrichment of the 30Si/28Si isoto
 INSERT INTO "ex_params" VALUES('IMAGES',NULL,'Imaging; for example a FlowCam','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.4,0);
 INSERT INTO "ex_params" VALUES('VIRAL_ABUNDANCE',NULL,'Placeholder parameter for a viral abundance analysis','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.5,0);
 INSERT INTO "ex_params" VALUES('CTDOPTOXY',NULL,'In situ oxygen from an oxygen optode','This parameter was common when optodes were newer. Today this is often just reported as CTDOXY.',NULL,'sample','decimal','woce_ctd',0,23.1,0);
-INSERT INTO "ex_params" VALUES('CTDBETA700',NULL,'Volume scattering function at 700nm. Depends on scattering angle.
+INSERT INTO "ex_params" VALUES('CTDBETA700',NULL,'Volume scattering function at 700nm with a centroid angle of 142 degrees.
 
 
 Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of 
@@ -5426,6 +5426,16 @@ INSERT INTO "ex_params" VALUES('CDOM_UCSB',NULL,'Placholder for CDOM spectral ab
 INSERT INTO "ex_params" VALUES('DNSSAL2',92,'Replicate measuremnet of DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.1,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL',NULL,'A practical salinity measurement in the lab of the same water sample as DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.2,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL2',NULL,'Replicate of SALNTY_DNSSAL',NULL,NULL,'sample','decimal','woce_discrete',0,21.3,0);
+INSERT INTO "ex_params" VALUES('CTDBETA650_124',NULL,'Volume scattering function at 650nm with a centroid angle of 124 degrees.
+
+
+Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of 
+chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB 
+on profiling floats. SOCCOM Tech. Rep. 2016-1. 
+https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-primer.pdf
+',NULL,'This parameter currently lacks the centroid angle in the name for backwards compatibility. We may update this in the future and provide an alias.
+
+This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5932,8 +5942,8 @@ INSERT INTO "whp_names" VALUES('IMAGES',NULL,NULL,'image_placeholder',NULL,NULL,
 INSERT INTO "whp_names" VALUES('VIRAL_ABUNDANCE',NULL,NULL,'viral_abundance_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDOPTOXY','VOLTS',NULL,'ctd_optode_oxygen_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDOPTOXY','UMOL/KG',NULL,'ctd_optode_oxygen',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('CTDBETA700','VOLTS',NULL,'ctd_beta700_raw',NULL,NULL,NULL,NULL,NULL,9,4,700.0,140.0,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('CTDBETA700','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta700',NULL,NULL,NULL,NULL,NULL,9,4,700.0,140.0,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA700','VOLTS',NULL,'ctd_beta700_raw',NULL,NULL,NULL,NULL,NULL,9,4,700.0,142.0,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA700','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta700',NULL,NULL,NULL,NULL,NULL,9,4,700.0,142.0,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDBBP700','/METER',NULL,'ctd_bbp700',NULL,NULL,NULL,NULL,NULL,9,4,700.0,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CCL4','PMOL/L',NULL,'carbon_tetrachloride_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('HCFC-141b','PMOL/KG',NULL,'dichlorofluoroethane',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
@@ -6010,4 +6020,5 @@ INSERT INTO "whp_names" VALUES('TON','UMOL/L',NULL,'total_organic_nitrogen_l',NU
 INSERT INTO "whp_names" VALUES('DNSSAL2','G/KG','sea_water_absolute_salinity','density_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL2','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA650_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta650_124',NULL,NULL,NULL,NULL,NULL,9,4,650.0,124.0,NULL,NULL,NULL);
 COMMIT;
