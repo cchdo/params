@@ -5426,6 +5426,7 @@ INSERT INTO "ex_params" VALUES('CDOM_UCSB',NULL,'Placholder for CDOM spectral ab
 INSERT INTO "ex_params" VALUES('DNSSAL2',92,'Replicate measuremnet of DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.1,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL',NULL,'A practical salinity measurement in the lab of the same water sample as DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.2,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL2',NULL,'Replicate of SALNTY_DNSSAL',NULL,NULL,'sample','decimal','woce_discrete',0,21.3,0);
+INSERT INTO "ex_params" VALUES('CTDORP',NULL,'Oxidation-reduction (or redox) potential sensor. Measures the tendency of various chemical species to gain or lose electrons. In the ocean, it is useful for detecting hydrothermal plumes. Usually the absolute value of ORP measured by one of these is not useful but the change in potential over the profile is.',NULL,'The actual scientific units for this parameter is a voltage, usually reported in millivolts.','sample','decimal','woce_ctd',0,27.6,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5490,6 +5491,7 @@ INSERT INTO "ex_units" VALUES(52,'10000','1e4',NULL,'used for isotopic enrichmen
 INSERT INTO "ex_units" VALUES(53,'/L','l-1',NULL,'This is a "count" of things per volume');
 INSERT INTO "ex_units" VALUES(54,'KBQ/M^3','kBq m-3',NULL,NULL);
 INSERT INTO "ex_units" VALUES(55,'FMOL/L','fmol/l',NULL,NULL);
+INSERT INTO "ex_units" VALUES(56,'MILLIVOLTS','millivolts',NULL,'Should only be used when the real science units are volts');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -6010,4 +6012,5 @@ INSERT INTO "whp_names" VALUES('TON','UMOL/L',NULL,'total_organic_nitrogen_l',NU
 INSERT INTO "whp_names" VALUES('DNSSAL2','G/KG','sea_water_absolute_salinity','density_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL2','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDORP','MILLIVOLTS',NULL,'ctd_redox_potential',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
