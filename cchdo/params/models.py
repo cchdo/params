@@ -1,24 +1,22 @@
 from textwrap import dedent
+from typing import Optional
+
 from sqlalchemy import (
-    Column,
-    Integer,
-    String,
     Text,
     Enum,
-    Float,
-    Boolean,
     ForeignKey,
     ForeignKeyConstraint,
 )
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.ext.associationproxy import association_proxy
 
 # these are used in code generators
-from . import WHPName as WHPNameDC  # noqa
-from . import CFStandardName as CFStandardNameDC  # noqa
+from . import WHPName as WHPNameDC
+from . import CFStandardName as CFStandardNameDC
 
 
-Base = declarative_base()
+class Base(DeclarativeBase):
+    ...
 
 
 def _str_or_type(val):
@@ -30,56 +28,55 @@ def _str_or_type(val):
 class Config(Base):
     __tablename__ = "config"
 
-    key = Column(String, primary_key=True)
-    value = Column(String, nullable=False)
+    key: Mapped[str] = mapped_column(primary_key=True)
+    value: Mapped[str]
 
 
 class Unit(Base):
     __tablename__ = "ex_units"
 
-    id = Column(Integer, primary_key=True)
-    whp_unit = Column(String, nullable=True, unique=True)
-    cf_unit = Column(String, nullable=False)
-    reference_scale = Column(String, nullable=True)
-    note = Column(Text, nullable=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    whp_unit: Mapped[Optional[str]] = mapped_column(unique=True)
+    cf_unit: Mapped[str]
+    reference_scale: Mapped[Optional[str]]
+    note: Mapped[Optional[str]] = mapped_column(Text)
 
 
 class Param(Base):
     __tablename__ = "ex_params"
-    whp_name = Column(String, primary_key=True)
-    whp_number = Column(Integer, nullable=True)
-    description = Column(Text, nullable=True)
-    note = Column(Text, nullable=True)
-    warning = Column(Text, nullable=True)
+    whp_name: Mapped[str] = mapped_column(primary_key=True)
+    whp_number: Mapped[Optional[int]]
+    description: Mapped[Optional[str]] = mapped_column(Text)
+    note: Mapped[Optional[str]] = mapped_column(Text)
+    warning: Mapped[Optional[str]] = mapped_column(Text)
 
-    scope = Column(
-        Enum("cruise", "profile", "sample"), nullable=False, server_default="sample"
+    scope: Mapped[str] = mapped_column(
+        Enum("cruise", "profile", "sample"), server_default="sample"
     )
-    dtype = Column(
+    dtype: Mapped[str] = mapped_column(
         Enum("decimal", "integer", "string"),
-        nullable=False,
     )
-    flag = Column(
+    flag: Mapped[str] = mapped_column(
         Enum("woce_bottle", "woce_ctd", "woce_discrete", "no_flags"), nullable=False
     )
-    ancillary = Column(Boolean, nullable=False, server_default="0")
+    ancillary: Mapped[bool] = mapped_column(server_default="0")
 
-    rank = Column(Float, nullable=False)
+    rank: Mapped[float]
 
-    in_erddap = Column(Boolean, nullable=False, server_default="0")
+    in_erddap: Mapped[bool] = mapped_column(server_default="0")
 
 
 class CFName(Base):
     __tablename__ = "cf_names"
 
-    standard_name = Column(String, primary_key=True)
-    canonical_units = Column(String, nullable=True)
-    grib = Column(String, nullable=True)
-    amip = Column(String, nullable=True)
-    description = Column(Text, nullable=True)
+    standard_name: Mapped[str] = mapped_column(primary_key=True)
+    canonical_units: Mapped[Optional[str]]
+    grib: Mapped[Optional[str]]
+    amip: Mapped[Optional[str]]
+    description: Mapped[Optional[str]] = mapped_column(Text)
 
     @property
-    def dataclass(self):
+    def dataclass(self) -> CFStandardNameDC:
         return eval(self.code)  # noqa
 
     @property
@@ -102,13 +99,9 @@ class CFName(Base):
 class CFAlias(Base):
     __tablename__ = "cf_aliases"
 
-    id = Column(
-        Integer, primary_key=True
-    )  # cannot use numeric id since alias isn't unique
-    alias = Column(String, nullable=False)
-    standard_name = Column(
-        String, ForeignKey(CFName.__table__.c.standard_name), nullable=False
-    )
+    id: Mapped[int] = mapped_column(primary_key=True)
+    alias: Mapped[str]
+    standard_name: Mapped[str] = mapped_column(ForeignKey("CFName.standard_name"))
 
     def __repr__(self):
         return f"<CFAlias {self.alias=} {self.standard_name=}>"
@@ -117,36 +110,36 @@ class CFAlias(Base):
 class WHPName(Base):
     __tablename__ = "whp_names"
 
-    whp_name = Column(String, ForeignKey(Param.__table__.c.whp_name), primary_key=True)
-    whp_unit = Column(
-        String, ForeignKey(Unit.__table__.c.whp_unit), primary_key=True, nullable=True
+    whp_name: Mapped[str] = mapped_column(ForeignKey(Param.whp_name), primary_key=True)
+    whp_unit: Mapped[Optional[str]] = mapped_column(
+        ForeignKey(Unit.whp_unit), primary_key=True
     )
-    standard_name = Column(
-        String, ForeignKey(CFName.__table__.c.standard_name), nullable=True
+    standard_name: Mapped[Optional[str]] = mapped_column(
+        ForeignKey("CFName.standard_name")
     )
-    nc_name = Column(String, unique=True, nullable=True)
-    nc_group = Column(String, unique=True, nullable=True)
+    nc_name: Mapped[Optional[str]] = mapped_column(unique=True)
+    nc_group: Mapped[Optional[str]]
 
-    numeric_min = Column(Float, nullable=True)
-    numeric_max = Column(Float, nullable=True)
+    numeric_min: Mapped[Optional[float]]
+    numeric_max: Mapped[Optional[float]]
 
-    error_name = Column(String, nullable=True)
+    error_name: Mapped[Optional[str]]
 
-    analytical_temperature_name = Column(String, nullable=True)
-    analytical_temperature_units = Column(String, nullable=True)
+    analytical_temperature_name: Mapped[Optional[str]]
+    analytical_temperature_units: Mapped[Optional[str]]
 
-    field_width = Column(Integer, nullable=False)
-    numeric_precision = Column(Integer, nullable=True)
+    field_width: Mapped[int]
+    numeric_precision: Mapped[Optional[int]]
 
-    param: Param = relationship("Param")
-    unit: Unit = relationship("Unit")
+    param: Mapped[Param] = relationship()
+    unit: Mapped[Unit] = relationship()
     cf_unit = association_proxy("unit", "cf_unit")
 
     # Opticas
-    radiation_wavelength = Column(Float, nullable=True)
-    scattering_angle = Column(Float, nullable=True)
-    excitation_wavelength = Column(Float, nullable=True)
-    emission_wavelength = Column(Float, nullable=True)
+    radiation_wavelength: Mapped[Optional[float]]
+    scattering_angle: Mapped[Optional[float]]
+    excitation_wavelength: Mapped[Optional[float]]
+    emission_wavelength: Mapped[Optional[float]]
 
     __table_args__ = (
         ForeignKeyConstraint(
@@ -156,7 +149,7 @@ class WHPName(Base):
     )
 
     @property
-    def dataclass(self):
+    def dataclass(self) -> WHPNameDC:
         return eval(self.code)  # noqa
 
     @property
@@ -201,10 +194,10 @@ class WHPName(Base):
 
 class Alias(Base):
     __tablename__ = "whp_alias"
-    old_name = Column(String, primary_key=True)
-    old_unit = Column(String, primary_key=True, nullable=True)
-    whp_name = Column(String)
-    whp_unit = Column(String)
+    old_name: Mapped[str] = mapped_column(primary_key=True)
+    old_unit: Mapped[Optional[str]] = mapped_column(primary_key=True)
+    whp_name: Mapped[str]
+    whp_unit: Mapped[Optional[str]]
 
     __table_args__ = (
         ForeignKeyConstraint(
