@@ -153,6 +153,9 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
 
         return self.data[key]
 
+    def __contains__(self, key: object) -> bool:
+        return key in self.data or key in self.odv_names
+
     @cached_property
     def error_cols(self):
         """A mapping of all the error names to their corresponding WHPName
