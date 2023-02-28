@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 from importlib.resources import path
 from textwrap import dedent
-from typing import Optional, MutableMapping
+from typing import MutableMapping, Optional
 
 from sqlalchemy import Enum, ForeignKey, ForeignKeyConstraint, Text, create_engine
 from sqlalchemy.ext.associationproxy import association_proxy
