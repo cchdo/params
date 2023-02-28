@@ -1,7 +1,7 @@
-from math import isnan
-from datetime import date, time
-from typing import Optional, Literal, Union
 from dataclasses import dataclass, field
+from datetime import date, time
+from math import isnan
+from typing import Literal, Optional, Union
 
 
 @dataclass(frozen=True)

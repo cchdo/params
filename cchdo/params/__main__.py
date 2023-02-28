@@ -1,6 +1,6 @@
 import json
-from textwrap import dedent
 from importlib.resources import path
+from textwrap import dedent
 
 import click
 
@@ -24,8 +24,8 @@ def whp():
 @click.argument("cf_xml", type=click.Path(exists=True))
 def cf_update(cf_xml):
     from xml.etree import ElementTree
-    from . import Config, database
 
+    from . import Config, database
     from .db import CFAlias, CFName
 
     conf = Config()
@@ -133,14 +133,15 @@ def gen_code():
     from sqlalchemy import select
 
     from . import database
-    from .db import WHPName, Alias, CFName, CFAlias
+    from .db import Alias, CFAlias, CFName, WHPName
 
     template = Template(
         dedent(
             """\
     # pylint: skip-file
     # auto generated, do not modify
-    from cchdo.params import WHPName as WHPNameDC
+    from cchdo.params.core import WHPName as WHPNameDC
+
     whp_names = dict()
     names = [
     {% for name in  whpnames -%}
@@ -171,7 +172,8 @@ def gen_code():
             """\
     # pylint: skip-file
     # auto generated, do not modify
-    from cchdo.params import CFStandardName as CFStandardNameDC
+    from cchdo.params.core import CFStandardName as CFStandardNameDC
+
     cf_standard_names = dict()
     names = [
     {% for name in  cfnames -%}

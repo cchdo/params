@@ -1,10 +1,10 @@
 import string
-
-import pytest
-import cchdo.params as data
 from datetime import date, time
 
+import pytest
 from jsonschema import validate
+
+import cchdo.params as data
 
 CF_VERSION = "72"
 
@@ -107,8 +107,8 @@ def test_whp_name_can_make_nc_attrs(whpname):
 
 
 def test_db_dump_matches_files():
-    from importlib.resources import path, read_text
     import sqlite3
+    from importlib.resources import path, read_text
 
     db_file = []
     with path("cchdo.params", "params.sqlite3") as p:
@@ -122,8 +122,8 @@ def test_db_dump_matches_files():
 
 
 def test_db_fk_ok():
-    from importlib.resources import path
     import sqlite3
+    from importlib.resources import path
 
     with path("cchdo.params", "params.sqlite3") as p:
         with sqlite3.connect(p) as conn:

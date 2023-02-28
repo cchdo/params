@@ -1,18 +1,13 @@
 from textwrap import dedent
 from typing import Optional
 
-from sqlalchemy import (
-    Text,
-    Enum,
-    ForeignKey,
-    ForeignKeyConstraint,
-)
-from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import Enum, ForeignKey, ForeignKeyConstraint, Text
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 # these are used in code generators
-from . import WHPName as WHPNameDC
 from . import CFStandardName as CFStandardNameDC
+from . import WHPName as WHPNameDC
 
 
 class Base(DeclarativeBase):

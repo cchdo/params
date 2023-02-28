@@ -1,6 +1,7 @@
 # pylint: skip-file
 # auto generated, do not modify
-from cchdo.params import WHPName as WHPNameDC
+from cchdo.params.core import WHPName as WHPNameDC
+
 whp_names = dict()
 names = [
 WHPNameDC(

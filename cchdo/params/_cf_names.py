@@ -1,6 +1,7 @@
 # pylint: skip-file
 # auto generated, do not modify
-from cchdo.params import CFStandardName as CFStandardNameDC
+from cchdo.params.core import CFStandardName as CFStandardNameDC
+
 cf_standard_names = dict()
 names = [
 CFStandardNameDC(

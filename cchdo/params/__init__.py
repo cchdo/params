@@ -1,21 +1,14 @@
-from importlib.resources import path, read_text
-from typing import (
-    Optional,
-    Union,
-    Tuple,
-    NamedTuple,
-    MutableMapping,
-    FrozenSet,
-)
-from functools import cached_property
-from json import loads
-from contextlib import contextmanager
 from collections import UserDict
+from contextlib import contextmanager
 from dataclasses import asdict
+from functools import cached_property
+from importlib.resources import path, read_text
+from json import loads
+from typing import FrozenSet, MutableMapping, NamedTuple, Optional, Tuple, Union
 
-from .core import WHPName, CFStandardName
-from ._whp_names import whp_names as _whp_names
 from ._cf_names import cf_standard_names as _cf_standard_names
+from ._whp_names import whp_names as _whp_names
+from .core import CFStandardName, WHPName
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
@@ -54,6 +47,7 @@ class Config(MutableMapping):
     def __setitem__(self, key, value):
         if _mode != "production":
             from sqlalchemy.orm.exc import NoResultFound
+
             from .db import Config
 
             with database() as session:
