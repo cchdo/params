@@ -1,76 +1,15 @@
 from collections import UserDict
-from contextlib import contextmanager
 from dataclasses import asdict
 from functools import cached_property
-from importlib.resources import path, read_text
+from importlib.resources import read_text
 from json import loads
-from typing import FrozenSet, MutableMapping, NamedTuple, Optional, Tuple, Union
+from typing import FrozenSet, NamedTuple, Optional, Tuple, Union
 
 from ._cf_names import cf_standard_names as _cf_standard_names
 from ._whp_names import whp_names as _whp_names
 from .core import CFStandardName, WHPName
 
 __all__ = ["CFStandardNames", "WHPNames"]
-
-_mode = "production"
-
-
-@contextmanager
-def database():
-    with path("cchdo.params", "params.sqlite3") as f:
-        from sqlalchemy import create_engine
-        from sqlalchemy.orm import sessionmaker
-
-        engine = create_engine(
-            f"sqlite:///{f}",
-            echo=False,
-            connect_args={"check_same_thread": False},
-            future=True,
-        )
-        Session = sessionmaker(bind=engine, future=True)
-        with Session() as session:
-            yield session
-
-
-class Config(MutableMapping):
-    def __init__(self):
-        from .db import Config
-
-        with database() as session:
-            self._config = {
-                record.key: record.value for record in session.query(Config).all()
-            }
-
-    def __getitem__(self, key):
-        return self._config[key]
-
-    def __setitem__(self, key, value):
-        if _mode != "production":
-            from sqlalchemy.orm.exc import NoResultFound
-
-            from .db import Config
-
-            with database() as session:
-                try:
-                    existing = session.query(Config).filter(Config.key == key).one()
-                    existing.value = value
-                    session.add(existing)
-                    session.commit()
-                    self._config[key] = value
-                except NoResultFound:
-                    raise NotImplementedError("keys can only be updated, not added")
-        else:
-            raise NotImplementedError("Cannot edit the internal DB in production mode")
-
-    def __delitem__(self, key):
-        # For now, lets allow updaing but not removal of config records
-        raise NotImplementedError()
-
-    def __iter__(self):
-        return iter(self._config)
-
-    def __len__(self):
-        return len(self._config)
 
 
 WHPNameKey = Union[str, Tuple[str, Optional[str]], Tuple[str]]

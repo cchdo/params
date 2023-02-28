@@ -25,10 +25,9 @@ def whp():
 def cf_update(cf_xml):
     from xml.etree import ElementTree
 
-    from . import Config, database
-    from .db import CFAlias, CFName
+    from .db import CFAlias, CFName, ConfigDict, database
 
-    conf = Config()
+    conf = ConfigDict()
     current_cf_version_number = conf["cf_version_number"]
 
     cf_names = {}
@@ -102,9 +101,7 @@ def cf_update(cf_xml):
             for obj in session.dirty:
                 print(obj)
         session.commit()
-    import cchdo.params as params
 
-    params._mode = "dev"
     conf["cf_version_number"] = version_number
     conf["cf_last_modified"] = last_mod
 
@@ -132,8 +129,7 @@ def gen_code():
     from jinja2 import Template
     from sqlalchemy import select
 
-    from . import database
-    from .db import Alias, CFAlias, CFName, WHPName
+    from .db import Alias, CFAlias, CFName, WHPName, database
 
     template = Template(
         dedent(

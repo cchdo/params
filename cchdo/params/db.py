@@ -1,13 +1,68 @@
+from contextlib import contextmanager
+from importlib.resources import path
 from textwrap import dedent
-from typing import Optional
+from typing import Optional, MutableMapping
 
-from sqlalchemy import Enum, ForeignKey, ForeignKeyConstraint, Text
+from sqlalchemy import Enum, ForeignKey, ForeignKeyConstraint, Text, create_engine
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Mapped,
+    mapped_column,
+    relationship,
+    sessionmaker,
+)
+from sqlalchemy.orm.exc import NoResultFound
 
 # these are used in code generators
 from . import CFStandardName as CFStandardNameDC
 from . import WHPName as WHPNameDC
+
+
+@contextmanager
+def database():
+    with path("cchdo.params", "params.sqlite3") as f:
+        engine = create_engine(
+            f"sqlite:///{f}",
+            echo=False,
+            connect_args={"check_same_thread": False},
+            future=True,
+        )
+        Session = sessionmaker(bind=engine, future=True)
+        with Session() as session:
+            yield session
+
+
+class ConfigDict(MutableMapping):
+    def __init__(self):
+        with database() as session:
+            self._config = {
+                record.key: record.value for record in session.query(Config).all()
+            }
+
+    def __getitem__(self, key):
+        return self._config[key]
+
+    def __setitem__(self, key, value):
+        with database() as session:
+            try:
+                existing = session.query(Config).filter(Config.key == key).one()
+                existing.value = value
+                session.add(existing)
+                session.commit()
+                self._config[key] = value
+            except NoResultFound:
+                raise NotImplementedError("keys can only be updated, not added")
+
+    def __delitem__(self, key):
+        # For now, lets allow updaing but not removal of config records
+        raise NotImplementedError()
+
+    def __iter__(self):
+        return iter(self._config)
+
+    def __len__(self):
+        return len(self._config)
 
 
 class Base(DeclarativeBase):
