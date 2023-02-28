@@ -26,7 +26,7 @@ def cf_update(cf_xml):
     from xml.etree import ElementTree
     from . import Config, database
 
-    from .models import CFAlias, CFName
+    from .db import CFAlias, CFName
 
     conf = Config()
     current_cf_version_number = conf["cf_version_number"]
@@ -133,7 +133,7 @@ def gen_code():
     from sqlalchemy import select
 
     from . import database
-    from .models import WHPName, Alias, CFName, CFAlias
+    from .db import WHPName, Alias, CFName, CFAlias
 
     template = Template(
         dedent(

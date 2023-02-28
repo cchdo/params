@@ -14,5 +14,5 @@ repos:
     rev: v1.0.1
     hooks:
       - id: mypy
-        additional_dependencies: [sqlalchemy]
+        additional_dependencies: [sqlalchemy, click, jinja2]
         args: [--explicit-package-bases]
