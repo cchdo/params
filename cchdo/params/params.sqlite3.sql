@@ -5481,6 +5481,14 @@ INSERT INTO "ex_params" VALUES('DNSSAL2',92,'Replicate measuremnet of DNSSAL, us
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL',NULL,'A practical salinity measurement in the lab of the same water sample as DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.2,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL2',NULL,'Replicate of SALNTY_DNSSAL',NULL,NULL,'sample','decimal','woce_discrete',0,21.3,0);
 INSERT INTO "ex_params" VALUES('CTDORP',NULL,'Oxidation-reduction (or redox) potential sensor. Measures the tendency of various chemical species to gain or lose electrons. In the ocean, it is useful for detecting hydrothermal plumes. Usually the absolute value of ORP measured by one of these is not useful but the change in potential over the profile is.',NULL,'The actual scientific units for this parameter is a voltage, usually reported in millivolts.','sample','decimal','woce_ctd',0,27.6,0);
+INSERT INTO "ex_params" VALUES('CTDBETA650_124',NULL,'Volume scattering function at 650nm with a centroid angle of 124 degrees.
+
+
+Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of
+chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB
+on profiling floats. SOCCOM Tech. Rep. 2016-1.
+https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-primer.pdf
+','This may be incorrectly reported as having an angle of 117 degrees.','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6067,4 +6075,5 @@ INSERT INTO "whp_names" VALUES('DNSSAL2','G/KG','sea_water_absolute_salinity','d
 INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL2','PSS-78','sea_water_practical_salinity','density_salinity_practical_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDORP','MILLIVOLTS',NULL,'ctd_redox_potential',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA650_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta650_124',NULL,NULL,NULL,NULL,NULL,9,4,650.0,124.0,NULL,NULL,NULL);
 COMMIT;
