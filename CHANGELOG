@@ -5,7 +5,7 @@ Parameter Changes
 -----------------
 * Update CF Standard Name table to version 80
 * Updated the CTDBTA700 [M^-1/SR] warning to indicate this is for a parameter with a centroid angle of 142 degrees.
-* Add CTDORP [MILLIVOLTS] that describes a sensor measuring the tendency for chemicals in the water to gain to lose electrons, useful for hydrotheral plume tracking.
+* Add CTDORP [MILLIVOLTS] that describes a sensor measuring the tendency for chemicals in the water to gain to lose electrons, useful for hydrothermal plume tracking.
 * Added/Restored CTDBETA650_123 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 123 degrees
 * Add D15N_TDN [/MILLE] that describes the enrichment of stable 15-nitrogen isotope in total dissolved nitrogen
 
@@ -22,9 +22,9 @@ Parameter Changes
 
 API Changes
 -----------
-* Added an `in_erddap` property to WHPNames to indicate if this name should appear in the CCHDO/NOAA ERDDAP data colection
+* Added an `in_erddap` property to WHPNames to indicate if this name should appear in the CCHDO/NOAA ERDDAP data collection
 
-  * Filled in boolean with values agreeed to at a meeting on 2022-08-30 with @purkeysg, @sdiggs, @DocOtak, and @lmerchant
+  * Filled in boolean with values agreed to at a meeting on 2022-08-30 with @purkeysg, @sdiggs, @DocOtak, and @lmerchant
 
 
 v0.1.19 (2022-08-19)
@@ -42,9 +42,9 @@ Parameter Changes
 * Add PHYTOP [1/ML] for phytoplankton cell count
 * Add CYANB [1/ML] for cyanobacteria cell count
 * Add DELD [/MILLE] for enrichment of deuterium of the seawater itself
-* Add BEAMAP [/METER] for the volumne absorption coefficient in a discrete sample
+* Add BEAMAP [/METER] for the volume absorption coefficient in a discrete sample
 * Add LDEO_SAMPNO for ids used at LEDO
-* add FDOM [RFU] for fluroescent dissolved organic matter in discrete samples
+* add FDOM [RFU] for fluorescent dissolved organic matter in discrete samples
 * Add CDOM300 [/METER] for the attenuation coefficient at 300nm
 * Add RIANOMALY [ND] for the refractive index anomaly from pure water at the sodium D line
 * Add DELN15 [/MILLE] for enrichment of 15N/14N as compared to the atmosphere
@@ -71,16 +71,16 @@ Parameter Changes
 * add PON [UMOL/L] for particulate organic nitrogen
 * Add DOP [UMOL/KG] for dissolved organic phosphate
 * Add TDP [UMOL/L] for total dissolved phosphate
-* add POP [UMOL/L] for particualte organic phosphate
+* add POP [UMOL/L] for particulate organic phosphate
 * add DATP [PMOL/L] for dissolved ATP
 * add PATP [PMOL/L] for dissolved ATP
 * add CELLCOUNT [/L] for a count of all the (living) cells of a sample
-* Add DOC_NASA [UMOL/L] for DOC measured by the anciallary NASA group
+* Add DOC_NASA [UMOL/L] for DOC measured by the ancillary NASA group
 * Add ANTH [MG/M^3] for antheraxanthin measured with HPLC
 * Add CHL_C2 [MG/M^3] for chlorophyll c2 measured with HPLC
 * Add SPAR [VOLTS] for raw surface reference PAR
 * Add UPTAKE placeholder for incubation samples
-* Add ABUNDANCE placehodler for counts of planton cells
+* Add ABUNDANCE placeholder for counts of plankton cells
 * Add QUOTA placeholder for cell-quota model uptake measurements
 * Add D15N_NO2 [/MILLE] for isotopic enrichments of 15N in NO2
 * Add D15N_NH4 [/MILLE] for isotopic enrichments of 15N in NH4
@@ -112,14 +112,14 @@ Parameter Changes
 * Add HCFC-141b [PMOL/KG] for 1,1-Dichloro-1-fluoroethane concentration
 * Add CCL4 [PMOL/L] for Carbon tetrachloride concentration
 * Add CTDBBP700 [/METER] for the volume scattering coefficient due to particles at 700nm
-* Add CTDBETA700 [VOLTS] for the raw sensor voltages of a bacscatter sensor with a wavelength of 700nm
+* Add CTDBETA700 [VOLTS] for the raw sensor voltages of a backscatter sensor with a wavelength of 700nm
 * Add CTDBETA700 [M^-1/SR] for the volume scattering function at 700nm
-* Add CTDOPTOXY [UMOL/KG] for the indipendently reported optode oxygen
+* Add CTDOPTOXY [UMOL/KG] for the independently reported optode oxygen
 * Add CTDOPTOXY [VOLTS] for the raw optode oxygen voltages
 * Add DELSI30 [/MILLE] for silicon isotopic enrichment
 * Add many CDOM wavelength parameters
-* Add CTDDEPTH [METERS] for the actual calcualted depth to the package (not the sea floor)
-* Add ODF_CTDPRS [DBAR] for a reported pressure that was calibrated using the ODF acqusition software (not the calibration software).
+* Add CTDDEPTH [METERS] for the actual calculated depth to the package (not the sea floor)
+* Add ODF_CTDPRS [DBAR] for a reported pressure that was calibrated using the ODF acquisition software (not the calibration software).
 * Added BTLNBR_U and SAMPNO_U as names for people who really want their NBRs to be actual numbers
 * Add XENON [NMOL/KG] and [NMOL/L] for dissolved xenon gas
 * Add KRYPTON [NMOL/KG] and [NMOL/L] for dissolved krypton gas
@@ -189,7 +189,7 @@ Parameter Changes
 API Changes
 -----------
 * (BREAKING) The error name look ups in ``WHPNames.error_names`` must now use the units as either a tuple (error_name, units) or an ODV style PARAM [UNIT] string.
-* Add a ``WHPName.nc_group`` property to be used when CF wants some columns collaposed into another dimmension (e.g. our CDOM params)
+* Add a ``WHPName.nc_group`` property to be used when CF wants some columns collapsed into another dimension (e.g. our CDOM params)
 * Add the following optical properties to ``WHPName``:
 
   * ``WHPName.radiation_wavelength`` - The wavelength in nm of some measured light (path, scattering, etc...), not induced or emitted.
@@ -198,7 +198,7 @@ API Changes
   * ``WHPName.emission_wavelengh`` - The wavelength in nm of the light measured in response to some excitation.
 
 * WHPNames may now be looked up using an ODV style "NAME [UNIT]" strings, omitting the entire "[UNIT]" part with unitless parameters.
-* Add ``WHPName.nc_name_flag`` and ``WHPName.nc_name_error`` properties which will contain the netCDF variable names for the flag and uncertainty variables, respectivly.
+* Add ``WHPName.nc_name_flag`` and ``WHPName.nc_name_error`` properties which will contain the netCDF variable names for the flag and uncertainty variables, respectively.
 * Improve type definition of ``WHPName.flag_w`` to include allowed literal values
 
 v0.1.17 (2022-03-22)
