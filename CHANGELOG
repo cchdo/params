@@ -4,7 +4,7 @@ v0.1.21 (unreleased)
 Parameter Changes
 -----------------
 * Add 370nm as a wavelength for CDOM
-* Update CF Standard Name table to version 80
+* Update CF Standard Name table to version 81
 * Updated the CTDBTA700 [M^-1/SR] warning to indicate this is for a parameter with a centroid angle of 142 degrees.
 * Add CTDORP [MILLIVOLTS] that describes a sensor measuring the tendency for chemicals in the water to gain to lose electrons, useful for hydrothermal plume tracking.
 * Added/Restored CTDBETA650_123 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 123 degrees

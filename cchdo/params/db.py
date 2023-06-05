@@ -151,7 +151,7 @@ class CFAlias(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     alias: Mapped[str]
-    standard_name: Mapped[str] = mapped_column(ForeignKey("CFName.standard_name"))
+    standard_name: Mapped[str] = mapped_column(ForeignKey(CFName.standard_name))
 
     def __repr__(self):
         return f"<CFAlias {self.alias=} {self.standard_name=}>"

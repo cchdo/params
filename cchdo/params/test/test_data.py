@@ -6,7 +6,7 @@ from jsonschema import validate
 
 import cchdo.params as data
 
-CF_VERSION = "72"
+CF_VERSION = "81"
 
 
 def test_lengths():
