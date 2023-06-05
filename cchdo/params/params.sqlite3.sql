@@ -5490,6 +5490,7 @@ on profiling floats. SOCCOM Tech. Rep. 2016-1.
 https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-primer.pdf
 ','This may be incorrectly reported as having an angle of 117 degrees.','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
 INSERT INTO "ex_params" VALUES('D15N_TDN',NULL,'Enrichment of the 15N/14N isotopic ratio of total dissolved nitrogen',NULL,NULL,'sample','decimal','woce_discrete',0,95.7,0);
+INSERT INTO "ex_params" VALUES('CDOM370',NULL,'Attenuation coefficient of the sample at 370nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.025,1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6078,4 +6079,5 @@ INSERT INTO "whp_names" VALUES('SALNTY_DNSSAL2','PSS-78','sea_water_practical_sa
 INSERT INTO "whp_names" VALUES('CTDORP','MILLIVOLTS',NULL,'ctd_redox_potential',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDBETA650_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta650_124',NULL,NULL,NULL,NULL,NULL,9,4,650.0,124.0,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('D15N_TDN','/MILLE',NULL,'d15n_tdn',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM370','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom370',NULL,NULL,NULL,NULL,NULL,9,4,370.0,NULL,NULL,NULL,'cdom');
 COMMIT;
