@@ -9,6 +9,7 @@ Parameter Changes
 * Add CTDORP [MILLIVOLTS] that describes a sensor measuring the tendency for chemicals in the water to gain to lose electrons, useful for hydrothermal plume tracking.
 * Added/Restored CTDBETA650_123 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 123 degrees
 * Add D15N_TDN [/MILLE] that describes the enrichment of stable 15-nitrogen isotope in total dissolved nitrogen
+* Add 14C-DIC [/MILLE] as an alias for DELC14 [/MILLE]
 
 API Changes
 -----------
