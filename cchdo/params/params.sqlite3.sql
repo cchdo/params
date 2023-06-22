@@ -5552,6 +5552,9 @@ INSERT INTO "ex_params" VALUES('D15N_ALPHA_N2O',NULL,'Enrichment of :sup:`15`\ N
 Toyoda and Yoshida give the value of A=0.998, though this needs to be determined experimentally for the standard in use. We have seen data using a value of A=1 in data submitted to CCHDO.
 
 .. [Toyoda1999] Determination of Nitrogen Isotopomers of Nitrous Oxide on a Modified Isotope Ratio Mass Spectrometer; Sakae Toyoda and Naohiro Yoshida; Analytical Chemistry 1999 71 (20), 4711-4718; DOI: 10.1021/ac9904563',NULL,NULL,'sample','decimal','woce_discrete',0,95.33,0);
+INSERT INTO "ex_params" VALUES('HFC-134A',NULL,'The concentration of dissolved HFC-134A in sea water. The chemical formula of HFC-134A is CF3CH2F. The IUPAC name for HFC-134A is 1,1,1,2-Tetrafluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.5,0);
+INSERT INTO "ex_params" VALUES('HFC-125',NULL,'The concentration of dissolved HFC-125 in sea water. The chemical formula of HFC-125 is CF3CHF2. The IUPAC name for HFC-125 is pentafluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.6,0);
+INSERT INTO "ex_params" VALUES('CARBONATE',NULL,'Dissolved carbonate ion in seawater, the chemical formula for the carbonate ion is CO\ :sub:`3`\ :sup:`2-`',NULL,NULL,'sample','decimal','woce_discrete',0,35.1,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6144,4 +6147,7 @@ INSERT INTO "whp_names" VALUES('D15N_TDN','/MILLE',NULL,'d15n_tdn',NULL,NULL,NUL
 INSERT INTO "whp_names" VALUES('CDOM370','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom370',NULL,NULL,NULL,NULL,NULL,9,4,370.0,NULL,NULL,NULL,'cdom');
 INSERT INTO "whp_names" VALUES('N2O','NMOL/L',NULL,'nitrous_oxide_l',1.0,200.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('D15N_ALPHA_N2O','/MILLE',NULL,'d15n_alpha_n2o',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HFC-134A','PMOL/KG',NULL,'hfc_134a',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('HFC-125','PMOL/KG',NULL,'pentafluoroethane',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CARBONATE','UMOL/KG',NULL,'carbonate',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

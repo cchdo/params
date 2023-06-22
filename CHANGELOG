@@ -13,6 +13,9 @@ Parameter Changes
 * Add D15N_ALPHA_N2O [/MILLE] to describe N2O where the center nitrogen has been subsituted with 15-N
 * Clarify that D15N_N2O [/MILLE] is a subtitution in either nitrogen position
 * Add NMOL/L as a unit for N2O
+* Add CARBONATE [UMOL/KG] for dissolved concentration of the carbonate ion
+* Add HFC-134A [PMOL/KG] for dissolved concentration of 1,1,1,2-Tetrafluoroethane
+* Add HFC-125 [PMOL/KG] for dissolcved concentration of pentafluoroethane
 
 API Changes
 -----------
