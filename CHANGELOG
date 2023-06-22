@@ -10,6 +10,9 @@ Parameter Changes
 * Added/Restored CTDBETA650_123 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 123 degrees
 * Add D15N_TDN [/MILLE] that describes the enrichment of stable 15-nitrogen isotope in total dissolved nitrogen
 * Add 14C-DIC [/MILLE] as an alias for DELC14 [/MILLE]
+* Add D15N_ALPHA_N2O [/MILLE] to describe N2O where the center nitrogen has been subsituted with 15-N
+* Clarify that D15N_N2O [/MILLE] is a subtitution in either nitrogen position
+* Add NMOL/L as a unit for N2O
 
 API Changes
 -----------

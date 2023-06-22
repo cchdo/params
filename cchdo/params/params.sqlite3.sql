@@ -5321,7 +5321,7 @@ INSERT INTO "ex_params" VALUES('AR-39',16,':sup:`39`\ Ar enrichment/depletion co
 INSERT INTO "ex_params" VALUES('CS-137',22,'Activity of 137Cs in seawater','units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,76.0,0);
 INSERT INTO "ex_params" VALUES('KR-85',14,'Specific activity of :sup:`85`\ Kr','units are disintegrations per minute per 1000kg',NULL,'sample','decimal','woce_discrete',0,77.0,0);
 INSERT INTO "ex_params" VALUES('SR-90',21,'Specific activity of :sup:`90`\ Sr','units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,78.0,0);
-INSERT INTO "ex_params" VALUES('N2O',33,'Nitrous oxide',NULL,NULL,'sample','decimal','woce_discrete',0,79.0,1);
+INSERT INTO "ex_params" VALUES('N2O',33,'Dissolved nitrous oxide gas in sea water',NULL,NULL,'sample','decimal','woce_discrete',0,79.0,1);
 INSERT INTO "ex_params" VALUES('RA-8/6',NULL,'Radtio of the activities of :sup:`228`\ Ra to :sup:`226`\ Ra',NULL,NULL,'sample','decimal','woce_discrete',0,80.0,0);
 INSERT INTO "ex_params" VALUES('QUALT1',NULL,'Quality code 1, this is not used in exchange files. In WOCE SEA and CTD files it represents the quality code assigned by the investigator responsible for the measurement. The quality code from QUALT1 is used as the FLAG_W in exchange files if `QUALT2`_ is not available',NULL,NULL,'sample','string','no_flags',0,81.0,0);
 INSERT INTO "ex_params" VALUES('QUALT2',NULL,'Quality code 2, this is not used in exchange files. In WOCE SEA and CTD files it represents the quality code assigned by an independent data quality evaluator (DQE). When available this is the code used in exchange file FLAG_W columns.',NULL,NULL,'sample','string','no_flags',0,82.0,0);
@@ -5517,12 +5517,12 @@ INSERT INTO "ex_params" VALUES('CHL_C2',NULL,'HPLC Chlorophyll c2',NULL,NULL,'sa
 INSERT INTO "ex_params" VALUES('SPAR',NULL,'Surfance reference for PAR, usually mounted on the top of the ship with a shield to block upwelling light. The downwelling photon flux of photons with a wavelength between 400nm and 700nm.',NULL,NULL,'sample','decimal','woce_ctd',0,69.1,0);
 INSERT INTO "ex_params" VALUES('D15N_NO2',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved nitrite',NULL,NULL,'sample','decimal','woce_discrete',0,95.1,0);
 INSERT INTO "ex_params" VALUES('D15N_NH4',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved ammonium',NULL,NULL,'sample','decimal','woce_discrete',0,95.2,0);
-INSERT INTO "ex_params" VALUES('D15N_N2O',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved nitrus oxide',NULL,NULL,'sample','decimal','woce_discrete',0,95.3,0);
+INSERT INTO "ex_params" VALUES('D15N_N2O',NULL,'Enrichment of the 15N/14N isotopic ratio of dissolved nitrus oxide, this parameter a subsitution of :sup:`15`\ N for :sup:`14`\ N in either position of the molecule. This is sometimes called "bulk" D15N.',NULL,NULL,'sample','decimal','woce_discrete',0,95.3,0);
 INSERT INTO "ex_params" VALUES('D15N_PON',NULL,'Enrichment of the 15N/14N isotopic ratio of particualte organic nitrogen',NULL,NULL,'sample','decimal','woce_discrete',0,95.6,0);
 INSERT INTO "ex_params" VALUES('D18O_NO2',NULL,'Ratio of 18O to 16O of nitrite in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.77,0);
 INSERT INTO "ex_params" VALUES('D18O_N2O',NULL,'Ratio of 18O to 16O of nitrus oxide in the sample vs the ratio of 18O to 16O of a reference standard (VMSOW)',NULL,NULL,'sample','decimal','woce_discrete',0,95.78,0);
 INSERT INTO "ex_params" VALUES('D13C_POC',NULL,'Enrichment of :sup:`13`\ C vs :sup:`12`\ C in particulate organic carbon (POC) compared to a reference standard usually VPDB. This is usually written as lower case delta δ\ :sup:`13`\ C.',NULL,NULL,'sample','decimal','woce_discrete',0,55.1,0);
-INSERT INTO "ex_params" VALUES('UPTAKE',NULL,'Measures of uptake in incubation experiments','This is a placeholder parameter which indicates water collected from a bottle for analysis','','sample','string','woce_discrete',0,154.1,0);
+INSERT INTO "ex_params" VALUES('UPTAKE',NULL,'Measures of uptake in incubation experiments','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.1,0);
 INSERT INTO "ex_params" VALUES('ABUNDANCE',NULL,'Placeholder for cell counts of species','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.2,0);
 INSERT INTO "ex_params" VALUES('QUOTA',NULL,'Placehodler for cell-quota model measurements','This is a placeholder parameter which indicates water collected from a bottle for analysis',NULL,'sample','string','woce_discrete',0,154.3,0);
 INSERT INTO "ex_params" VALUES('CDOM2C',NULL,'CDOM2 (carbohydrate and neutral sugar) charicterization','So far CCHDO doesn''t have any data or references on how these data are report, they might go to NASA SeaBASS',NULL,'sample','decimal','woce_discrete',0,69.95,0);
@@ -5543,6 +5543,15 @@ https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-
 ','This may be incorrectly reported as having an angle of 117 degrees.','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
 INSERT INTO "ex_params" VALUES('D15N_TDN',NULL,'Enrichment of the 15N/14N isotopic ratio of total dissolved nitrogen',NULL,NULL,'sample','decimal','woce_discrete',0,95.7,0);
 INSERT INTO "ex_params" VALUES('CDOM370',NULL,'Attenuation coefficient of the sample at 370nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.025,1);
+INSERT INTO "ex_params" VALUES('D15N_ALPHA_N2O',NULL,'Enrichment of :sup:`15`\ N vs :sup:`14`\ N in N2O (nitrous oxide) where the substitution has occurred at the center position of the N2O molecule as compared to a standard. N2O where the substitution has occurred in the end nitrogen atom is called D15N_BETA and is not usually measured. D15N_BETA can be calculated from bulk D15N and D15N_ALPHA using equation 25 from Toyoda and Yoshida 1999 [Toyoda1999]_
+
+.. math::
+
+    \delta^{15}\text{N}^\beta = \delta^{15}\text{N}^\text{bulk} + A( \delta^{15}\text{N}^\text{bulk} -  \delta^{15}\text{N}^\alpha)/(2-A)
+
+Toyoda and Yoshida give the value of A=0.998, though this needs to be determined experimentally for the standard in use. We have seen data using a value of A=1 in data submitted to CCHDO.
+
+.. [Toyoda1999] Determination of Nitrogen Isotopomers of Nitrous Oxide on a Modified Isotope Ratio Mass Spectrometer; Sakae Toyoda and Naohiro Yoshida; Analytical Chemistry 1999 71 (20), 4711-4718; DOI: 10.1021/ac9904563',NULL,NULL,'sample','decimal','woce_discrete',0,95.33,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6133,4 +6142,6 @@ INSERT INTO "whp_names" VALUES('CTDORP','MILLIVOLTS',NULL,'ctd_redox_potential',
 INSERT INTO "whp_names" VALUES('CTDBETA650_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta650_124',NULL,NULL,NULL,NULL,NULL,9,4,650.0,124.0,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('D15N_TDN','/MILLE',NULL,'d15n_tdn',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM370','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom370',NULL,NULL,NULL,NULL,NULL,9,4,370.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('N2O','NMOL/L',NULL,'nitrous_oxide_l',1.0,200.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('D15N_ALPHA_N2O','/MILLE',NULL,'d15n_alpha_n2o',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
