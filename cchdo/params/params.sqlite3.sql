@@ -5312,7 +5312,7 @@ INSERT INTO "ex_params" VALUES('FE',NULL,'Dissolved elemental iron',NULL,NULL,'s
 INSERT INTO "ex_params" VALUES('MN',NULL,'Dissolved elemental manganese ',NULL,NULL,'sample','decimal','woce_discrete',0,67.0,0);
 INSERT INTO "ex_params" VALUES('CTDFLUOR',NULL,'In situ chlorophyll measured by a fluorometer',NULL,NULL,'sample','decimal','woce_ctd',0,68.0,1);
 INSERT INTO "ex_params" VALUES('PAR',NULL,'Photosynthetically active radiation. The downwelling photon flux of photons with a wavelength between 400nm and 700nm.',NULL,NULL,'sample','decimal','woce_ctd',0,69.0,1);
-INSERT INTO "ex_params" VALUES('I-129',NULL,'Dissolved :sup:`129`\ I',NULL,NULL,'sample','decimal','woce_discrete',0,70.0,0);
+INSERT INTO "ex_params" VALUES('I-129',NULL,'Dissolved :sup:`129`\ I in sea water, may be reported as an activity (Bq) or as an ammount of substance (n) but not usually in mols.',NULL,NULL,'sample','decimal','woce_discrete',0,70.0,0);
 INSERT INTO "ex_params" VALUES('RA-226',19,'Specific activity of :sup:`226`\ Ra','units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,71.0,1);
 INSERT INTO "ex_params" VALUES('RA-228',18,'Specific activity of :sup:`228`\ Ra','units are disintegrations per minute per 100kg',NULL,'sample','decimal','woce_discrete',0,72.0,1);
 INSERT INTO "ex_params" VALUES('CTDXMISS',NULL,'Transmissivity of light in sea water, has path length and wavelength dependencies','Standard rosette mounted transmissometers have a path length of 25cm and operate in the "red" wavelengths of around 640 to 660nm. These wavelengths provide a good estimate of the attenuation due to particles.',NULL,'sample','decimal','woce_ctd',0,73.0,1);
@@ -5620,6 +5620,7 @@ INSERT INTO "ex_units" VALUES(53,'/L','l-1',NULL,'This is a "count" of things pe
 INSERT INTO "ex_units" VALUES(54,'KBQ/M^3','kBq m-3',NULL,NULL);
 INSERT INTO "ex_units" VALUES(55,'FMOL/L','fmol/l',NULL,NULL);
 INSERT INTO "ex_units" VALUES(56,'MILLIVOLTS','millivolts',NULL,'Should only be used when the real science units are volts');
+INSERT INTO "ex_units" VALUES(57,'E7/KG','1e7 kg-1',NULL,'This is a "count" of things per unit mass');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -6151,4 +6152,5 @@ INSERT INTO "whp_names" VALUES('HFC-134A','PMOL/KG',NULL,'hfc_134a',NULL,NULL,NU
 INSERT INTO "whp_names" VALUES('HFC-125','PMOL/KG',NULL,'pentafluoroethane',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CARBONATE','UMOL/KG',NULL,'carbonate',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('IODATE','NMOL/L',NULL,'iodate_l',200.0,600.0,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('I-129','E7/KG',NULL,'iodine_129_conc',NULL,NULL,'I129ER',NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

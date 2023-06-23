@@ -17,6 +17,7 @@ Parameter Changes
 * Add HFC-134A [PMOL/KG] for dissolved concentration of 1,1,1,2-Tetrafluoroethane
 * Add HFC-125 [PMOL/KG] for dissolcved concentration of pentafluoroethane
 * Add NMOL/L as a volume unit for IODATE
+* Add E7/KG as an acceptable unit for I-129 when reported in amount of substance per unit mass, E7 meaning 10^7 atoms following existing unit conventions in this database
 
 API Changes
 -----------
