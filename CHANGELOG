@@ -16,6 +16,7 @@ Parameter Changes
 * Add CARBONATE [UMOL/KG] for dissolved concentration of the carbonate ion
 * Add HFC-134A [PMOL/KG] for dissolved concentration of 1,1,1,2-Tetrafluoroethane
 * Add HFC-125 [PMOL/KG] for dissolcved concentration of pentafluoroethane
+* Add NMOL/L as a volume unit for IODATE
 
 API Changes
 -----------
