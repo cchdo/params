@@ -5492,7 +5492,7 @@ INSERT INTO "ex_params" VALUES('RIANOMALY',NULL,'Refractive indxe anomanly from 
 INSERT INTO "ex_params" VALUES('DELN15',NULL,'Enrichment of the N15/N14 isotopic ratio when compared to the atmosphere',NULL,NULL,'sample','decimal','woce_discrete',0,60.3,0);
 INSERT INTO "ex_params" VALUES('BNLID',NULL,'Brookhaven National Laboratory Identification bottle number',NULL,NULL,'sample','integer','no_flags',0,1002.0,0);
 INSERT INTO "ex_params" VALUES('HE3_HE4_RATIO',NULL,'Ratio of the stable isotopes of Helium-3 to Helium-4 that are dissolved in seawater',NULL,NULL,'sample','decimal','woce_discrete',0,900.0,0);
-INSERT INTO "ex_params" VALUES('Nd_143_D_EPSILON_BOTTLE',NULL,'Atom ratio of dissolved Nd isotopes expressed in conventional notation','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.0,0);
+INSERT INTO "ex_params" VALUES('Nd_143_144_D_EPSILON_BOTTLE',NULL,'Atom ratio of dissolved Nd isotopes expressed in conventional notation','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.0,0);
 INSERT INTO "ex_params" VALUES('La_D_CONC_BOTTLE',NULL,'Dissolved Lanthanum in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,902.0,0);
 INSERT INTO "ex_params" VALUES('Ce_D_CONC_BOTTLE',NULL,'Dissolved Cerium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,903.0,0);
 INSERT INTO "ex_params" VALUES('Pr_D_CONC_BOTTLE',NULL,'Dissolved Praseodymium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,904.0,0);
@@ -5555,6 +5555,8 @@ Toyoda and Yoshida give the value of A=0.998, though this needs to be determined
 INSERT INTO "ex_params" VALUES('HFC-134A',NULL,'The concentration of dissolved HFC-134A in sea water. The chemical formula of HFC-134A is CF3CH2F. The IUPAC name for HFC-134A is 1,1,1,2-Tetrafluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.5,0);
 INSERT INTO "ex_params" VALUES('HFC-125',NULL,'The concentration of dissolved HFC-125 in sea water. The chemical formula of HFC-125 is CF3CHF2. The IUPAC name for HFC-125 is pentafluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.6,0);
 INSERT INTO "ex_params" VALUES('CARBONATE',NULL,'Dissolved carbonate ion in seawater, the chemical formula for the carbonate ion is CO\ :sub:`3`\ :sup:`2-`',NULL,NULL,'sample','decimal','woce_discrete',0,35.1,0);
+INSERT INTO "ex_params" VALUES('Nd_143_144_D_RATIO_BOTTLE',NULL,'Atom ratio of dissolved Nd isotopes','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.0,0);
+INSERT INTO "ex_params" VALUES('Nd_D_CONC',NULL,'Concentration of dissolved "bulk" Neodymium in sea water','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.1,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5814,6 +5816,7 @@ INSERT INTO "whp_alias" VALUES('D14C-DOC','/MILLE','14C-DOC','/MILLE');
 INSERT INTO "whp_alias" VALUES('D13C-DOC','/MILLE','13C-DOC','/MILLE');
 INSERT INTO "whp_alias" VALUES('THETA','DEG-C','THETA','DEG C');
 INSERT INTO "whp_alias" VALUES('14C-DIC','/MILLE','DELC14','/MILLE');
+INSERT INTO "whp_alias" VALUES('Nd_143_D_EPSILON_BOTTLE','10000','Nd_143_144_D_EPSILON_BOTTLE','10000');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6092,7 +6095,7 @@ INSERT INTO "whp_names" VALUES('HELIUM','NMOL/L',NULL,'helium_l',NULL,NULL,NULL,
 INSERT INTO "whp_names" VALUES('NEON','NMOL/L',NULL,'neon_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('ARGON','UMOL/L',NULL,'argon_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('HE3_HE4_RATIO',NULL,NULL,'he3_he4_ratio',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('Nd_143_D_EPSILON_BOTTLE','10000',NULL,'nd_143_d_epsilon_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Nd_143_144_D_EPSILON_BOTTLE','10000',NULL,'nd_143_144_d_epsilon_bottle',NULL,NULL,'Nd_143_144_D_EPSILON_BOTTLE_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('La_D_CONC_BOTTLE','PMOL/L',NULL,'la_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Ce_D_CONC_BOTTLE','PMOL/L',NULL,'ce_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Pr_D_CONC_BOTTLE','PMOL/L',NULL,'pr_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
@@ -6153,4 +6156,6 @@ INSERT INTO "whp_names" VALUES('HFC-125','PMOL/KG',NULL,'pentafluoroethane',NULL
 INSERT INTO "whp_names" VALUES('CARBONATE','UMOL/KG',NULL,'carbonate',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('IODATE','NMOL/L',NULL,'iodate_l',200.0,600.0,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('I-129','E7/KG',NULL,'iodine_129_conc',NULL,NULL,'I129ER',NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Nd_143_144_D_RATIO_BOTTLE',NULL,NULL,'nd_143_144_d_ratio_bottle',NULL,NULL,'Nd_143_144_D_RATIO_BOTTLE_ERROR',NULL,NULL,9,6,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Nd_D_CONC','PMOL/KG',NULL,'nd_d_conc',NULL,NULL,'Nd_D_CONC_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

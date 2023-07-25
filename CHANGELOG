@@ -2,7 +2,9 @@ v2023.08.0 (unreleased)
 =======================
 Parameter Changes
 -----------------
-* None Yet
+* Add Nd_D_CONC [PMOL/KG] for concentration of disovled neodymium.
+* Add Nd_143_144_D_RATIO_BOTTLE for the ratio of 143Nd to 144Nd in sea water.
+* Change the name of Nd_143_D_EPSILON_BOTTLE [10000] to Nd_143_144_D_EPSILON_BOTTLE [10000] to better conform to GEOTRACES naming conventions, an alias from the old name was added.
 
 API Changes
 -----------
