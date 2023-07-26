@@ -1,5 +1,5 @@
 import json
-from importlib.resources import path
+from importlib.resources import files, as_file
 from textwrap import dedent
 
 import click
@@ -117,9 +117,9 @@ def ex_json():
 def dump_db():
     import sqlite3
 
-    with path("cchdo.params", "params.sqlite3") as p:
+    with as_file(files("cchdo.params") / "params.sqlite3") as p:
         with sqlite3.connect(p) as conn:
-            with open(f"{p}.sql", "w") as f:
+            with p.with_suffix(".sqlite3.sql").open("w") as f:
                 for line in conn.iterdump():
                     f.write(f"{line}\n")
 
@@ -158,8 +158,8 @@ def gen_code():
         aliases = session.execute(select(Alias)).scalars().all()
         whp_names_code = template.render(whpnames=whpnames, aliases=aliases)
 
-    with path("cchdo.params", "_whp_names.py") as p:
-        with open(p, "w") as f:
+    with as_file(files("cchdo.params") / "_whp_names.py") as p:
+        with p.open("w") as f:
             f.write(whp_names_code)
 
     # CF names
@@ -189,8 +189,8 @@ def gen_code():
         aliases = session.execute(select(CFAlias)).scalars().all()
         cf_names_code = template.render(cfnames=cfnames, aliases=aliases)
 
-    with path("cchdo.params", "_cf_names.py") as p:
-        with open(p, "w") as f:
+    with as_file(files("cchdo.params") / "_cf_names.py") as p:
+        with p.open("w") as f:
             f.write(cf_names_code)
 
 
