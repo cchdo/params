@@ -1,5 +1,5 @@
 import json
-from importlib.resources import files, as_file
+from importlib.resources import as_file, files
 from textwrap import dedent
 
 import click
