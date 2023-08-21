@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="Welcome to cchdo.params’s documentation!" href="index.html" />
 
-    <!-- Generated with Sphinx 7.1.0 and Furo 2023.05.20 -->
-        <title>User Guide - cchdo.params 0.1.22.dev5+g3966c08 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=362ab14a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <!-- Generated with Sphinx 7.2.2 and Furo 2023.08.19 -->
+        <title>User Guide - cchdo.params 0.1.22.dev6+g825ba95 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
     
 
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">cchdo.params 0.1.22.dev5+g3966c08 documentation</div></a>
+      <a href="index.html"><div class="brand">cchdo.params 0.1.22.dev6+g825ba95 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,7 +146,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">cchdo.params 0.1.22.dev5+g3966c08 documentation</span>
+  <span class="sidebar-brand-text">cchdo.params 0.1.22.dev6+g825ba95 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -194,13 +194,13 @@
         </div>
         <article role="main">
           <section id="user-guide">
-<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this heading">#</a></h1>
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading">#</a></h1>
 <p>The primary interface are the <a class="reference internal" href="api.html#cchdo.params.WHPNames" title="cchdo.params.WHPNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code></a> and <a class="reference internal" href="api.html#cchdo.params.CFStandardNames" title="cchdo.params.CFStandardNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">CFStandardNames</span></code></a> objects.
 We will focus mostly on the <a class="reference internal" href="api.html#cchdo.params.WHPNames" title="cchdo.params.WHPNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code></a> object.</p>
 <section id="the-whpnames-collection">
-<h2>The WHPNames Collection<a class="headerlink" href="#the-whpnames-collection" title="Permalink to this heading">#</a></h2>
+<h2>The WHPNames Collection<a class="headerlink" href="#the-whpnames-collection" title="Link to this heading">#</a></h2>
 <section id="importing">
-<h3>Importing<a class="headerlink" href="#importing" title="Permalink to this heading">#</a></h3>
+<h3>Importing<a class="headerlink" href="#importing" title="Link to this heading">#</a></h3>
 <p>The actual database is loaded in a lazy way, so the initial import should be fast.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cchdo.params</span> <span class="kn">import</span> <span class="n">WHPNames</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">WHPNames</span>
@@ -209,7 +209,7 @@ We will focus mostly on the <a class="reference internal" href="api.html#cchdo.p
 </div>
 </section>
 <section id="name-lookups">
-<h3>Name Lookups<a class="headerlink" href="#name-lookups" title="Permalink to this heading">#</a></h3>
+<h3>Name Lookups<a class="headerlink" href="#name-lookups" title="Link to this heading">#</a></h3>
 <p>These objects follow the standard python Mapping (e.g. dict) interface.
 Exchange parameters are looked up by <code class="docutils literal notranslate"><span class="pre">(param,</span> <span class="pre">unit)</span></code> tuple keys and will always return a <a class="reference internal" href="api.html#cchdo.params.WHPName" title="cchdo.params.WHPName"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code></a> object (more on these later).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">WHPNames</span><span class="p">[(</span><span class="s2">&quot;CTDPRS&quot;</span><span class="p">,</span> <span class="s2">&quot;DBAR&quot;</span><span class="p">)]</span>
@@ -270,7 +270,7 @@ However, in WPH Exchange files, the correct unit for practical salinity is PSS-7
 </div>
 </section>
 <section id="dict-like-operations">
-<h3>Dict-like operations<a class="headerlink" href="#dict-like-operations" title="Permalink to this heading">#</a></h3>
+<h3>Dict-like operations<a class="headerlink" href="#dict-like-operations" title="Link to this heading">#</a></h3>
 <p>Since <a class="reference internal" href="api.html#cchdo.params.WHPNames" title="cchdo.params.WHPNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code></a> follows the python Mapping interface, you can do all the standard dict operations on it.</p>
 <p>Membership tests:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="s2">&quot;CTDSAL&quot;</span><span class="p">,</span> <span class="s2">&quot;PSS-78&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">WHPNames</span>
@@ -302,7 +302,7 @@ This means there will be more keys returned than there are actual WHPName values
 </div>
 </section>
 <section id="whpname-groups">
-<h3><a class="reference internal" href="api.html#cchdo.params.WHPName" title="cchdo.params.WHPName"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code></a> Groups<a class="headerlink" href="#whpname-groups" title="Permalink to this heading">#</a></h3>
+<h3><a class="reference internal" href="api.html#cchdo.params.WHPName" title="cchdo.params.WHPName"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code></a> Groups<a class="headerlink" href="#whpname-groups" title="Link to this heading">#</a></h3>
 <p>There are some groupings of parameters that are very useful when translating to netCDF, specifically when determining the shape of the variables.
 The idea was as follows: cruise level parameters would be scalar variables, profile level parameters would be single dimensional, and sample level parameters (e.g. bottle sample measurements) would be two or more dimensional.
 These groupings are provided by a <cite>.groups</cite> property as a named tuple.</p>
@@ -395,9 +395,9 @@ These groupings are provided by a <cite>.groups</cite> property as a named tuple
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=27e20452"></script>
+</div><script src="_static/documentation_options.js?v=c090d35d"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>
     </body>
 </html>
