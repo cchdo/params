@@ -1,5 +1,7 @@
+import sqlite3
 import string
 from datetime import date, time
+from importlib.resources import as_file, files
 
 import pytest
 from jsonschema import validate
@@ -107,25 +109,23 @@ def test_whp_name_can_make_nc_attrs(whpname):
 
 
 def test_db_dump_matches_files():
-    import sqlite3
-    from importlib.resources import path, read_text
+    data = files("cchdo.params")
 
     db_file = []
-    with path("cchdo.params", "params.sqlite3") as p:
+    with as_file(data / "params.sqlite3") as p:
         with sqlite3.connect(p) as conn:
             for line in conn.iterdump():
                 db_file.append(f"{line}\n")
     db_file = "".join(db_file)
-    db_text = read_text("cchdo.params", "params.sqlite3.sql")
+    db_text = (data / "params.sqlite3.sql").read_text()
     for db, text in zip(db_file.splitlines(), db_text.splitlines()):
         assert db == text
 
 
 def test_db_fk_ok():
-    import sqlite3
-    from importlib.resources import path
+    data = files("cchdo.params")
 
-    with path("cchdo.params", "params.sqlite3") as p:
+    with as_file(data / "params.sqlite3") as p:
         with sqlite3.connect(p) as conn:
             cursor = conn.execute("PRAGMA foreign_key_check;")
             assert len(cursor.fetchall()) == 0

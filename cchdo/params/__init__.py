@@ -1,7 +1,7 @@
 from collections import UserDict
 from dataclasses import asdict
 from functools import cached_property
-from importlib.resources import read_text
+from importlib.resources import files
 from json import loads
 from typing import FrozenSet, NamedTuple, Optional, Tuple, Union
 
@@ -133,7 +133,9 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
     @cached_property
     def legacy_json_schema(self):
         """A JSONSchema draft-04 which describes a valid :class:`_WHPNames.legacy_json` document"""
-        return loads(read_text("cchdo.params", "parameters.schema.json"))
+        return loads(
+            files("cchdo.params").joinpath("parameters.schema.json").read_text()
+        )
 
     @cached_property
     def legacy_json(self):
