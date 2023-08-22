@@ -15,7 +15,6 @@
 # sys.path.insert(0, os.path.abspath('.'))
 from cchdo.params._version import version
 
-
 # -- Project information -----------------------------------------------------
 
 project = "cchdo.params"

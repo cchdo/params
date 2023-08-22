@@ -3,7 +3,7 @@ from dataclasses import asdict
 from functools import cached_property
 from importlib.resources import files
 from json import loads
-from typing import FrozenSet, NamedTuple, Optional, Tuple, Union
+from typing import NamedTuple, Optional, Union
 
 from ._cf_names import cf_standard_names as _cf_standard_names
 from ._whp_names import whp_names as _whp_names
@@ -12,10 +12,10 @@ from .core import CFStandardName, WHPName
 __all__ = ["CFStandardNames", "WHPNames"]
 
 
-WHPNameKey = Union[str, Tuple[str, Optional[str]], Tuple[str]]
+WHPNameKey = Union[str, tuple[str, Optional[str]], tuple[str]]
 
 
-def to_odv(key: Tuple[str, Optional[str]]):
+def to_odv(key: tuple[str, Optional[str]]):
     """Transform a (param, unit) tuple into the correct ODV style PARAM [UNIT] string
 
     Does not check if the param exists
@@ -32,9 +32,9 @@ def to_odv(key: Tuple[str, Optional[str]]):
 
 
 class WHPNameGroups(NamedTuple):
-    cruise: FrozenSet[WHPName]
-    profile: FrozenSet[WHPName]
-    sample: FrozenSet[WHPName]
+    cruise: frozenset[WHPName]
+    profile: frozenset[WHPName]
+    sample: frozenset[WHPName]
 
 
 class _WHPNames(UserDict[WHPNameKey, WHPName]):
@@ -106,7 +106,7 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
 
         return error_dict
 
-    def _scope_filter(self, scope: str = "cruise") -> Tuple[WHPName, ...]:
+    def _scope_filter(self, scope: str = "cruise") -> tuple[WHPName, ...]:
         return tuple(sorted(name for name in self.values() if name.scope == scope))
 
     @cached_property
@@ -190,7 +190,7 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
         return params
 
     def add_alias(
-        self, alias: Union[Tuple[str, str], Tuple[str, None]], current: WHPNameKey
+        self, alias: Union[tuple[str, str], tuple[str, None]], current: WHPNameKey
     ):
         """Adds an alias to the WHPNames dict for this session only
 
