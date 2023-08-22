@@ -8,3 +8,48 @@ write_to_template = 'version = "{version}"'
 
 [tool.black]
 force-exclude = "_*_names.py"
+
+[tool.mypy]
+namespace_packages = true
+explicit_package_bases = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pytest.*",
+    "jsonschema.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    "setup",
+    "docs.conf",
+]
+ignore_errors = true
+
+[tool.ruff]
+target-version = "py39"
+exclude = [
+]
+# E402: module level import not at top of file
+# E501: line too long - let black worry about that
+# E731: do not assign a lambda expression, use a def
+ignore = [
+    "E402",
+    "E501",
+    "E731",
+]
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I",
+    # Pyupgrade
+    "UP",
+]
+
+[tool.ruff.isort]
+known-first-party = ["cchdo"]
