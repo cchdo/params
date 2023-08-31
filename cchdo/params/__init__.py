@@ -1,6 +1,7 @@
 from collections import UserDict
 from dataclasses import asdict
 from functools import cached_property
+from importlib.metadata import version
 from importlib.resources import files
 from json import loads
 from typing import NamedTuple, Optional, Union
@@ -11,6 +12,10 @@ from .core import CFStandardName, WHPName
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
+try:
+    __version__ = version("cchdo.params")
+except Exception:
+    __version__ = "999"
 
 WHPNameKey = Union[str, tuple[str, Optional[str]], tuple[str]]
 
