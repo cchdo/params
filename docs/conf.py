@@ -13,7 +13,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-from cchdo.params._version import version
+from cchdo.params import __version__
 
 # -- Project information -----------------------------------------------------
 
@@ -22,7 +22,7 @@ copyright = "2022, Regents of the University of California"
 author = "Andrew Barna"
 
 # The full version, including alpha/beta/rc tags
-release = version
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------
