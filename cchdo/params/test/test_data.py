@@ -270,3 +270,19 @@ def test_strfex_flags(whpname: data.WHPName, flag):
 )
 def test_odv_param_lookup(whpname: data.WHPName):
     assert data.WHPNames[whpname.odv_key] == whpname
+
+
+def _unitless(param: data.WHPName):
+    return param.whp_unit is None
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    filter(_unitless, data.WHPNames.values()),  # type: ignore
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+def test_odv_empty_unit_vatiations(whpname):
+    assert data.WHPNames[f"{whpname.whp_name}"] is whpname
+    assert data.WHPNames[f"{whpname.whp_name} []"] is whpname
+    assert data.WHPNames[f"{whpname.whp_name} [None]"] is whpname
+    assert data.WHPNames[f"{whpname.whp_name} [nan]"] is whpname

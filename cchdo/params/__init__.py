@@ -7,6 +7,7 @@ from json import loads
 from typing import NamedTuple, Optional, Union
 
 from ._cf_names import cf_standard_names as _cf_standard_names
+from ._whp_names import _aliases
 from ._whp_names import whp_names as _whp_names
 from .core import CFStandardName, WHPName
 
@@ -42,7 +43,34 @@ class WHPNameGroups(NamedTuple):
     sample: frozenset[WHPName]
 
 
-class _WHPNames(UserDict[WHPNameKey, WHPName]):
+def normalize_odv_name(name: str, return_parts=False):
+    unit: Optional[str] = None
+    if not ("[" in name or "]" in name):
+        if return_parts:
+            return name, unit
+
+        return name.strip()
+
+    if name.count("[") != name.count("]"):
+        raise ValueError("Unbalanced unit brackets")
+    units_start = name.find("[")
+    units_end = name.rfind("]")
+
+    param = name[:units_start].strip()
+    unit = name[units_start + 1 : units_end].strip()
+    if isinstance(unit, str) and unit.lower() in {"", "none", "nan"}:
+        unit = None
+
+    if return_parts:
+        return param, unit
+
+    if unit is None:
+        return param
+    else:
+        return f"{param} [{unit}]"
+
+
+class _WHPNames(dict[WHPNameKey, WHPName]):
     """A Mapping (i.e. dict) providing a lookup between a WOCE style param and unit to an instance of :class:`WHPName`
 
     .. warning::
@@ -71,16 +99,20 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
     WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
     """
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._aliases: dict[WHPNameKey, WHPNameKey] = dict()
+
     @cached_property
     def odv_names(self):
         """Returns a mapping of ODV style names to WHPName instances"""
 
-        return {to_odv(key): value for key, value in self.data.items()}
+        return {to_odv(key): value for key, value in super().items()}
 
     def __getitem__(self, key: WHPNameKey) -> WHPName:
         if isinstance(key, str):
             try:
-                return self.odv_names[key]
+                return self.odv_names[normalize_odv_name(key)]
             except KeyError:
                 pass
 
@@ -89,10 +121,13 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
         if isinstance(key, tuple) and len(key) == 1:
             key = (key[0], None)
 
-        return self.data[key]
+        if key in self._aliases:
+            key = self._aliases[key]
+
+        return super().__getitem__(key)
 
     def __contains__(self, key: object) -> bool:
-        return key in self.data or key in self.odv_names
+        return super().__contains__(key) or key in self.odv_names
 
     @cached_property
     def error_cols(self):
@@ -103,7 +138,7 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
         """
         error_dict = {
             (ex.error_name, ex.whp_unit): ex
-            for ex in self.data.values()
+            for ex in self.values()
             if ex.error_name is not None
         }
         for key, param in list(error_dict.items()):
@@ -174,6 +209,7 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
             del p_dict["emission_wavelength"]
             del p_dict["nc_group"]
             del p_dict["in_erddap"]
+            del p_dict["alt_depth"]
 
             if p_dict["data_type"] == "string":
                 del p_dict["numeric_min"]
@@ -194,9 +230,7 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
 
         return params
 
-    def add_alias(
-        self, alias: Union[tuple[str, str], tuple[str, None]], current: WHPNameKey
-    ):
+    def add_alias(self, alias: WHPNameKey, current: WHPNameKey):
         """Adds an alias to the WHPNames dict for this session only
 
         Some alias names are a little dangerous to add without larger context.
@@ -206,16 +240,15 @@ class _WHPNames(UserDict[WHPNameKey, WHPName]):
         :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
         :param currnet: any valid existing WHPNames key
         """
-        if not isinstance(alias, tuple):
-            raise TypeError("Alias key must be a tuple")
-        if len(alias) != 2:
-            raise ValueError("Alias key must have two elements")
-        if not isinstance(alias[0], str) or not isinstance(alias[1], (str, type(None))):
-            raise TypeError("Alias key must be either (str. str) or (str, None)")
-        if alias in self.data:
-            raise ValueError("Cannot add duplicate key")
+        if alias in self:
+            raise ValueError("Cannot override base parameter names")
+        if alias in self._aliases:
+            ...
+            # emit a warning
+        if current not in self:
+            raise ValueError(f"{current} not in {self}")
 
-        self.data[alias] = self[current]
+        self._aliases[alias] = current
 
 
 class _CFStandardNames(UserDict[Optional[str], CFStandardName]):
@@ -224,3 +257,6 @@ class _CFStandardNames(UserDict[Optional[str], CFStandardName]):
 
 CFStandardNames = _CFStandardNames(_cf_standard_names)
 WHPNames = _WHPNames(_whp_names)
+
+for _alias, _canonical in _aliases.items():
+    WHPNames.add_alias(_alias, _canonical)

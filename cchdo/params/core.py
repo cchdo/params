@@ -104,6 +104,15 @@ class WHPName:
     excitation_wavelength: Optional[float] = field(default=None, repr=False)
     emission_wavelength: Optional[float] = field(default=None, repr=False)
 
+    # API Things
+    alt_depth: int = field(default=0, repr=False)
+    #: If this param represents an alternate parameter, how deep in the alternates are we.
+    #: This is 0 for the builtin params
+    whp_name_alias: Optional[str] = field(default=None, repr=False, compare=False)
+    #: If this param was instianciated from an alias, what was that alias name
+    whp_unit_alias: Optional[str] = field(default=None, repr=False, compare=False)
+    #: If this param was instantiated from an alias, what was that alias unit
+
     @property
     def key(self):
         """WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values"""

@@ -146,9 +146,13 @@ def gen_code():
     ]
     for name in names:
         whp_names[name.key] = name
+
+    _aliases = {
     {% for alias in aliases -%}
-    whp_names[{{"(%r, %r)"| format(alias.old_name, alias.old_unit)}}] = whp_names[{{"(%r, %r)"| format(alias.whp_name, alias.whp_unit)}}]
+    {{"(%r, %r)"| format(alias.old_name, alias.old_unit)}}: {{"(%r, %r)"| format(alias.whp_name, alias.whp_unit)}},
     {% endfor -%}
+    }
+
     """
         )
     )

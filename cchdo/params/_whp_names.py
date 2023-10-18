@@ -9345,189 +9345,192 @@ nc_group=None,
 ]
 for name in names:
     whp_names[name.key] = name
-whp_names[('LATITUDE', 'DEG')] = whp_names[('LATITUDE', None)]
-whp_names[('LONGITUDE', 'DEG')] = whp_names[('LONGITUDE', None)]
-whp_names[('DEPTH', None)] = whp_names[('DEPTH', 'METERS')]
-whp_names[('CTDPRS', 'DBARS')] = whp_names[('CTDPRS', 'DBAR')]
-whp_names[('CTDPRS', 'DBR')] = whp_names[('CTDPRS', 'DBAR')]
-whp_names[('CTDTMP', 'ITS90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'IPTS-90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'IT-90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'ITS_90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'ITS-68')] = whp_names[('CTDTMP', 'IPTS-68')]
-whp_names[('CTDTMP', 'ITS_68')] = whp_names[('CTDTMP', 'IPTS-68')]
-whp_names[('CTDTMP', 'IPTS68')] = whp_names[('CTDTMP', 'IPTS-68')]
-whp_names[('CTDTMP', 'DEG-C')] = whp_names[('CTDTMP', 'DEG C')]
-whp_names[('PH_TEMP', 'DEGC')] = whp_names[('PH_TMP', 'DEG C')]
-whp_names[('TIME', 'UTC')] = whp_names[('TIME', None)]
-whp_names[('THETA', 'DEGC')] = whp_names[('THETA', 'DEG C')]
-whp_names[('THETA', 'DEC C')] = whp_names[('THETA', 'DEG C')]
-whp_names[('THETA', 'DEC-C')] = whp_names[('THETA', 'DEG C')]
-whp_names[('THETA', 'DEC_C')] = whp_names[('THETA', 'DEG C')]
-whp_names[('AMMONI', 'UMOL/KG')] = whp_names[('NH4', 'UMOL/KG')]
-whp_names[('DELC13', 'O/OO')] = whp_names[('DELC13', '/MILLE')]
-whp_names[('DELO18', 'O/OO')] = whp_names[('DELO18', '/MILLE')]
-whp_names[('DELC14', 'O/OO')] = whp_names[('DELC14', '/MILLE')]
-whp_names[('SALNTY', 'PSU')] = whp_names[('SALNTY', 'PSS-78')]
-whp_names[('SALNTY', 'PSS78')] = whp_names[('SALNTY', 'PSS-78')]
-whp_names[('CTDSAL', 'PSU')] = whp_names[('CTDSAL', 'PSS-78')]
-whp_names[('CTDRAW', None)] = whp_names[('CTDRAW', 'DBAR')]
-whp_names[('REVTMP', None)] = whp_names[('REVTMP', 'DEG C')]
-whp_names[('REVTMP', 'ITS-68')] = whp_names[('REVTMP', 'IPTS-68')]
-whp_names[('CTDTMP', 'ITST90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'DEGC')] = whp_names[('CTDTMP', 'DEG C')]
-whp_names[('CTDTMP', 'DEG_C')] = whp_names[('CTDTMP', 'DEG C')]
-whp_names[('CTDSAL', 'PSS78')] = whp_names[('CTDSAL', 'PSS-78')]
-whp_names[('SBE35', 'ITS-90')] = whp_names[('REFTMP', 'ITS-90')]
-whp_names[('XMISS', '%TRANS')] = whp_names[('CTDXMISS', '%TRANS')]
-whp_names[('XMISS', '0-5VDC')] = whp_names[('CTDXMISS', 'VOLTS')]
-whp_names[('CFC-12', 'PM/KG')] = whp_names[('CFC-12', 'PMOL/KG')]
-whp_names[('CFC-11', 'PM/KG')] = whp_names[('CFC-11', 'PMOL/KG')]
-whp_names[('RA-226', 'DPM/100KG')] = whp_names[('RA-226', 'DM/.1MG')]
-whp_names[('PCO2TMP', 'DEG_C')] = whp_names[('PCO2TMP', 'DEG C')]
-whp_names[('NO3+NO2', 'UMOL/KG')] = whp_names[('NO2+NO3', 'UMOL/KG')]
-whp_names[('CTDOXY', 'uMOL/KG')] = whp_names[('CTDOXY', 'UMOL/KG')]
-whp_names[('CTDETIME', None)] = whp_names[('CTDETIME', 'SECONDS')]
-whp_names[('SECT', None)] = whp_names[('SECT_ID', None)]
-whp_names[('NUMBER', 'OBS.')] = whp_names[('CTDNOBS', None)]
-whp_names[('CTDPAR', 'uE/m^2/sec')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDPAR', 'UEINSTEINS/M2.SEC')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDPAR', 'UMOL/M^2/S')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('PAR', 'UEINSTEINS/M2.SEC')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('PAR', 'uE/m^2/sec')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDNOBS', 'ARBITRARY')] = whp_names[('CTDNOBS', None)]
-whp_names[('TCO2', 'UMOL/KG')] = whp_names[('TCARBN', 'UMOL/KG')]
-whp_names[('BTLNBR', 'ID')] = whp_names[('BTLNBR', None)]
-whp_names[('PHAEO', 'UG/L')] = whp_names[('PPHYTN', 'UG/L')]
-whp_names[('LAB_DEN', None)] = whp_names[('LAB_DEN', 'KG/M^3')]
-whp_names[('THETA', 'DEG')] = whp_names[('THETA', 'DEG C')]
-whp_names[('O18O16', 'MILLE')] = whp_names[('DELO18', '/MILLE')]
-whp_names[('O18O16', '/MILLE')] = whp_names[('DELO18', '/MILLE')]
-whp_names[('POC', 'uG/KG')] = whp_names[('POC', 'UG/KG')]
-whp_names[('FCO2_TMP', 'DEG C')] = whp_names[('FCO2TMP', 'DEG C')]
-whp_names[('FLUOR', None)] = whp_names[('CTDFLUOR', None)]
-whp_names[('FLUOR', 'MG/M^3')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('FLUORO', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('POC', 'ug/kg')] = whp_names[('POC', 'UG/KG')]
-whp_names[('CTDXMISSCP', '/METER')] = whp_names[('CTDBEAMCP', '/METER')]
-whp_names[('PON', 'ug/kg')] = whp_names[('PON', 'UG/KG')]
-whp_names[('BLACKC', None)] = whp_names[('BLACKC', 'UMOL/L')]
-whp_names[('XMISSCP', '/METER')] = whp_names[('CTDBEAMCP', '/METER')]
-whp_names[('PAR', 'UE/SQM/S')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('TRANSM', 'VDC')] = whp_names[('CTDXMISS', 'VOLTS')]
-whp_names[('FLUORM', 'VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('FLUOR', 'MG/CUM')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('AZOTE', 'UMOL/KG')] = whp_names[('N2', 'UMOL/KG')]
-whp_names[('CHLORA', 'MG/CUM')] = whp_names[('CHLORA', 'UG/L')]
-whp_names[('CHLORA', 'MG/M^3')] = whp_names[('CHLORA', 'UG/L')]
-whp_names[('CTDFLUOR', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('CTDXMISS', '0-5VDC')] = whp_names[('CTDXMISS', 'VOLTS')]
-whp_names[('_INSTRUMENT_NO', None)] = whp_names[('INSTRUMENT_ID', None)]
-whp_names[('_SAMPLING_RATE', None)] = whp_names[('SAMPLING_RATE', 'HZ')]
-whp_names[('PAR', 'UE/m^2/sec')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDPAR', 'UE/SQM/S')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDOXY', 'ml/l')] = whp_names[('CTDOXY', 'ML/L')]
-whp_names[('CTDDOXY', 'UMOL/KG')] = whp_names[('CTDOXY', 'UMOL/KG')]
-whp_names[('CHLORA', 'MG/M3')] = whp_names[('CHLORA', 'UG/L')]
-whp_names[('PAR', 'uE/M^2/S')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDPAR', '0-5VDC')] = whp_names[('PAR', 'VOLTS')]
-whp_names[('PAR', '0-5VDC')] = whp_names[('PAR', 'VOLTS')]
-whp_names[('FLUOR', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('FLUOR', 'UG/L')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('FLUORM', 'MG/M^3')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('GEOTRC_EVENT', None)] = whp_names[('GEOTR_EVENT', None)]
-whp_names[('O2-AR', None)] = whp_names[('O2/AR', None)]
-whp_names[('FLUOR', 'VOLTS')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('SIG0', 'KG/CUM')] = whp_names[('SIG0', 'KG/M^3')]
-whp_names[('PHTEMP', 'DEC C')] = whp_names[('PH_TMP', 'DEG C')]
-whp_names[('FLUORO', 'VOLTS')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('PHTEMP', 'DEG C')] = whp_names[('PH_TMP', 'DEG C')]
-whp_names[('CHLORA', 'MG/M**3')] = whp_names[('CHLORA', 'UG/L')]
-whp_names[('PPHYTN', 'MG/M**3')] = whp_names[('PPHYTN', 'UG/L')]
-whp_names[('PCO2_TMP', 'DEG C')] = whp_names[('PCO2TMP', 'DEG C')]
-whp_names[('PPHYTN', 'MG/M^3')] = whp_names[('PPHYTN', 'UG/L')]
-whp_names[('DELHE3', '%')] = whp_names[('DELHE3', 'PERCNT')]
-whp_names[('BEDFORT', 'NUM')] = whp_names[('BIONBR', None)]
-whp_names[('XMISS', '%TRANCE')] = whp_names[('CTDXMISS', '%TRANS')]
-whp_names[('XMISSCP', '1/M')] = whp_names[('CTDBEAMCP', '/METER')]
-whp_names[('PCO2', 'PPM')] = whp_names[('XCO2', 'PPM')]
-whp_names[('CTDTRBDTY', 'NTU')] = whp_names[('CTDTURB', 'NTU')]
-whp_names[('CTDTURBTY', 'FTU')] = whp_names[('CTDTURB', 'FTU')]
-whp_names[('CTDBEAMCP', '1/M')] = whp_names[('CTDBEAMCP', '/METER')]
-whp_names[('CTDFLUOR', 'MG/CUM')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('CTDPAR', 'UPHOTMS')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDSAL', 'PSS_78')] = whp_names[('CTDSAL', 'PSS-78')]
-whp_names[('CTDSAL', 'PSS-68')] = whp_names[('CTDSAL', 'PSS-78')]
-whp_names[('CTDTHETA', 'DEG C')] = whp_names[('THETA', 'DEG C')]
-whp_names[('CTDCDOMFRAW', '0-5VDC')] = whp_names[('CTDCDOM', 'VOLTS')]
-whp_names[('CTDCDOMFRAW', 'VDC')] = whp_names[('CTDCDOM', 'VOLTS')]
-whp_names[('CTDCDOMFRAW', 'V')] = whp_names[('CTDCDOM', 'VOLTS')]
-whp_names[('SALNTY', 'ISS78')] = whp_names[('SALNTY', 'PSS-78')]
-whp_names[('CTDSAL', 'ISS78')] = whp_names[('CTDSAL', 'PSS-78')]
-whp_names[('O18_O16', '/MILLE')] = whp_names[('DELO18', '/MILLE')]
-whp_names[('BTMDEPTH', 'METERS')] = whp_names[('DEPTH', 'METERS')]
-whp_names[('ODF_CTDPRS', 'DBARS')] = whp_names[('ODF_CTDPRS', 'DBAR')]
-whp_names[('PCO2TMP', 'DEC C')] = whp_names[('PCO2TMP', 'DEG C')]
-whp_names[('THETA', 'DEG_C')] = whp_names[('THETA', 'DEG C')]
-whp_names[('ID', None)] = whp_names[('SAMPNO_U', None)]
-whp_names[('INDEX', None)] = whp_names[('SAMPNO_U', None)]
-whp_names[('CDOM325', '1/M')] = whp_names[('CDOM325', '/METER')]
-whp_names[('CDOM340', '1/M')] = whp_names[('CDOM340', '/METER')]
-whp_names[('CDOM380', '1/M')] = whp_names[('CDOM380', '/METER')]
-whp_names[('CDOM412', '1/M')] = whp_names[('CDOM412', '/METER')]
-whp_names[('CDOM443', '1/M')] = whp_names[('CDOM443', '/METER')]
-whp_names[('CDOM490', '1/M')] = whp_names[('CDOM490', '/METER')]
-whp_names[('CDOM555', '1/M')] = whp_names[('CDOM555', '/METER')]
-whp_names[('CTDPAR', 'VOLTS')] = whp_names[('PAR', 'VOLTS')]
-whp_names[('IMAGE_COUNT', None)] = whp_names[('IMAGES', None)]
-whp_names[('CTDRINKO', 'VOLTS')] = whp_names[('CTDOPTOXY', 'VOLTS')]
-whp_names[('CTDRINKO', 'UMOL/KG')] = whp_names[('CTDOPTOXY', 'UMOL/KG')]
-whp_names[('OPTOXY', 'UMOL/KG')] = whp_names[('CTDOPTOXY', 'UMOL/KG')]
-whp_names[('CTDRINKO', '0-5VDC')] = whp_names[('CTDOPTOXY', 'VOLTS')]
-whp_names[('CTDBBP700RAW', '0-5VDC')] = whp_names[('CTDBETA700', 'VOLTS')]
-whp_names[('CTDFLBBFLUORRAW', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('CTDXMISS', '%')] = whp_names[('CTDXMISS', '%TRANS')]
-whp_names[('CTDFLUOR', 'MG/M3')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('CTDPAR', 'UMOL/M^2/SEC')] = whp_names[('PAR', 'UMOL/M^2/SEC')]
-whp_names[('CTDFLUOR', 'UG/L')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('CTDBACKSCATTER', 'VOLTS')] = whp_names[('CTDBETA700', 'VOLTS')]
-whp_names[('PH_TMP', 'DEGC')] = whp_names[('PH_TMP', 'DEG C')]
-whp_names[('FLUOR', 'MG/K^3')] = whp_names[('CTDFLUOR', 'MG/M^3')]
-whp_names[('METHANE', 'NMOL/L')] = whp_names[('CH4', 'NMOL/L')]
-whp_names[('METHAN', 'NMOL/KG')] = whp_names[('CH4', 'NMOL/KG')]
-whp_names[('CHLA', 'UG/L')] = whp_names[('CHLORA', 'UG/L')]
-whp_names[('OXYNIT', 'NMOL/KG')] = whp_names[('N2O', 'NMOL/KG')]
-whp_names[('ARABA', 'NMOL/KG')] = whp_names[('ARABI', 'NMOL/KG')]
-whp_names[('CS-137', 'BQ/CUM')] = whp_names[('CS-137', 'BQ/M^3')]
-whp_names[('CS-134', 'BQ/CUM')] = whp_names[('CS-134', 'BQ/M^3')]
-whp_names[('REVTMP', 'ITS90')] = whp_names[('REVTMP', 'ITS-90')]
-whp_names[('REVPRS', 'DBR')] = whp_names[('REVPRS', 'DBAR')]
-whp_names[('CTDBACKSCATTER', '0-5VDC')] = whp_names[('CTDBETA700', 'VOLTS')]
-whp_names[('Trans_Red_25cm', '%')] = whp_names[('CTDXMISS', '%TRANS')]
-whp_names[('Trans_Red_25cm', 'PERCNT')] = whp_names[('CTDXMISS', '%TRANS')]
-whp_names[('Atten_red', '/M')] = whp_names[('CTDBEAMCP', '/METER')]
-whp_names[('FLUORM', '0-5VDC')] = whp_names[('CTDFLUOR', 'VOLTS')]
-whp_names[('THETA', 'its-90')] = whp_names[('THETA', 'ITS-90')]
-whp_names[('CTDTMP', 'IPS-90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'IST-90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('CTDTMP', 'ITP-90')] = whp_names[('CTDTMP', 'ITS-90')]
-whp_names[('PHYTOP', 'NB/ML')] = whp_names[('PHYTOP', '1/ML')]
-whp_names[('CYANB', 'NB/ML')] = whp_names[('CYANB', '1/ML')]
-whp_names[('ABSORBTION', None)] = whp_names[('BEAMAP', '/METER')]
-whp_names[('CYTO_COUNT', None)] = whp_names[('FCM', None)]
-whp_names[('CDOM-300', '/METER')] = whp_names[('CDOM300', '/METER')]
-whp_names[('CDOM-325', '/METER')] = whp_names[('CDOM325', '/METER')]
-whp_names[('CDOM-443', '/METER')] = whp_names[('CDOM443', '/METER')]
-whp_names[('DELN15', 'O/OO')] = whp_names[('DELN15', '/MILLE')]
-whp_names[('BARIUM', 'nM/L')] = whp_names[('BARIUM', 'NMOL/L')]
-whp_names[('CELLCOUNT', '/LITER')] = whp_names[('CELLCOUNT', '/L')]
-whp_names[('CHL_B', 'MG/M^3')] = whp_names[('TOT_CHL_B', 'MG/M^3')]
-whp_names[('TRITUM', 'KBQ/CUM')] = whp_names[('TRITUM', 'KBQ/M^3')]
-whp_names[('D15N_NO3+NO2', '/MILLE')] = whp_names[('D15N_NO2+NO3', '/MILLE')]
-whp_names[('D18O_NO3+NO2', '/MILLE')] = whp_names[('D18O_NO2+NO3', '/MILLE')]
-whp_names[('DSI30', '/MILLE')] = whp_names[('DELSI30', '/MILLE')]
-whp_names[('D14C-DOC', '/MILLE')] = whp_names[('14C-DOC', '/MILLE')]
-whp_names[('D13C-DOC', '/MILLE')] = whp_names[('13C-DOC', '/MILLE')]
-whp_names[('THETA', 'DEG-C')] = whp_names[('THETA', 'DEG C')]
-whp_names[('14C-DIC', '/MILLE')] = whp_names[('DELC14', '/MILLE')]
-whp_names[('Nd_143_D_EPSILON_BOTTLE', '10000')] = whp_names[('Nd_143_144_D_EPSILON_BOTTLE', '10000')]
+
+_aliases = {
+('LATITUDE', 'DEG'): ('LATITUDE', None),
+('LONGITUDE', 'DEG'): ('LONGITUDE', None),
+('DEPTH', None): ('DEPTH', 'METERS'),
+('CTDPRS', 'DBARS'): ('CTDPRS', 'DBAR'),
+('CTDPRS', 'DBR'): ('CTDPRS', 'DBAR'),
+('CTDTMP', 'ITS90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'IPTS-90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'IT-90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'ITS_90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'ITS-68'): ('CTDTMP', 'IPTS-68'),
+('CTDTMP', 'ITS_68'): ('CTDTMP', 'IPTS-68'),
+('CTDTMP', 'IPTS68'): ('CTDTMP', 'IPTS-68'),
+('CTDTMP', 'DEG-C'): ('CTDTMP', 'DEG C'),
+('PH_TEMP', 'DEGC'): ('PH_TMP', 'DEG C'),
+('TIME', 'UTC'): ('TIME', None),
+('THETA', 'DEGC'): ('THETA', 'DEG C'),
+('THETA', 'DEC C'): ('THETA', 'DEG C'),
+('THETA', 'DEC-C'): ('THETA', 'DEG C'),
+('THETA', 'DEC_C'): ('THETA', 'DEG C'),
+('AMMONI', 'UMOL/KG'): ('NH4', 'UMOL/KG'),
+('DELC13', 'O/OO'): ('DELC13', '/MILLE'),
+('DELO18', 'O/OO'): ('DELO18', '/MILLE'),
+('DELC14', 'O/OO'): ('DELC14', '/MILLE'),
+('SALNTY', 'PSU'): ('SALNTY', 'PSS-78'),
+('SALNTY', 'PSS78'): ('SALNTY', 'PSS-78'),
+('CTDSAL', 'PSU'): ('CTDSAL', 'PSS-78'),
+('CTDRAW', None): ('CTDRAW', 'DBAR'),
+('REVTMP', None): ('REVTMP', 'DEG C'),
+('REVTMP', 'ITS-68'): ('REVTMP', 'IPTS-68'),
+('CTDTMP', 'ITST90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'DEGC'): ('CTDTMP', 'DEG C'),
+('CTDTMP', 'DEG_C'): ('CTDTMP', 'DEG C'),
+('CTDSAL', 'PSS78'): ('CTDSAL', 'PSS-78'),
+('SBE35', 'ITS-90'): ('REFTMP', 'ITS-90'),
+('XMISS', '%TRANS'): ('CTDXMISS', '%TRANS'),
+('XMISS', '0-5VDC'): ('CTDXMISS', 'VOLTS'),
+('CFC-12', 'PM/KG'): ('CFC-12', 'PMOL/KG'),
+('CFC-11', 'PM/KG'): ('CFC-11', 'PMOL/KG'),
+('RA-226', 'DPM/100KG'): ('RA-226', 'DM/.1MG'),
+('PCO2TMP', 'DEG_C'): ('PCO2TMP', 'DEG C'),
+('NO3+NO2', 'UMOL/KG'): ('NO2+NO3', 'UMOL/KG'),
+('CTDOXY', 'uMOL/KG'): ('CTDOXY', 'UMOL/KG'),
+('CTDETIME', None): ('CTDETIME', 'SECONDS'),
+('SECT', None): ('SECT_ID', None),
+('NUMBER', 'OBS.'): ('CTDNOBS', None),
+('CTDPAR', 'uE/m^2/sec'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDPAR', 'UEINSTEINS/M2.SEC'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDPAR', 'UMOL/M^2/S'): ('PAR', 'UMOL/M^2/SEC'),
+('PAR', 'UEINSTEINS/M2.SEC'): ('PAR', 'UMOL/M^2/SEC'),
+('PAR', 'uE/m^2/sec'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDNOBS', 'ARBITRARY'): ('CTDNOBS', None),
+('TCO2', 'UMOL/KG'): ('TCARBN', 'UMOL/KG'),
+('BTLNBR', 'ID'): ('BTLNBR', None),
+('PHAEO', 'UG/L'): ('PPHYTN', 'UG/L'),
+('LAB_DEN', None): ('LAB_DEN', 'KG/M^3'),
+('THETA', 'DEG'): ('THETA', 'DEG C'),
+('O18O16', 'MILLE'): ('DELO18', '/MILLE'),
+('O18O16', '/MILLE'): ('DELO18', '/MILLE'),
+('POC', 'uG/KG'): ('POC', 'UG/KG'),
+('FCO2_TMP', 'DEG C'): ('FCO2TMP', 'DEG C'),
+('FLUOR', None): ('CTDFLUOR', None),
+('FLUOR', 'MG/M^3'): ('CTDFLUOR', 'MG/M^3'),
+('FLUORO', '0-5VDC'): ('CTDFLUOR', 'VOLTS'),
+('POC', 'ug/kg'): ('POC', 'UG/KG'),
+('CTDXMISSCP', '/METER'): ('CTDBEAMCP', '/METER'),
+('PON', 'ug/kg'): ('PON', 'UG/KG'),
+('BLACKC', None): ('BLACKC', 'UMOL/L'),
+('XMISSCP', '/METER'): ('CTDBEAMCP', '/METER'),
+('PAR', 'UE/SQM/S'): ('PAR', 'UMOL/M^2/SEC'),
+('TRANSM', 'VDC'): ('CTDXMISS', 'VOLTS'),
+('FLUORM', 'VDC'): ('CTDFLUOR', 'VOLTS'),
+('FLUOR', 'MG/CUM'): ('CTDFLUOR', 'MG/M^3'),
+('AZOTE', 'UMOL/KG'): ('N2', 'UMOL/KG'),
+('CHLORA', 'MG/CUM'): ('CHLORA', 'UG/L'),
+('CHLORA', 'MG/M^3'): ('CHLORA', 'UG/L'),
+('CTDFLUOR', '0-5VDC'): ('CTDFLUOR', 'VOLTS'),
+('CTDXMISS', '0-5VDC'): ('CTDXMISS', 'VOLTS'),
+('_INSTRUMENT_NO', None): ('INSTRUMENT_ID', None),
+('_SAMPLING_RATE', None): ('SAMPLING_RATE', 'HZ'),
+('PAR', 'UE/m^2/sec'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDPAR', 'UE/SQM/S'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDOXY', 'ml/l'): ('CTDOXY', 'ML/L'),
+('CTDDOXY', 'UMOL/KG'): ('CTDOXY', 'UMOL/KG'),
+('CHLORA', 'MG/M3'): ('CHLORA', 'UG/L'),
+('PAR', 'uE/M^2/S'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDPAR', '0-5VDC'): ('PAR', 'VOLTS'),
+('PAR', '0-5VDC'): ('PAR', 'VOLTS'),
+('FLUOR', '0-5VDC'): ('CTDFLUOR', 'VOLTS'),
+('FLUOR', 'UG/L'): ('CTDFLUOR', 'MG/M^3'),
+('FLUORM', 'MG/M^3'): ('CTDFLUOR', 'MG/M^3'),
+('GEOTRC_EVENT', None): ('GEOTR_EVENT', None),
+('O2-AR', None): ('O2/AR', None),
+('FLUOR', 'VOLTS'): ('CTDFLUOR', 'VOLTS'),
+('SIG0', 'KG/CUM'): ('SIG0', 'KG/M^3'),
+('PHTEMP', 'DEC C'): ('PH_TMP', 'DEG C'),
+('FLUORO', 'VOLTS'): ('CTDFLUOR', 'VOLTS'),
+('PHTEMP', 'DEG C'): ('PH_TMP', 'DEG C'),
+('CHLORA', 'MG/M**3'): ('CHLORA', 'UG/L'),
+('PPHYTN', 'MG/M**3'): ('PPHYTN', 'UG/L'),
+('PCO2_TMP', 'DEG C'): ('PCO2TMP', 'DEG C'),
+('PPHYTN', 'MG/M^3'): ('PPHYTN', 'UG/L'),
+('DELHE3', '%'): ('DELHE3', 'PERCNT'),
+('BEDFORT', 'NUM'): ('BIONBR', None),
+('XMISS', '%TRANCE'): ('CTDXMISS', '%TRANS'),
+('XMISSCP', '1/M'): ('CTDBEAMCP', '/METER'),
+('PCO2', 'PPM'): ('XCO2', 'PPM'),
+('CTDTRBDTY', 'NTU'): ('CTDTURB', 'NTU'),
+('CTDTURBTY', 'FTU'): ('CTDTURB', 'FTU'),
+('CTDBEAMCP', '1/M'): ('CTDBEAMCP', '/METER'),
+('CTDFLUOR', 'MG/CUM'): ('CTDFLUOR', 'MG/M^3'),
+('CTDPAR', 'UPHOTMS'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDSAL', 'PSS_78'): ('CTDSAL', 'PSS-78'),
+('CTDSAL', 'PSS-68'): ('CTDSAL', 'PSS-78'),
+('CTDTHETA', 'DEG C'): ('THETA', 'DEG C'),
+('CTDCDOMFRAW', '0-5VDC'): ('CTDCDOM', 'VOLTS'),
+('CTDCDOMFRAW', 'VDC'): ('CTDCDOM', 'VOLTS'),
+('CTDCDOMFRAW', 'V'): ('CTDCDOM', 'VOLTS'),
+('SALNTY', 'ISS78'): ('SALNTY', 'PSS-78'),
+('CTDSAL', 'ISS78'): ('CTDSAL', 'PSS-78'),
+('O18_O16', '/MILLE'): ('DELO18', '/MILLE'),
+('BTMDEPTH', 'METERS'): ('DEPTH', 'METERS'),
+('ODF_CTDPRS', 'DBARS'): ('ODF_CTDPRS', 'DBAR'),
+('PCO2TMP', 'DEC C'): ('PCO2TMP', 'DEG C'),
+('THETA', 'DEG_C'): ('THETA', 'DEG C'),
+('ID', None): ('SAMPNO_U', None),
+('INDEX', None): ('SAMPNO_U', None),
+('CDOM325', '1/M'): ('CDOM325', '/METER'),
+('CDOM340', '1/M'): ('CDOM340', '/METER'),
+('CDOM380', '1/M'): ('CDOM380', '/METER'),
+('CDOM412', '1/M'): ('CDOM412', '/METER'),
+('CDOM443', '1/M'): ('CDOM443', '/METER'),
+('CDOM490', '1/M'): ('CDOM490', '/METER'),
+('CDOM555', '1/M'): ('CDOM555', '/METER'),
+('CTDPAR', 'VOLTS'): ('PAR', 'VOLTS'),
+('IMAGE_COUNT', None): ('IMAGES', None),
+('CTDRINKO', 'VOLTS'): ('CTDOPTOXY', 'VOLTS'),
+('CTDRINKO', 'UMOL/KG'): ('CTDOPTOXY', 'UMOL/KG'),
+('OPTOXY', 'UMOL/KG'): ('CTDOPTOXY', 'UMOL/KG'),
+('CTDRINKO', '0-5VDC'): ('CTDOPTOXY', 'VOLTS'),
+('CTDBBP700RAW', '0-5VDC'): ('CTDBETA700', 'VOLTS'),
+('CTDFLBBFLUORRAW', '0-5VDC'): ('CTDFLUOR', 'VOLTS'),
+('CTDXMISS', '%'): ('CTDXMISS', '%TRANS'),
+('CTDFLUOR', 'MG/M3'): ('CTDFLUOR', 'MG/M^3'),
+('CTDPAR', 'UMOL/M^2/SEC'): ('PAR', 'UMOL/M^2/SEC'),
+('CTDFLUOR', 'UG/L'): ('CTDFLUOR', 'MG/M^3'),
+('CTDBACKSCATTER', 'VOLTS'): ('CTDBETA700', 'VOLTS'),
+('PH_TMP', 'DEGC'): ('PH_TMP', 'DEG C'),
+('FLUOR', 'MG/K^3'): ('CTDFLUOR', 'MG/M^3'),
+('METHANE', 'NMOL/L'): ('CH4', 'NMOL/L'),
+('METHAN', 'NMOL/KG'): ('CH4', 'NMOL/KG'),
+('CHLA', 'UG/L'): ('CHLORA', 'UG/L'),
+('OXYNIT', 'NMOL/KG'): ('N2O', 'NMOL/KG'),
+('ARABA', 'NMOL/KG'): ('ARABI', 'NMOL/KG'),
+('CS-137', 'BQ/CUM'): ('CS-137', 'BQ/M^3'),
+('CS-134', 'BQ/CUM'): ('CS-134', 'BQ/M^3'),
+('REVTMP', 'ITS90'): ('REVTMP', 'ITS-90'),
+('REVPRS', 'DBR'): ('REVPRS', 'DBAR'),
+('CTDBACKSCATTER', '0-5VDC'): ('CTDBETA700', 'VOLTS'),
+('Trans_Red_25cm', '%'): ('CTDXMISS', '%TRANS'),
+('Trans_Red_25cm', 'PERCNT'): ('CTDXMISS', '%TRANS'),
+('Atten_red', '/M'): ('CTDBEAMCP', '/METER'),
+('FLUORM', '0-5VDC'): ('CTDFLUOR', 'VOLTS'),
+('THETA', 'its-90'): ('THETA', 'ITS-90'),
+('CTDTMP', 'IPS-90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'IST-90'): ('CTDTMP', 'ITS-90'),
+('CTDTMP', 'ITP-90'): ('CTDTMP', 'ITS-90'),
+('PHYTOP', 'NB/ML'): ('PHYTOP', '1/ML'),
+('CYANB', 'NB/ML'): ('CYANB', '1/ML'),
+('ABSORBTION', None): ('BEAMAP', '/METER'),
+('CYTO_COUNT', None): ('FCM', None),
+('CDOM-300', '/METER'): ('CDOM300', '/METER'),
+('CDOM-325', '/METER'): ('CDOM325', '/METER'),
+('CDOM-443', '/METER'): ('CDOM443', '/METER'),
+('DELN15', 'O/OO'): ('DELN15', '/MILLE'),
+('BARIUM', 'nM/L'): ('BARIUM', 'NMOL/L'),
+('CELLCOUNT', '/LITER'): ('CELLCOUNT', '/L'),
+('CHL_B', 'MG/M^3'): ('TOT_CHL_B', 'MG/M^3'),
+('TRITUM', 'KBQ/CUM'): ('TRITUM', 'KBQ/M^3'),
+('D15N_NO3+NO2', '/MILLE'): ('D15N_NO2+NO3', '/MILLE'),
+('D18O_NO3+NO2', '/MILLE'): ('D18O_NO2+NO3', '/MILLE'),
+('DSI30', '/MILLE'): ('DELSI30', '/MILLE'),
+('D14C-DOC', '/MILLE'): ('14C-DOC', '/MILLE'),
+('D13C-DOC', '/MILLE'): ('13C-DOC', '/MILLE'),
+('THETA', 'DEG-C'): ('THETA', 'DEG C'),
+('14C-DIC', '/MILLE'): ('DELC14', '/MILLE'),
+('Nd_143_D_EPSILON_BOTTLE', '10000'): ('Nd_143_144_D_EPSILON_BOTTLE', '10000'),
+}
