@@ -18,7 +18,7 @@ try:
 except PackageNotFoundError:
     __version__ = "999"
 
-WHPNameKey = Union[str, tuple[str, Optional[str]], tuple[str]]
+WHPNameKey = Union[str, tuple[str, Optional[str]]]
 
 
 def to_odv(key: tuple[str, Optional[str]]):
@@ -70,6 +70,24 @@ def normalize_odv_name(name: str, return_parts=False):
         return f"{param} [{unit}]"
 
 
+def alt_depth(name: str) -> tuple[str, int]:
+    if "_ALT_" not in name:
+        return name, 0
+    _name, _depth = name.split("_ALT_", maxsplit=1)
+    try:
+        depth = int(_depth)
+    except ValueError as err:
+        raise ValueError("could not parse alternate number") from err
+
+    return _name, depth
+
+
+def flag_name(name: str) -> tuple[str, bool]:
+    if name.endswith("_FLAG_W"):
+        return name.removesuffix("_FLAG_W"), True
+    return name, False
+
+
 class _WHPNames(dict[WHPNameKey, WHPName]):
     """A Mapping (i.e. dict) providing a lookup between a WOCE style param and unit to an instance of :class:`WHPName`
 
@@ -101,7 +119,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._aliases: dict[WHPNameKey, WHPNameKey] = dict()
+        self._aliases: dict[WHPNameKey, tuple[str, Optional[str]]] = dict()
 
     @cached_property
     def odv_names(self):
@@ -110,16 +128,49 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         return {to_odv(key): value for key, value in super().items()}
 
     def __getitem__(self, key: WHPNameKey) -> WHPName:
+        unit = None
+        flag = False
+        error = False
+
         if isinstance(key, str):
-            key = normalize_odv_name(key, return_parts=True)
+            name, flag = flag_name(key)
+            name, unit = normalize_odv_name(key, return_parts=True)
+        elif isinstance(key, tuple) and len(key) == 1:
+            name = key[0]
+        elif isinstance(key, tuple) and len(key) == 2:
+            name, unit = key
+        else:
+            raise KeyError("whpname keys must be str or a tuple")
 
-        if isinstance(key, tuple) and len(key) == 1:
-            key = (key[0], None)
+        if not flag:
+            # try again after all the processing above
+            name, flag = flag_name(name)
+        name, depth = alt_depth(name)
 
-        if key in self._aliases:
-            key = self._aliases[key]
+        alias_key = None
+        if (name, unit) in self._aliases:
+            alias_key = (name, unit)
+            name, unit = self._aliases[(name, unit)]
 
-        return super().__getitem__(key)
+        if (name, unit) in self.error_cols:
+            name, unit = self.error_cols[(name, unit)]
+            error = True
+
+        param = super().__getitem__((name, unit))
+
+        if depth > 0:
+            param = param.as_depth(depth)
+
+        if flag:
+            param = param.as_flag()
+
+        if error:
+            param = param.as_error()
+
+        if alias_key is not None:
+            param = param.as_alias(*alias_key)
+
+        return param
 
     def __contains__(self, key: object) -> bool:
         return super().__contains__(key) or key in self.odv_names
@@ -131,15 +182,11 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         >>> WHPNames.error_cols["C14ERR"]
         WHPName(whp_name='DELC14', whp_unit='/MILLE', cf_name=None)
         """
-        error_dict = {
-            (ex.error_name, ex.whp_unit): ex
+        return {
+            (ex.error_name, ex.whp_unit): (ex.whp_name, ex.whp_unit)
             for ex in self.values()
             if ex.error_name is not None
         }
-        for key, param in list(error_dict.items()):
-            error_dict[to_odv(key)] = param
-
-        return error_dict
 
     def _scope_filter(self, scope: str = "cruise") -> tuple[WHPName, ...]:
         return tuple(sorted(name for name in self.values() if name.scope == scope))
@@ -205,6 +252,8 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
             del p_dict["nc_group"]
             del p_dict["in_erddap"]
             del p_dict["alt_depth"]
+            del p_dict["flag_col"]
+            del p_dict["error_col"]
 
             if p_dict["data_type"] == "string":
                 del p_dict["numeric_min"]
@@ -225,7 +274,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         return params
 
-    def add_alias(self, alias: WHPNameKey, current: WHPNameKey):
+    def add_alias(self, alias: WHPNameKey, current: tuple[str, Optional[str]]):
         """Adds an alias to the WHPNames dict for this session only
 
         Some alias names are a little dangerous to add without larger context.

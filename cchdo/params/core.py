@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import date, time
 from math import isnan
 from typing import Literal, Optional, Union
@@ -112,6 +112,47 @@ class WHPName:
     #: If this param was instianciated from an alias, what was that alias name
     whp_unit_alias: Optional[str] = field(default=None, repr=False, compare=False)
     #: If this param was instantiated from an alias, what was that alias unit
+    error_col: bool = field(default=False)
+    #: The name that found this param was for the uncertainty/error name
+    flag_col: bool = field(default=False)
+    #: The name that found this param was for the flag name (with units)
+
+    def as_depth(self, depth: int) -> "WHPName":
+        return replace(self, alt_depth=depth)
+
+    def as_alias(self, param, unit) -> "WHPName":
+        return replace(self, whp_name_alias=param, whp_unit_alias=unit)
+
+    def as_error(self) -> "WHPName":
+        if self.flag_col is True:
+            raise ValueError("flag columns cannot have errors")
+        return replace(self, error_col=True)
+
+    def as_flag(self) -> "WHPName":
+        if self.error_col is True:
+            raise ValueError("error columns cannot have flags")
+        return replace(self, flag_col=True)
+
+    @property
+    def full_whp_name(self):
+        if self.alt_depth > 0:
+            return f"{self.whp_name}_ALT_{self.alt_depth}"
+        else:
+            return self.whp_name
+
+    @property
+    def full_nc_name(self):
+        if self.alt_depth > 0:
+            return f"{self.nc_name}_alt_{self.alt_depth}"
+        else:
+            return self.nc_name
+
+    @property
+    def full_error_name(self):
+        if self.alt_depth > 0 and self.error_name is not None:
+            return f"{self.error_name}_ALT_{self.alt_depth}"
+        else:
+            return self.error_name
 
     @property
     def key(self):
@@ -125,19 +166,19 @@ class WHPName:
         Note that the "[UNIT]" part is omitted if there are no units
         """
         if self.whp_unit is None:
-            return self.whp_name
+            return self.full_whp_name
         else:
-            return f"{self.whp_name} [{self.whp_unit}]"
+            return f"{self.full_whp_name} [{self.whp_unit}]"
 
     @property
     def nc_name_flag(self) -> str:
         """The variable name of the "flag" ancillary variable for this parameter"""
-        return f"{self.nc_name}_qc"
+        return f"{self.full_nc_name}_qc"
 
     @property
     def nc_name_error(self) -> str:
         """The variable name of the uncertainty ancillary variable for this parameter"""
-        return f"{self.nc_name}_error"
+        return f"{self.full_nc_name}_error"
 
     @property
     def data_type(self):
@@ -165,24 +206,43 @@ class WHPName:
         """:class:`WHPName`s are equivalent if their whp_name and whp_unit properties are equivalent"""
         if not isinstance(other, WHPName):
             raise NotImplementedError("Can only compare two WHPName objects")
-        return (self.whp_name == other.whp_name) and (self.whp_unit == other.whp_unit)
+        return (
+            (self.whp_name == other.whp_name)
+            and (self.whp_unit == other.whp_unit)
+            and (self.alt_depth == other.alt_depth)
+        )
+
+    def __hash__(self):
+        return hash((self.whp_name, self.whp_unit, self.alt_depth))
 
     def __lt__(self, other):
         """Sorts WHPNames based on their rank property"""
         if not isinstance(other, WHPName):
             raise NotImplementedError("Can only compare two WHPName objects")
+        if (self.rank == other.rank) and (self.alt_depth != other.alt_depth):
+            return self.alt_depth < other.alt_depth
         if self.rank == other.rank:
             return str(self.whp_unit) < str(other.whp_unit)
         return self.rank < other.rank
 
+    def __repr__(self):
+        base = f'"{self.odv_key}"'
+        if self.flag_col:
+            base += ", flag=True"
+        if self.error_col:
+            base += ", error=True"
+        if self.alt_depth > 0:
+            base += f", depth={self.alt_depth}"
+        return f"WHPName({base})"
+
     def get_nc_attrs(self, error=False):
         """a dict containing the netCDF variable attributes needed for CF compliance for this variable"""
         attrs = {
-            "whp_name": self.whp_name,
+            "whp_name": self.full_whp_name,
         }
 
-        if error is True and self.error_name is not None:
-            attrs["whp_name"] = self.error_name
+        if error is True and self.full_error_name is not None:
+            attrs["whp_name"] = self.full_error_name
 
         if self.whp_unit is not None:
             attrs["whp_unit"] = self.whp_unit
