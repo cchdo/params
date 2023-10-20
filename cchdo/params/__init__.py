@@ -111,12 +111,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
     def __getitem__(self, key: WHPNameKey) -> WHPName:
         if isinstance(key, str):
-            try:
-                return self.odv_names[normalize_odv_name(key)]
-            except KeyError:
-                pass
-
-            key = (key, None)
+            key = normalize_odv_name(key, return_parts=True)
 
         if isinstance(key, tuple) and len(key) == 1:
             key = (key[0], None)
