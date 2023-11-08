@@ -134,7 +134,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         if isinstance(key, str):
             name, flag = flag_name(key)
-            name, unit = normalize_odv_name(key, return_parts=True)
+            name, unit = normalize_odv_name(name, return_parts=True)
         elif isinstance(key, tuple) and len(key) == 1:
             name = key[0]
         elif isinstance(key, tuple) and len(key) == 2:
