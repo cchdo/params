@@ -165,10 +165,20 @@ class WHPName:
 
         Note that the "[UNIT]" part is omitted if there are no units
         """
-        if self.whp_unit is None:
-            return self.full_whp_name
+        if self.error_col:
+            base = self.full_error_name
         else:
-            return f"{self.full_whp_name} [{self.whp_unit}]"
+            base = self.full_whp_name
+
+        if self.whp_unit is None:
+            key = base
+        else:
+            key = f"{base} [{self.whp_unit}]"
+
+        if self.flag_col:
+            key = f"{key}_FLAG_W"
+
+        return key
 
     @property
     def nc_name_flag(self) -> str:
