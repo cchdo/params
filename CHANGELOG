@@ -1,4 +1,4 @@
-v2023.xx.0 (2023-xx-xx)
+v2023.11.0 (2023-11-25)
 =======================
 Parameter Changes
 -----------------
@@ -6,6 +6,11 @@ Parameter Changes
 
 API Changes
 -----------
+* Support for duplciate parameters added ([#25](https://github.com/cchdo/params/issues/25))
+* There are some major changes in this version related to how the duplicate parameter work was implimented, all of these changes should be in addition to the existing behavior
+  * Parameters are now "aware" if they represent "error" or "flag" columns
+  * flag and error column param objects compare equal to their parent params, but have special booleans set so you can do different thigns with them
+  * The `nc_name` attribute should is really now the "base name" and the `full_nc_name` attribute should be used in most instances
 
 v2023.09.0 (2023-09-01)
 =======================
