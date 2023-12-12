@@ -6184,4 +6184,5 @@ INSERT INTO "whp_names" VALUES('Nd_143_144_D_RATIO_BOTTLE',NULL,NULL,'nd_143_144
 INSERT INTO "whp_names" VALUES('Nd_D_CONC','PMOL/KG',NULL,'nd_d_conc',NULL,NULL,'Nd_D_CONC_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRAT','UMOL/L','mole_concentration_of_nitrate_in_sea_water','nitrate_l',-0.1,47.0,'NRAUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRIT','UMOL/L','mole_concentration_of_nitrite_in_sea_water','nitrite_l',-0.1,15.0,'NRIUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDTURB','VOLTS',NULL,'ctd_turbidity_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
