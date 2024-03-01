@@ -4,7 +4,7 @@ from functools import cached_property
 from importlib.metadata import PackageNotFoundError, version
 from importlib.resources import files
 from json import loads
-from typing import NamedTuple, Optional, Union
+from typing import NamedTuple
 
 from ._cf_names import cf_standard_names as _cf_standard_names
 from ._whp_names import _aliases
@@ -18,10 +18,10 @@ try:
 except PackageNotFoundError:
     __version__ = "999"
 
-WHPNameKey = Union[str, tuple[str, Optional[str]]]
+WHPNameKey = str | tuple[str, str | None]
 
 
-def to_odv(key: tuple[str, Optional[str]]):
+def to_odv(key: tuple[str, str | None]):
     """Transform a (param, unit) tuple into the correct ODV style PARAM [UNIT] string
 
     Does not check if the param exists
@@ -44,7 +44,7 @@ class WHPNameGroups(NamedTuple):
 
 
 def normalize_odv_name(name: str, return_parts=False):
-    unit: Optional[str] = None
+    unit: str | None = None
     if not ("[" in name or "]" in name):
         if return_parts:
             return name, unit
@@ -119,7 +119,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._aliases: dict[WHPNameKey, tuple[str, Optional[str]]] = dict()
+        self._aliases: dict[WHPNameKey, tuple[str, str | None]] = dict()
 
     @cached_property
     def odv_names(self):
@@ -274,7 +274,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         return params
 
-    def add_alias(self, alias: WHPNameKey, current: tuple[str, Optional[str]]):
+    def add_alias(self, alias: WHPNameKey, current: tuple[str, str | None]):
         """Adds an alias to the WHPNames dict for this session only
 
         Some alias names are a little dangerous to add without larger context.
@@ -295,8 +295,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         self._aliases[alias] = current
 
 
-class _CFStandardNames(UserDict[Optional[str], CFStandardName]):
-    ...
+class _CFStandardNames(UserDict[str | None, CFStandardName]): ...
 
 
 CFStandardNames = _CFStandardNames(_cf_standard_names)

@@ -2,7 +2,6 @@ from collections.abc import MutableMapping
 from contextlib import contextmanager
 from importlib.resources import path
 from textwrap import dedent
-from typing import Optional
 
 from sqlalchemy import Enum, ForeignKey, ForeignKeyConstraint, Text, create_engine
 from sqlalchemy.ext.associationproxy import association_proxy
@@ -66,8 +65,7 @@ class ConfigDict(MutableMapping):
         return len(self._config)
 
 
-class Base(DeclarativeBase):
-    ...
+class Base(DeclarativeBase): ...
 
 
 def _str_or_type(val):
@@ -87,19 +85,19 @@ class Unit(Base):
     __tablename__ = "ex_units"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    whp_unit: Mapped[Optional[str]] = mapped_column(unique=True)
+    whp_unit: Mapped[str | None] = mapped_column(unique=True)
     cf_unit: Mapped[str]
-    reference_scale: Mapped[Optional[str]]
-    note: Mapped[Optional[str]] = mapped_column(Text)
+    reference_scale: Mapped[str | None]
+    note: Mapped[str | None] = mapped_column(Text)
 
 
 class Param(Base):
     __tablename__ = "ex_params"
     whp_name: Mapped[str] = mapped_column(primary_key=True)
-    whp_number: Mapped[Optional[int]]
-    description: Mapped[Optional[str]] = mapped_column(Text)
-    note: Mapped[Optional[str]] = mapped_column(Text)
-    warning: Mapped[Optional[str]] = mapped_column(Text)
+    whp_number: Mapped[int | None]
+    description: Mapped[str | None] = mapped_column(Text)
+    note: Mapped[str | None] = mapped_column(Text)
+    warning: Mapped[str | None] = mapped_column(Text)
 
     scope: Mapped[str] = mapped_column(
         Enum("cruise", "profile", "sample"), server_default="sample"
@@ -121,10 +119,10 @@ class CFName(Base):
     __tablename__ = "cf_names"
 
     standard_name: Mapped[str] = mapped_column(primary_key=True)
-    canonical_units: Mapped[Optional[str]]
-    grib: Mapped[Optional[str]]
-    amip: Mapped[Optional[str]]
-    description: Mapped[Optional[str]] = mapped_column(Text)
+    canonical_units: Mapped[str | None]
+    grib: Mapped[str | None]
+    amip: Mapped[str | None]
+    description: Mapped[str | None] = mapped_column(Text)
 
     @property
     def dataclass(self) -> CFStandardNameDC:
@@ -162,35 +160,35 @@ class WHPName(Base):
     __tablename__ = "whp_names"
 
     whp_name: Mapped[str] = mapped_column(ForeignKey(Param.whp_name), primary_key=True)
-    whp_unit: Mapped[Optional[str]] = mapped_column(
+    whp_unit: Mapped[str | None] = mapped_column(
         ForeignKey(Unit.whp_unit), primary_key=True
     )
-    standard_name: Mapped[Optional[str]] = mapped_column(
+    standard_name: Mapped[str | None] = mapped_column(
         ForeignKey("CFName.standard_name")
     )
-    nc_name: Mapped[Optional[str]] = mapped_column(unique=True)
-    nc_group: Mapped[Optional[str]]
+    nc_name: Mapped[str | None] = mapped_column(unique=True)
+    nc_group: Mapped[str | None]
 
-    numeric_min: Mapped[Optional[float]]
-    numeric_max: Mapped[Optional[float]]
+    numeric_min: Mapped[float | None]
+    numeric_max: Mapped[float | None]
 
-    error_name: Mapped[Optional[str]]
+    error_name: Mapped[str | None]
 
-    analytical_temperature_name: Mapped[Optional[str]]
-    analytical_temperature_units: Mapped[Optional[str]]
+    analytical_temperature_name: Mapped[str | None]
+    analytical_temperature_units: Mapped[str | None]
 
     field_width: Mapped[int]
-    numeric_precision: Mapped[Optional[int]]
+    numeric_precision: Mapped[int | None]
 
     param: Mapped[Param] = relationship()
     unit: Mapped[Unit] = relationship()
     cf_unit = association_proxy("unit", "cf_unit")
 
     # Opticas
-    radiation_wavelength: Mapped[Optional[float]]
-    scattering_angle: Mapped[Optional[float]]
-    excitation_wavelength: Mapped[Optional[float]]
-    emission_wavelength: Mapped[Optional[float]]
+    radiation_wavelength: Mapped[float | None]
+    scattering_angle: Mapped[float | None]
+    excitation_wavelength: Mapped[float | None]
+    emission_wavelength: Mapped[float | None]
 
     __table_args__ = (
         ForeignKeyConstraint(
@@ -246,9 +244,9 @@ class WHPName(Base):
 class Alias(Base):
     __tablename__ = "whp_alias"
     old_name: Mapped[str] = mapped_column(primary_key=True)
-    old_unit: Mapped[Optional[str]] = mapped_column(primary_key=True)
+    old_unit: Mapped[str | None] = mapped_column(primary_key=True)
     whp_name: Mapped[str]
-    whp_unit: Mapped[Optional[str]]
+    whp_unit: Mapped[str | None]
 
     __table_args__ = (
         ForeignKeyConstraint(

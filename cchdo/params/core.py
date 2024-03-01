@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field, replace
 from datetime import date, time
 from math import isnan
-from typing import Literal, Optional, Union
+from typing import Literal
 
 
 @dataclass(frozen=True)
@@ -13,10 +13,10 @@ class CFStandardName:
 
     #: name is the cf standard name itself, comes from the "id" property in the XML
     name: str
-    canonical_units: Optional[str]
-    grib: Optional[str]
-    amip: Optional[str]
-    description: Optional[str] = field(repr=False, hash=False)
+    canonical_units: str | None
+    grib: str | None
+    amip: str | None
+    description: str | None = field(repr=False, hash=False)
 
     @property
     def cf(self):
@@ -38,7 +38,7 @@ class WHPName:
     nc_name: str = field(repr=False)
     #: if CF wants this variable collaposed into something with extra dimmensions
     #: the final variable will have this name
-    nc_group: Optional[str] = field(repr=False)
+    nc_group: str | None = field(repr=False)
     #: The historic ordering of columns in a file are determined by this rank, lower rank comes first.
     #: used for sorting the parameters
     rank: float = field(repr=False)
@@ -57,60 +57,60 @@ class WHPName:
     #:   Not all unitless parameters will have a value of `None`.
     #:   For example, practical salinity will have "PSS-78" rather than
     #:   empty units.
-    whp_unit: Optional[str] = None
+    whp_unit: str | None = None
     #: Which set of woce flag definitions to use for this parameter
-    flag_w: Union[
-        Literal["woce_discrete", "woce_ctd", "no_flags", "woce_bottle"], None
-    ] = field(default=None, repr=False)
+    flag_w: Literal["woce_discrete", "woce_ctd", "no_flags", "woce_bottle"] | None = (
+        field(default=None, repr=False)
+    )
     #: if one exists, the cf standard name for this parameter/unit pair
-    cf_name: Optional[str] = None
+    cf_name: str | None = None
     #: The expected minimum value for this parameter/unit pair
-    numeric_min: Optional[float] = field(default=None, repr=False)
+    numeric_min: float | None = field(default=None, repr=False)
     #: The expected maximum value for this parameter/unit pair
-    numeric_max: Optional[float] = field(default=None, repr=False)
+    numeric_max: float | None = field(default=None, repr=False)
     #: The historic print precision for this parameter
     #:
     #: .. danger::
     #:   The use of print precisions as an approximation for uncertainty should only be used if there is no other source of uncertainty.
-    numeric_precision: Optional[int] = field(default=None, repr=False)
+    numeric_precision: int | None = field(default=None, repr=False)
     #: A brief description of the parameter, this is the definition of the parameter
-    description: Optional[str] = field(default=None, repr=False)
+    description: str | None = field(default=None, repr=False)
     #: Any additional notes that are not really part of the definition
-    note: Optional[str] = field(default=None, repr=False)
+    note: str | None = field(default=None, repr=False)
     #: If there is something tricky about this parameter, it should be a warning.
     #: for example, you might interpret the NBR part of the two parameters BTLNBR and STNNBR
     #: as meaning that this field can only have numeric value, this is not correct.
-    warning: Optional[str] = field(default=None, repr=False)
+    warning: str | None = field(default=None, repr=False)
     #: Due to historic limitations, there is no standard way of having an error (uncertanty) parameter.
     #: so a mapping is needed.
-    error_name: Optional[str] = field(default=None, repr=False)
+    error_name: str | None = field(default=None, repr=False)
     #: What the units sould be in a netcdf file, these must be readable by UDUNITS2
-    cf_unit: Optional[str] = field(default=None, repr=False)
+    cf_unit: str | None = field(default=None, repr=False)
     #: The calibration scale if not tied to the units, e.g. temperature has ITS-90 and IPTS-68 but bother are deg C or K
-    reference_scale: Optional[str] = field(default=None, repr=False)
+    reference_scale: str | None = field(default=None, repr=False)
     #: In woce sum files, the parameters were numbered. Not all parameters have a number, and some parameter numbers present classes
     #: e.g. "hydrocarbon" parameters might all have the same whp_number
-    whp_number: Optional[int] = field(default=None, repr=False)
+    whp_number: int | None = field(default=None, repr=False)
     #: does this parameter apply to an entire cruise, a single profile, or a single sample record (bottle closure or ctd scan)
     scope: str = field(default="sample", repr=False)
     #: If reporting temperature is important, the name of the variable which will have that temperature
-    analytical_temperature_name: Optional[str] = field(default=None, repr=False)
+    analytical_temperature_name: str | None = field(default=None, repr=False)
     #: If reporting temperature is important, the units of the variable which has the temperature
-    analytical_temperature_units: Optional[str] = field(default=None, repr=False)
+    analytical_temperature_units: str | None = field(default=None, repr=False)
 
     # optics stuff
-    radiation_wavelength: Optional[float] = field(default=None, repr=False)
-    scattering_angle: Optional[float] = field(default=None, repr=False)
-    excitation_wavelength: Optional[float] = field(default=None, repr=False)
-    emission_wavelength: Optional[float] = field(default=None, repr=False)
+    radiation_wavelength: float | None = field(default=None, repr=False)
+    scattering_angle: float | None = field(default=None, repr=False)
+    excitation_wavelength: float | None = field(default=None, repr=False)
+    emission_wavelength: float | None = field(default=None, repr=False)
 
     # API Things
     alt_depth: int = field(default=0, repr=False)
     #: If this param represents an alternate parameter, how deep in the alternates are we.
     #: This is 0 for the builtin params
-    whp_name_alias: Optional[str] = field(default=None, repr=False, compare=False)
+    whp_name_alias: str | None = field(default=None, repr=False, compare=False)
     #: If this param was instianciated from an alias, what was that alias name
-    whp_unit_alias: Optional[str] = field(default=None, repr=False, compare=False)
+    whp_unit_alias: str | None = field(default=None, repr=False, compare=False)
     #: If this param was instantiated from an alias, what was that alias unit
     error_col: bool = field(default=False)
     #: The name that found this param was for the uncertainty/error name
@@ -203,7 +203,7 @@ class WHPName:
         return str
 
     @property
-    def cf(self) -> Optional[CFStandardName]:
+    def cf(self) -> CFStandardName | None:
         """The :class:`CFStandardName` equivalent to this WHPName
 
         Returns none if there does not exist an equivalent :class:`CFStandardName`.
@@ -281,8 +281,8 @@ class WHPName:
         self,
         value,
         flag: bool = False,
-        numeric_precision_override: Optional[int] = None,
-        date_or_time: Optional[Literal["date", "time"]] = None,
+        numeric_precision_override: int | None = None,
+        date_or_time: Literal["date", "time"] | None = None,
     ) -> str:
         """Format a value using standard WHP Exchange conventions:
 
