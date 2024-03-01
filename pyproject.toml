@@ -2,11 +2,61 @@
 requires = ["setuptools>=68", "setuptools_scm>=7"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+packages = ["cchdo.params"]
+
 [tool.setuptools_scm]
 fallback_version = "999"
 
-[tool.black]
-force-exclude = "_*_names.py"
+[project]
+name = "cchdo.params"
+authors = [{name = "cchdo", email = "cchdo@ucsd.edu"}]
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.10"
+dynamic = ["version"]
+license = {text = "BSD 3-clause"}
+
+dependencies = [
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+Homepage = "https://cchdo.ucsd.edu/"
+Documentation = "https://cchdo.github.io/params/"
+Repository = "https://github.com/cchdo/params.git"
+
+[project.optional-dependencies]
+selftest = [
+    "pytest",
+    "jsonschema",
+    "sqlalchemy"
+]
+dev = [
+    "cchdo.params[selftest]",
+    "click",
+    "pytest-cov",
+    "pre-commit",
+    "codecov",
+    "mypy",
+    "ruff",
+]
+docs = [
+    "Sphinx",
+    "furo",
+]
+complete = [
+    "cchdo.params[dev,docs]"
+]
 
 [tool.mypy]
 namespace_packages = true
@@ -27,9 +77,11 @@ module = [
 ignore_errors = true
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 exclude = [
 ]
+
+[tool.ruff.lint]
 # E402: module level import not at top of file
 # E501: line too long - let black worry about that
 # E731: do not assign a lambda expression, use a def
@@ -50,5 +102,8 @@ select = [
     "UP",
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["cchdo"]
+
+[tool.ruff.format]
+exclude = ["_*_names.py"]
