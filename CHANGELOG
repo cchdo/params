@@ -1,3 +1,13 @@
+v2024.04.0 (2024-04
+=======================
+Parameter Changes
+-----------------
+* Add a warning to EXPOCODE about the value being allowed to vary in a single file.
+
+API Changes
+-----------
+* None yet
+
 v2024.03.0 (2024-03-18)
 =======================
 Parameter Changes
