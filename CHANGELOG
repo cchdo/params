@@ -26,17 +26,17 @@ Parameter Changes
 
 API Changes
 -----------
-* Support for duplciate parameters added ([#25](https://github.com/cchdo/params/issues/25))
-* There are some major changes in this version related to how the duplicate parameter work was implimented, all of these changes should be in addition to the existing behavior
+* Support for duplicate parameters added ([#25](https://github.com/cchdo/params/issues/25))
+* There are some major changes in this version related to how the duplicate parameter work was implemented, all of these changes should be in addition to the existing behavior
   * Parameters are now "aware" if they represent "error" or "flag" columns
-  * flag and error column param objects compare equal to their parent params, but have special booleans set so you can do different thigns with them
+  * flag and error column param objects compare equal to their parent params, but have special booleans set so you can do different things with them
   * The `nc_name` attribute should is really now the "base name" and the `full_nc_name` attribute should be used in most instances
 
 v2023.09.0 (2023-09-01)
 =======================
 Parameter Changes
 -----------------
-* Add Nd_D_CONC [PMOL/KG] for concentration of disovled neodymium.
+* Add Nd_D_CONC [PMOL/KG] for concentration of dissolved neodymium.
 * Add Nd_143_144_D_RATIO_BOTTLE for the ratio of 143Nd to 144Nd in sea water.
 * Change the name of Nd_143_D_EPSILON_BOTTLE [10000] to Nd_143_144_D_EPSILON_BOTTLE [10000] to better conform to GEOTRACES naming conventions, an alias from the old name was added.
 * Update CF Standard Name table to version 82
@@ -57,12 +57,12 @@ Parameter Changes
 * Added/Restored CTDBETA650_123 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 123 degrees
 * Add D15N_TDN [/MILLE] that describes the enrichment of stable 15-nitrogen isotope in total dissolved nitrogen
 * Add 14C-DIC [/MILLE] as an alias for DELC14 [/MILLE]
-* Add D15N_ALPHA_N2O [/MILLE] to describe N2O where the center nitrogen has been subsituted with 15-N
-* Clarify that D15N_N2O [/MILLE] is a subtitution in either nitrogen position
+* Add D15N_ALPHA_N2O [/MILLE] to describe N2O where the center nitrogen has been substituted with 15-N
+* Clarify that D15N_N2O [/MILLE] is a substitution in either nitrogen position
 * Add NMOL/L as a unit for N2O
 * Add CARBONATE [UMOL/KG] for dissolved concentration of the carbonate ion
 * Add HFC-134A [PMOL/KG] for dissolved concentration of 1,1,1,2-Tetrafluoroethane
-* Add HFC-125 [PMOL/KG] for dissolcved concentration of pentafluoroethane
+* Add HFC-125 [PMOL/KG] for dissolved concentration of pentafluoroethane
 * Add NMOL/L as a volume unit for IODATE
 * Add E7/KG as an acceptable unit for I-129 when reported in amount of substance per unit mass, E7 meaning 10^7 atoms following existing unit conventions in this database
 
