@@ -53,6 +53,7 @@ dev = [
 docs = [
     "Sphinx",
     "furo",
+    "sphinx-autoapi",
 ]
 complete = [
     "cchdo.params[dev,docs]"
