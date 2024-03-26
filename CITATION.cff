@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Barna"
+  given-names: "Andrew"
+  orcid: "https://orcid.org/0000-0002-5203-8954"
+title: "cchdo.params a software package for working with the parameters at CCHDO"
+abstract: "An installable database of parameter names and mappings between GO-SHIP CF/netCDF and WOCE Exchange names"
+license: "BSD-3-Clause"
+repository-code: "https://github.com/cchdo/params"
