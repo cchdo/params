@@ -1,0 +1,50 @@
+:py:mod:`params.__main__`
+=========================
+
+.. py:module:: params.__main__
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   params.__main__.cli
+   params.__main__.cf
+   params.__main__.whp
+   params.__main__.cf_update
+   params.__main__.ex_json
+   params.__main__.dump_db
+   params.__main__.gen_code
+
+
+
+.. py:function:: cli()
+
+
+.. py:function:: cf()
+
+   Maniuplate the CF Standard Names
+
+
+.. py:function:: whp()
+
+   Maniuplate the WHP name list
+
+
+.. py:function:: cf_update(cf_xml)
+
+
+.. py:function:: ex_json()
+
+
+.. py:function:: dump_db()
+
+
+.. py:function:: gen_code()
+
+

@@ -6,9 +6,10 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="Welcome to cchdo.params’s documentation!" href="index.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>User Guide - cchdo.params 2024.3.1.dev2+gaeb0a91 documentation</title>
+        <title>User Guide - cchdo.params 2024.3.1.dev3+ge6cc896 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
     
@@ -123,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">cchdo.params 2024.3.1.dev2+gaeb0a91 documentation</div></a>
+      <a href="index.html"><div class="brand">cchdo.params 2024.3.1.dev3+ge6cc896 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -146,7 +147,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">cchdo.params 2024.3.1.dev2+gaeb0a91 documentation</span>
+  <span class="sidebar-brand-text">cchdo.params 2024.3.1.dev3+ge6cc896 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -158,7 +159,19 @@
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of params</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params.__main__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/_cf_names/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params._cf_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/_whp_names/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params._whp_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/core/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params.core</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/db/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params.db</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/test_ordering/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">test_ordering</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/test_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">test_data</span></code></a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -195,8 +208,8 @@
         <article role="main">
           <section id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading">#</a></h1>
-<p>The primary interface are the <a class="reference internal" href="api.html#cchdo.params.WHPNames" title="cchdo.params.WHPNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code></a> and <a class="reference internal" href="api.html#cchdo.params.CFStandardNames" title="cchdo.params.CFStandardNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">CFStandardNames</span></code></a> objects.
-We will focus mostly on the <a class="reference internal" href="api.html#cchdo.params.WHPNames" title="cchdo.params.WHPNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code></a> object.</p>
+<p>The primary interface are the <code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code> and <code class="xref py py-data docutils literal notranslate"><span class="pre">CFStandardNames</span></code> objects.
+We will focus mostly on the <code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code> object.</p>
 <section id="the-whpnames-collection">
 <h2>The WHPNames Collection<a class="headerlink" href="#the-whpnames-collection" title="Link to this heading">#</a></h2>
 <section id="importing">
@@ -211,7 +224,7 @@ We will focus mostly on the <a class="reference internal" href="api.html#cchdo.p
 <section id="name-lookups">
 <h3>Name Lookups<a class="headerlink" href="#name-lookups" title="Link to this heading">#</a></h3>
 <p>These objects follow the standard python Mapping (e.g. dict) interface.
-Exchange parameters are looked up by <code class="docutils literal notranslate"><span class="pre">(param,</span> <span class="pre">unit)</span></code> tuple keys and will always return a <a class="reference internal" href="api.html#cchdo.params.WHPName" title="cchdo.params.WHPName"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code></a> object (more on these later).</p>
+Exchange parameters are looked up by <code class="docutils literal notranslate"><span class="pre">(param,</span> <span class="pre">unit)</span></code> tuple keys and will always return a <code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code> object (more on these later).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">WHPNames</span><span class="p">[(</span><span class="s2">&quot;CTDPRS&quot;</span><span class="p">,</span> <span class="s2">&quot;DBAR&quot;</span><span class="p">)]</span>
 <span class="go">WHPName(whp_name=&#39;CTDPRS&#39;, whp_unit=&#39;DBAR&#39;, cf_name=&#39;sea_water_pressure&#39;)</span>
 </pre></div>
@@ -271,7 +284,7 @@ However, in WPH Exchange files, the correct unit for practical salinity is PSS-7
 </section>
 <section id="dict-like-operations">
 <h3>Dict-like operations<a class="headerlink" href="#dict-like-operations" title="Link to this heading">#</a></h3>
-<p>Since <a class="reference internal" href="api.html#cchdo.params.WHPNames" title="cchdo.params.WHPNames"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code></a> follows the python Mapping interface, you can do all the standard dict operations on it.</p>
+<p>Since <code class="xref py py-data docutils literal notranslate"><span class="pre">WHPNames</span></code> follows the python Mapping interface, you can do all the standard dict operations on it.</p>
 <p>Membership tests:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="s2">&quot;CTDSAL&quot;</span><span class="p">,</span> <span class="s2">&quot;PSS-78&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">WHPNames</span>
 <span class="go">True</span>
@@ -302,7 +315,7 @@ This means there will be more keys returned than there are actual WHPName values
 </div>
 </section>
 <section id="whpname-groups">
-<h3><a class="reference internal" href="api.html#cchdo.params.WHPName" title="cchdo.params.WHPName"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code></a> Groups<a class="headerlink" href="#whpname-groups" title="Link to this heading">#</a></h3>
+<h3><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code> Groups<a class="headerlink" href="#whpname-groups" title="Link to this heading">#</a></h3>
 <p>There are some groupings of parameters that are very useful when translating to netCDF, specifically when determining the shape of the variables.
 The idea was as follows: cruise level parameters would be scalar variables, profile level parameters would be single dimensional, and sample level parameters (e.g. bottle sample measurements) would be two or more dimensional.
 These groupings are provided by a <cite>.groups</cite> property as a named tuple.</p>
@@ -310,7 +323,7 @@ These groupings are provided by a <cite>.groups</cite> property as a named tuple
 <span class="go">WHPNameGroups(cruise=frozenset(), profile=frozenset( [...]</span>
 </pre></div>
 </div>
-<p>This named tuple has the names: <code class="docutils literal notranslate"><span class="pre">cruise</span></code>, <code class="docutils literal notranslate"><span class="pre">profile</span></code>, and <code class="docutils literal notranslate"><span class="pre">sample</span></code> which all contained frozen sets of <a class="reference internal" href="api.html#cchdo.params.WHPName" title="cchdo.params.WHPName"><code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code></a> instances.</p>
+<p>This named tuple has the names: <code class="docutils literal notranslate"><span class="pre">cruise</span></code>, <code class="docutils literal notranslate"><span class="pre">profile</span></code>, and <code class="docutils literal notranslate"><span class="pre">sample</span></code> which all contained frozen sets of <code class="xref py py-data docutils literal notranslate"><span class="pre">WHPName</span></code> instances.</p>
 <div role="list" class="citation-list">
 <div class="citation" id="bipm2019" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">BIPM2019</a><span class="fn-bracket">]</span></span>
@@ -395,7 +408,7 @@ These groupings are provided by a <cite>.groups</cite> property as a named tuple
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f582fc79"></script>
+</div><script src="_static/documentation_options.js?v=688f9b99"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>
