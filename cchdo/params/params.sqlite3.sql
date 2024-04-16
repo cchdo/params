@@ -5581,6 +5581,8 @@ INSERT INTO "ex_params" VALUES('HFC-125',NULL,'The concentration of dissolved HF
 INSERT INTO "ex_params" VALUES('CARBONATE',NULL,'Dissolved carbonate ion in seawater, the chemical formula for the carbonate ion is CO\ :sub:`3`\ :sup:`2-`',NULL,NULL,'sample','decimal','woce_discrete',0,35.1,0);
 INSERT INTO "ex_params" VALUES('Nd_143_144_D_RATIO_BOTTLE',NULL,'Atom ratio of dissolved Nd isotopes','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.0,0);
 INSERT INTO "ex_params" VALUES('Nd_D_CONC',NULL,'Concentration of dissolved "bulk" Neodymium in sea water','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.1,0);
+INSERT INTO "ex_params" VALUES('EWCT',NULL,'Eastward current velocity from a rosette mounted current meter. A positive value indicates zonal flow in the eastward direction, negative values are in the westward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.0,0);
+INSERT INTO "ex_params" VALUES('NSCT',NULL,'Northward current velocity from a rosette mounted current meter. A positive value indicates meridional flow in the northward direction, negative values are in the southward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.1,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -5647,6 +5649,7 @@ INSERT INTO "ex_units" VALUES(54,'KBQ/M^3','kBq m-3',NULL,NULL);
 INSERT INTO "ex_units" VALUES(55,'FMOL/L','fmol/l',NULL,NULL);
 INSERT INTO "ex_units" VALUES(56,'MILLIVOLTS','millivolts',NULL,'Should only be used when the real science units are volts');
 INSERT INTO "ex_units" VALUES(57,'E7/KG','1e7 kg-1',NULL,'This is a "count" of things per unit mass');
+INSERT INTO "ex_units" VALUES(58,'M/S','m/s',NULL,'Meters per second');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -6185,4 +6188,6 @@ INSERT INTO "whp_names" VALUES('Nd_D_CONC','PMOL/KG',NULL,'nd_d_conc',NULL,NULL,
 INSERT INTO "whp_names" VALUES('NITRAT','UMOL/L','mole_concentration_of_nitrate_in_sea_water','nitrate_l',-0.1,47.0,'NRAUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRIT','UMOL/L','mole_concentration_of_nitrite_in_sea_water','nitrite_l',-0.1,15.0,'NRIUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDTURB','VOLTS',NULL,'ctd_turbidity_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('EWCT','M/S','eastward_sea_water_velocity','ewct',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('NSCT','M/S','northward_sea_water_velocity','nsct',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
