@@ -1,12 +1,13 @@
-v2024.04.0 (2024-04
+v2024.04.0 (2024-04-16)
 =======================
 Parameter Changes
 -----------------
 * Add a warning to EXPOCODE about the value being allowed to vary in a single file.
+* Add EWCT [M/S] and NSCT [M/S] for eastward and northward LADCP current vectors included in CTD data.
 
 API Changes
 -----------
-* None yet
+* None
 
 v2024.03.0 (2024-03-18)
 =======================
