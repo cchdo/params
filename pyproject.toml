@@ -51,7 +51,7 @@ dev = [
     "ruff",
 ]
 docs = [
-    "Sphinx",
+    "Sphinx<7.3",
     "furo",
     "sphinx-autoapi",
 ]
