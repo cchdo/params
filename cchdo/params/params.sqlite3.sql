@@ -5783,6 +5783,7 @@ INSERT INTO "ex_params" VALUES('Nd_143_144_D_RATIO_BOTTLE',NULL,'Atom ratio of d
 INSERT INTO "ex_params" VALUES('Nd_D_CONC',NULL,'Concentration of dissolved "bulk" Neodymium in sea water','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,901.1,0);
 INSERT INTO "ex_params" VALUES('EWCT',NULL,'Eastward current velocity from a rosette mounted current meter. A positive value indicates zonal flow in the eastward direction, negative values are in the westward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.0,0);
 INSERT INTO "ex_params" VALUES('NSCT',NULL,'Northward current velocity from a rosette mounted current meter. A positive value indicates meridional flow in the northward direction, negative values are in the southward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.1,0);
+INSERT INTO "ex_params" VALUES('BSI',NULL,'Biogenic Silica, also called opal. Chemically is hydrated silica, SiO2 nH2O. Biogenic silica is in particulate form.',NULL,NULL,'sample','decimal','woce_discrete',0,163.0,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6392,4 +6393,5 @@ INSERT INTO "whp_names" VALUES('EWCT','M/S','eastward_sea_water_velocity','ewct'
 INSERT INTO "whp_names" VALUES('NSCT','M/S','northward_sea_water_velocity','nsct',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('POC','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_carbon_per_unit_mass_in_sea_water','particulate_organic_carbon_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PON','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_nitrogen_per_unit_mass_in_sea_water','particulate_organic_nitrogen_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('BSI','UG/L',NULL,'biogenic_silica_ug',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
