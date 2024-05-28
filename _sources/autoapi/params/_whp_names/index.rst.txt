@@ -1,7 +1,17 @@
-:py:mod:`params._whp_names`
-===========================
+params._whp_names
+=================
 
 .. py:module:: params._whp_names
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   params._whp_names.whp_names
+   params._whp_names.names
+   params._whp_names._aliases
 
 
 Module Contents
@@ -9,13 +19,7 @@ Module Contents
 
 .. py:data:: whp_names
 
-   
-
 .. py:data:: names
 
-   
-
 .. py:data:: _aliases
-
-   
 

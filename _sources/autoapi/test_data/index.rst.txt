@@ -1,15 +1,25 @@
-:py:mod:`test_data`
-===================
+test_data
+=========
 
 .. py:module:: test_data
 
 
-Module Contents
----------------
+Attributes
+----------
+
+.. autoapisummary::
+
+   test_data.CF_VERSION
+   test_data.cf_name_data
+   test_data.cf_alias_data
+   test_data.whp_cf_names
+   test_data.whp_error_names
+   test_data.whp_unitless_names
+   test_data.allowed
 
 
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -40,124 +50,76 @@ Functions
    test_data.test_alt_depths
 
 
-
-Attributes
-~~~~~~~~~~
-
-.. autoapisummary::
-
-   test_data.CF_VERSION
-   test_data.cf_name_data
-   test_data.cf_alias_data
-   test_data.whp_cf_names
-   test_data.whp_error_names
-   test_data.whp_unitless_names
-   test_data.allowed
-
+Module Contents
+---------------
 
 .. py:data:: CF_VERSION
    :value: '81'
 
-   
 
 .. py:function:: test_lengths()
 
-
 .. py:function:: test_cf_names_self()
-
 
 .. py:data:: cf_name_data
    :value: [('sea_water_practical_salinity', '1'), ('sea_water_pressure', 'dbar'),...
 
-   
 
 .. py:function:: test_a_few_cf_standard_names(name, unit)
-
 
 .. py:data:: cf_alias_data
    :value: [('sea_floor_depth', 'sea_floor_depth_below_geoid'),...
 
-   
 
 .. py:function:: test_cf_standard_name_alias(alias, canonical)
 
-
 .. py:data:: whp_cf_names
-
-   
 
 .. py:function:: test_whp_cf_names_in_cf_list(whpname)
 
-
 .. py:data:: whp_error_names
-
-   
 
 .. py:function:: test_whp_error_names(whpname)
 
-
 .. py:data:: whp_unitless_names
-
-   
 
 .. py:function:: test_whp_no_unit_params(whpname)
 
-
 .. py:function:: test_whp_cf_property(whpname)
-
 
 .. py:function:: test_whp_has_nc_name(whpname)
 
-
 .. py:function:: test_whp_name_can_make_nc_attrs(whpname)
-
 
 .. py:function:: test_db_dump_matches_files()
 
-
 .. py:function:: test_db_fk_ok()
-
 
 .. py:data:: allowed
 
-   
-
 .. py:function:: test_nc_names_ok(whpname)
-
 
 .. py:function:: test_legacy_json()
 
-
 .. py:function:: test_whpname_groups()
-
 
 .. py:function:: test_nc_attrs(whpname: cchdo.params.WHPName)
 
-
 .. py:function:: test_strfex_fill(whpname: cchdo.params.WHPName)
-
 
 .. py:function:: test_strfex_floaty(whpname: cchdo.params.WHPName, value, override)
 
-
 .. py:function:: test_strfex_special(whpname: cchdo.params.WHPName)
-
 
 .. py:function:: test_strfex_ints(whpname: cchdo.params.WHPName)
 
-
 .. py:function:: test_strfex_flags(whpname: cchdo.params.WHPName, flag)
-
 
 .. py:function:: test_odv_param_lookup(whpname: cchdo.params.WHPName)
 
-
 .. py:function:: _unitless(param: cchdo.params.WHPName)
-
 
 .. py:function:: test_odv_empty_unit_vatiations(whpname)
 
-
 .. py:function:: test_alt_depths(whpname: cchdo.params.WHPName, depth: int)
-
 

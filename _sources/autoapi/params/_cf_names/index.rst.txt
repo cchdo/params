@@ -1,7 +1,16 @@
-:py:mod:`params._cf_names`
-==========================
+params._cf_names
+================
 
 .. py:module:: params._cf_names
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   params._cf_names.cf_standard_names
+   params._cf_names.names
 
 
 Module Contents
@@ -9,9 +18,5 @@ Module Contents
 
 .. py:data:: cf_standard_names
 
-   
-
 .. py:data:: names
-
-   
 

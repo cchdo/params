@@ -1,17 +1,16 @@
-:py:mod:`params.db`
-===================
+params.db
+=========
 
 .. py:module:: params.db
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
+   params.db.CFStandardNameDC
+   params.db.WHPNameDC
    params.db.ConfigDict
    params.db.Base
    params.db.Config
@@ -23,9 +22,8 @@ Classes
    params.db.Alias
 
 
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -33,14 +31,302 @@ Functions
    params.db._str_or_type
 
 
+Module Contents
+---------------
+
+.. py:class:: CFStandardNameDC
+
+   Dataclass representing a single CF Standard Name
+
+   This class captures the information in the standard name table as properties.
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: canonical_units
+      :type:  str | None
+
+
+   .. py:attribute:: grib
+      :type:  str | None
+
+
+   .. py:attribute:: amip
+      :type:  str | None
+
+
+   .. py:attribute:: description
+      :type:  str | None
+
+
+   .. py:property:: cf
+      Part of the `cf` interface, for :class:`CFStandardName` instances, just returns self
+
+
+
+.. py:class:: WHPNameDC
+
+   Dataclass representing a single exchange/WOCE style name + unit pair
+
+   There is a ton of extra information that is meant for use in making CF/netCDF files.
+
+
+   .. py:attribute:: whp_name
+      :type:  str
+
+
+   .. py:attribute:: nc_name
+      :type:  str
+
+
+   .. py:attribute:: nc_group
+      :type:  str | None
+
+
+   .. py:attribute:: rank
+      :type:  float
+
+
+   .. py:attribute:: dtype
+      :type:  Literal['string', 'decimal', 'integer']
+
+
+   .. py:attribute:: in_erddap
+      :type:  bool
+
+
+   .. py:attribute:: field_width
+      :type:  int
+
+
+   .. py:attribute:: whp_unit
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: flag_w
+      :type:  Literal['woce_discrete', 'woce_ctd', 'no_flags', 'woce_bottle'] | None
+
+
+   .. py:attribute:: cf_name
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: numeric_min
+      :type:  float | None
+
+
+   .. py:attribute:: numeric_max
+      :type:  float | None
+
+
+   .. py:attribute:: numeric_precision
+      :type:  int | None
+
+
+   .. py:attribute:: description
+      :type:  str | None
+
+
+   .. py:attribute:: note
+      :type:  str | None
+
+
+   .. py:attribute:: warning
+      :type:  str | None
+
+
+   .. py:attribute:: error_name
+      :type:  str | None
+
+
+   .. py:attribute:: cf_unit
+      :type:  str | None
+
+
+   .. py:attribute:: reference_scale
+      :type:  str | None
+
+
+   .. py:attribute:: whp_number
+      :type:  int | None
+
+
+   .. py:attribute:: scope
+      :type:  str
+
+
+   .. py:attribute:: analytical_temperature_name
+      :type:  str | None
+
+
+   .. py:attribute:: analytical_temperature_units
+      :type:  str | None
+
+
+   .. py:attribute:: radiation_wavelength
+      :type:  float | None
+
+
+   .. py:attribute:: scattering_angle
+      :type:  float | None
+
+
+   .. py:attribute:: excitation_wavelength
+      :type:  float | None
+
+
+   .. py:attribute:: emission_wavelength
+      :type:  float | None
+
+
+   .. py:attribute:: alt_depth
+      :type:  int
+
+
+   .. py:attribute:: whp_name_alias
+      :type:  str | None
+
+
+   .. py:attribute:: whp_unit_alias
+      :type:  str | None
+
+
+   .. py:attribute:: error_col
+      :type:  bool
+
+
+   .. py:attribute:: flag_col
+      :type:  bool
+
+
+   .. py:method:: as_depth(depth: int) -> WHPName
+
+
+   .. py:method:: as_alias(param, unit) -> WHPName
+
+
+   .. py:method:: as_error() -> WHPName
+
+
+   .. py:method:: as_flag() -> WHPName
+
+
+   .. py:property:: full_whp_name
+
+
+   .. py:property:: full_nc_name
+
+
+   .. py:property:: full_error_name
+
+
+   .. py:property:: key
+      WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values
+
+
+
+   .. py:property:: odv_key
+      :type: str
+
+      An ODV style representation of the param in the form of "NAME [UNIT]"
+
+      Note that the "[UNIT]" part is omitted if there are no units
+
+
+
+   .. py:property:: nc_name_flag
+      :type: str
+
+      The variable name of the "flag" ancillary variable for this parameter
+
+
+
+   .. py:property:: nc_name_error
+      :type: str
+
+      The variable name of the uncertainty ancillary variable for this parameter
+
+
+
+   .. py:property:: data_type
+      the actual python class for this WHPName's dtype
+
+      This is useufl for parsing string values for this WHPName
+
+
+
+   .. py:property:: cf
+      :type: CFStandardName | None
+
+      The :class:`CFStandardName` equivalent to this WHPName
+
+      Returns none if there does not exist an equivalent :class:`CFStandardName`.
+
+
+
+   .. py:method:: __eq__(other)
+
+      :class:`WHPName`s are equivalent if their whp_name and whp_unit properties are equivalent
+
+
+
+   .. py:method:: __hash__()
+
+      Return hash(self).
+
+
+
+   .. py:method:: __lt__(other)
+
+      Sorts WHPNames based on their rank property
+
+
+
+   .. py:method:: __repr__()
+
+      Return repr(self).
+
+
+
+   .. py:method:: get_nc_attrs(error=False)
+
+      a dict containing the netCDF variable attributes needed for CF compliance for this variable
+
+
+
+   .. py:method:: strfex(value, flag: bool = False, numeric_precision_override: int | None = None, date_or_time: Literal['date', 'time'] | None = None) -> str
+
+      Format a value using standard WHP Exchange conventions:
+
+      * dates are formatted as %Y%m%d
+      * times are formatted as %H%M
+      * fill values are "-999" for data, 9 for flags
+      * for floating points, only NaN values are considered to be "fill", there
+        are parameters which can have -999 as a real value
+
+      :param value: the value to format as a string, the accepted inputs depends on the :class:`WHPName.dtype`,
+                    dates and times are expected to be real `datetime.date` and `datetime.time` objects
+      :param boolean flag: should `value` be interpreted as a WOCE flag
+      :param int numeric_precision_override: if not None, will overrride the builtin databases :class:`WHPName.numeric_precision`
+                                             when formatting floats
+
+      :returns: `value` as a string for printing in a WHP Exchange file
+      :rtype: str
+
+
 
 .. py:function:: database()
 
-
 .. py:class:: ConfigDict
 
-
    Bases: :py:obj:`collections.abc.MutableMapping`
+
 
    A MutableMapping is a generic container for associating
    key/value pairs.
@@ -48,6 +334,7 @@ Functions
    This class provides concrete generic implementations of all
    methods except for __getitem__, __setitem__, __delitem__,
    __iter__, and __len__.
+
 
    .. py:method:: __getitem__(key)
 
@@ -59,17 +346,17 @@ Functions
       :abstractmethod:
 
 
+
    .. py:method:: __iter__()
 
 
    .. py:method:: __len__()
 
 
-
 .. py:class:: Base
 
-
    Bases: :py:obj:`sqlalchemy.orm.DeclarativeBase`
+
 
    Base class used for declarative class definitions.
 
@@ -184,11 +471,10 @@ Functions
 
 .. py:function:: _str_or_type(val)
 
-
 .. py:class:: Config
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -297,29 +583,27 @@ Functions
    :func:`_orm.declarative_base` would do; the base created by those functions
    would always install :paramref:`_orm.registry.constructor` for
    ``__init__()``.
+
 
 
 
    .. py:attribute:: __tablename__
       :value: 'config'
 
-      
+
 
    .. py:attribute:: key
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: value
-      :type: sqlalchemy.orm.Mapped[str]
-
-      
+      :type:  sqlalchemy.orm.Mapped[str]
 
 
 .. py:class:: Unit
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -428,44 +712,39 @@ Functions
    :func:`_orm.declarative_base` would do; the base created by those functions
    would always install :paramref:`_orm.registry.constructor` for
    ``__init__()``.
+
 
 
 
    .. py:attribute:: __tablename__
       :value: 'ex_units'
 
-      
+
 
    .. py:attribute:: id
-      :type: sqlalchemy.orm.Mapped[int]
+      :type:  sqlalchemy.orm.Mapped[int]
 
-      
 
    .. py:attribute:: whp_unit
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: cf_unit
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: reference_scale
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: note
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
 
 .. py:class:: Param
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -574,74 +853,63 @@ Functions
    :func:`_orm.declarative_base` would do; the base created by those functions
    would always install :paramref:`_orm.registry.constructor` for
    ``__init__()``.
+
 
 
 
    .. py:attribute:: __tablename__
       :value: 'ex_params'
 
-      
+
 
    .. py:attribute:: whp_name
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: whp_number
-      :type: sqlalchemy.orm.Mapped[int | None]
+      :type:  sqlalchemy.orm.Mapped[int | None]
 
-      
 
    .. py:attribute:: description
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: note
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: warning
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: scope
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: dtype
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: flag
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: ancillary
-      :type: sqlalchemy.orm.Mapped[bool]
+      :type:  sqlalchemy.orm.Mapped[bool]
 
-      
 
    .. py:attribute:: rank
-      :type: sqlalchemy.orm.Mapped[float]
+      :type:  sqlalchemy.orm.Mapped[float]
 
-      
 
    .. py:attribute:: in_erddap
-      :type: sqlalchemy.orm.Mapped[bool]
-
-      
+      :type:  sqlalchemy.orm.Mapped[bool]
 
 
 .. py:class:: CFName
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -753,42 +1021,39 @@ Functions
 
 
 
-   .. py:property:: dataclass
-      :type: params.CFStandardName
-
-
-   .. py:property:: code
-
 
    .. py:attribute:: __tablename__
       :value: 'cf_names'
 
-      
+
 
    .. py:attribute:: standard_name
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: canonical_units
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: grib
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: amip
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: description
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
+
+   .. py:property:: dataclass
+      :type: params.CFStandardName
+
+
+
+   .. py:property:: code
+
 
    .. py:method:: __repr__()
 
@@ -798,8 +1063,8 @@ Functions
 
 .. py:class:: CFAlias
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -911,25 +1176,23 @@ Functions
 
 
 
+
    .. py:attribute:: __tablename__
       :value: 'cf_aliases'
 
-      
+
 
    .. py:attribute:: id
-      :type: sqlalchemy.orm.Mapped[int]
+      :type:  sqlalchemy.orm.Mapped[int]
 
-      
 
    .. py:attribute:: alias
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: standard_name
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:method:: __repr__()
 
@@ -939,8 +1202,8 @@ Functions
 
 .. py:class:: WHPName
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -1050,125 +1313,106 @@ Functions
    would always install :paramref:`_orm.registry.constructor` for
    ``__init__()``.
 
+
+
+
+   .. py:attribute:: __tablename__
+      :value: 'whp_names'
+
+
+
+   .. py:attribute:: whp_name
+      :type:  sqlalchemy.orm.Mapped[str]
+
+
+   .. py:attribute:: whp_unit
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: standard_name
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: nc_name
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: nc_group
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: numeric_min
+      :type:  sqlalchemy.orm.Mapped[float | None]
+
+
+   .. py:attribute:: numeric_max
+      :type:  sqlalchemy.orm.Mapped[float | None]
+
+
+   .. py:attribute:: error_name
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: analytical_temperature_name
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: analytical_temperature_units
+      :type:  sqlalchemy.orm.Mapped[str | None]
+
+
+   .. py:attribute:: field_width
+      :type:  sqlalchemy.orm.Mapped[int]
+
+
+   .. py:attribute:: numeric_precision
+      :type:  sqlalchemy.orm.Mapped[int | None]
+
+
+   .. py:attribute:: param
+      :type:  sqlalchemy.orm.Mapped[Param]
+
+
+   .. py:attribute:: unit
+      :type:  sqlalchemy.orm.Mapped[Unit]
+
+
+   .. py:attribute:: cf_unit
+
+
+   .. py:attribute:: radiation_wavelength
+      :type:  sqlalchemy.orm.Mapped[float | None]
+
+
+   .. py:attribute:: scattering_angle
+      :type:  sqlalchemy.orm.Mapped[float | None]
+
+
+   .. py:attribute:: excitation_wavelength
+      :type:  sqlalchemy.orm.Mapped[float | None]
+
+
+   .. py:attribute:: emission_wavelength
+      :type:  sqlalchemy.orm.Mapped[float | None]
+
+
+   .. py:attribute:: __table_args__
 
 
    .. py:property:: dataclass
       :type: params.WHPName
 
 
+
    .. py:property:: code
       :type: str
 
 
-   .. py:attribute:: __tablename__
-      :value: 'whp_names'
-
-      
-
-   .. py:attribute:: whp_name
-      :type: sqlalchemy.orm.Mapped[str]
-
-      
-
-   .. py:attribute:: whp_unit
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: standard_name
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: nc_name
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: nc_group
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: numeric_min
-      :type: sqlalchemy.orm.Mapped[float | None]
-
-      
-
-   .. py:attribute:: numeric_max
-      :type: sqlalchemy.orm.Mapped[float | None]
-
-      
-
-   .. py:attribute:: error_name
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: analytical_temperature_name
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: analytical_temperature_units
-      :type: sqlalchemy.orm.Mapped[str | None]
-
-      
-
-   .. py:attribute:: field_width
-      :type: sqlalchemy.orm.Mapped[int]
-
-      
-
-   .. py:attribute:: numeric_precision
-      :type: sqlalchemy.orm.Mapped[int | None]
-
-      
-
-   .. py:attribute:: param
-      :type: sqlalchemy.orm.Mapped[Param]
-
-      
-
-   .. py:attribute:: unit
-      :type: sqlalchemy.orm.Mapped[Unit]
-
-      
-
-   .. py:attribute:: cf_unit
-
-      
-
-   .. py:attribute:: radiation_wavelength
-      :type: sqlalchemy.orm.Mapped[float | None]
-
-      
-
-   .. py:attribute:: scattering_angle
-      :type: sqlalchemy.orm.Mapped[float | None]
-
-      
-
-   .. py:attribute:: excitation_wavelength
-      :type: sqlalchemy.orm.Mapped[float | None]
-
-      
-
-   .. py:attribute:: emission_wavelength
-      :type: sqlalchemy.orm.Mapped[float | None]
-
-      
-
-   .. py:attribute:: __table_args__
-      :value: ()
-
-      
-
 
 .. py:class:: Alias
 
-
    Bases: :py:obj:`Base`
+
 
    Base class used for declarative class definitions.
 
@@ -1280,34 +1524,28 @@ Functions
 
 
 
+
    .. py:attribute:: __tablename__
       :value: 'whp_alias'
 
-      
+
 
    .. py:attribute:: old_name
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: old_unit
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: whp_name
-      :type: sqlalchemy.orm.Mapped[str]
+      :type:  sqlalchemy.orm.Mapped[str]
 
-      
 
    .. py:attribute:: whp_unit
-      :type: sqlalchemy.orm.Mapped[str | None]
+      :type:  sqlalchemy.orm.Mapped[str | None]
 
-      
 
    .. py:attribute:: __table_args__
-      :value: ()
-
-      
 
 

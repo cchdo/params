@@ -1,14 +1,11 @@
-:py:mod:`params.core`
-=====================
+params.core
+===========
 
 .. py:module:: params.core
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -16,261 +13,179 @@ Classes
    params.core.WHPName
 
 
-
+Module Contents
+---------------
 
 .. py:class:: CFStandardName
-
 
    Dataclass representing a single CF Standard Name
 
    This class captures the information in the standard name table as properties.
 
-   .. py:property:: cf
 
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: canonical_units
+      :type:  str | None
+
+
+   .. py:attribute:: grib
+      :type:  str | None
+
+
+   .. py:attribute:: amip
+      :type:  str | None
+
+
+   .. py:attribute:: description
+      :type:  str | None
+
+
+   .. py:property:: cf
       Part of the `cf` interface, for :class:`CFStandardName` instances, just returns self
 
 
-   .. py:attribute:: name
-      :type: str
-
-      
-
-   .. py:attribute:: canonical_units
-      :type: str | None
-
-      
-
-   .. py:attribute:: grib
-      :type: str | None
-
-      
-
-   .. py:attribute:: amip
-      :type: str | None
-
-      
-
-   .. py:attribute:: description
-      :type: str | None
-
-      
-
 
 .. py:class:: WHPName
-
 
    Dataclass representing a single exchange/WOCE style name + unit pair
 
    There is a ton of extra information that is meant for use in making CF/netCDF files.
 
-   .. py:property:: full_whp_name
-
-
-   .. py:property:: full_nc_name
-
-
-   .. py:property:: full_error_name
-
-
-   .. py:property:: key
-
-      WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values
-
-
-   .. py:property:: odv_key
-      :type: str
-
-      An ODV style representation of the param in the form of "NAME [UNIT]"
-
-      Note that the "[UNIT]" part is omitted if there are no units
-
-
-   .. py:property:: nc_name_flag
-      :type: str
-
-      The variable name of the "flag" ancillary variable for this parameter
-
-
-   .. py:property:: nc_name_error
-      :type: str
-
-      The variable name of the uncertainty ancillary variable for this parameter
-
-
-   .. py:property:: data_type
-
-      the actual python class for this WHPName's dtype
-
-      This is useufl for parsing string values for this WHPName
-
-
-   .. py:property:: cf
-      :type: CFStandardName | None
-
-      The :class:`CFStandardName` equivalent to this WHPName
-
-      Returns none if there does not exist an equivalent :class:`CFStandardName`.
-
 
    .. py:attribute:: whp_name
-      :type: str
+      :type:  str
 
-      
 
    .. py:attribute:: nc_name
-      :type: str
+      :type:  str
 
-      
 
    .. py:attribute:: nc_group
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: rank
-      :type: float
+      :type:  float
 
-      
 
    .. py:attribute:: dtype
-      :type: Literal[string, decimal, integer]
+      :type:  Literal['string', 'decimal', 'integer']
 
-      
 
    .. py:attribute:: in_erddap
-      :type: bool
+      :type:  bool
 
-      
 
    .. py:attribute:: field_width
-      :type: int
+      :type:  int
 
-      
 
    .. py:attribute:: whp_unit
-      :type: str | None
+      :type:  str | None
+      :value: None
 
-      
+
 
    .. py:attribute:: flag_w
-      :type: Literal[woce_discrete, woce_ctd, no_flags, woce_bottle] | None
+      :type:  Literal['woce_discrete', 'woce_ctd', 'no_flags', 'woce_bottle'] | None
 
-      
 
    .. py:attribute:: cf_name
-      :type: str | None
+      :type:  str | None
+      :value: None
 
-      
+
 
    .. py:attribute:: numeric_min
-      :type: float | None
+      :type:  float | None
 
-      
 
    .. py:attribute:: numeric_max
-      :type: float | None
+      :type:  float | None
 
-      
 
    .. py:attribute:: numeric_precision
-      :type: int | None
+      :type:  int | None
 
-      
 
    .. py:attribute:: description
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: note
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: warning
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: error_name
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: cf_unit
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: reference_scale
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: whp_number
-      :type: int | None
+      :type:  int | None
 
-      
 
    .. py:attribute:: scope
-      :type: str
+      :type:  str
 
-      
 
    .. py:attribute:: analytical_temperature_name
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: analytical_temperature_units
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: radiation_wavelength
-      :type: float | None
+      :type:  float | None
 
-      
 
    .. py:attribute:: scattering_angle
-      :type: float | None
+      :type:  float | None
 
-      
 
    .. py:attribute:: excitation_wavelength
-      :type: float | None
+      :type:  float | None
 
-      
 
    .. py:attribute:: emission_wavelength
-      :type: float | None
+      :type:  float | None
 
-      
 
    .. py:attribute:: alt_depth
-      :type: int
+      :type:  int
 
-      
 
    .. py:attribute:: whp_name_alias
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: whp_unit_alias
-      :type: str | None
+      :type:  str | None
 
-      
 
    .. py:attribute:: error_col
-      :type: bool
+      :type:  bool
 
-      
 
    .. py:attribute:: flag_col
-      :type: bool
+      :type:  bool
 
-      
 
    .. py:method:: as_depth(depth: int) -> WHPName
 
@@ -284,9 +199,63 @@ Classes
    .. py:method:: as_flag() -> WHPName
 
 
+   .. py:property:: full_whp_name
+
+
+   .. py:property:: full_nc_name
+
+
+   .. py:property:: full_error_name
+
+
+   .. py:property:: key
+      WHPNames are uniquely identified by a tuple of their (whp_name, whp_unit) values
+
+
+
+   .. py:property:: odv_key
+      :type: str
+
+      An ODV style representation of the param in the form of "NAME [UNIT]"
+
+      Note that the "[UNIT]" part is omitted if there are no units
+
+
+
+   .. py:property:: nc_name_flag
+      :type: str
+
+      The variable name of the "flag" ancillary variable for this parameter
+
+
+
+   .. py:property:: nc_name_error
+      :type: str
+
+      The variable name of the uncertainty ancillary variable for this parameter
+
+
+
+   .. py:property:: data_type
+      the actual python class for this WHPName's dtype
+
+      This is useufl for parsing string values for this WHPName
+
+
+
+   .. py:property:: cf
+      :type: CFStandardName | None
+
+      The :class:`CFStandardName` equivalent to this WHPName
+
+      Returns none if there does not exist an equivalent :class:`CFStandardName`.
+
+
+
    .. py:method:: __eq__(other)
 
       :class:`WHPName`s are equivalent if their whp_name and whp_unit properties are equivalent
+
 
 
    .. py:method:: __hash__()
@@ -294,9 +263,11 @@ Classes
       Return hash(self).
 
 
+
    .. py:method:: __lt__(other)
 
       Sorts WHPNames based on their rank property
+
 
 
    .. py:method:: __repr__()
@@ -304,12 +275,14 @@ Classes
       Return repr(self).
 
 
+
    .. py:method:: get_nc_attrs(error=False)
 
       a dict containing the netCDF variable attributes needed for CF compliance for this variable
 
 
-   .. py:method:: strfex(value, flag: bool = False, numeric_precision_override: int | None = None, date_or_time: Literal[datetime.date, datetime.time] | None = None) -> str
+
+   .. py:method:: strfex(value, flag: bool = False, numeric_precision_override: int | None = None, date_or_time: Literal['date', 'time'] | None = None) -> str
 
       Format a value using standard WHP Exchange conventions:
 

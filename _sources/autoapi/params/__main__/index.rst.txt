@@ -1,15 +1,11 @@
-:py:mod:`params.__main__`
-=========================
+params.__main__
+===============
 
 .. py:module:: params.__main__
 
 
-Module Contents
----------------
-
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -22,9 +18,10 @@ Functions
    params.__main__.gen_code
 
 
+Module Contents
+---------------
 
 .. py:function:: cli()
-
 
 .. py:function:: cf()
 
@@ -38,13 +35,9 @@ Functions
 
 .. py:function:: cf_update(cf_xml)
 
-
 .. py:function:: ex_json()
-
 
 .. py:function:: dump_db()
 
-
 .. py:function:: gen_code()
-
 

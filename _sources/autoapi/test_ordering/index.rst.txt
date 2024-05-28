@@ -1,26 +1,11 @@
-:py:mod:`test_ordering`
-=======================
+test_ordering
+=============
 
 .. py:module:: test_ordering
 
 
-Module Contents
----------------
-
-
-Functions
-~~~~~~~~~
-
-.. autoapisummary::
-
-   test_ordering.test_ordering
-   test_ordering.test_ordering_fallback
-   test_ordering.test_arr_sort
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
@@ -32,36 +17,34 @@ Attributes
    test_ordering.CTDTMP_68
 
 
-.. py:data:: EXPOCODE
+Functions
+---------
 
-   
+.. autoapisummary::
+
+   test_ordering.test_ordering
+   test_ordering.test_ordering_fallback
+   test_ordering.test_arr_sort
+
+
+Module Contents
+---------------
+
+.. py:data:: EXPOCODE
 
 .. py:data:: CTDPRS
 
-   
-
 .. py:data:: CTDSAL
-
-   
 
 .. py:data:: SALNTY
 
-   
-
 .. py:data:: CTDTMP_90
-
-   
 
 .. py:data:: CTDTMP_68
 
-   
-
 .. py:function:: test_ordering()
-
 
 .. py:function:: test_ordering_fallback()
 
-
 .. py:function:: test_arr_sort()
-
 

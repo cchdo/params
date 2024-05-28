@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="API Reference" href="autoapi/index.html" /><link rel="prev" title="User Guide" href="user_guide.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Changelog - cchdo.params 2024.4.1.dev1+ga58cf05 documentation</title>
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.05.06 -->
+        <title>Changelog - cchdo.params 2024.4.1.dev2+gae26ad8 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     
@@ -69,7 +69,7 @@
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -84,7 +84,7 @@
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
@@ -92,7 +92,7 @@
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
       <path d="M13 12h5" />
@@ -100,6 +100,60 @@
       <path d="M13 18h1" />
       <path d="M13 9h4" />
       <path d="M13 6h1" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" /
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
 </svg>
@@ -113,6 +167,8 @@
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
 
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
 
 
 <div class="page">
@@ -124,13 +180,14 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">cchdo.params 2024.4.1.dev1+ga58cf05 documentation</div></a>
+      <a href="index.html"><div class="brand">cchdo.params 2024.4.1.dev2+gae26ad8 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
         <button class="theme-toggle">
           <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
@@ -147,7 +204,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">cchdo.params 2024.4.1.dev1+ga58cf05 documentation</span>
+  <span class="sidebar-brand-text">cchdo.params 2024.4.1.dev2+gae26ad8 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -160,16 +217,16 @@
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Changelog</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of params</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="autoapi/params/__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params.__main__</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="autoapi/params/_cf_names/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params._cf_names</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="autoapi/params/_whp_names/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params._whp_names</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="autoapi/params/core/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params.core</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="autoapi/params/db/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params.db</span></code></a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/params/index.html">params</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of params</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/__main__/index.html">params.__main__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/_cf_names/index.html">params._cf_names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/_whp_names/index.html">params._whp_names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/core/index.html">params.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/params/db/index.html">params.db</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="autoapi/test_ordering/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">test_ordering</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="autoapi/test_data/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">test_data</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/test_data/index.html">test_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/test_ordering/index.html">test_ordering</a></li>
 </ul>
 </li>
 </ul>
@@ -191,11 +248,17 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/changelog.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
@@ -205,50 +268,61 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="changelog">
-<h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">#</a></h1>
-<section id="v2024-04-0-2024-04-16">
-<h2>v2024.04.0 (2024-04-16)<a class="headerlink" href="#v2024-04-0-2024-04-16" title="Link to this heading">#</a></h2>
+<h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
+<section id="v2024-0-2024">
+<h2>v2024.0?.? (2024-??-??)<a class="headerlink" href="#v2024-0-2024" title="Link to this heading">¶</a></h2>
 <section id="parameter-changes">
-<h3>Parameter Changes<a class="headerlink" href="#parameter-changes" title="Link to this heading">#</a></h3>
+<h3>Parameter Changes<a class="headerlink" href="#parameter-changes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Add UMOL/KG as a unit for POC</p></li>
+<li><p>Add UMOL/KG as a unit for PON</p></li>
+<li><p>Update CF standard name table from 82 to 85 to support new CCHDO params/units above</p></li>
+</ul>
+</section>
+</section>
+<section id="v2024-04-0-2024-04-16">
+<h2>v2024.04.0 (2024-04-16)<a class="headerlink" href="#v2024-04-0-2024-04-16" title="Link to this heading">¶</a></h2>
+<section id="id1">
+<h3>Parameter Changes<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add a warning to EXPOCODE about the value being allowed to vary in a single file.</p></li>
 <li><p>Add EWCT [M/S] and NSCT [M/S] for eastward and northward LADCP current vectors included in CTD data.</p></li>
 </ul>
 </section>
 <section id="api-changes">
-<h3>API Changes<a class="headerlink" href="#api-changes" title="Link to this heading">#</a></h3>
+<h3>API Changes<a class="headerlink" href="#api-changes" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>None</p></li>
 </ul>
 </section>
 </section>
 <section id="v2024-03-0-2024-03-18">
-<h2>v2024.03.0 (2024-03-18)<a class="headerlink" href="#v2024-03-0-2024-03-18" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Parameter Changes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h2>v2024.03.0 (2024-03-18)<a class="headerlink" href="#v2024-03-0-2024-03-18" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h3>Parameter Changes<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add VOLTS as a valid unit for raw CTDTURB</p></li>
 </ul>
 </section>
-<section id="id2">
-<h3>API Changes<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>API Changes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>None</p></li>
 </ul>
 </section>
 </section>
 <section id="v2023-11-0-2023-11-25">
-<h2>v2023.11.0 (2023-11-25)<a class="headerlink" href="#v2023-11-0-2023-11-25" title="Link to this heading">#</a></h2>
-<section id="id3">
-<h3>Parameter Changes<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h2>v2023.11.0 (2023-11-25)<a class="headerlink" href="#v2023-11-0-2023-11-25" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>Parameter Changes<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add UMOL/L as acceptable units for NITRAT and NITRIT</p></li>
 </ul>
 </section>
-<section id="id4">
-<h3>API Changes<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>API Changes<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Support for duplicate parameters added ([#25](<a class="reference external" href="https://github.com/cchdo/params/issues/25">https://github.com/cchdo/params/issues/25</a>))</p></li>
 <li><p>There are some major changes in this version related to how the duplicate parameter work was implemented, all of these changes should be in addition to the existing behavior
@@ -259,9 +333,9 @@
 </section>
 </section>
 <section id="v2023-09-0-2023-09-01">
-<h2>v2023.09.0 (2023-09-01)<a class="headerlink" href="#v2023-09-0-2023-09-01" title="Link to this heading">#</a></h2>
-<section id="id5">
-<h3>Parameter Changes<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h2>v2023.09.0 (2023-09-01)<a class="headerlink" href="#v2023-09-0-2023-09-01" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3>Parameter Changes<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add Nd_D_CONC [PMOL/KG] for concentration of dissolved neodymium.</p></li>
 <li><p>Add Nd_143_144_D_RATIO_BOTTLE for the ratio of 143Nd to 144Nd in sea water.</p></li>
@@ -269,17 +343,17 @@
 <li><p>Update CF Standard Name table to version 82</p></li>
 </ul>
 </section>
-<section id="id6">
-<h3>API Changes<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3>API Changes<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Switch to CalVer versioning scheme</p></li>
 </ul>
 </section>
 </section>
 <section id="v0-1-21-2023-06-21">
-<h2>v0.1.21 (2023-06-21)<a class="headerlink" href="#v0-1-21-2023-06-21" title="Link to this heading">#</a></h2>
-<section id="id7">
-<h3>Parameter Changes<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h2>v0.1.21 (2023-06-21)<a class="headerlink" href="#v0-1-21-2023-06-21" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h3>Parameter Changes<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add 370nm as a wavelength for CDOM</p></li>
 <li><p>Update CF Standard Name table to version 81</p></li>
@@ -298,23 +372,23 @@
 <li><p>Add E7/KG as an acceptable unit for I-129 when reported in amount of substance per unit mass, E7 meaning 10^7 atoms following existing unit conventions in this database</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>API Changes<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3>API Changes<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Internal refactor removing the LazyMapping class in favor of collections.UserDict, there should be no user facing changes.</p></li>
 </ul>
 </section>
 </section>
 <section id="v0-1-20-2022-08-07">
-<h2>v0.1.20 (2022-08-07)<a class="headerlink" href="#v0-1-20-2022-08-07" title="Link to this heading">#</a></h2>
-<section id="id9">
-<h3>Parameter Changes<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h2>v0.1.20 (2022-08-07)<a class="headerlink" href="#v0-1-20-2022-08-07" title="Link to this heading">¶</a></h2>
+<section id="id10">
+<h3>Parameter Changes<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Filled in all remaining missing parameter descriptions, while all params now have more descriptive text, this can always be improved</p></li>
 </ul>
 </section>
-<section id="id10">
-<h3>API Changes<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h3>API Changes<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added an <cite>in_erddap</cite> property to WHPNames to indicate if this name should appear in the CCHDO/NOAA ERDDAP data collection</p>
 <ul>
@@ -325,9 +399,9 @@
 </section>
 </section>
 <section id="v0-1-19-2022-08-19">
-<h2>v0.1.19 (2022-08-19)<a class="headerlink" href="#v0-1-19-2022-08-19" title="Link to this heading">#</a></h2>
-<section id="id11">
-<h3>Parameter Changes<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<h2>v0.1.19 (2022-08-19)<a class="headerlink" href="#v0-1-19-2022-08-19" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h3>Parameter Changes<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add RA-228E as the error name for RA-228</p></li>
 <li><p>Add CS-137 [MBQ/KG] for 137Cs activity in a mass sea water</p></li>
@@ -399,17 +473,17 @@
 <li><p>Add SALNTY_DNSSAL [PSS-78] for practical salinity measured on the same sample as in DNSSAL</p></li>
 </ul>
 </section>
-<section id="id12">
-<h3>API Changes<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h3>API Changes<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>None</p></li>
 </ul>
 </section>
 </section>
 <section id="v0-1-18-2022-07-08">
-<h2>v0.1.18 (2022-07-08)<a class="headerlink" href="#v0-1-18-2022-07-08" title="Link to this heading">#</a></h2>
-<section id="id13">
-<h3>Parameter Changes<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<h2>v0.1.18 (2022-07-08)<a class="headerlink" href="#v0-1-18-2022-07-08" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h3>Parameter Changes<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add CH4 [NMOL/L] as an alternate unit for methane</p></li>
 <li><p>Add HCFC-22 [PMOL/KG] for Chlorodifluoromethane concentration</p></li>
@@ -496,8 +570,8 @@
 </li>
 </ul>
 </section>
-<section id="id14">
-<h3>API Changes<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3>API Changes<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>(BREAKING) The error name look ups in <code class="docutils literal notranslate"><span class="pre">WHPNames.error_names</span></code> must now use the units as either a tuple (error_name, units) or an ODV style PARAM [UNIT] string.</p></li>
 <li><p>Add a <code class="docutils literal notranslate"><span class="pre">WHPName.nc_group</span></code> property to be used when CF wants some columns collapsed into another dimension (e.g. our CDOM params)</p></li>
@@ -516,9 +590,9 @@
 </section>
 </section>
 <section id="v0-1-17-2022-03-22">
-<h2>v0.1.17 (2022-03-22)<a class="headerlink" href="#v0-1-17-2022-03-22" title="Link to this heading">#</a></h2>
-<section id="id15">
-<h3>Parameter Changes<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<h2>v0.1.17 (2022-03-22)<a class="headerlink" href="#v0-1-17-2022-03-22" title="Link to this heading">¶</a></h2>
+<section id="id16">
+<h3>Parameter Changes<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The CF Standard Name table was updated to v79</p>
 <ul>
@@ -551,8 +625,8 @@
 </li>
 </ul>
 </section>
-<section id="id16">
-<h3>API Changes<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<section id="id17">
+<h3>API Changes<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add the ability to add custom aliases to <code class="docutils literal notranslate"><span class="pre">WHPNames</span></code> using <code class="docutils literal notranslate"><span class="pre">WHPNames.add_alias</span></code></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">WHPName.field_width</span></code> property is now no longer optional.</p></li>
@@ -560,9 +634,9 @@
 </section>
 </section>
 <section id="v0-1-16-2021-11-19">
-<h2>v0.1.16 (2021-11-19)<a class="headerlink" href="#v0-1-16-2021-11-19" title="Link to this heading">#</a></h2>
-<section id="id17">
-<h3>Parameter Changes<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<h2>v0.1.16 (2021-11-19)<a class="headerlink" href="#v0-1-16-2021-11-19" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h3>Parameter Changes<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Add the following aliases for CHLORA [UG/L]</p>
 <ul>
@@ -591,8 +665,8 @@
 <li><p>Add D15N_NO2+NO3_ERROR as the uncertainty parameter for D15N_NO2+NO3</p></li>
 </ul>
 </section>
-<section id="id18">
-<h3>API Changes<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<section id="id19">
+<h3>API Changes<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Removed sqlalchemy as an install/runtime dependency, it is still required for dev tasks.
 This has two rather nice effects: only the python standard library is needed for install and import/loading parameters gets a ~10x speed up.</p></li>
@@ -600,9 +674,9 @@ This has two rather nice effects: only the python standard library is needed for
 </section>
 </section>
 <section id="v0-1-15-2021-09-29">
-<h2>v0.1.15 (2021-09-29)<a class="headerlink" href="#v0-1-15-2021-09-29" title="Link to this heading">#</a></h2>
-<section id="id19">
-<h3>Parameter Changes<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<h2>v0.1.15 (2021-09-29)<a class="headerlink" href="#v0-1-15-2021-09-29" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h3>Parameter Changes<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added D15N_N2 [/MILLE] which describes the isotopic enrichment of dissolved N2 gas.</p></li>
 <li><p>Added N2/ARGON and N2/ARGON_UNSTRIPPED which represent the ratio of dissolved N2 gas to ARGON gas, both are unitless ratios.</p>
@@ -618,23 +692,23 @@ This has two rather nice effects: only the python standard library is needed for
 </li>
 </ul>
 </section>
-<section id="id20">
-<h3>API Changes<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<section id="id21">
+<h3>API Changes<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>None</p></li>
 </ul>
 </section>
 </section>
 <section id="v0-1-14-2021-08-26">
-<h2>v0.1.14 (2021-08-26)<a class="headerlink" href="#v0-1-14-2021-08-26" title="Link to this heading">#</a></h2>
-<section id="id21">
-<h3>Parameter Changes<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<h2>v0.1.14 (2021-08-26)<a class="headerlink" href="#v0-1-14-2021-08-26" title="Link to this heading">¶</a></h2>
+<section id="id22">
+<h3>Parameter Changes<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>None</p></li>
 </ul>
 </section>
-<section id="id22">
-<h3>API Changes<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<section id="id23">
+<h3>API Changes<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The types of the <code class="docutils literal notranslate"><span class="pre">WHPNames.groups</span></code> properties was changed from <code class="docutils literal notranslate"><span class="pre">tuple</span></code> to <code class="docutils literal notranslate"><span class="pre">frozenset</span></code> to speed up <code class="docutils literal notranslate"><span class="pre">in</span></code> operations.</p></li>
 <li><p>Added a <code class="docutils literal notranslate"><span class="pre">WHPName.dtype</span></code> field containing the data type of the parameter as a string.
@@ -644,12 +718,12 @@ The API of <code class="docutils literal notranslate"><span class="pre">data_typ
 </section>
 </section>
 <section id="v0-1-13-2021-08-12">
-<h2>v0.1.13 (2021-08-12)<a class="headerlink" href="#v0-1-13-2021-08-12" title="Link to this heading">#</a></h2>
+<h2>v0.1.13 (2021-08-12)<a class="headerlink" href="#v0-1-13-2021-08-12" title="Link to this heading">¶</a></h2>
 <p>This release focused mostly on code maintainability.
 Lots of tests written for the public API interface and a whole bunch of improvements to the type hints.
 The scaffold for docs has been set up, though content is still being written.</p>
-<section id="id23">
-<h3>Parameter Changes<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<section id="id24">
+<h3>Parameter Changes<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The CF Standard Name table was updated to v77</p></li>
 <li><p>Added PLUTO [BQ/M^3] which is the activity of from all isotopes of plutonium in the sample</p></li>
@@ -665,8 +739,8 @@ The scaffold for docs has been set up, though content is still being written.</p
 </li>
 </ul>
 </section>
-<section id="id24">
-<h3>API Changes<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<section id="id25">
+<h3>API Changes<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The minimum sqlalchemy version is now 1.4</p></li>
 <li><p>An optional <code class="docutils literal notranslate"><span class="pre">numeric_precision_override</span></code> keyword arg was added to the <code class="docutils literal notranslate"><span class="pre">WHPName.strfex</span></code> method to allow the overriding of builtin print format database.</p></li>
@@ -675,9 +749,9 @@ The scaffold for docs has been set up, though content is still being written.</p
 </section>
 </section>
 <section id="v0-1-12-2021-06-03">
-<h2>v0.1.12 (2021-06-03)<a class="headerlink" href="#v0-1-12-2021-06-03" title="Link to this heading">#</a></h2>
-<section id="id25">
-<h3>Parameter Changes<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<h2>v0.1.12 (2021-06-03)<a class="headerlink" href="#v0-1-12-2021-06-03" title="Link to this heading">¶</a></h2>
+<section id="id26">
+<h3>Parameter Changes<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The cf standard name mass_concentration_of_chlorophyll_in_sea_water was added to CTDFLUOR [MG/M^3]</p></li>
 <li><p>The cf standard name mass_concentration_of_chlorophyll_a_in_sea_water was added to TOT_CHL_A [MG/M^3]</p></li>
@@ -686,8 +760,8 @@ The scaffold for docs has been set up, though content is still being written.</p
 <li><p>The print precision of CTDXMISS [0-5VDC] was increased to 4.</p></li>
 </ul>
 </section>
-<section id="id26">
-<h3>API Changes<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<section id="id27">
+<h3>API Changes<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>A <code class="docutils literal notranslate"><span class="pre">WHPName.strfex()</span></code> method was added which formats values passed into it according to the values of <code class="docutils literal notranslate"><span class="pre">WHPName.data_type</span></code>, <code class="docutils literal notranslate"><span class="pre">WHPName.field_width</span></code>, and <code class="docutils literal notranslate"><span class="pre">WHPName.numeric_precision</span></code>.
 It will convert NaNs, and anything resulting in an empty string to <code class="docutils literal notranslate"><span class="pre">-999</span></code>.
@@ -696,9 +770,9 @@ The method name was inspired by the datetime method <code class="docutils litera
 </section>
 </section>
 <section id="v0-1-11-2021-05-27">
-<h2>v0.1.11 (2021-05-27)<a class="headerlink" href="#v0-1-11-2021-05-27" title="Link to this heading">#</a></h2>
-<section id="id27">
-<h3>Parameter Changes<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<h2>v0.1.11 (2021-05-27)<a class="headerlink" href="#v0-1-11-2021-05-27" title="Link to this heading">¶</a></h2>
+<section id="id28">
+<h3>Parameter Changes<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added HPLC as a placeholder param in exchange files</p></li>
 <li><p>Added D15N_NO2+NO3 [/MILLE] and D18O_NO2+NO3[/MILLE] which describe the isotopic enrichment of the elements in NO2+NO3</p></li>
@@ -706,8 +780,8 @@ The method name was inspired by the datetime method <code class="docutils litera
 <li><p>Added CF113ER as the uncertainty name for CFC113 [PMOL/KG].</p></li>
 </ul>
 </section>
-<section id="id28">
-<h3>API Changes<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
+<section id="id29">
+<h3>API Changes<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>the output of <code class="docutils literal notranslate"><span class="pre">WHPNames.legacy_json</span></code> is now guaranteed to be ordered in “preferred” GO-SHIP order rather than database order.
 The order may change between releasees as the preferred parameter order of GO-SHIP evolves and as new parameters are added.</p></li>
@@ -715,28 +789,28 @@ The order may change between releasees as the preferred parameter order of GO-SH
 </section>
 </section>
 <section id="v0-1-10-2021-03-15">
-<h2>v0.1.10 (2021-03-15)<a class="headerlink" href="#v0-1-10-2021-03-15" title="Link to this heading">#</a></h2>
-<section id="id29">
-<h3>Parameter Changes<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
+<h2>v0.1.10 (2021-03-15)<a class="headerlink" href="#v0-1-10-2021-03-15" title="Link to this heading">¶</a></h2>
+<section id="id30">
+<h3>Parameter Changes<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added CTDCT [ITS-90] for calculated conservative temperature from CTD sensors</p></li>
 <li><p>Added CTDSA [G/KG] for calculated absolute salinity from CTD sensors</p></li>
 </ul>
 <p>Note that these two calculated parameters may appear in data products, but the reported and stored data must continue to be PSS-78 for Salinity and in situ ITS-90 for temperature (see the TEOS-10 user manual).</p>
 </section>
-<section id="id30">
-<h3>API Changes<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
+<section id="id31">
+<h3>API Changes<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
 <p>None</p>
 </section>
 </section>
 <section id="v0-1-9-2021-01-27">
-<h2>v0.1.9 (2021-01-27)<a class="headerlink" href="#v0-1-9-2021-01-27" title="Link to this heading">#</a></h2>
-<section id="id31">
-<h3>Parameter Changes<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
+<h2>v0.1.9 (2021-01-27)<a class="headerlink" href="#v0-1-9-2021-01-27" title="Link to this heading">¶</a></h2>
+<section id="id32">
+<h3>Parameter Changes<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
 <p>None</p>
 </section>
-<section id="id32">
-<h3>API Changes<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
+<section id="id33">
+<h3>API Changes<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>WHPNames now has a property <code class="docutils literal notranslate"><span class="pre">groups</span></code> with a named tuple containing collections of parameters with the scopes of <code class="docutils literal notranslate"><span class="pre">cruise</span></code>, <code class="docutils literal notranslate"><span class="pre">profile</span></code>, and <code class="docutils literal notranslate"><span class="pre">sample</span></code>.
 As of release, there were no “cruise” level parameter names in the database.
@@ -746,15 +820,15 @@ As of release, there were no “cruise” level parameter names in the database.
 </section>
 </section>
 <section id="v0-1-8-2021-01-06">
-<h2>v0.1.8 (2021-01-06)<a class="headerlink" href="#v0-1-8-2021-01-06" title="Link to this heading">#</a></h2>
-<section id="id33">
-<h3>Parameter Changes<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
+<h2>v0.1.8 (2021-01-06)<a class="headerlink" href="#v0-1-8-2021-01-06" title="Link to this heading">¶</a></h2>
+<section id="id34">
+<h3>Parameter Changes<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>(BREAKING) the netcdf variable name for REVTMP [DEG C] has been changed from <code class="docutils literal notranslate"><span class="pre">rev_temerature_c</span></code> to <code class="docutils literal notranslate"><span class="pre">rev_temperature_c</span></code></p></li>
 </ul>
 </section>
-<section id="id34">
-<h3>API Changes<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<section id="id35">
+<h3>API Changes<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>The dict returned by <code class="docutils literal notranslate"><span class="pre">WHPName.get_nc_attrs()</span></code> will now include a <code class="docutils literal notranslate"><span class="pre">&quot;C_format&quot;</span></code> key if the parameter has both a <code class="docutils literal notranslate"><span class="pre">field_width</span></code> and <code class="docutils literal notranslate"><span class="pre">numeric_precision</span></code></p></li>
 </ul>
@@ -818,94 +892,98 @@ As of release, there were no “cruise” level parameter names in the database.
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
-<li><a class="reference internal" href="#v2024-04-0-2024-04-16">v2024.04.0 (2024-04-16)</a><ul>
+<li><a class="reference internal" href="#v2024-0-2024">v2024.0?.? (2024-??-??)</a><ul>
 <li><a class="reference internal" href="#parameter-changes">Parameter Changes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#v2024-04-0-2024-04-16">v2024.04.0 (2024-04-16)</a><ul>
+<li><a class="reference internal" href="#id1">Parameter Changes</a></li>
 <li><a class="reference internal" href="#api-changes">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v2024-03-0-2024-03-18">v2024.03.0 (2024-03-18)</a><ul>
-<li><a class="reference internal" href="#id1">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id2">API Changes</a></li>
+<li><a class="reference internal" href="#id2">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id3">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v2023-11-0-2023-11-25">v2023.11.0 (2023-11-25)</a><ul>
-<li><a class="reference internal" href="#id3">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id4">API Changes</a></li>
+<li><a class="reference internal" href="#id4">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id5">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v2023-09-0-2023-09-01">v2023.09.0 (2023-09-01)</a><ul>
-<li><a class="reference internal" href="#id5">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id6">API Changes</a></li>
+<li><a class="reference internal" href="#id6">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id7">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-21-2023-06-21">v0.1.21 (2023-06-21)</a><ul>
-<li><a class="reference internal" href="#id7">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id8">API Changes</a></li>
+<li><a class="reference internal" href="#id8">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id9">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-20-2022-08-07">v0.1.20 (2022-08-07)</a><ul>
-<li><a class="reference internal" href="#id9">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id10">API Changes</a></li>
+<li><a class="reference internal" href="#id10">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id11">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-19-2022-08-19">v0.1.19 (2022-08-19)</a><ul>
-<li><a class="reference internal" href="#id11">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id12">API Changes</a></li>
+<li><a class="reference internal" href="#id12">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id13">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-18-2022-07-08">v0.1.18 (2022-07-08)</a><ul>
-<li><a class="reference internal" href="#id13">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id14">API Changes</a></li>
+<li><a class="reference internal" href="#id14">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id15">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-17-2022-03-22">v0.1.17 (2022-03-22)</a><ul>
-<li><a class="reference internal" href="#id15">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id16">API Changes</a></li>
+<li><a class="reference internal" href="#id16">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id17">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-16-2021-11-19">v0.1.16 (2021-11-19)</a><ul>
-<li><a class="reference internal" href="#id17">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id18">API Changes</a></li>
+<li><a class="reference internal" href="#id18">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id19">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-15-2021-09-29">v0.1.15 (2021-09-29)</a><ul>
-<li><a class="reference internal" href="#id19">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id20">API Changes</a></li>
+<li><a class="reference internal" href="#id20">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id21">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-14-2021-08-26">v0.1.14 (2021-08-26)</a><ul>
-<li><a class="reference internal" href="#id21">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id22">API Changes</a></li>
+<li><a class="reference internal" href="#id22">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id23">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-13-2021-08-12">v0.1.13 (2021-08-12)</a><ul>
-<li><a class="reference internal" href="#id23">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id24">API Changes</a></li>
+<li><a class="reference internal" href="#id24">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id25">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-12-2021-06-03">v0.1.12 (2021-06-03)</a><ul>
-<li><a class="reference internal" href="#id25">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id26">API Changes</a></li>
+<li><a class="reference internal" href="#id26">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id27">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-11-2021-05-27">v0.1.11 (2021-05-27)</a><ul>
-<li><a class="reference internal" href="#id27">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id28">API Changes</a></li>
+<li><a class="reference internal" href="#id28">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id29">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-10-2021-03-15">v0.1.10 (2021-03-15)</a><ul>
-<li><a class="reference internal" href="#id29">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id30">API Changes</a></li>
+<li><a class="reference internal" href="#id30">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id31">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-9-2021-01-27">v0.1.9 (2021-01-27)</a><ul>
-<li><a class="reference internal" href="#id31">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id32">API Changes</a></li>
+<li><a class="reference internal" href="#id32">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id33">API Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-1-8-2021-01-06">v0.1.8 (2021-01-06)</a><ul>
-<li><a class="reference internal" href="#id33">Parameter Changes</a></li>
-<li><a class="reference internal" href="#id34">API Changes</a></li>
+<li><a class="reference internal" href="#id34">Parameter Changes</a></li>
+<li><a class="reference internal" href="#id35">API Changes</a></li>
 </ul>
 </li>
 </ul>
@@ -919,9 +997,9 @@ As of release, there were no “cruise” level parameter names in the database.
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=33d39c09"></script>
+</div><script src="_static/documentation_options.js?v=9dbe4006"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
     </body>
 </html>

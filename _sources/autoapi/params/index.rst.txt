@@ -1,20 +1,29 @@
-:py:mod:`params`
-================
+params
+======
 
 .. py:module:: params
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   __main__/index.rst
-   _cf_names/index.rst
-   _whp_names/index.rst
-   core/index.rst
-   db/index.rst
+   /autoapi/params/__main__/index
+   /autoapi/params/_cf_names/index
+   /autoapi/params/_whp_names/index
+   /autoapi/params/core/index
+   /autoapi/params/db/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   params.CFStandardNames
+   params.WHPNames
 
 
 Package Contents
@@ -22,9 +31,5 @@ Package Contents
 
 .. py:data:: CFStandardNames
 
-   
-
 .. py:data:: WHPNames
-
-   
 
