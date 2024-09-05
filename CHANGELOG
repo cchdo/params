@@ -6,6 +6,7 @@ Parameter Changes
 * Add UMOL/KG as a unit for POC
 * Add UMOL/KG as a unit for PON
 * Update CF standard name table from 82 to 85 to support new CCHDO params/units above
+* Add VOLTS as a unit for CTDORP for raw sensor output
 
 v2024.04.0 (2024-04-16)
 =======================

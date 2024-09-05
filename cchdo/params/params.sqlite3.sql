@@ -5756,7 +5756,7 @@ INSERT INTO "ex_params" VALUES('CDOM_UCSB',NULL,'Placholder for CDOM spectral ab
 INSERT INTO "ex_params" VALUES('DNSSAL2',92,'Replicate measuremnet of DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.1,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL',NULL,'A practical salinity measurement in the lab of the same water sample as DNSSAL, used in TEOS-10 verification work',NULL,NULL,'sample','decimal','woce_discrete',0,21.2,0);
 INSERT INTO "ex_params" VALUES('SALNTY_DNSSAL2',NULL,'Replicate of SALNTY_DNSSAL',NULL,NULL,'sample','decimal','woce_discrete',0,21.3,0);
-INSERT INTO "ex_params" VALUES('CTDORP',NULL,'Oxidation-reduction (or redox) potential sensor. Measures the tendency of various chemical species to gain or lose electrons. In the ocean, it is useful for detecting hydrothermal plumes. Usually the absolute value of ORP measured by one of these is not useful but the change in potential over the profile is.',NULL,'The actual scientific units for this parameter is a voltage, usually reported in millivolts.','sample','decimal','woce_ctd',0,27.6,0);
+INSERT INTO "ex_params" VALUES('CTDORP',NULL,'Oxidation-reduction (or redox) potential sensor. Measures the tendency of various chemical species to gain or lose electrons. In the ocean, it is useful for detecting hydrothermal plumes. Usually the absolute value of ORP measured by one of these is not useful but the change in potential over the profile is.',NULL,'The actual scientific units for this parameter is a voltage, usually reported in millivolts. We use VOLTS for the raw sensor output, typically 0V to 5V, and millivolts for scientific units which can be negative.','sample','decimal','woce_ctd',0,27.6,0);
 INSERT INTO "ex_params" VALUES('CTDBETA650_124',NULL,'Volume scattering function at 650nm with a centroid angle of 124 degrees.
 
 
@@ -6394,4 +6394,5 @@ INSERT INTO "whp_names" VALUES('NSCT','M/S','northward_sea_water_velocity','nsct
 INSERT INTO "whp_names" VALUES('POC','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_carbon_per_unit_mass_in_sea_water','particulate_organic_carbon_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PON','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_nitrogen_per_unit_mass_in_sea_water','particulate_organic_nitrogen_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('BSI','UG/L',NULL,'biogenic_silica_ug',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDORP','VOLTS',NULL,'ctd_redox_potential_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
