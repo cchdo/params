@@ -5,12 +5,12 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="test_data" href="../../test_data/index.html" /><link rel="prev" title="params.core" href="../core/index.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2024.05.06 -->
-        <title>params.db - cchdo.params 2024.4.1.dev3+g86044f7 documentation</title>
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.08.06 -->
+        <title>params.db - cchdo.params 2024.4.1.dev4+gdeaf535 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=387cc868" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
     
     
 
@@ -89,19 +89,6 @@
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
   <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
     <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -142,7 +129,7 @@
       <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
       <path d="M13.5 6.5l4 4" />
       <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" /
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
   <symbol id="svg-eye" viewBox="0 0 24 24">
@@ -180,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">cchdo.params 2024.4.1.dev3+g86044f7 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">cchdo.params 2024.4.1.dev4+gdeaf535 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -204,7 +191,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   
-  <span class="sidebar-brand-text">cchdo.params 2024.4.1.dev3+g86044f7 documentation</span>
+  <span class="sidebar-brand-text">cchdo.params 2024.4.1.dev4+gdeaf535 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -276,12 +263,6 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#params.db.CFStandardNameDC" title="params.db.CFStandardNameDC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CFStandardNameDC</span></code></a></p></td>
-<td><p>Dataclass representing a single CF Standard Name</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#params.db.WHPNameDC" title="params.db.WHPNameDC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WHPNameDC</span></code></a></p></td>
-<td><p>Dataclass representing a single exchange/WOCE style name + unit pair</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#params.db.ConfigDict" title="params.db.ConfigDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConfigDict</span></code></a></p></td>
 <td><p>A MutableMapping is a generic container for associating</p></td>
 </tr>
@@ -330,348 +311,6 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">params.db.</span></span><span class="sig-name descname"><span class="pre">CFStandardNameDC</span></span><a class="headerlink" href="#params.db.CFStandardNameDC" title="Link to this definition">¶</a></dt>
-<dd><p>Dataclass representing a single CF Standard Name</p>
-<p>This class captures the information in the standard name table as properties.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.CFStandardNameDC.name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC.canonical_units">
-<span class="sig-name descname"><span class="pre">canonical_units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.CFStandardNameDC.canonical_units" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC.grib">
-<span class="sig-name descname"><span class="pre">grib</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.CFStandardNameDC.grib" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC.amip">
-<span class="sig-name descname"><span class="pre">amip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.CFStandardNameDC.amip" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC.description">
-<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.CFStandardNameDC.description" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.CFStandardNameDC.cf">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cf</span></span><a class="headerlink" href="#params.db.CFStandardNameDC.cf" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Part</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">`cf`</span> <span class="pre">interface,</span> <span class="pre">for</span> <span class="pre">:class:`CFStandardName`</span> <span class="pre">instances,</span> <span class="pre">just</span> <span class="pre">returns</span> <span class="pre">self</span></span></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="params.db.WHPNameDC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">params.db.</span></span><span class="sig-name descname"><span class="pre">WHPNameDC</span></span><a class="headerlink" href="#params.db.WHPNameDC" title="Link to this definition">¶</a></dt>
-<dd><p>Dataclass representing a single exchange/WOCE style name + unit pair</p>
-<p>There is a ton of extra information that is meant for use in making CF/netCDF files.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.whp_name">
-<span class="sig-name descname"><span class="pre">whp_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.WHPNameDC.whp_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.nc_name">
-<span class="sig-name descname"><span class="pre">nc_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.WHPNameDC.nc_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.nc_group">
-<span class="sig-name descname"><span class="pre">nc_group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.nc_group" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.rank">
-<span class="sig-name descname"><span class="pre">rank</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#params.db.WHPNameDC.rank" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.dtype">
-<span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'string'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'decimal'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'integer'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#params.db.WHPNameDC.dtype" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.in_erddap">
-<span class="sig-name descname"><span class="pre">in_erddap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#params.db.WHPNameDC.in_erddap" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.field_width">
-<span class="sig-name descname"><span class="pre">field_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#params.db.WHPNameDC.field_width" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.whp_unit">
-<span class="sig-name descname"><span class="pre">whp_unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.whp_unit" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.flag_w">
-<span class="sig-name descname"><span class="pre">flag_w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'woce_discrete'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'woce_ctd'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'no_flags'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'woce_bottle'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.flag_w" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.cf_name">
-<span class="sig-name descname"><span class="pre">cf_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.cf_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.numeric_min">
-<span class="sig-name descname"><span class="pre">numeric_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.numeric_min" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.numeric_max">
-<span class="sig-name descname"><span class="pre">numeric_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.numeric_max" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.numeric_precision">
-<span class="sig-name descname"><span class="pre">numeric_precision</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.numeric_precision" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.description">
-<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.description" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.note">
-<span class="sig-name descname"><span class="pre">note</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.note" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.warning">
-<span class="sig-name descname"><span class="pre">warning</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.warning" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.error_name">
-<span class="sig-name descname"><span class="pre">error_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.error_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.cf_unit">
-<span class="sig-name descname"><span class="pre">cf_unit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.cf_unit" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.reference_scale">
-<span class="sig-name descname"><span class="pre">reference_scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.reference_scale" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.whp_number">
-<span class="sig-name descname"><span class="pre">whp_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.whp_number" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.scope">
-<span class="sig-name descname"><span class="pre">scope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.WHPNameDC.scope" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.analytical_temperature_name">
-<span class="sig-name descname"><span class="pre">analytical_temperature_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.analytical_temperature_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.analytical_temperature_units">
-<span class="sig-name descname"><span class="pre">analytical_temperature_units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.analytical_temperature_units" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.radiation_wavelength">
-<span class="sig-name descname"><span class="pre">radiation_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.radiation_wavelength" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.scattering_angle">
-<span class="sig-name descname"><span class="pre">scattering_angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.scattering_angle" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.excitation_wavelength">
-<span class="sig-name descname"><span class="pre">excitation_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.excitation_wavelength" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.emission_wavelength">
-<span class="sig-name descname"><span class="pre">emission_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.emission_wavelength" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.alt_depth">
-<span class="sig-name descname"><span class="pre">alt_depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#params.db.WHPNameDC.alt_depth" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.whp_name_alias">
-<span class="sig-name descname"><span class="pre">whp_name_alias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.whp_name_alias" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.whp_unit_alias">
-<span class="sig-name descname"><span class="pre">whp_unit_alias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.whp_unit_alias" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.error_col">
-<span class="sig-name descname"><span class="pre">error_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#params.db.WHPNameDC.error_col" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.flag_col">
-<span class="sig-name descname"><span class="pre">flag_col</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#params.db.WHPNameDC.flag_col" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.as_depth">
-<span class="sig-name descname"><span class="pre">as_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#params.db.WHPName" title="params.db.WHPName"><span class="pre">WHPName</span></a></span></span><a class="headerlink" href="#params.db.WHPNameDC.as_depth" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.as_alias">
-<span class="sig-name descname"><span class="pre">as_alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#params.db.WHPName" title="params.db.WHPName"><span class="pre">WHPName</span></a></span></span><a class="headerlink" href="#params.db.WHPNameDC.as_alias" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.as_error">
-<span class="sig-name descname"><span class="pre">as_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#params.db.WHPName" title="params.db.WHPName"><span class="pre">WHPName</span></a></span></span><a class="headerlink" href="#params.db.WHPNameDC.as_error" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.as_flag">
-<span class="sig-name descname"><span class="pre">as_flag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#params.db.WHPName" title="params.db.WHPName"><span class="pre">WHPName</span></a></span></span><a class="headerlink" href="#params.db.WHPNameDC.as_flag" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.full_whp_name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">full_whp_name</span></span><a class="headerlink" href="#params.db.WHPNameDC.full_whp_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.full_nc_name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">full_nc_name</span></span><a class="headerlink" href="#params.db.WHPNameDC.full_nc_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.full_error_name">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">full_error_name</span></span><a class="headerlink" href="#params.db.WHPNameDC.full_error_name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.key">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">key</span></span><a class="headerlink" href="#params.db.WHPNameDC.key" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">WHPNames</span> <span class="pre">are</span> <span class="pre">uniquely</span> <span class="pre">identified</span> <span class="pre">by</span> <span class="pre">a</span> <span class="pre">tuple</span> <span class="pre">of</span> <span class="pre">their</span> <span class="pre">(whp_name,</span> <span class="pre">whp_unit)</span> <span class="pre">values</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.odv_key">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">odv_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.WHPNameDC.odv_key" title="Link to this definition">¶</a></dt>
-<dd><p>An ODV style representation of the param in the form of “NAME [UNIT]”</p>
-<p>Note that the “[UNIT]” part is omitted if there are no units</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.nc_name_flag">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nc_name_flag</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.WHPNameDC.nc_name_flag" title="Link to this definition">¶</a></dt>
-<dd><p>The variable name of the “flag” ancillary variable for this parameter</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.nc_name_error">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nc_name_error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#params.db.WHPNameDC.nc_name_error" title="Link to this definition">¶</a></dt>
-<dd><p>The variable name of the uncertainty ancillary variable for this parameter</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.data_type">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_type</span></span><a class="headerlink" href="#params.db.WHPNameDC.data_type" title="Link to this definition">¶</a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">the</span> <span class="pre">actual</span> <span class="pre">python</span> <span class="pre">class</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">WHPName's</span> <span class="pre">dtype</span></span></dt>
-<dd><p>This is useufl for parsing string values for this WHPName</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.cf">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cf</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../core/index.html#params.core.CFStandardName" title="params.core.CFStandardName"><span class="pre">CFStandardName</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#params.db.WHPNameDC.cf" title="Link to this definition">¶</a></dt>
-<dd><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">CFStandardName</span></code> equivalent to this WHPName</p>
-<p>Returns none if there does not exist an equivalent <code class="xref py py-class docutils literal notranslate"><span class="pre">CFStandardName</span></code>.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#params.db.WHPNameDC.__eq__" title="Link to this definition">¶</a></dt>
-<dd><p>:class:<a href="#id1"><span class="problematic" id="id2">`</span></a>WHPName`s are equivalent if their whp_name and whp_unit properties are equivalent</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.__hash__">
-<span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#params.db.WHPNameDC.__hash__" title="Link to this definition">¶</a></dt>
-<dd><p>Return hash(self).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.__lt__">
-<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#params.db.WHPNameDC.__lt__" title="Link to this definition">¶</a></dt>
-<dd><p>Sorts WHPNames based on their rank property</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.__repr__">
-<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#params.db.WHPNameDC.__repr__" title="Link to this definition">¶</a></dt>
-<dd><p>Return repr(self).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.get_nc_attrs">
-<span class="sig-name descname"><span class="pre">get_nc_attrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#params.db.WHPNameDC.get_nc_attrs" title="Link to this definition">¶</a></dt>
-<dd><p>a dict containing the netCDF variable attributes needed for CF compliance for this variable</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="params.db.WHPNameDC.strfex">
-<span class="sig-name descname"><span class="pre">strfex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric_precision_override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_or_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'date'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'time'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#params.db.WHPNameDC.strfex" title="Link to this definition">¶</a></dt>
-<dd><p>Format a value using standard WHP Exchange conventions:</p>
-<ul class="simple">
-<li><p>dates are formatted as %Y%m%d</p></li>
-<li><p>times are formatted as %H%M</p></li>
-<li><p>fill values are “-999” for data, 9 for flags</p></li>
-<li><p>for floating points, only NaN values are considered to be “fill”, there
-are parameters which can have -999 as a real value</p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> – the value to format as a string, the accepted inputs depends on the <code class="xref py py-class docutils literal notranslate"><span class="pre">WHPName.dtype</span></code>,
-dates and times are expected to be real <cite>datetime.date</cite> and <cite>datetime.time</cite> objects</p></li>
-<li><p><strong>flag</strong> (<em>boolean</em>) – should <cite>value</cite> be interpreted as a WOCE flag</p></li>
-<li><p><strong>numeric_precision_override</strong> (<em>int</em>) – if not None, will overrride the builtin databases <a class="reference internal" href="#params.db.WHPName.numeric_precision" title="params.db.WHPName.numeric_precision"><code class="xref py py-class docutils literal notranslate"><span class="pre">WHPName.numeric_precision</span></code></a>
-when formatting floats</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><cite>value</cite> as a string for printing in a WHP Exchange file</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="params.db.database">
 <span class="sig-prename descclassname"><span class="pre">params.db.</span></span><span class="sig-name descname"><span class="pre">database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#params.db.database" title="Link to this definition">¶</a></dt>
@@ -735,7 +374,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id3"><span class="problematic" id="id4">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id1"><span class="problematic" id="id2">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -763,10 +402,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id5"><span class="problematic" id="id6">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id3"><span class="problematic" id="id4">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id7"><span class="problematic" id="id8">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id5"><span class="problematic" id="id6">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -786,19 +425,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id9"><span class="problematic" id="id10">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id7"><span class="problematic" id="id8">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id11"><span class="problematic" id="id12">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id9"><span class="problematic" id="id10">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id13"><span class="problematic" id="id14">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id11"><span class="problematic" id="id12">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -806,7 +445,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id15"><span class="problematic" id="id16">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id13"><span class="problematic" id="id14">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -822,7 +461,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id17"><span class="problematic" id="id18">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id15"><span class="problematic" id="id16">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 </dd></dl>
 
@@ -853,7 +492,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id19"><span class="problematic" id="id20">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id17"><span class="problematic" id="id18">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -881,10 +520,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id21"><span class="problematic" id="id22">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id19"><span class="problematic" id="id20">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id23"><span class="problematic" id="id24">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id21"><span class="problematic" id="id22">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -904,19 +543,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id25"><span class="problematic" id="id26">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id23"><span class="problematic" id="id24">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id27"><span class="problematic" id="id28">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id25"><span class="problematic" id="id26">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id29"><span class="problematic" id="id30">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id27"><span class="problematic" id="id28">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -924,7 +563,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id31"><span class="problematic" id="id32">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id29"><span class="problematic" id="id30">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -940,7 +579,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id33"><span class="problematic" id="id34">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id31"><span class="problematic" id="id32">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.Config.__tablename__">
@@ -981,7 +620,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id35"><span class="problematic" id="id36">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id33"><span class="problematic" id="id34">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -1009,10 +648,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id37"><span class="problematic" id="id38">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id35"><span class="problematic" id="id36">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id39"><span class="problematic" id="id40">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id37"><span class="problematic" id="id38">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -1032,19 +671,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id41"><span class="problematic" id="id42">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id39"><span class="problematic" id="id40">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id43"><span class="problematic" id="id44">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id41"><span class="problematic" id="id42">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id45"><span class="problematic" id="id46">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id43"><span class="problematic" id="id44">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -1052,7 +691,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id47"><span class="problematic" id="id48">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id45"><span class="problematic" id="id46">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -1068,7 +707,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id49"><span class="problematic" id="id50">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id47"><span class="problematic" id="id48">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.Unit.__tablename__">
@@ -1124,7 +763,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id51"><span class="problematic" id="id52">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id49"><span class="problematic" id="id50">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -1152,10 +791,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id53"><span class="problematic" id="id54">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id51"><span class="problematic" id="id52">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id55"><span class="problematic" id="id56">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id53"><span class="problematic" id="id54">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -1175,19 +814,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id57"><span class="problematic" id="id58">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id55"><span class="problematic" id="id56">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id59"><span class="problematic" id="id60">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id57"><span class="problematic" id="id58">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id61"><span class="problematic" id="id62">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id59"><span class="problematic" id="id60">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -1195,7 +834,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id63"><span class="problematic" id="id64">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id61"><span class="problematic" id="id62">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -1211,7 +850,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id65"><span class="problematic" id="id66">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id63"><span class="problematic" id="id64">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.Param.__tablename__">
@@ -1297,7 +936,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id67"><span class="problematic" id="id68">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id65"><span class="problematic" id="id66">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -1325,10 +964,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id69"><span class="problematic" id="id70">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id67"><span class="problematic" id="id68">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id71"><span class="problematic" id="id72">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id69"><span class="problematic" id="id70">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -1348,19 +987,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id73"><span class="problematic" id="id74">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id71"><span class="problematic" id="id72">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id75"><span class="problematic" id="id76">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id73"><span class="problematic" id="id74">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id77"><span class="problematic" id="id78">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id75"><span class="problematic" id="id76">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -1368,7 +1007,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id79"><span class="problematic" id="id80">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id77"><span class="problematic" id="id78">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -1384,7 +1023,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id81"><span class="problematic" id="id82">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id79"><span class="problematic" id="id80">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.CFName.__tablename__">
@@ -1429,8 +1068,7 @@ would always install <a href="#id81"><span class="problematic" id="id82">:paramr
 <dl class="py method">
 <dt class="sig sig-object py" id="params.db.CFName.__repr__">
 <span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#params.db.CFName.__repr__" title="Link to this definition">¶</a></dt>
-<dd><p>Return repr(self).</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1456,7 +1094,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id83"><span class="problematic" id="id84">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id81"><span class="problematic" id="id82">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -1484,10 +1122,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id85"><span class="problematic" id="id86">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id83"><span class="problematic" id="id84">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id87"><span class="problematic" id="id88">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id85"><span class="problematic" id="id86">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -1507,19 +1145,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id89"><span class="problematic" id="id90">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id87"><span class="problematic" id="id88">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id91"><span class="problematic" id="id92">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id89"><span class="problematic" id="id90">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id93"><span class="problematic" id="id94">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id91"><span class="problematic" id="id92">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -1527,7 +1165,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id95"><span class="problematic" id="id96">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id93"><span class="problematic" id="id94">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -1543,7 +1181,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id97"><span class="problematic" id="id98">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id95"><span class="problematic" id="id96">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.CFAlias.__tablename__">
@@ -1568,8 +1206,7 @@ would always install <a href="#id97"><span class="problematic" id="id98">:paramr
 <dl class="py method">
 <dt class="sig sig-object py" id="params.db.CFAlias.__repr__">
 <span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#params.db.CFAlias.__repr__" title="Link to this definition">¶</a></dt>
-<dd><p>Return repr(self).</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1595,7 +1232,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id99"><span class="problematic" id="id100">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id97"><span class="problematic" id="id98">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -1623,10 +1260,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id101"><span class="problematic" id="id102">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id99"><span class="problematic" id="id100">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id103"><span class="problematic" id="id104">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id101"><span class="problematic" id="id102">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -1646,19 +1283,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id105"><span class="problematic" id="id106">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id103"><span class="problematic" id="id104">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id107"><span class="problematic" id="id108">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id105"><span class="problematic" id="id106">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id109"><span class="problematic" id="id110">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id107"><span class="problematic" id="id108">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -1666,7 +1303,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id111"><span class="problematic" id="id112">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id109"><span class="problematic" id="id110">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -1682,7 +1319,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id113"><span class="problematic" id="id114">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id111"><span class="problematic" id="id112">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.WHPName.__tablename__">
@@ -1823,7 +1460,7 @@ provided explicitly. The <code class="xref py py-class docutils literal notransl
 class-level attributes which act as parameters for the construction of this
 registry; such as to indicate a specific <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code>
 collection as well as a specific value for
-<a href="#id115"><span class="problematic" id="id116">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
+<a href="#id113"><span class="problematic" id="id114">:paramref:`_orm.registry.type_annotation_map`</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">BigInteger</span>
@@ -1851,10 +1488,10 @@ If a <code class="xref py py-class docutils literal notranslate"><span class="pr
 <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will be used to construct it.
 Otherwise, the local <code class="xref py py-class docutils literal notranslate"><span class="pre">_schema.MetaData</span></code> collection will supercede
 that used by an existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> passed using the
-<a href="#id117"><span class="problematic" id="id118">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
+<a href="#id115"><span class="problematic" id="id116">:paramref:`_orm.DeclarativeBase.registry`</span></a> parameter.</p></li>
 <li><p><strong>type_annotation_map</strong> – optional type annotation map that will be
 passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> as
-<a href="#id119"><span class="problematic" id="id120">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
+<a href="#id117"><span class="problematic" id="id118">:paramref:`_orm.registry.type_annotation_map`</span></a>.</p></li>
 <li><p><strong>registry</strong> – supply a pre-existing <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.registry</span></code> directly.</p></li>
 </ul>
 </dd>
@@ -1874,19 +1511,19 @@ without using plugins.</p>
 hierarchy is <code class="docutils literal notranslate"><span class="pre">object.__init__()</span></code>, which accepts no arguments. However,
 when the <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass is first declared, the
 class is given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method that links to the
-<a href="#id121"><span class="problematic" id="id122">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
+<a href="#id119"><span class="problematic" id="id120">:paramref:`_orm.registry.constructor`</span></a> constructor function, if no
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is already present; this is the usual declarative
 constructor that will assign keyword arguments as attributes on the
 instance, assuming those attributes are established at the class level
 (i.e. are mapped, or are linked to a descriptor). This constructor is
 <strong>never accessed by a mapped class without being called explicitly via
 super()</strong>, as mapped classes are themselves given an <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method
-directly which calls <a href="#id123"><span class="problematic" id="id124">:paramref:`_orm.registry.constructor`</span></a>, so in the
+directly which calls <a href="#id121"><span class="problematic" id="id122">:paramref:`_orm.registry.constructor`</span></a>, so in the
 default case works independently of what the base-most <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>
 method does.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 2.0.1: </span><code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> has a default
-constructor that links to <a href="#id125"><span class="problematic" id="id126">:paramref:`_orm.registry.constructor`</span></a> by
+constructor that links to <a href="#id123"><span class="problematic" id="id124">:paramref:`_orm.registry.constructor`</span></a> by
 default, so that calls to <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> can access this
 constructor. Previously, due to an implementation mistake, this default
 constructor was missing, and calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> would invoke
@@ -1894,7 +1531,7 @@ constructor was missing, and calling <code class="docutils literal notranslate">
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">_orm.DeclarativeBase</span></code> subclass may also declare an explicit
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method which will replace the use of the
-<a href="#id127"><span class="problematic" id="id128">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
+<a href="#id125"><span class="problematic" id="id126">:paramref:`_orm.registry.constructor`</span></a> function at this level:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -1910,7 +1547,7 @@ remains only accessible by calling <code class="docutils literal notranslate"><s
 </div>
 <p>Note that this is a different behavior from what functions like the legacy
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_orm.declarative_base()</span></code> would do; the base created by those functions
-would always install <a href="#id129"><span class="problematic" id="id130">:paramref:`_orm.registry.constructor`</span></a> for
+would always install <a href="#id127"><span class="problematic" id="id128">:paramref:`_orm.registry.constructor`</span></a> for
 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="params.db.Alias.__tablename__">
@@ -2006,69 +1643,6 @@ would always install <a href="#id129"><span class="problematic" id="id130">:para
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC</span></code></a><ul>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC.name"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC.name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC.canonical_units"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC.canonical_units</span></code></a></li>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC.grib"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC.grib</span></code></a></li>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC.amip"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC.amip</span></code></a></li>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC.description"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC.description</span></code></a></li>
-<li><a class="reference internal" href="#params.db.CFStandardNameDC.cf"><code class="docutils literal notranslate"><span class="pre">CFStandardNameDC.cf</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#params.db.WHPNameDC"><code class="docutils literal notranslate"><span class="pre">WHPNameDC</span></code></a><ul>
-<li><a class="reference internal" href="#params.db.WHPNameDC.whp_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.whp_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.nc_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.nc_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.nc_group"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.nc_group</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.rank"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.rank</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.dtype"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.dtype</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.in_erddap"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.in_erddap</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.field_width"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.field_width</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.whp_unit"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.whp_unit</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.flag_w"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.flag_w</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.cf_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.cf_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.numeric_min"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.numeric_min</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.numeric_max"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.numeric_max</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.numeric_precision"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.numeric_precision</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.description"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.description</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.note"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.note</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.warning"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.warning</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.error_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.error_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.cf_unit"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.cf_unit</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.reference_scale"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.reference_scale</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.whp_number"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.whp_number</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.scope"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.scope</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.analytical_temperature_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.analytical_temperature_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.analytical_temperature_units"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.analytical_temperature_units</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.radiation_wavelength"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.radiation_wavelength</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.scattering_angle"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.scattering_angle</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.excitation_wavelength"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.excitation_wavelength</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.emission_wavelength"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.emission_wavelength</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.alt_depth"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.alt_depth</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.whp_name_alias"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.whp_name_alias</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.whp_unit_alias"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.whp_unit_alias</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.error_col"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.error_col</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.flag_col"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.flag_col</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.as_depth"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.as_depth()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.as_alias"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.as_alias()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.as_error"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.as_error()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.as_flag"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.as_flag()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.full_whp_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.full_whp_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.full_nc_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.full_nc_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.full_error_name"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.full_error_name</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.key"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.key</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.odv_key"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.odv_key</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.nc_name_flag"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.nc_name_flag</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.nc_name_error"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.nc_name_error</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.data_type"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.data_type</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.cf"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.cf</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.__eq__"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.__eq__()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.__hash__"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.__hash__()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.__lt__"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.__lt__()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.__repr__"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.__repr__()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.get_nc_attrs"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.get_nc_attrs()</span></code></a></li>
-<li><a class="reference internal" href="#params.db.WHPNameDC.strfex"><code class="docutils literal notranslate"><span class="pre">WHPNameDC.strfex()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#params.db.database"><code class="docutils literal notranslate"><span class="pre">database()</span></code></a></li>
 <li><a class="reference internal" href="#params.db.ConfigDict"><code class="docutils literal notranslate"><span class="pre">ConfigDict</span></code></a><ul>
 <li><a class="reference internal" href="#params.db.ConfigDict.__getitem__"><code class="docutils literal notranslate"><span class="pre">ConfigDict.__getitem__()</span></code></a></li>
@@ -2178,9 +1752,9 @@ would always install <a href="#id129"><span class="problematic" id="id130">:para
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=5b7ddb59"></script>
+</div><script src="../../../_static/documentation_options.js?v=777ee18a"></script>
     <script src="../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
     </body>
 </html>
