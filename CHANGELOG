@@ -1,3 +1,10 @@
+v2024.10.0 (2024-10-??)
+=======================
+Parameter Changes
+-----------------
+* Add RFU as an allowed unit for CTDCDOM
+* Add CTDCDOM [RU] as an alias for CTDCDOM [RFU]
+
 v2024.09.0 (2024-09-05)
 =======================
 Parameter Changes

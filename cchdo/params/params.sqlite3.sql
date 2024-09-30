@@ -6045,6 +6045,7 @@ INSERT INTO "whp_alias" VALUES('D13C-DOC','/MILLE','13C-DOC','/MILLE');
 INSERT INTO "whp_alias" VALUES('THETA','DEG-C','THETA','DEG C');
 INSERT INTO "whp_alias" VALUES('14C-DIC','/MILLE','DELC14','/MILLE');
 INSERT INTO "whp_alias" VALUES('Nd_143_D_EPSILON_BOTTLE','10000','Nd_143_144_D_EPSILON_BOTTLE','10000');
+INSERT INTO "whp_alias" VALUES('CTDCDOM','RU','CTDCDOM','RFU');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6395,4 +6396,5 @@ INSERT INTO "whp_names" VALUES('POC','UMOL/KG','moles_of_particulate_organic_mat
 INSERT INTO "whp_names" VALUES('PON','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_nitrogen_per_unit_mass_in_sea_water','particulate_organic_nitrogen_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('BSI','UG/L',NULL,'biogenic_silica_ug',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDORP','VOLTS',NULL,'ctd_redox_potential_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDCDOM','RFU',NULL,'ctd_cdom_rfu',NULL,NULL,NULL,NULL,NULL,9,5,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
