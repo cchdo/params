@@ -7,6 +7,7 @@ Parameter Changes
   * Renamed the netcdf variable from dissolved_organic_carbon_nasa to dissolved_organic_carbon_l
 * Add DOC_ERROR as the error name for DOC [UMOL/KG] and DOC [UMOL/L]
 * Add UMOL/L as an allowed unit for TDN
+* Add TDN_ERROR as the error name for TDN [UMOL/KG] and TDN [UMOL/L]
 
 v2024.10.0 (2024-10-04)
 =======================
