@@ -8,6 +8,8 @@ Parameter Changes
 * Add DOC_ERROR as the error name for DOC [UMOL/KG] and DOC [UMOL/L]
 * Add UMOL/L as an allowed unit for TDN
 * Add TDN_ERROR as the error name for TDN [UMOL/KG] and TDN [UMOL/L]
+* Add POC_ERROR as the error name for POC
+* Add PON_ERROR as the error name for PON
 
 v2024.10.0 (2024-10-04)
 =======================

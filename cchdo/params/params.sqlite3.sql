@@ -6047,6 +6047,7 @@ INSERT INTO "whp_alias" VALUES('14C-DIC','/MILLE','DELC14','/MILLE');
 INSERT INTO "whp_alias" VALUES('Nd_143_D_EPSILON_BOTTLE','10000','Nd_143_144_D_EPSILON_BOTTLE','10000');
 INSERT INTO "whp_alias" VALUES('CTDCDOM','RU','CTDCDOM','RFU');
 INSERT INTO "whp_alias" VALUES('DOC_NASA','UMOL/L','DOC','UMOL/L');
+INSERT INTO "whp_alias" VALUES('SAMPLING_RATE',NULL,'SAMPLING_RATE','HZ');
 CREATE TABLE whp_names (
 	whp_name VARCHAR NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6126,8 +6127,8 @@ INSERT INTO "whp_names" VALUES('DELC13','/MILLE',NULL,'del_carbon_13_dic',-5.0,5
 INSERT INTO "whp_names" VALUES('DELC14','/MILLE',NULL,'del_carbon_14_dic',-300.0,250.0,'C14ERR',NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DON','UMOL/KG',NULL,'dissolved_organic_nitrogen',200.0,900.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TOC','UMOL/KG',NULL,'total_organic_carbon',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('POC','UG/KG',NULL,'particulate_organic_carbon',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('PON','UG/KG',NULL,'particulate_organic_nitrogen',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('POC','UG/KG',NULL,'particulate_organic_carbon',NULL,NULL,'POC_ERROR',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PON','UG/KG',NULL,'particulate_organic_nitrogen',NULL,NULL,'PON_ERROR',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TDN','UMOL/KG',NULL,'total_dissolved_nitrogen',3.0,20.0,'TDN_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TON','UMOL/KG',NULL,'total_organic_nitrogen',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NEON','NMOL/KG',NULL,'neon',0.0,10.0,'NEONER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
@@ -6256,8 +6257,8 @@ INSERT INTO "whp_names" VALUES('CTDNITRATE','UMOL/KG','moles_of_nitrate_per_unit
 INSERT INTO "whp_names" VALUES('PAR','VOLTS',NULL,'par_raw',0.0,5.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDTURB','FTU',NULL,'ctd_turbidity_ftu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDTURB','NTU','sea_water_turbidity','ctd_turbidity_ntu',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('POC','UG/L',NULL,'particulate_organic_carbon_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('PON','UG/L',NULL,'particulate_organic_nitrogen_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('POC','UG/L',NULL,'particulate_organic_carbon_l',NULL,NULL,'POC_ERROR',NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PON','UG/L',NULL,'particulate_organic_nitrogen_l',NULL,NULL,'PON_ERROR',NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DNA',NULL,NULL,'dna_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('POP','UG/L',NULL,'particulate_organic_phosphorus_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PCOD','UG/L',NULL,'particulate_chemical_oxygen_demand_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
@@ -6339,7 +6340,7 @@ INSERT INTO "whp_names" VALUES('Er_D_CONC_BOTTLE','PMOL/L',NULL,'er_d_conc_bottl
 INSERT INTO "whp_names" VALUES('Tm_D_CONC_BOTTLE','PMOL/L',NULL,'tm_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Yb_D_CONC_BOTTLE','PMOL/L',NULL,'yb_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Lu_D_CONC_BOTTLE','PMOL/L',NULL,'lu_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('PON','UMOL/L',NULL,'particulate_organic_nitrogen_mol',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PON','UMOL/L',NULL,'particulate_organic_nitrogen_mol',NULL,NULL,'PON_ERROR',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DOP','UMOL/KG',NULL,'dissolved_organic_phosphorus',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TDP','UMOL/L',NULL,'total_dissolved_phosphorus_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('POP','UMOL/L',NULL,'particulate_organic_phosphorus',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
@@ -6393,8 +6394,8 @@ INSERT INTO "whp_names" VALUES('NITRIT','UMOL/L','mole_concentration_of_nitrite_
 INSERT INTO "whp_names" VALUES('CTDTURB','VOLTS',NULL,'ctd_turbidity_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('EWCT','M/S','eastward_sea_water_velocity','ewct',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NSCT','M/S','northward_sea_water_velocity','nsct',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('POC','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_carbon_per_unit_mass_in_sea_water','particulate_organic_carbon_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('PON','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_nitrogen_per_unit_mass_in_sea_water','particulate_organic_nitrogen_molal',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('POC','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_carbon_per_unit_mass_in_sea_water','particulate_organic_carbon_molal',NULL,NULL,'POC_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('PON','UMOL/KG','moles_of_particulate_organic_matter_expressed_as_nitrogen_per_unit_mass_in_sea_water','particulate_organic_nitrogen_molal',NULL,NULL,'PON_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('BSI','UG/L',NULL,'biogenic_silica_ug',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDORP','VOLTS',NULL,'ctd_redox_potential_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDCDOM','RFU',NULL,'ctd_cdom_rfu',NULL,NULL,NULL,NULL,NULL,9,5,NULL,NULL,NULL,NULL,NULL);
