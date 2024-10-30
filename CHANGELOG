@@ -10,6 +10,7 @@ Parameter Changes
 * Add TDN_ERROR as the error name for TDN [UMOL/KG] and TDN [UMOL/L]
 * Add POC_ERROR as the error name for POC
 * Add PON_ERROR as the error name for PON
+* Add CTDALTIMETER [METERS] for the value reported by the altimeter, And an expected valid range of 0 to 100, hopefully its never 0 in any of the data.
 
 v2024.10.0 (2024-10-04)
 =======================

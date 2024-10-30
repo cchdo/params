@@ -5784,6 +5784,7 @@ INSERT INTO "ex_params" VALUES('Nd_D_CONC',NULL,'Concentration of dissolved "bul
 INSERT INTO "ex_params" VALUES('EWCT',NULL,'Eastward current velocity from a rosette mounted current meter. A positive value indicates zonal flow in the eastward direction, negative values are in the westward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.0,0);
 INSERT INTO "ex_params" VALUES('NSCT',NULL,'Northward current velocity from a rosette mounted current meter. A positive value indicates meridional flow in the northward direction, negative values are in the southward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.1,0);
 INSERT INTO "ex_params" VALUES('BSI',NULL,'Biogenic Silica, also called opal. Chemically is hydrated silica, SiO2 nH2O. Biogenic silica is in particulate form.',NULL,NULL,'sample','decimal','woce_discrete',0,163.0,0);
+INSERT INTO "ex_params" VALUES('CTDALTIMETER',NULL,'The height above the sea floor as measured by an altimeter.',NULL,NULL,'sample','decimal','woce_ctd',0,74.7,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6400,4 +6401,5 @@ INSERT INTO "whp_names" VALUES('BSI','UG/L',NULL,'biogenic_silica_ug',NULL,NULL,
 INSERT INTO "whp_names" VALUES('CTDORP','VOLTS',NULL,'ctd_redox_potential_raw',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDCDOM','RFU',NULL,'ctd_cdom_rfu',NULL,NULL,NULL,NULL,NULL,9,5,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TDN','UMOL/L',NULL,'total_dissolved_nitrogen_l',NULL,NULL,'TDN_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDALTIMETER','METERS','height_above_sea_floor','ctd_altimeter',0.0,100.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
