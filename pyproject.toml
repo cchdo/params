@@ -12,7 +12,7 @@ fallback_version = "999"
 name = "cchdo.params"
 authors = [{name = "cchdo", email = "cchdo@ucsd.edu"}]
 readme = {file = "README.md", content-type = "text/markdown"}
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dynamic = ["version"]
 license = {text = "BSD 3-clause"}
 
@@ -25,8 +25,8 @@ classifiers = [
     "License :: OSI Approved :: BSD License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering",
 ]
 
@@ -78,7 +78,7 @@ module = [
 ignore_errors = true
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py311"
 extend-exclude = ["*.ipynb"]
 
 [tool.ruff.lint]
