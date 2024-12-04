@@ -290,7 +290,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
             ...
             # emit a warning
         if current not in self:
-            raise ValueError(f"{current} not in {self}")
+            raise KeyError(f"{current} not in {self}")
 
         self._aliases[alias] = current
 
@@ -298,8 +298,18 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 class _CFStandardNames(UserDict[str | None, CFStandardName]): ...
 
 
-CFStandardNames = _CFStandardNames(_cf_standard_names)
-WHPNames = _WHPNames(_whp_names)
+def default_cf_standard_names():
+    return _CFStandardNames(_cf_standard_names)
 
-for _alias, _canonical in _aliases.items():
-    WHPNames.add_alias(_alias, _canonical)
+
+def default_whp_names():
+    whpnames = _WHPNames(_whp_names)
+
+    for _alias, _canonical in _aliases.items():
+        whpnames.add_alias(_alias, _canonical)
+
+    return whpnames
+
+
+CFStandardNames = default_cf_standard_names()
+WHPNames = default_whp_names()
