@@ -4,7 +4,7 @@ from functools import cached_property
 from importlib.metadata import PackageNotFoundError, version
 from importlib.resources import files
 from json import loads
-from typing import NamedTuple
+from typing import Literal, NamedTuple, overload
 
 from ._cf_names import cf_standard_names as _cf_standard_names
 from ._whp_names import _aliases
@@ -43,7 +43,19 @@ class WHPNameGroups(NamedTuple):
     sample: frozenset[WHPName]
 
 
-def normalize_odv_name(name: str, return_parts=False):
+@overload
+def normalize_odv_name(
+    name: str, return_parts: Literal[True]
+) -> tuple[str, str | None]: ...
+
+
+@overload
+def normalize_odv_name(name: str, return_parts: Literal[False]) -> str: ...
+
+
+def normalize_odv_name(name: str, return_parts=False) -> str | tuple[str, str | None]:
+    name, flag = flag_name(name)
+
     unit: str | None = None
     if not ("[" in name or "]" in name):
         if return_parts:
@@ -57,6 +69,8 @@ def normalize_odv_name(name: str, return_parts=False):
     units_end = name.rfind("]")
 
     param = name[:units_start].strip()
+    if flag:
+        param = f"{param}_FLAG_W"
     unit = name[units_start + 1 : units_end].strip()
     if isinstance(unit, str) and unit.lower() in {"", "none", "nan"}:
         unit = None
@@ -142,15 +156,15 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         else:
             raise KeyError("whpname keys must be str or a tuple")
 
-        if not flag:
-            # try again after all the processing above
-            name, flag = flag_name(name)
-        name, depth = alt_depth(name)
-
         alias_key = None
         if (name, unit) in self._aliases:
             alias_key = (name, unit)
             name, unit = self._aliases[(name, unit)]
+
+        if not flag:
+            # try again after all the processing above
+            name, flag = flag_name(name)
+        name, depth = alt_depth(name)
 
         if (name, unit) in self.error_cols:
             name, unit = self.error_cols[(name, unit)]
@@ -274,7 +288,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         return params
 
-    def add_alias(self, alias: WHPNameKey, current: tuple[str, str | None]):
+    def add_alias(self, alias: WHPNameKey, current: WHPNameKey):
         """Adds an alias to the WHPNames dict for this session only
 
         Some alias names are a little dangerous to add without larger context.
@@ -284,13 +298,18 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
         :param currnet: any valid existing WHPNames key
         """
+        if isinstance(alias, str):
+            alias = normalize_odv_name(alias, return_parts=True)
+        if isinstance(current, str):
+            current = normalize_odv_name(current, return_parts=True)
+
         if alias in self:
             raise ValueError("Cannot override base parameter names")
         if alias in self._aliases:
             ...
-            # emit a warning
-        if current not in self:
-            raise KeyError(f"{current} not in {self}")
+            # emit a warning?
+
+        self[current]  # this needs to not raise
 
         self._aliases[alias] = current
 
