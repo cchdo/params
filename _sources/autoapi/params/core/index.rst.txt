@@ -92,6 +92,8 @@ Module Contents
 
    .. py:attribute:: flag_w
       :type:  Literal['woce_discrete', 'woce_ctd', 'no_flags', 'woce_bottle'] | None
+      :value: None
+
 
 
    .. py:attribute:: cf_name
@@ -102,90 +104,134 @@ Module Contents
 
    .. py:attribute:: numeric_min
       :type:  float | None
+      :value: None
+
 
 
    .. py:attribute:: numeric_max
       :type:  float | None
+      :value: None
+
 
 
    .. py:attribute:: numeric_precision
       :type:  int | None
+      :value: None
+
 
 
    .. py:attribute:: description
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: note
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: warning
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: error_name
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: cf_unit
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: reference_scale
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: whp_number
       :type:  int | None
+      :value: None
+
 
 
    .. py:attribute:: scope
       :type:  str
+      :value: 'sample'
+
 
 
    .. py:attribute:: analytical_temperature_name
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: analytical_temperature_units
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: radiation_wavelength
       :type:  float | None
+      :value: None
+
 
 
    .. py:attribute:: scattering_angle
       :type:  float | None
+      :value: None
+
 
 
    .. py:attribute:: excitation_wavelength
       :type:  float | None
+      :value: None
+
 
 
    .. py:attribute:: emission_wavelength
       :type:  float | None
+      :value: None
+
 
 
    .. py:attribute:: alt_depth
       :type:  int
+      :value: 0
+
 
 
    .. py:attribute:: whp_name_alias
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: whp_unit_alias
       :type:  str | None
+      :value: None
+
 
 
    .. py:attribute:: error_col
       :type:  bool
+      :value: False
+
 
 
    .. py:attribute:: flag_col
       :type:  bool
+      :value: False
+
 
 
    .. py:method:: as_depth(depth: int) -> WHPName
