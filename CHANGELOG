@@ -4,6 +4,11 @@ Parameter Changes
 -----------------
 * Add CS137ER as the error name for CS-137 [DM/.1MG] (the other unit variations had this error mapping already)
 
+API Changes
+-----------
+* Add support for ODV style keys in `WHPNames.add_alias`
+* Add support for alt params and units to `WHPNames.add_alias`
+
 v2024.10.1 (2024-10-29)
 =======================
 Parameter Changes
