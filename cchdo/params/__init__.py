@@ -172,7 +172,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         param = super().__getitem__((name, unit))
 
-        if depth > 0:
+        if depth != 0:
             param = param.as_depth(depth)
 
         if flag:

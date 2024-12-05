@@ -8,6 +8,7 @@ API Changes
 -----------
 * Add support for ODV style keys in `WHPNames.add_alias`
 * Add support for alt params and units to `WHPNames.add_alias`
+* Attempting to set an ALT param to less than 0 will now raise a ValueError, _ALT_0 is still accepted and is equivalent to a normal parameter name.
 
 v2024.10.1 (2024-10-29)
 =======================

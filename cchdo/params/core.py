@@ -118,6 +118,10 @@ class WHPName:
     #: The name that found this param was for the flag name (with units)
 
     def as_depth(self, depth: int) -> "WHPName":
+        if depth <= 0:
+            raise ValueError(
+                f"Alternate parameter 'depths' must be positive, got {depth}"
+            )
         return replace(self, alt_depth=depth)
 
     def as_alias(self, param, unit) -> "WHPName":

@@ -299,3 +299,15 @@ def test_alt_depths(whpname: data.WHPName, depth: int):
     else:
         name = f"{whpname.whp_name}_ALT_{depth}"
         assert data.WHPNames[(name, whpname.whp_unit)].alt_depth == depth
+
+
+@pytest.mark.parametrize(
+    "whpname",
+    data.WHPNames.values(),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+@pytest.mark.parametrize("depth", [-1])
+def test_alt_depths_bad(whpname: data.WHPName, depth: int):
+    with pytest.raises(ValueError):
+        name = f"{whpname.whp_name}_ALT_{depth}"
+        data.WHPNames[(name, whpname.whp_unit)]
