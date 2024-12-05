@@ -48,6 +48,7 @@ Functions
    test_data._unitless
    test_data.test_odv_empty_unit_vatiations
    test_data.test_alt_depths
+   test_data.test_alt_depths_bad
 
 
 Module Contents
@@ -122,4 +123,6 @@ Module Contents
 .. py:function:: test_odv_empty_unit_vatiations(whpname)
 
 .. py:function:: test_alt_depths(whpname: cchdo.params.WHPName, depth: int)
+
+.. py:function:: test_alt_depths_bad(whpname: cchdo.params.WHPName, depth: int)
 
