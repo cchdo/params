@@ -1,0 +1,19 @@
+conftest
+========
+
+.. py:module:: conftest
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   conftest.whpnames
+
+
+Module Contents
+---------------
+
+.. py:function:: whpnames()
+
