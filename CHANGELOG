@@ -3,6 +3,7 @@ v2024.12.0 (2024-12-??)
 Parameter Changes
 -----------------
 * Add CS137ER as the error name for CS-137 [DM/.1MG] (the other unit variations had this error mapping already)
+* Add UMOL/M^2/SEC as allowed units for SPAR
 
 API Changes
 -----------
