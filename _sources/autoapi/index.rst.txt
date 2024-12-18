@@ -9,7 +9,7 @@ This page contains auto-generated API reference documentation [#f1]_.
    /autoapi/params/index
    /autoapi/conftest/index
    /autoapi/test_data/index
-   /autoapi/test_aliasing/index
    /autoapi/test_ordering/index
+   /autoapi/test_aliasing/index
 
 .. [#f1] Created with `sphinx-autoapi <https://github.com/readthedocs/sphinx-autoapi>`_
