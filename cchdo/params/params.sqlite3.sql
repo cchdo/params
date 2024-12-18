@@ -5689,7 +5689,7 @@ INSERT INTO "ex_params" VALUES('CTDBETA700',NULL,'Volume scattering function at 
 Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of 
 chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB 
 on profiling floats. SOCCOM Tech. Rep. 2016-1. 
-https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-primer.pdf
+https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
 ',NULL,'This paramter is the bacscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.1,1);
 INSERT INTO "ex_params" VALUES('CTDBBP700',NULL,'Volume scattering coefficient due to particles at 700nm.
 
@@ -5697,7 +5697,7 @@ INSERT INTO "ex_params" VALUES('CTDBBP700',NULL,'Volume scattering coefficient d
 Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of 
 chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB 
 on profiling floats. SOCCOM Tech. Rep. 2016-1. 
-http://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-opticsprimer.pdf.
+https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
 ',NULL,'This paramter is the bacscattering coefficient due to particles (Bbp) it is NOT the backscattering function called Beta','sample','decimal','woce_ctd',0,74.2,1);
 INSERT INTO "ex_params" VALUES('HCFC-141b',NULL,'The concentration of dissolved HCFC-141b in sea water. The chemical formula of HCFC-141b is C2H3Cl2F. The IUPAC name for HCFC-141b is 1,1-Dichloro-1-fluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.2,0);
 INSERT INTO "ex_params" VALUES('HCFC-142b',NULL,'The concentration of dissolved HCFC-142b in sea water. The chemical formula of HCFC-142b is  CH3CClF2. The IUPAC name for HCFC-142b is 1-Chloro-1,1-difluoroethane.',NULL,NULL,'sample','decimal','woce_discrete',0,33.3,0);
@@ -5763,7 +5763,7 @@ INSERT INTO "ex_params" VALUES('CTDBETA650_124',NULL,'Volume scattering function
 Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of
 chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB
 on profiling floats. SOCCOM Tech. Rep. 2016-1.
-https://soccom.princeton.edu/sites/default/files/files/SOCCOM_2016-1_Bio-optics-primer.pdf
+https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
 ','This may be incorrectly reported as having an angle of 117 degrees.','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
 INSERT INTO "ex_params" VALUES('D15N_TDN',NULL,'Enrichment of the 15N/14N isotopic ratio of total dissolved nitrogen',NULL,NULL,'sample','decimal','woce_discrete',0,95.7,0);
 INSERT INTO "ex_params" VALUES('CDOM370',NULL,'Attenuation coefficient of the sample at 370nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.025,1);
