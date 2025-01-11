@@ -1,8 +1,9 @@
-v202?.??.0 (202?-??-??)
+v2025.01.0 (2025-01-??)
 =======================
 Parameter Changes
 -----------------
 * Updated link to SOCCOM optics primer
+* Added CTDBETA660_123 [M^-1/SR] for the volume scattering function at 660nm with a centroid angle of 123 degrees
 
 v2024.12.0 (2024-12-06)
 =======================

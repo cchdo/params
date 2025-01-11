@@ -5764,7 +5764,7 @@ Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of
 chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB
 on profiling floats. SOCCOM Tech. Rep. 2016-1.
 https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
-','This may be incorrectly reported as having an angle of 117 degrees.','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
+','This may be incorrectly reported as having an angle of 117 degrees. See seabird application note 109: https://www.seabird.com/cms-portals/seabird_com/cms/documents/application-notes/AN109-Notice-of-Clarification-of-ECO-bb-angle-nomenclature.pdf','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.2,0);
 INSERT INTO "ex_params" VALUES('D15N_TDN',NULL,'Enrichment of the 15N/14N isotopic ratio of total dissolved nitrogen',NULL,NULL,'sample','decimal','woce_discrete',0,95.7,0);
 INSERT INTO "ex_params" VALUES('CDOM370',NULL,'Attenuation coefficient of the sample at 370nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.025,1);
 INSERT INTO "ex_params" VALUES('D15N_ALPHA_N2O',NULL,'Enrichment of :sup:`15`\ N vs :sup:`14`\ N in N2O (nitrous oxide) where the substitution has occurred at the center position of the N2O molecule as compared to a standard. N2O where the substitution has occurred in the end nitrogen atom is called D15N_BETA and is not usually measured. D15N_BETA can be calculated from bulk D15N and D15N_ALPHA using equation 25 from Toyoda and Yoshida 1999 [Toyoda1999]_
@@ -5785,6 +5785,14 @@ INSERT INTO "ex_params" VALUES('EWCT',NULL,'Eastward current velocity from a ros
 INSERT INTO "ex_params" VALUES('NSCT',NULL,'Northward current velocity from a rosette mounted current meter. A positive value indicates meridional flow in the northward direction, negative values are in the southward direction.',NULL,NULL,'sample','decimal','woce_ctd',0,162.1,0);
 INSERT INTO "ex_params" VALUES('BSI',NULL,'Biogenic Silica, also called opal. Chemically is hydrated silica, SiO2 nH2O. Biogenic silica is in particulate form.',NULL,NULL,'sample','decimal','woce_discrete',0,163.0,0);
 INSERT INTO "ex_params" VALUES('CTDALTIMETER',NULL,'The height above the sea floor as measured by an altimeter.',NULL,NULL,'sample','decimal','woce_ctd',0,74.7,0);
+INSERT INTO "ex_params" VALUES('CTDBETA660_124',NULL,'Volume scattering function at 660nm with a centroid angle of 124 degrees.
+
+
+Boss, E.B. and N. Haëntjens, 2016. Primer regarding measurements of
+chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB
+on profiling floats. SOCCOM Tech. Rep. 2016-1.
+https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
+','This may be incorrectly reported as having an angle of 117 degrees. See seabird application note 109: https://www.seabird.com/cms-portals/seabird_com/cms/documents/application-notes/AN109-Notice-of-Clarification-of-ECO-bb-angle-nomenclature.pdf','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.3,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6403,4 +6411,5 @@ INSERT INTO "whp_names" VALUES('CTDCDOM','RFU',NULL,'ctd_cdom_rfu',NULL,NULL,NUL
 INSERT INTO "whp_names" VALUES('TDN','UMOL/L',NULL,'total_dissolved_nitrogen_l',NULL,NULL,'TDN_ERROR',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDALTIMETER','METERS','height_above_sea_floor','ctd_altimeter',0.0,100.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SPAR','UMOL/M^2/SEC',NULL,'surface_par',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDBETA660_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta660_124',NULL,NULL,NULL,NULL,NULL,9,4,660.0,124.0,NULL,NULL,NULL);
 COMMIT;
