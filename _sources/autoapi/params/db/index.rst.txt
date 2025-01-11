@@ -77,9 +77,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -103,11 +103,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -195,9 +196,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -221,11 +222,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -324,9 +326,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -350,11 +352,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -465,9 +468,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -491,11 +494,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -630,9 +634,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -656,11 +660,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -782,9 +787,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -808,11 +813,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -918,9 +924,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -944,11 +950,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
@@ -1127,9 +1134,9 @@ Module Contents
 
        from sqlalchemy.orm import DeclarativeBase
 
+
        class Base(DeclarativeBase):
            pass
-
 
    The above ``Base`` class is now usable as the base for new declarative
    mappings.  The superclass makes use of the ``__init_subclass__()``
@@ -1153,11 +1160,12 @@ Module Contents
        bigint = Annotated[int, "bigint"]
        my_metadata = MetaData()
 
+
        class Base(DeclarativeBase):
            metadata = my_metadata
            type_annotation_map = {
                str: String().with_variant(String(255), "mysql", "mariadb"),
-               bigint: BigInteger()
+               bigint: BigInteger(),
            }
 
    Class-level attributes which may be specified include:
