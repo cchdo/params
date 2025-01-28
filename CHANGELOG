@@ -1,9 +1,17 @@
+v2025.??.? (2025-??-??)
+=======================
+Parameter Changes
+-----------------
+* Fixed typoes in change log where the beta scattering angle was incorrectly written as 123 degrees, continuing a long line of typoes for this angle going back to the OEM:
+  * CTDBETA660_123 -> CTDBETA660_124
+  * CTDBETA650_123 -> CTDBETA650_124
+
 v2025.01.0 (2025-01-16)
 =======================
 Parameter Changes
 -----------------
 * Updated link to SOCCOM optics primer
-* Added CTDBETA660_123 [M^-1/SR] for the volume scattering function at 660nm with a centroid angle of 123 degrees
+* Added CTDBETA660_124 [M^-1/SR] for the volume scattering function at 660nm with a centroid angle of 124 degrees
 
 v2024.12.0 (2024-12-06)
 =======================
@@ -106,7 +114,7 @@ Parameter Changes
 * Update CF Standard Name table to version 81
 * Updated the CTDBTA700 [M^-1/SR] warning to indicate this is for a parameter with a centroid angle of 142 degrees.
 * Add CTDORP [MILLIVOLTS] that describes a sensor measuring the tendency for chemicals in the water to gain to lose electrons, useful for hydrothermal plume tracking.
-* Added/Restored CTDBETA650_123 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 123 degrees
+* Added/Restored CTDBETA650_124 [M^-1/SR] for the volume scattering function at 650nm with a centroid angle of 124 degrees
 * Add D15N_TDN [/MILLE] that describes the enrichment of stable 15-nitrogen isotope in total dissolved nitrogen
 * Add 14C-DIC [/MILLE] as an alias for DELC14 [/MILLE]
 * Add D15N_ALPHA_N2O [/MILLE] to describe N2O where the center nitrogen has been substituted with 15-N
