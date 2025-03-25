@@ -6,6 +6,10 @@ Parameter Changes
   * CTDBETA660_123 -> CTDBETA660_124
   * CTDBETA650_123 -> CTDBETA650_124
 
+API Changes
+-----------
+* The package was migrated to use uv and a /src project structure.
+
 v2025.01.0 (2025-01-16)
 =======================
 Parameter Changes
