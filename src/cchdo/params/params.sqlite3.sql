@@ -5793,6 +5793,7 @@ chlorophyll fluorescence and the backscattering coefficient with WETLabs FLBB
 on profiling floats. SOCCOM Tech. Rep. 2016-1.
 https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
 ','This may be incorrectly reported as having an angle of 117 degrees. See seabird application note 109: https://www.seabird.com/cms-portals/seabird_com/cms/documents/application-notes/AN109-Notice-of-Clarification-of-ECO-bb-angle-nomenclature.pdf','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.3,0);
+INSERT INTO "ex_params" VALUES('CDOM254',NULL,'Attenuation coefficient of the sample at 254nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.0001,1);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6412,4 +6413,5 @@ INSERT INTO "whp_names" VALUES('TDN','UMOL/L',NULL,'total_dissolved_nitrogen_l',
 INSERT INTO "whp_names" VALUES('CTDALTIMETER','METERS','height_above_sea_floor','ctd_altimeter',0.0,100.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SPAR','UMOL/M^2/SEC',NULL,'surface_par',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDBETA660_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta660_124',NULL,NULL,NULL,NULL,NULL,9,4,660.0,124.0,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CDOM254','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom254',NULL,NULL,NULL,NULL,NULL,9,4,254.0,NULL,NULL,NULL,'cdom');
 COMMIT;

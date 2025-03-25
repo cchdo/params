@@ -5,6 +5,7 @@ Parameter Changes
 * Fixed typoes in change log where the beta scattering angle was incorrectly written as 123 degrees, continuing a long line of typoes for this angle going back to the OEM:
   * CTDBETA660_123 -> CTDBETA660_124
   * CTDBETA650_123 -> CTDBETA650_124
+* Add CDOM254 [/METER]
 
 API Changes
 -----------
