@@ -94,5 +94,5 @@ jobs:
       run: uv sync    
     - name: Test typing
       env:
-         MYPYPATH: cchdo
+         MYPYPATH: src
       run: uv run mypy --namespace-packages --explicit-package-bases src
