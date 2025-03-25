@@ -41,6 +41,8 @@ selftest = [
     "jsonschema",
     "sqlalchemy"
 ]
+
+[dependency-groups]
 dev = [
     "cchdo.params[selftest]",
     "click",
@@ -54,9 +56,6 @@ docs = [
     "Sphinx<7.3",
     "furo",
     "sphinx-autoapi",
-]
-complete = [
-    "cchdo.params[dev,docs]"
 ]
 
 [tool.mypy]
@@ -100,6 +99,8 @@ select = [
     "I",
     # Pyupgrade
     "UP",
+    # Tidy imports
+    "TID",
 ]
 
 [tool.ruff.lint.isort]
@@ -107,3 +108,6 @@ known-first-party = ["cchdo"]
 
 [tool.ruff.format]
 exclude = ["_*_names.py"]
+
+[tool.uv]
+default-groups = ["dev", "docs"]
