@@ -46,7 +46,7 @@ jobs:
     - name: Install dependencies
       run: uv sync
     - name: Test with pytest
-      run: uv run pytest --pyargs cchdo.params --cov-report xml --cov=src
+      run: uv run pytest --pyargs cchdo.params --cov-report xml --cov=cchdo
     - name: Upload coverage to Coveralls
       uses: coverallsapp/github-action@v2.3.0
       continue-on-error: true
@@ -95,4 +95,4 @@ jobs:
     - name: Test typing
       env:
          MYPYPATH: cchdo
-      run: uv run mypy --namespace-packages --explicit-package-bases src
+      run: uv run mypy --namespace-packages --explicit-package-bases cchdo
