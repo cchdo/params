@@ -234,16 +234,16 @@ Module Contents
 
 
 
-   .. py:method:: as_depth(depth: int) -> WHPName
+   .. py:method:: as_depth(depth)
 
 
-   .. py:method:: as_alias(param, unit) -> WHPName
+   .. py:method:: as_alias(param, unit)
 
 
-   .. py:method:: as_error() -> WHPName
+   .. py:method:: as_error()
 
 
-   .. py:method:: as_flag() -> WHPName
+   .. py:method:: as_flag()
 
 
    .. py:property:: full_whp_name
@@ -329,7 +329,7 @@ Module Contents
 
 
 
-   .. py:method:: strfex(value, flag: bool = False, numeric_precision_override: int | None = None, date_or_time: Literal['date', 'time'] | None = None) -> str
+   .. py:method:: strfex(value, flag = False, numeric_precision_override = None, date_or_time = None)
 
       Format a value using standard WHP Exchange conventions:
 

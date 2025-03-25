@@ -1,0 +1,50 @@
+params.test.test_ordering
+=========================
+
+.. py:module:: params.test.test_ordering
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   params.test.test_ordering.EXPOCODE
+   params.test.test_ordering.CTDPRS
+   params.test.test_ordering.CTDSAL
+   params.test.test_ordering.SALNTY
+   params.test.test_ordering.CTDTMP_90
+   params.test.test_ordering.CTDTMP_68
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   params.test.test_ordering.test_ordering
+   params.test.test_ordering.test_ordering_fallback
+   params.test.test_ordering.test_arr_sort
+
+
+Module Contents
+---------------
+
+.. py:data:: EXPOCODE
+
+.. py:data:: CTDPRS
+
+.. py:data:: CTDSAL
+
+.. py:data:: SALNTY
+
+.. py:data:: CTDTMP_90
+
+.. py:data:: CTDTMP_68
+
+.. py:function:: test_ordering()
+
+.. py:function:: test_ordering_fallback()
+
+.. py:function:: test_arr_sort()
+
