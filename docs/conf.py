@@ -34,6 +34,7 @@ extensions = [
     "autoapi.extension",
 ]
 
+
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
 
@@ -55,4 +56,7 @@ html_theme = "furo"
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ['_static']
 
-autoapi_dirs = ["../cchdo"]
+autoapi_dirs = ["../src/cchdo", "../src/cchdo/params"]
+autoapi_python_use_implicit_namespaces = True
+
+autodoc_typehints = "description"
