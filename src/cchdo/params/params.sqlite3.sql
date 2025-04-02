@@ -5794,6 +5794,10 @@ on profiling floats. SOCCOM Tech. Rep. 2016-1.
 https://soccom.princeton.edu/sites/g/files/toruqf5341/files/documents/SOCCOM_2016-1_Bio-optics-primer.pdf
 ','This may be incorrectly reported as having an angle of 117 degrees. See seabird application note 109: https://www.seabird.com/cms-portals/seabird_com/cms/documents/application-notes/AN109-Notice-of-Clarification-of-ECO-bb-angle-nomenclature.pdf','This parameter is the backscattering function (Beta) it is NOT the backscattering coefficient due to particles commonly called Bbp','sample','decimal','woce_ctd',0,74.3,0);
 INSERT INTO "ex_params" VALUES('CDOM254',NULL,'Attenuation coefficient of the sample at 254nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.0001,1);
+INSERT INTO "ex_params" VALUES('Co_D_CONC_BOTTLE',NULL,'Dissolved Cobalt in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,913.1,0);
+INSERT INTO "ex_params" VALUES('Zn_D_CONC_BOTTLE',NULL,'Dissolved Zinc in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,913.2,0);
+INSERT INTO "ex_params" VALUES('Cd_D_CONC_BOTTLE',NULL,'Dissolved Cadmium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,913.3,0);
+INSERT INTO "ex_params" VALUES('Pb_D_CONC_BOTTLE',NULL,'Dissolved Lead in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,913.4,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6414,4 +6418,8 @@ INSERT INTO "whp_names" VALUES('CTDALTIMETER','METERS','height_above_sea_floor',
 INSERT INTO "whp_names" VALUES('SPAR','UMOL/M^2/SEC',NULL,'surface_par',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDBETA660_124','M^-1/SR','volume_scattering_function_of_radiative_flux_in_sea_water','ctd_beta660_124',NULL,NULL,NULL,NULL,NULL,9,4,660.0,124.0,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM254','/METER','volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water','cdom254',NULL,NULL,NULL,NULL,NULL,9,4,254.0,NULL,NULL,NULL,'cdom');
+INSERT INTO "whp_names" VALUES('Co_D_CONC_BOTTLE','PMOL/L',NULL,'co_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Zn_D_CONC_BOTTLE','NMOL/L',NULL,'zn_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Cd_D_CONC_BOTTLE','NMOL/L',NULL,'cd_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Pb_D_CONC_BOTTLE','PMOL/L',NULL,'pb_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
