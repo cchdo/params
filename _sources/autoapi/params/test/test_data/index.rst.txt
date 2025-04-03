@@ -45,6 +45,7 @@ Functions
    params.test.test_data.test_strfex_ints
    params.test.test_data.test_strfex_flags
    params.test.test_data.test_odv_param_lookup
+   params.test.test_data.test_self_param_lookup
    params.test.test_data._unitless
    params.test.test_data.test_odv_empty_unit_vatiations
    params.test.test_data.test_alt_depths
@@ -117,6 +118,8 @@ Module Contents
 .. py:function:: test_strfex_flags(whpname, flag)
 
 .. py:function:: test_odv_param_lookup(whpname)
+
+.. py:function:: test_self_param_lookup(whpname)
 
 .. py:function:: _unitless(param)
 
