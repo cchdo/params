@@ -141,7 +141,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         return {to_odv(key): value for key, value in super().items()}
 
-    def __getitem__(self, key: WHPNameKey) -> WHPName:
+    def __getitem__(self, key: WHPNameKey | WHPName) -> WHPName:
         unit = None
         flag = False
         error = False
@@ -153,6 +153,8 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
             name = key[0]
         elif isinstance(key, tuple) and len(key) == 2:
             name, unit = key
+        elif isinstance(key, WHPName):
+            name, unit = key.full_whp_name, key.whp_unit
         else:
             raise KeyError("whpname keys must be str or a tuple")
 

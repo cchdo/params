@@ -19,6 +19,7 @@ Parameter Changes
 API Changes
 -----------
 * The package was migrated to use uv and a /src project structure.
+* WHPName instances can now be used as a key to WHPNames
 
 v2025.01.0 (2025-01-16)
 =======================

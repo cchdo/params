@@ -271,6 +271,15 @@ def test_odv_param_lookup(whpname: data.WHPName):
     assert data.WHPNames[whpname.odv_key] == whpname
 
 
+@pytest.mark.parametrize(
+    "whpname",
+    data.WHPNames.values(),
+    ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
+)
+def test_self_param_lookup(whpname: data.WHPName):
+    assert data.WHPNames[whpname] == whpname
+
+
 def _unitless(param: data.WHPName):
     return param.whp_unit is None
 
