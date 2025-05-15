@@ -48,7 +48,7 @@ body:
     id: si_units
     attributes:
      label: SI Units
-     description: If the WHP Units aren't actual SI units, what are the? For dimensionless parameters a "None" or 1 can be entered
+     description: If the WHP Units aren't actual SI units, what are they? For dimensionless parameters like practical salinity a "None" or 1 can be entered.
      placeholder: e.g. 1
     validations:
      required: false
