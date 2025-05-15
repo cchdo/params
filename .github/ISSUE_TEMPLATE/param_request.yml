@@ -2,27 +2,27 @@ name: New Parameter
 description: Request that a new parameter be added
 labels: ["new parameter"]
 body:
- - type: input
-   id: whp_name
-   attributes:
-     label: WHP Name
-     description: The name that would appear in an exchange data file, this is case sensitive.
-     placeholder: e.g. CTDSAL
-   validations:
-     required: true
- - type: input
-   id: whp_units
-   attributes:
-     label: WHP Units
-     description: The units, if any, that would appear in an exchange data file, this is case senstive
-     placeholder: e.g. PSS-78
-   validations:
-     required: false
+  - type: input
+    id: whp_name
+    attributes:
+      label: WHP Name
+      description: The name that would appear in an exchange data file, this is case sensitive.
+      placeholder: e.g. CTDSAL
+    validations:
+      required: true
+  - type: input
+    id: whp_units
+    attributes:
+      label: WHP Units
+      description: The units, if any, that would appear in an exchange data file, this is case senstive
+      placeholder: e.g. PSS-78
+    validations:
+      required: false
   - type: textarea
     id: description
     attributes:
       label: Parameter Description
-      description: What is this parameter? If it has a methods paper, link to it here. If this parameter is optical in nature, what are the relivant: wavelengths (ex, em), pathlengths, scattering angles.
+      description: "What is this parameter? If it has a methods paper, link to it here. If this parameter is optical in nature, what are the relivant: wavelengths (ex, em), pathlengths, scattering angles."
     validations:
       required: true
   - type: textarea
@@ -36,29 +36,29 @@ body:
     attributes:
       value: |
         Extra information that will be useful
- - type: input
-   id: cf_name
-   attributes:
+  - type: input
+    id: cf_name
+    attributes:
      label: CF Standard Name
      description: Does this parameter have an equivalent CF standard name already? If yes what is it?
      placeholder: e.g. moles_of_oxygen_per_unit_mass_in_sea_water
-   validations:
+    validations:
      required: false
- - type: input
-   id: si_units
-   attributes:
+  - type: input
+    id: si_units
+    attributes:
      label: SI Units
      description: If the WHP Units aren't actual SI units, what are the? For dimensionless parameters a "None" or 1 can be entered
      placeholder: e.g. 1
-   validations:
+    validations:
      required: false
- - type: input
-   id: p01_name
-   attributes:
-     label: VNS P01 Name
-     description: |
-      Does this parameter exist in [NVS P01](http://vocab.nerc.ac.uk/collection/P01/current/)?
-      Try to be as specific as possible, in many files, these codes will look like "SDN:P01::DOXYSCKG"
-     placeholder: e.g. DOXYSCKG 
-   validations:
-     required: false
+  - type: input
+    id: p01_name
+    attributes:
+      label: VNS P01 Name
+      description: |
+       Does this parameter exist in [NVS P01](http://vocab.nerc.ac.uk/collection/P01/current/)?
+       Try to be as specific as possible, in many files, these codes will look like "SDN:P01::DOXYSCKG"
+      placeholder: e.g. DOXYSCKG 
+    validations:
+      required: false
