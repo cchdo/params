@@ -14,7 +14,7 @@ body:
     id: whp_units
     attributes:
       label: WHP Units
-      description: The units, if any, that would appear in an exchange data file, this is case senstive
+      description: The units, if any, that would appear in an exchange data file, this is case sensitive
       placeholder: e.g. PSS-78
     validations:
       required: false
@@ -22,7 +22,7 @@ body:
     id: description
     attributes:
       label: Parameter Description
-      description: "What is this parameter? If it has a methods paper, link to it here. If this parameter is optical in nature, what are the relivant: wavelengths (ex, em), pathlengths, scattering angles."
+      description: "What is this parameter? If it has a methods paper, link to it here. If this parameter is optical in nature, what are the relevant: wavelengths (ex, em), path lengths, scattering angles."
     validations:
       required: true
   - type: textarea
