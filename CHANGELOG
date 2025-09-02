@@ -1,3 +1,13 @@
+v2025.09.0 (2025-09-??)
+=======================
+Parameter Changes
+-----------------
+* None Yet?
+
+API Changes
+-----------
+* Emit INFO level log message when a parameter is found via an alias
+
 v2025.04.0 (2025-04-04)
 =======================
 Parameter Changes

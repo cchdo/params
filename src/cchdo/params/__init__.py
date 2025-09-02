@@ -4,6 +4,7 @@ from functools import cached_property
 from importlib.metadata import PackageNotFoundError, version
 from importlib.resources import files
 from json import loads
+from logging import getLogger
 from typing import Literal, NamedTuple, overload
 
 from ._cf_names import cf_standard_names as _cf_standard_names
@@ -20,6 +21,7 @@ except PackageNotFoundError:
 
 WHPNameKey = str | tuple[str, str | None]
 
+logger = getLogger(__name__)
 
 def to_odv(key: tuple[str, str | None]):
     """Transform a (param, unit) tuple into the correct ODV style PARAM [UNIT] string
@@ -185,6 +187,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         if alias_key is not None:
             param = param.as_alias(*alias_key)
+            logger.info(f"{param} found using alias {alias_key}")
 
         return param
 
