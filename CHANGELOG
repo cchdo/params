@@ -2,7 +2,7 @@ v2025.09.0 (2025-09-??)
 =======================
 Parameter Changes
 -----------------
-* None Yet?
+* Add UMOL/L as an allowed unit for UREA, the default print precision of .4f is based on incoming .1f data in nmol units
 
 API Changes
 -----------
