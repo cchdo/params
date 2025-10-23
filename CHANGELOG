@@ -5,6 +5,9 @@ Parameter Changes
 * Add UMOL/L as an allowed unit for UREA, the default print precision of .4f is based on incoming .1f data in nmol units
 * Add AR-39_ERROR [PCTMOD] as the error name for AR-39 [PCTMOD]
 * Add CDOM-S275-295 [1/NM] describing a linear fit to log transformed attenuation coefficients in the interval 275 to 295 nanometers
+* Add moles_of_ammonium_per_unit_mass_in_sea_water as the CF standard name for NH4 [UMOL/KG]
+* Add mole_concentration_of_cfc11_in_sea_water as the CF standard name for CFC-11 [PMOL/L]
+* Add mole_concentration_of_cfc12_in_sea_water as the CF standard name for CFC-12 [PMOL/L]
 
 API Changes
 -----------

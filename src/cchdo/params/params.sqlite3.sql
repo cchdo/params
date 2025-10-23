@@ -6112,7 +6112,7 @@ INSERT INTO "whp_names" VALUES('CTDOXY','UMOL/KG','moles_of_oxygen_per_unit_mass
 INSERT INTO "whp_names" VALUES('CTDOXY','ML/L','volume_fraction_of_oxygen_in_sea_water','ctd_oxygen_ml_l',0.0,500.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('OXYGEN','UMOL/KG','moles_of_oxygen_per_unit_mass_in_sea_water','oxygen',0.0,500.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SILCAT','UMOL/KG','moles_of_silicate_per_unit_mass_in_sea_water','silicate',0.0,250.0,'SILUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('NH4','UMOL/KG',NULL,'ammonium',NULL,NULL,'NH4UNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('NH4','UMOL/KG','moles_of_ammonium_per_unit_mass_in_sea_water','ammonium',NULL,NULL,'NH4UNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRAT','UMOL/KG','moles_of_nitrate_per_unit_mass_in_sea_water','nitrate',-0.1,47.0,'NRAUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('NITRIT','UMOL/KG','moles_of_nitrite_per_unit_mass_in_sea_water','nitrite',-0.1,15.0,'NRIUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PHSPHT','UMOL/KG','moles_of_phosphate_per_unit_mass_in_sea_water','phosphate',0.0,5.0,'PHPUNC',NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
@@ -6381,8 +6381,8 @@ INSERT INTO "whp_names" VALUES('ABUNDANCE',NULL,NULL,'abundance_placeholder',NUL
 INSERT INTO "whp_names" VALUES('QUOTA',NULL,NULL,'quota_placeholder',NULL,NULL,NULL,NULL,NULL,14,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM2C',NULL,NULL,'cdom2c',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM3C',NULL,NULL,'cdom3c',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('CFC-11','PMOL/L',NULL,'cfc_11_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('CFC-12','PMOL/L',NULL,'cfc_12_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CFC-11','PMOL/L','mole_concentration_of_cfc11_in_sea_water','cfc_11_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CFC-12','PMOL/L','mole_concentration_of_cfc12_in_sea_water','cfc_12_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CFC113','PMOL/L',NULL,'cfc_113_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TRITUM','KBQ/M^3',NULL,'tritium_activity',NULL,NULL,'TRITER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM_NASA',NULL,NULL,'cdom_nasa_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
