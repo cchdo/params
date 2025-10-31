@@ -5801,6 +5801,10 @@ INSERT INTO "ex_params" VALUES('Pb_D_CONC_BOTTLE',NULL,'Dissolved Lead in a disc
 INSERT INTO "ex_params" VALUES('CDOM-S275-295',NULL,'Spectral slope computed by linear regression of log-transformed attenuation coefficients in the interval 275 to 295 nm. By convention, this slope is reported as positive because the data are being fit to an exponential decay function (equation 1 in Helms et al. 2008).
 
 Helms, J. R., Stubbins, A., Ritchie, J. D., Minor, E. C., Kieber, D. J., & Mopper, K. (2008). Absorption spectral slopes and slope ratios as indicators of molecular weight, source, and photobleaching of chromophoric dissolved organic matter. Limnology and Oceanography, 53(3), 955–969. https://doi.org/10.4319/lo.2008.53.3.0955',NULL,NULL,'sample','decimal','woce_discrete',0,69.985,0);
+INSERT INTO "ex_params" VALUES('Sr_TP_CONC_BOTTLE',NULL,'Particulate Strontium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,915.0,0);
+INSERT INTO "ex_params" VALUES('Al_TP_CONC_BOTTLE',NULL,'Particulate Aluminum in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,916.0,0);
+INSERT INTO "ex_params" VALUES('Ba_TP_CONC_BOTTLE',NULL,'Particulate Barium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
+INSERT INTO "ex_params" VALUES('Ca_TP_CONC_BOTTLE',NULL,'Particulate Calcium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6427,4 +6431,8 @@ INSERT INTO "whp_names" VALUES('Cd_D_CONC_BOTTLE','NMOL/L',NULL,'cd_d_conc_bottl
 INSERT INTO "whp_names" VALUES('Pb_D_CONC_BOTTLE','PMOL/L',NULL,'pb_d_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('UREA','UMOL/L',NULL,'urea_l',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM-S275-295','1/NM',NULL,'cdom_s275_295',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Sr_TP_CONC_BOTTLE','PMOL/KG',NULL,'sr_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Al_TP_CONC_BOTTLE','NMOL/KG',NULL,'al_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Ba_TP_CONC_BOTTLE','PMOL/KG',NULL,'ba_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Ca_TP_CONC_BOTTLE','PMOL/KG',NULL,'ca_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
