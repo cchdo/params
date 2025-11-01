@@ -6124,7 +6124,7 @@ INSERT INTO "whp_names" VALUES('NO2+NO3','UMOL/KG','moles_of_nitrate_and_nitrite
 INSERT INTO "whp_names" VALUES('CFC-11','PMOL/KG','moles_of_cfc11_per_unit_mass_in_sea_water','cfc_11',-0.1,15.0,'CF11ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CFC-12','PMOL/KG',NULL,'cfc_12',-0.1,15.0,'CF12ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CFC113','PMOL/KG',NULL,'cfc_113',-0.1,1.5,'CF113ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('SF6','FMOL/KG',NULL,'sulfur_hexifluoride',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SF6','FMOL/KG','moles_of_sulfur_hexafluoride_per_unit_mass_in_sea_water','sulfur_hexifluoride',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TCARBN','UMOL/KG','moles_of_dissolved_inorganic_carbon_per_unit_mass_in_sea_water','total_carbon',1100.0,2600.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('ALKALI','UMOL/KG',NULL,'total_alkalinity',100.0,2800.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('FCO2','UATM','fugacity_of_carbon_dioxide_in_sea_water','fco2',NULL,NULL,NULL,'FCO2TMP','DEG C',9,1,NULL,NULL,NULL,NULL,NULL);
@@ -6391,7 +6391,7 @@ INSERT INTO "whp_names" VALUES('CFC113','PMOL/L',NULL,'cfc_113_l',NULL,NULL,NULL
 INSERT INTO "whp_names" VALUES('TRITUM','KBQ/M^3',NULL,'tritium_activity',NULL,NULL,'TRITER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM_NASA',NULL,NULL,'cdom_nasa_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CDOM_UCSB',NULL,NULL,'cdom_ucsb_placeholder',NULL,NULL,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('SF6','FMOL/L',NULL,'sulfur_hexifluoride_l',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('SF6','FMOL/L','mole_concentration_of_sulfur_hexafluoride_in_sea_water','sulfur_hexifluoride_l',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SF5CF3','FMOL/L',NULL,'trifluoromethylsulfur_pentafluoride_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('TON','UMOL/L',NULL,'total_organic_nitrogen_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('DNSSAL2','G/KG','sea_water_absolute_salinity','density_salinity2',0.0,42.0,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);

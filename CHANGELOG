@@ -8,6 +8,8 @@ Parameter Changes
 * Add moles_of_ammonium_per_unit_mass_in_sea_water as the CF standard name for NH4 [UMOL/KG]
 * Add mole_concentration_of_cfc11_in_sea_water as the CF standard name for CFC-11 [PMOL/L]
 * Add mole_concentration_of_cfc12_in_sea_water as the CF standard name for CFC-12 [PMOL/L]
+* Add moles_of_sulfur_hexafluoride_per_unit_mass_in_sea_water as the CF standard name for SF6 [FMOL/KG]
+* Add mole_concentration_of_sulfur_hexafluoride_in_sea_water as the CF standard name for SF6 [FMOL/L]
 * Add some particulate trace metal parameters following geotraces conventions, the default database precisions were based on incoming data:
 
   * Sr_TP_CONC_BOTTLE [PMOL/KG]
