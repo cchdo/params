@@ -144,6 +144,32 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         return {to_odv(key): value for key, value in super().items()}
 
+    @cached_property
+    def _nc_names(self) -> dict[str, WHPName]:
+        return {param.nc_name: param for param in self.values()}
+
+    def from_nc_name(self, key: str) -> WHPName:
+        is_flag = key.endswith("_qc")
+        key = key.removesuffix("_qc")
+        is_error = key.endswith("_error")
+        key = key.removesuffix("_error")
+        depth = 0
+        if "_alt_" in key:
+            try:
+                _key, _depth = key.split("_alt_")
+                depth = int(_depth)
+                key = _key
+            except ValueError:
+                ...
+        param = self._nc_names[key]
+        if depth > 0:
+            param = param.as_depth(depth)
+        if is_flag:
+            return param.as_flag()
+        if is_error:
+            return param.as_error()
+        return param
+
     def __getitem__(self, key: WHPNameKey | WHPName) -> WHPName:
         unit = None
         flag = False

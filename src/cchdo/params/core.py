@@ -137,6 +137,9 @@ class WHPName:
             raise ValueError("error columns cannot have flags")
         return replace(self, flag_col=True)
 
+    def as_base(self) -> "WHPName":
+        return replace(self, flag_col=False, error_col=False, alt_depth=0)
+
     @property
     def full_whp_name(self):
         if self.alt_depth > 0:
@@ -171,6 +174,10 @@ class WHPName:
         """
         if self.error_col:
             base = self.full_error_name
+            if base is None:
+                raise ValueError(
+                    f"Error name is not defined for this parameter {self.as_base()}"
+                )
         else:
             base = self.full_whp_name
 
@@ -182,7 +189,7 @@ class WHPName:
         if self.flag_col:
             key = f"{key}_FLAG_W"
 
-        return key
+        return str(key)
 
     @property
     def nc_name_flag(self) -> str:

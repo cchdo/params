@@ -1,3 +1,14 @@
+v2025.??.0 (2025-??-??)
+=======================
+Parameter Changes
+-----------------
+* None Yet
+
+API Changes
+-----------
+* (New) Add a method to look up parameter by their nc_name
+* (Potentially Breaking) Rise a `ValueError` when attempting to coerce a parameter into an error name when an error name it not defined for it
+
 v2025.10.0 (2025-10-31)
 =======================
 Parameter Changes
