@@ -5805,6 +5805,7 @@ INSERT INTO "ex_params" VALUES('Sr_TP_CONC_BOTTLE',NULL,'Particulate Strontium i
 INSERT INTO "ex_params" VALUES('Al_TP_CONC_BOTTLE',NULL,'Particulate Aluminum in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,916.0,0);
 INSERT INTO "ex_params" VALUES('Ba_TP_CONC_BOTTLE',NULL,'Particulate Barium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
 INSERT INTO "ex_params" VALUES('Ca_TP_CONC_BOTTLE',NULL,'Particulate Calcium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
+INSERT INTO "ex_params" VALUES('LAB_DEN_TMP',NULL,'The temperature at which the density of a water sample was physically measured',NULL,NULL,'sample','decimal','woce_discrete',1,146.1,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6248,7 +6249,7 @@ INSERT INTO "whp_names" VALUES('FCO2IN','UATM','fugacity_of_carbon_dioxide_in_se
 INSERT INTO "whp_names" VALUES('FUCO','NMOL/KG',NULL,'fucose',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('GALA','NMOL/KG',NULL,'galactose',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('GLUC','NMOL/KG',NULL,'glucose',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('LAB_DEN','KG/M^3',NULL,'density',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('LAB_DEN','KG/M^3',NULL,'density',NULL,NULL,NULL,'LAB_DEN_TMP','DEG C',9,2,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('MAN','NMOL/KG',NULL,'mannose',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('PIGMENTS',NULL,NULL,'pigments',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('RHAM','NMOL/KG',NULL,'rhamnose',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
@@ -6435,4 +6436,5 @@ INSERT INTO "whp_names" VALUES('Sr_TP_CONC_BOTTLE','PMOL/KG',NULL,'sr_tp_conc_bo
 INSERT INTO "whp_names" VALUES('Al_TP_CONC_BOTTLE','NMOL/KG',NULL,'al_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Ba_TP_CONC_BOTTLE','PMOL/KG',NULL,'ba_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Ca_TP_CONC_BOTTLE','PMOL/KG',NULL,'ca_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('LAB_DEN_TMP','DEG C','temperature_of_analysis_of_sea_water','density_temperature',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
