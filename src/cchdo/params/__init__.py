@@ -142,7 +142,10 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
     def odv_names(self):
         """Returns a mapping of ODV style names to WHPName instances"""
 
-        return {to_odv(key): value for key, value in super().items()}
+        return {
+            to_odv((name.full_whp_name, name.whp_unit)): name
+            for name in super().values()
+        }
 
     @cached_property
     def _nc_names(self) -> dict[str, WHPName]:
@@ -171,21 +174,26 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         return param
 
     def __getitem__(self, key: WHPNameKey | WHPName) -> WHPName:
-        unit = None
+        unit: str | None = None
         flag = False
         error = False
 
-        if isinstance(key, str):
-            name, flag = flag_name(key)
-            name, unit = normalize_odv_name(name, return_parts=True)
-        elif isinstance(key, tuple) and len(key) == 1:
-            name = key[0]
-        elif isinstance(key, tuple) and len(key) == 2:
-            name, unit = key
-        elif isinstance(key, WHPName):
-            name, unit = key.full_whp_name, key.whp_unit
-        else:
-            raise KeyError("whpname keys must be str or a tuple")
+        match key:
+            case str(_name):
+                name, flag = flag_name(_name)
+                name, unit = normalize_odv_name(name, return_parts=True)
+            case [str(_name)]:
+                name: str = _name
+            case [str(_name), None]:
+                name: str = _name
+            case [str(_name), str(_unit)]:
+                name: str = _name
+                unit = _unit
+            case WHPName() as _whp_name:
+                name: str = _whp_name.full_whp_name
+                unit = _whp_name.whp_unit
+            case _:
+                raise KeyError("whpname keys must be str or a tuple")
 
         alias_key = None
         if (name, unit) in self._aliases:
