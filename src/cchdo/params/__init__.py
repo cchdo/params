@@ -87,6 +87,30 @@ def normalize_odv_name(name: str, return_parts=False) -> str | tuple[str, str | 
         return f"{param} [{unit}]"
 
 
+def normalize_whp_name_key(
+    key: WHPNameKey | WHPName,
+) -> tuple[tuple[str, str | None], bool]:
+    flag = False
+    unit: str | None = None
+    match key:
+        case str(_name):
+            name, flag = flag_name(_name)
+            name, unit = normalize_odv_name(name, return_parts=True)
+        case [str(_name)]:
+            name: str = _name
+        case [str(_name), None]:
+            name: str = _name
+        case [str(_name), str(_unit)]:
+            name: str = _name
+            unit = _unit
+        case WHPName() as _whp_name:
+            name: str = _whp_name.full_whp_name
+            unit = _whp_name.whp_unit
+        case _:
+            raise KeyError("whpname keys must be str or a tuple")
+    return (name, unit), flag
+
+
 def alt_depth(name: str) -> tuple[str, int]:
     if "_ALT_" not in name:
         return name, 0
@@ -174,26 +198,8 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         return param
 
     def __getitem__(self, key: WHPNameKey | WHPName) -> WHPName:
-        unit: str | None = None
-        flag = False
         error = False
-
-        match key:
-            case str(_name):
-                name, flag = flag_name(_name)
-                name, unit = normalize_odv_name(name, return_parts=True)
-            case [str(_name)]:
-                name: str = _name
-            case [str(_name), None]:
-                name: str = _name
-            case [str(_name), str(_unit)]:
-                name: str = _name
-                unit = _unit
-            case WHPName() as _whp_name:
-                name: str = _whp_name.full_whp_name
-                unit = _whp_name.whp_unit
-            case _:
-                raise KeyError("whpname keys must be str or a tuple")
+        (name, unit), flag = normalize_whp_name_key(key)
 
         alias_key = None
         if (name, unit) in self._aliases:
@@ -333,15 +339,15 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         Some alias names are a little dangerous to add without larger context.
         For example, in the HOT program, nitrate sensors were tested on the CTD using the name NITRATE [UMOL/KG]
-        This cannot be unambigiously mapped to either the CTD or the more common Bottle parameter names.
+        This cannot be unambiguously mapped to either the CTD or the more common Bottle parameter names.
 
         :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
-        :param currnet: any valid existing WHPNames key
+        :param current: any valid existing WHPNames key
         """
-        if isinstance(alias, str):
-            alias = normalize_odv_name(alias, return_parts=True)
-        if isinstance(current, str):
-            current = normalize_odv_name(current, return_parts=True)
+        alias, _ = normalize_whp_name_key(alias)
+        current, flag = normalize_whp_name_key(current)
+        if flag:
+            current = (f"{current[0]}_FLAG_W", current[1])
 
         if alias in self:
             raise ValueError("Cannot override base parameter names")
