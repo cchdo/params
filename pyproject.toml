@@ -49,32 +49,14 @@ dev = [
     "pytest-cov",
     "pre-commit",
     "codecov",
-    "mypy",
     "ruff",
+    "ty>=0.0.25",
 ]
 docs = [
     "Sphinx<7.3",
     "furo",
     "sphinx-autoapi",
 ]
-
-[tool.mypy]
-namespace_packages = true
-explicit_package_bases = true
-
-[[tool.mypy.overrides]]
-module = [
-    "pytest.*",
-    "jsonschema.*",
-]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = [
-    "setup",
-    "docs.conf",
-]
-ignore_errors = true
 
 [tool.ruff]
 target-version = "py312"
