@@ -349,11 +349,11 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 class _CFStandardNames(UserDict[str | None, CFStandardName]): ...
 
 
-def default_cf_standard_names():
+def default_cf_standard_names() -> _CFStandardNames:
     return _CFStandardNames(_cf_standard_names)
 
 
-def default_whp_names():
+def default_whp_names() -> _WHPNames:
     whpnames = _WHPNames(_whp_names)
 
     for _alias, _canonical in _aliases.items():
