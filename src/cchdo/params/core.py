@@ -268,13 +268,13 @@ class WHPName:
         if self.whp_unit is not None:
             attrs["whp_unit"] = self.whp_unit
 
-        if self.cf_name is not None:
-            standard_name = f"{self.cf.name}"
+        if (cf_name := self.cf) is not None:
+            standard_name = f"{cf_name.name}"
             if error is True:
                 standard_name = f"{standard_name} standard_error"
 
             attrs["standard_name"] = standard_name
-            attrs["units"] = self.cf.canonical_units
+            attrs["units"] = cf_name.canonical_units
 
         if self.cf_unit is not None:
             attrs["units"] = self.cf_unit
