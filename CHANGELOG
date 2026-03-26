@@ -9,6 +9,7 @@ API Changes
 * (New) Add a method to look up parameter by their nc_name
 * (Potentially Breaking) Rise a `ValueError` when attempting to coerce a parameter into an error name when an error name it not defined for it
 * Add typing to WHPNames and CFStandardNames objects
+* Drop python 3.11 support (SPEC 0)
 
 v2025.10.0 (2025-10-31)
 =======================
