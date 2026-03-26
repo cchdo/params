@@ -36,6 +36,8 @@ def cf_update(cf_xml):
     last_mod = None
     for element in ElementTree.parse(cf_xml).getroot():
         if element.tag == "version_number":
+            if element.text is None:
+                raise ValueError("no cf standard name table version number")
             version_number = int(element.text)
             if int(current_cf_version_number) >= version_number:
                 click.echo(

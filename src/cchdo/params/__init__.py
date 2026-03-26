@@ -19,7 +19,7 @@ try:
 except PackageNotFoundError:
     __version__ = "999"
 
-WHPNameKey = str | tuple[str, str | None]
+WHPNameKey = str | tuple[str] | tuple[str, str | None]
 
 logger = getLogger(__name__)
 

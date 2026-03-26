@@ -77,7 +77,7 @@ whp_unitless_names = [name for name in data.WHPNames.values() if name.whp_unit i
 
 
 @pytest.mark.parametrize("whpname", whp_unitless_names)
-def test_whp_no_unit_params(whpname):
+def test_whp_no_unit_params(whpname: data.WHPName):
     str_name = whpname.whp_name
     tuple_name = (str_name,)
 
@@ -286,7 +286,7 @@ def _unitless(param: data.WHPName):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(_unitless, data.WHPNames.values()),  # type: ignore
+    filter(_unitless, data.WHPNames.values()),
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 def test_odv_empty_unit_vatiations(whpname):
