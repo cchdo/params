@@ -13,7 +13,7 @@ jobs:
   lint:
     name: Lint and Style
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
     - uses: actions/checkout@v6
@@ -31,7 +31,7 @@ jobs:
   pytest:
     name: Pytest 
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
     - uses: actions/checkout@v6
@@ -52,7 +52,7 @@ jobs:
   selftest:
     name: Selftest
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
     - uses: actions/checkout@v6
@@ -70,7 +70,7 @@ jobs:
   typing:
     name: Typing with ty
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
     - uses: actions/checkout@v6
