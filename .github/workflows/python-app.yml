@@ -86,5 +86,7 @@ jobs:
       uses: astral-sh/setup-uv@v5
       with:
         enable-cache: true
+    - name: Install dependencies
+      run: uv sync
     - name: Test typing
-      run: uvx ty check src
+      run: uv run ty check src
