@@ -274,7 +274,8 @@ class WHPName:
                 standard_name = f"{standard_name} standard_error"
 
             attrs["standard_name"] = standard_name
-            attrs["units"] = cf_name.canonical_units
+            if cf_name.canonical_units is not None:
+                attrs["units"] = cf_name.canonical_units
 
         if self.cf_unit is not None:
             attrs["units"] = self.cf_unit
