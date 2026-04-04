@@ -141,7 +141,7 @@ class WHPName:
         return replace(self, flag_col=False, error_col=False, alt_depth=0)
 
     @property
-    def full_whp_name(self):
+    def full_whp_name(self) -> str:
         if self.alt_depth > 0:
             return f"{self.whp_name}_ALT_{self.alt_depth}"
         else:

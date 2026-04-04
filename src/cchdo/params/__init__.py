@@ -201,6 +201,22 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         error = False
         (name, unit), flag = normalize_whp_name_key(key)
 
+        match key:
+            case str(matched):
+                name, flag = flag_name(matched)
+                name, unit = normalize_odv_name(name, return_parts=True)
+            case tuple((str(name),)):
+                name = name
+            case tuple((str(name), str(unit))):
+                name = name
+                unit = unit
+            case tuple((str(name), None)):
+                name = name
+            case WHPName() as key:
+                name, unit = key.full_whp_name, key.whp_unit
+            case _ as err:
+                raise KeyError(f"whpname keys must be str or a tuple, found {err}")
+
         alias_key = None
         if (name, unit) in self._aliases:
             alias_key = (name, unit)
