@@ -3,6 +3,7 @@ v2026.??.0 (2026-??-??)
 Parameter Changes
 -----------------
 * Add LAB_DEN_TMP [DEG C] as the name for the temperature of analysis of seawater in lab measured density. (P01 param DENTMP01)
+* Update to cf standard name table v93 (2026-03-17)
 
 API Changes
 -----------
