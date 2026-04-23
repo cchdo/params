@@ -5871,7 +5871,7 @@ Saunders, P. M., 1981. Practical Conversion of Pressure to Depth. Journal of Phy
 Mantyla, A. W., 1982-1983. Private correspondence.
 ',NULL,NULL,'sample','decimal','woce_ctd',0,159.0,0);
 INSERT INTO "ex_params" VALUES('FMDEPTH',NULL,'Depth calculated from pressure using the Fofonoff and Millard method, also known as the UNESCO 1983 formula',NULL,NULL,'sample','decimal','woce_ctd',0,159.1,0);
-INSERT INTO "ex_params" VALUES('CTDCDOM',NULL,'In situ CDOM measured via a uv fluorometer',NULL,NULL,'sample','decimal','woce_ctd',0,74.6,1);
+INSERT INTO "ex_params" VALUES('CTDCDOM',NULL,'In situ CDOM measured via a uv fluorometer','Raman units are where the  intensity has been normalized to the integrated Raman scattering peak of pure water from excitation at 350 nm. It is dimensionless For CTD data, this requires discrete bottle samples to transfer the calibration to the in situ sensor. The process we have seen in CTD data adjusts the CTDCDOM QSU values (from the instrument calibration), then converts those values into Raman units. See Lawaetz AJ, Stedmon CA. Fluorescence Intensity Calibration Using the Raman Scatter Peak of Water. Applied Spectroscopy. 2009;63(8):936-940. doi:10.1366/000370209788964548',NULL,'sample','decimal','woce_ctd',0,74.6,1);
 INSERT INTO "ex_params" VALUES('KRYPTON',NULL,'Dissolved krypton gas in seawater',NULL,NULL,'sample','decimal','woce_discrete',0,146.1,1);
 INSERT INTO "ex_params" VALUES('XENON',NULL,'Dissolved xenon gas in sea water',NULL,NULL,'sample','decimal','woce_discrete',0,146.2,1);
 INSERT INTO "ex_params" VALUES('BTLNBR_U',NULL,'User convienence bottle number, unlike the canonical BTLNBR param, this one must be an integer (so the NBR part of the name makse sense)',NULL,NULL,'sample','integer','woce_bottle',0,1001.0,0);
@@ -5919,7 +5919,7 @@ INSERT INTO "ex_params" VALUES('PHYTOP',NULL,'Count of phytoplankton',NULL,NULL,
 INSERT INTO "ex_params" VALUES('DELD',NULL,'Enrichment of deuterium of the sea water itself compared to VSMOW',NULL,NULL,'sample','decimal','woce_discrete',0,60.1,0);
 INSERT INTO "ex_params" VALUES('BEAMAP',NULL,'Volume beam absorption in sea water',NULL,NULL,'sample','decimal','woce_discrete',0,74.1,0);
 INSERT INTO "ex_params" VALUES('LDEO_SAMPNO',NULL,'Sample number used internally by LDEO',NULL,NULL,'sample','integer','no_flags',0,1001.0,0);
-INSERT INTO "ex_params" VALUES('FDOM',NULL,'In lab measured Fluorescent dissolved organic matter',NULL,NULL,'sample','decimal','woce_discrete',0,44.1,0);
+INSERT INTO "ex_params" VALUES('FDOM',NULL,'In lab measured Fluorescent dissolved organic matter','Raman units are where the  intensity has been normalized to the integrated Raman scattering peak of pure water from excitation at 350 nm. See Lawaetz AJ, Stedmon CA. Fluorescence Intensity Calibration Using the Raman Scatter Peak of Water. Applied Spectroscopy. 2009;63(8):936-940. doi:10.1366/000370209788964548',NULL,'sample','decimal','woce_discrete',0,44.1,0);
 INSERT INTO "ex_params" VALUES('CDOM300',NULL,'Attenuation coefficient of the sample at 300nm',NULL,NULL,'sample','decimal','woce_discrete',0,69.001,1);
 INSERT INTO "ex_params" VALUES('RIANOMALY',NULL,'Refractive indxe anomanly from pure water. Typically reported at the sodium D lines of 589.6 nm and 589.0nm',NULL,NULL,'sample','decimal','woce_discrete',0,21.1,0);
 INSERT INTO "ex_params" VALUES('DELN15',NULL,'Enrichment of the N15/N14 isotopic ratio when compared to the atmosphere',NULL,NULL,'sample','decimal','woce_discrete',0,60.3,0);
@@ -6082,6 +6082,7 @@ INSERT INTO "ex_units" VALUES(55,'FMOL/L','fmol/l',NULL,NULL);
 INSERT INTO "ex_units" VALUES(56,'MILLIVOLTS','millivolts',NULL,'Should only be used when the real science units are volts');
 INSERT INTO "ex_units" VALUES(57,'E7/KG','1e7 kg-1',NULL,'This is a "count" of things per unit mass');
 INSERT INTO "ex_units" VALUES(58,'M/S','m/s',NULL,'Meters per second');
+INSERT INTO "ex_units" VALUES(59,'RU','1',NULL,'Raman units, which is fluorescence intensity normalised to the integrated Raman scattering peak of pure water from excitation at 350 nm');
 CREATE TABLE whp_alias (
 	old_name VARCHAR NOT NULL, 
 	old_unit VARCHAR, 
@@ -6276,7 +6277,6 @@ INSERT INTO "whp_alias" VALUES('D13C-DOC','/MILLE','13C-DOC','/MILLE');
 INSERT INTO "whp_alias" VALUES('THETA','DEG-C','THETA','DEG C');
 INSERT INTO "whp_alias" VALUES('14C-DIC','/MILLE','DELC14','/MILLE');
 INSERT INTO "whp_alias" VALUES('Nd_143_D_EPSILON_BOTTLE','10000','Nd_143_144_D_EPSILON_BOTTLE','10000');
-INSERT INTO "whp_alias" VALUES('CTDCDOM','RU','CTDCDOM','RFU');
 INSERT INTO "whp_alias" VALUES('DOC_NASA','UMOL/L','DOC','UMOL/L');
 INSERT INTO "whp_alias" VALUES('SAMPLING_RATE',NULL,'SAMPLING_RATE','HZ');
 CREATE TABLE whp_names (
@@ -6646,4 +6646,6 @@ INSERT INTO "whp_names" VALUES('Al_TP_CONC_BOTTLE','NMOL/KG',NULL,'al_tp_conc_bo
 INSERT INTO "whp_names" VALUES('Ba_TP_CONC_BOTTLE','PMOL/KG',NULL,'ba_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,0,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Ca_TP_CONC_BOTTLE','PMOL/KG',NULL,'ca_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('LAB_DEN_TMP','DEG C','temperature_of_analysis_of_sea_water','density_temperature',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDCDOM','RU','concentration_of_colored_dissolved_organic_matter_in_sea_water','ctd_cdom_ru',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('FDOM','RU','concentration_of_colored_dissolved_organic_matter_in_sea_water','fdom_ru',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;
