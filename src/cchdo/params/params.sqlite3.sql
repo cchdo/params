@@ -6015,6 +6015,7 @@ INSERT INTO "ex_params" VALUES('Al_TP_CONC_BOTTLE',NULL,'Particulate Aluminum in
 INSERT INTO "ex_params" VALUES('Ba_TP_CONC_BOTTLE',NULL,'Particulate Barium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
 INSERT INTO "ex_params" VALUES('Ca_TP_CONC_BOTTLE',NULL,'Particulate Calcium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
 INSERT INTO "ex_params" VALUES('LAB_DEN_TMP',NULL,'The temperature at which the density of a water sample was physically measured',NULL,NULL,'sample','decimal','woce_discrete',1,146.1,0);
+INSERT INTO "ex_params" VALUES('CTDPH',NULL,'The measure of acidity of seawater reported on an unknown scale using an in situ electrode. SDN:P01::PHXXPR01',NULL,'The reporting scale is not known. Use caution when comparing this pH to any other pH, though it is probably reported on the NBS scale','sample','decimal','woce_ctd',0,40.9,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6648,4 +6649,5 @@ INSERT INTO "whp_names" VALUES('Ca_TP_CONC_BOTTLE','PMOL/KG',NULL,'ca_tp_conc_bo
 INSERT INTO "whp_names" VALUES('LAB_DEN_TMP','DEG C','temperature_of_analysis_of_sea_water','density_temperature',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDCDOM','RU','concentration_of_colored_dissolved_organic_matter_in_sea_water','ctd_cdom_ru',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('FDOM','RU','concentration_of_colored_dissolved_organic_matter_in_sea_water','fdom_ru',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CTDPH',NULL,NULL,'ctd_ph_unknown_scale',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

@@ -7,6 +7,7 @@ Parameter Changes
 * Add CTDCDOM [RU] for uv fluorometer data that has been calibrated/corrected to discrete samples normalized to the pure water Raman peak
 * Add FDOM [RU] for discrete samples normalized to the pure water Raman peak.
 * Removed the CTDCDOM [RU] to CTDCDOM [RFU] alias mapping
+* Add CTDPH for in situ ph reported on an unknown scale, though it is probably NBS
 
 API Changes
 -----------
