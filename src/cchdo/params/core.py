@@ -92,7 +92,7 @@ class WHPName:
     #: e.g. "hydrocarbon" parameters might all have the same whp_number
     whp_number: int | None = field(default=None, repr=False)
     #: does this parameter apply to an entire cruise, a single profile, or a single sample record (bottle closure or ctd scan)
-    scope: str = field(default="sample", repr=False)
+    scope: Literal["cruise", "profile", "sample"] = field(default="sample", repr=False)
     #: If reporting temperature is important, the name of the variable which will have that temperature
     analytical_temperature_name: str | None = field(default=None, repr=False)
     #: If reporting temperature is important, the units of the variable which has the temperature

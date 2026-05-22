@@ -1,3 +1,13 @@
+v2026.0?.0 (2026-0?-??)
+=======================
+Parameter Changes
+-----------------
+* None Yet
+
+API Changes
+-----------
+* add Literal type hint to WHPName.scope field
+
 v2026.04.0 (2026-04-27)
 =======================
 Parameter Changes
