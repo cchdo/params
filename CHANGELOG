@@ -1,4 +1,4 @@
-v2026.0?.0 (2026-0?-??)
+v2026.05.0 (2026-05-28)
 =======================
 Parameter Changes
 -----------------
@@ -7,7 +7,7 @@ Parameter Changes
 API Changes
 -----------
 * add Literal type hint to WHPName.scope field
-* (should be nothing): remove redundant parameter matching code in the WHPNames getter that was moved to normalize_whp_name_key
+* (should be nothing) remove redundant parameter matching code in the WHPNames getter that was moved to normalize_whp_name_key
 
 v2026.04.0 (2026-04-27)
 =======================
