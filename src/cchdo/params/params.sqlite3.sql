@@ -6336,7 +6336,7 @@ INSERT INTO "whp_names" VALUES('CFC-11','PMOL/KG','moles_of_cfc11_per_unit_mass_
 INSERT INTO "whp_names" VALUES('CFC-12','PMOL/KG',NULL,'cfc_12',-0.1,15.0,'CF12ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CFC113','PMOL/KG',NULL,'cfc_113',-0.1,1.5,'CF113ER',NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('SF6','FMOL/KG','moles_of_sulfur_hexafluoride_per_unit_mass_in_sea_water','sulfur_hexifluoride',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "whp_names" VALUES('TCARBN','UMOL/KG','moles_of_dissolved_inorganic_carbon_per_unit_mass_in_sea_water','total_carbon',1100.0,2600.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('TCARBN','UMOL/KG','moles_of_dissolved_inorganic_carbon_per_unit_mass_in_sea_water','total_carbon',1100.0,2600.0,'TCARBN_ERROR',NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('ALKALI','UMOL/KG',NULL,'total_alkalinity',100.0,2800.0,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('FCO2','UATM','fugacity_of_carbon_dioxide_in_sea_water','fco2',NULL,NULL,NULL,'FCO2TMP','DEG C',9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('FCO2TMP','DEG C','temperature_of_analysis_of_sea_water','fco2_temperature',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);

@@ -2,7 +2,7 @@ v2026.0?.0 (2026-0?-??)
 =======================
 Parameter Changes
 -----------------
-* None Yet
+* Add TCARBN_ERROR as the uncertainty name for TCARBN [UMOL/KG]
 
 API Changes
 -----------
