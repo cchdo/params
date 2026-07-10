@@ -6016,6 +6016,10 @@ INSERT INTO "ex_params" VALUES('Ba_TP_CONC_BOTTLE',NULL,'Particulate Barium in a
 INSERT INTO "ex_params" VALUES('Ca_TP_CONC_BOTTLE',NULL,'Particulate Calcium in a discrete bottle sample','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,917.0,0);
 INSERT INTO "ex_params" VALUES('LAB_DEN_TMP',NULL,'The temperature at which the density of a water sample was physically measured',NULL,NULL,'sample','decimal','woce_discrete',1,146.1,0);
 INSERT INTO "ex_params" VALUES('CTDPH',NULL,'The measure of acidity of seawater reported on an unknown scale using an in situ electrode. SDN:P01::PHXXPR01',NULL,'The reporting scale is not known. Use caution when comparing this pH to any other pH, though it is probably reported on the NBS scale','sample','decimal','woce_ctd',0,40.9,0);
+INSERT INTO "ex_params" VALUES('Fe_TP_CONC_BOTTLE',NULL,'Concentration of total particulate iron determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.0,0);
+INSERT INTO "ex_params" VALUES('Si_TP_CONC_BOTTLE',NULL,'Concentration of total particulate silicon determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.1,0);
+INSERT INTO "ex_params" VALUES('P_TP_CONC_BOTTLE',NULL,'Concentration of total particulate phosphorus determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.2,0);
+INSERT INTO "ex_params" VALUES('Mn_TP_CONC_BOTTLE',NULL,'Concentration of total particulate manganese determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.3,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6650,4 +6654,9 @@ INSERT INTO "whp_names" VALUES('LAB_DEN_TMP','DEG C','temperature_of_analysis_of
 INSERT INTO "whp_names" VALUES('CTDCDOM','RU','concentration_of_colored_dissolved_organic_matter_in_sea_water','ctd_cdom_ru',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('FDOM','RU','concentration_of_colored_dissolved_organic_matter_in_sea_water','fdom_ru',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('CTDPH',NULL,NULL,'ctd_ph_unknown_scale',NULL,NULL,NULL,NULL,NULL,9,4,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Fe_TP_CONC_BOTTLE','NMOL/L',NULL,'fe_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Si_TP_CONC_BOTTLE','NMOL/L',NULL,'si_tp_conc_bottle',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Al_TP_CONC_BOTTLE','NMOL/L',NULL,'al_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('P_TP_CONC_BOTTLE','NMOL/L',NULL,'p_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('Mn_TP_CONC_BOTTLE','NMOL/L',NULL,'mn_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

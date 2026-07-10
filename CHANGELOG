@@ -3,6 +3,13 @@ v2026.05.0 (2026-05-28)
 Parameter Changes
 -----------------
 * Add TCARBN_ERROR as the uncertainty name for TCARBN [UMOL/KG]
+* Added some new GEOTRACES total particulate names in volume units:
+  * Fe_TP_CONC_BOTTLE [NMOL/L]
+  * Si_TP_CONC_BOTTLE [NMOL/L]
+  * P_TP_CONC_BOTTLE [NMOL/L]
+  * Mn_TP_CONC_BOTTLE [NMOL/L]
+* Added volume [NMOL/L] unit variant of Al_TP_CONC_BOTTLE
+
 
 API Changes
 -----------
@@ -345,7 +352,7 @@ Parameter Changes
   * FLUORO [VOLTS] for CTDFLUOR [VOLTS]
   * CHLORA [MG/M**3] for CHLORA [UG/L]
   * PPHYTN [MG/M**3] for PPHYTN [UG/L]
-  * PPHYTN [MG/M^] for PPHYTN [UG/L] 
+  * PPHYTN [MG/M^] for PPHYTN [UG/L]
   * PCO2_TMP [DEG C] for PCO2TMP [DEG C]
   * DELHE3 [%] for DELHE3 [PERCNT]
   * BEDFORT [NUM] for BIONBR
@@ -361,8 +368,8 @@ Parameter Changes
   * CTDSAL [PSS-68] for CTDSAL [PSS-78]
   * CTDTHETA [DEG C] for THETA [DEG C]
   * CTDCDOMFRAW [0-5VDC] for CTDCDOM [VOLTS]
-  * CTDCDOMFRAW [VDC] for CTDCDOM [VOLTS] 
-  * CTDCDOMFRAW [V] for CTDCDOM [VOLTS] 
+  * CTDCDOMFRAW [VDC] for CTDCDOM [VOLTS]
+  * CTDCDOMFRAW [V] for CTDCDOM [VOLTS]
   * SALNTY [ISS78] for SALNTY [PSS-78]
   * CTDSAL [ISS78] for CTDSAL [PSS-78]
   * BTMDEPTH [METERS] for DEPTH [PSS-78]
@@ -490,8 +497,8 @@ API Changes
 v0.1.13 (2021-08-12)
 ====================
 
-This release focused mostly on code maintainability. 
-Lots of tests written for the public API interface and a whole bunch of improvements to the type hints. 
+This release focused mostly on code maintainability.
+Lots of tests written for the public API interface and a whole bunch of improvements to the type hints.
 The scaffold for docs has been set up, though content is still being written.
 
 Parameter Changes
@@ -526,8 +533,8 @@ Parameter Changes
 
 API Changes
 -----------
-* A ``WHPName.strfex()`` method was added which formats values passed into it according to the values of ``WHPName.data_type``, ``WHPName.field_width``, and ``WHPName.numeric_precision``. 
-  It will convert NaNs, and anything resulting in an empty string to ``-999``. 
+* A ``WHPName.strfex()`` method was added which formats values passed into it according to the values of ``WHPName.data_type``, ``WHPName.field_width``, and ``WHPName.numeric_precision``.
+  It will convert NaNs, and anything resulting in an empty string to ``-999``.
   The method name was inspired by the datetime method ``strftime``.
 
 v0.1.11 (2021-05-27)
@@ -542,7 +549,7 @@ Parameter Changes
 
 API Changes
 -----------
-* the output of ``WHPNames.legacy_json`` is now guaranteed to be ordered in "preferred" GO-SHIP order rather than database order. 
+* the output of ``WHPNames.legacy_json`` is now guaranteed to be ordered in "preferred" GO-SHIP order rather than database order.
   The order may change between releasees as the preferred parameter order of GO-SHIP evolves and as new parameters are added.
 
 v0.1.10 (2021-03-15)
@@ -568,9 +575,9 @@ None
 
 API Changes
 -----------
-* WHPNames now has a property ``groups`` with a named tuple containing collections of parameters with the scopes of ``cruise``, ``profile``, and ``sample``. 
-  As of release, there were no "cruise" level parameter names in the database. 
-  "profile" scoped parameters can/should be in exchange CTD headers. 
+* WHPNames now has a property ``groups`` with a named tuple containing collections of parameters with the scopes of ``cruise``, ``profile``, and ``sample``.
+  As of release, there were no "cruise" level parameter names in the database.
+  "profile" scoped parameters can/should be in exchange CTD headers.
   "sample" scoped params must have their values appear in the data block of an exchange file.
 
 v0.1.8 (2021-01-06)
