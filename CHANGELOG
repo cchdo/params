@@ -2,6 +2,16 @@ v2026.10.0 (2026-10-01)
 =======================
 Parameter Changes
 -----------------
+* None (yet)
+
+API Changes
+-----------
+* Drop support for python 3.12, minimum is now 3.13
+
+v2026.10.0 (2026-10-01)
+=======================
+Parameter Changes
+-----------------
 * Add CFC-13 [PMOL/L] as the name for CFC-13 (Chloro(trifluoro)methane) measurements.
 
 API Changes
