@@ -6020,6 +6020,7 @@ INSERT INTO "ex_params" VALUES('Fe_TP_CONC_BOTTLE',NULL,'Concentration of total 
 INSERT INTO "ex_params" VALUES('Si_TP_CONC_BOTTLE',NULL,'Concentration of total particulate silicon determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.1,0);
 INSERT INTO "ex_params" VALUES('P_TP_CONC_BOTTLE',NULL,'Concentration of total particulate phosphorus determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.2,0);
 INSERT INTO "ex_params" VALUES('Mn_TP_CONC_BOTTLE',NULL,'Concentration of total particulate manganese determined by filtration from a water sampling bottle','For maximum data reusability, we decided to use GEOTRACES naming conventions',NULL,'sample','decimal','woce_discrete',0,918.3,0);
+INSERT INTO "ex_params" VALUES('CFC-13',NULL,'The concentration of dissolved CFC-13 in sea water. The chemical formula of CFC-13 is CClF3. The IUPAC name for CFC-13 is Chloro(trifluoro)methane.',NULL,NULL,'sample','decimal','woce_discrete',0,32.1,0);
 CREATE TABLE ex_units (
 	id INTEGER NOT NULL, 
 	whp_unit VARCHAR, 
@@ -6659,4 +6660,5 @@ INSERT INTO "whp_names" VALUES('Si_TP_CONC_BOTTLE','NMOL/L',NULL,'si_tp_conc_bot
 INSERT INTO "whp_names" VALUES('Al_TP_CONC_BOTTLE','NMOL/L',NULL,'al_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('P_TP_CONC_BOTTLE','NMOL/L',NULL,'p_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,1,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "whp_names" VALUES('Mn_TP_CONC_BOTTLE','NMOL/L',NULL,'mn_tp_conc_bottle_l',NULL,NULL,NULL,NULL,NULL,9,2,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "whp_names" VALUES('CFC-13','PMOL/L',NULL,'cfc_13_l',NULL,NULL,NULL,NULL,NULL,9,3,NULL,NULL,NULL,NULL,NULL);
 COMMIT;

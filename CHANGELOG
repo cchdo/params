@@ -1,3 +1,14 @@
+v2025.10.0 (2026-10-??)
+=======================
+Parameter Changes
+-----------------
+* Add CFC-13 [PMOL/L] as the name for CFC-13 (Chloro(trifluoro)methane) measurements.
+
+API Changes
+-----------
+* None (yet)
+
+
 v2026.05.0 (2026-05-28)
 =======================
 Parameter Changes
