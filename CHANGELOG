@@ -1,4 +1,4 @@
-v2026.10.0 (2026-10-01)
+v2026.??.? (2026-??-??)
 =======================
 Parameter Changes
 -----------------
@@ -7,6 +7,17 @@ Parameter Changes
 API Changes
 -----------
 * Drop support for python 3.12, minimum is now 3.13
+* Add support for URL parameters
+* (deprecation) start deprecation cycle for the following properties:
+    * `WHPName.full_whp_name`
+    * `WHPName.full_nc_name`
+    * `WHPName.full_error_name`
+    * `WHPName.nc_name_flag`
+    * `WHPName.nc_name_error`
+
+    The `WHPName.nc_varname` property should be used instead for the netCDF names.
+    The `WHPName.ex_varname` property should be used instead for the Exchange names.
+    To get the flag, error, alternate, and url variants, first convert the `WHPName` instance using the approprate `WHPName.as_*` method, e.g. `WHPName.as_flag()` then use the the `*_varname` property.
 
 v2026.10.0 (2026-10-01)
 =======================

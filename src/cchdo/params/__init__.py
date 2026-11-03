@@ -58,6 +58,7 @@ def normalize_odv_name(name: str, return_parts: Literal[False]) -> str: ...
 
 def normalize_odv_name(name: str, return_parts=False) -> str | tuple[str, str | None]:
     name, flag = flag_name(name)
+    name, url = url_name(name)
 
     unit: str | None = None
     if not ("[" in name or "]" in name):
@@ -74,6 +75,8 @@ def normalize_odv_name(name: str, return_parts=False) -> str | tuple[str, str | 
     param = name[:units_start].strip()
     if flag:
         param = f"{param}_FLAG_W"
+    if url:
+        param = f"{param}_URL"
     unit = name[units_start + 1 : units_end].strip()
     if isinstance(unit, str) and unit.lower() in {"", "none", "nan"}:
         unit = None
@@ -89,12 +92,14 @@ def normalize_odv_name(name: str, return_parts=False) -> str | tuple[str, str | 
 
 def normalize_whp_name_key(
     key: WHPNameKey | WHPName,
-) -> tuple[tuple[str, str | None], bool]:
+) -> tuple[tuple[str, str | None], bool, bool]:
     flag = False
+    url = False
     unit: str | None = None
     match key:
         case str(_name):
             name, flag = flag_name(_name)
+            name, url = url_name(name)
             name, unit = normalize_odv_name(name, return_parts=True)
         case [str(_name)]:
             name: str = _name
@@ -104,11 +109,11 @@ def normalize_whp_name_key(
             name: str = _name
             unit = _unit
         case WHPName() as _whp_name:
-            name: str = _whp_name.full_whp_name
+            name: str = _whp_name.ex_varname
             unit = _whp_name.whp_unit
         case _:
             raise KeyError("whpname keys must be str or a tuple")
-    return (name, unit), flag
+    return (name, unit), flag, url
 
 
 def alt_depth(name: str) -> tuple[str, int]:
@@ -126,6 +131,12 @@ def alt_depth(name: str) -> tuple[str, int]:
 def flag_name(name: str) -> tuple[str, bool]:
     if name.endswith("_FLAG_W"):
         return name.removesuffix("_FLAG_W"), True
+    return name, False
+
+
+def url_name(name: str) -> tuple[str, bool]:
+    if name.endswith("_URL"):
+        return name.removesuffix("_URL"), True
     return name, False
 
 
@@ -166,10 +177,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
     def odv_names(self):
         """Returns a mapping of ODV style names to WHPName instances"""
 
-        return {
-            to_odv((name.full_whp_name, name.whp_unit)): name
-            for name in super().values()
-        }
+        return {name.odv_key: name for name in super().values()}
 
     @cached_property
     def _nc_names(self) -> dict[str, WHPName]:
@@ -199,7 +207,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
     def __getitem__(self, key: WHPNameKey | WHPName) -> WHPName:
         error = False
-        (name, unit), flag = normalize_whp_name_key(key)
+        (name, unit), flag, url = normalize_whp_name_key(key)
 
         alias_key = None
         if (name, unit) in self._aliases:
@@ -225,6 +233,9 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         if error:
             param = param.as_error()
+
+        if url:
+            param = param.as_url()
 
         if alias_key is not None:
             param = param.as_alias(*alias_key)
@@ -314,6 +325,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
             del p_dict["alt_depth"]
             del p_dict["flag_col"]
             del p_dict["error_col"]
+            del p_dict["url_col"]
 
             if p_dict["data_type"] == "string":
                 del p_dict["numeric_min"]
@@ -344,10 +356,12 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
         :param current: any valid existing WHPNames key
         """
-        alias, _ = normalize_whp_name_key(alias)
-        current, flag = normalize_whp_name_key(current)
+        alias, _, _ = normalize_whp_name_key(alias)
+        current, flag, url = normalize_whp_name_key(current)
         if flag:
             current = (f"{current[0]}_FLAG_W", current[1])
+        if url:
+            current = (f"{current[0]}_URL", current[1])
 
         if alias in self:
             raise ValueError("Cannot override base parameter names")

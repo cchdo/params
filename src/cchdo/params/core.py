@@ -1,7 +1,17 @@
 from dataclasses import dataclass, field, replace
 from datetime import date, time
+from functools import cached_property
 from math import isnan
-from typing import Literal
+from typing import Literal, NamedTuple
+from warnings import deprecated
+
+
+class WHPNameParts(NamedTuple):
+    base: str  # might be the error name under the current model
+    unit: str  # "" if None
+    alt: str  # "" if not alt
+    flag: str  # "" if Not a flag
+    url: str  # "" if not url
 
 
 @dataclass(frozen=True)
@@ -116,6 +126,8 @@ class WHPName:
     #: The name that found this param was for the uncertainty/error name
     flag_col: bool = field(default=False)
     #: The name that found this param was for the flag name (with units)
+    url_col: bool = field(default=False)
+    #: The name that found this param was for the URL column for this parameter
 
     def as_depth(self, depth: int) -> "WHPName":
         if depth <= 0:
@@ -128,19 +140,60 @@ class WHPName:
         return replace(self, whp_name_alias=param, whp_unit_alias=unit)
 
     def as_error(self) -> "WHPName":
-        if self.flag_col is True:
-            raise ValueError("flag columns cannot have errors")
+        if self.flag_col or self.url_col:
+            raise ValueError("flag columns cannot have errors or urls")
         return replace(self, error_col=True)
 
     def as_flag(self) -> "WHPName":
-        if self.error_col is True:
-            raise ValueError("error columns cannot have flags")
+        if self.error_col or self.url_col:
+            raise ValueError("error columns cannot have flags or urls")
         return replace(self, flag_col=True)
 
+    def as_url(self) -> "WHPName":
+        if self.error_col or self.flag_col:
+            raise ValueError("url columns cannot have flags or errors")
+        return replace(self, url_col=True)
+
     def as_base(self) -> "WHPName":
-        return replace(self, flag_col=False, error_col=False, alt_depth=0)
+        return replace(
+            self, flag_col=False, error_col=False, alt_depth=0, url_col=False
+        )
 
     @property
+    def nc_varname(self) -> str:
+        parts = [self.nc_name]
+        if self.alt_depth > 0:
+            parts.append(f"alt_{self.alt_depth}")
+        if self.flag_col:
+            parts.append("qc")
+        if self.error_col:
+            parts.append("error")
+        if self.url_col:
+            parts.append("url")
+
+        return "_".join(parts)
+
+    @cached_property
+    def _name_parts(self) -> WHPNameParts:
+        base = self.whp_name if not self.error_col else self.error_name
+        if base is None:
+            raise ValueError(f"{self} has no error name")
+        unit = self.whp_unit if self.whp_unit is not None else ""
+        alt = f"_ALT_{self.alt_depth}" if self.alt_depth else ""
+        flag = "_FLAG_W" if self.flag_col else ""
+        url = "_URL" if self.url_col else ""
+
+        return WHPNameParts(base=base, unit=unit, alt=alt, flag=flag, url=url)
+
+    @property
+    def ex_varname(self) -> str:
+        parts = self._name_parts
+        return f"{parts.base}{parts.alt}{parts.flag}{parts.url}"
+
+    @property
+    @deprecated(
+        "WHPname.full_whp_name is deprecated, use WHPname.ex_varname instead for the full and variant correct column label"
+    )
     def full_whp_name(self) -> str:
         if self.alt_depth > 0:
             return f"{self.whp_name}_ALT_{self.alt_depth}"
@@ -148,6 +201,9 @@ class WHPName:
             return self.whp_name
 
     @property
+    @deprecated(
+        "WHPname.full_nc_name is deprecated, use WHPname.nc_varname instead for the full and variant correct column label"
+    )
     def full_nc_name(self):
         if self.alt_depth > 0:
             return f"{self.nc_name}_alt_{self.alt_depth}"
@@ -155,6 +211,9 @@ class WHPName:
             return self.nc_name
 
     @property
+    @deprecated(
+        "WHPname.full_error_name is deprecated, use WHPname.ex_varname instead for the full and variant correct column label"
+    )
     def full_error_name(self):
         if self.alt_depth > 0 and self.error_name is not None:
             return f"{self.error_name}_ALT_{self.alt_depth}"
@@ -172,31 +231,23 @@ class WHPName:
 
         Note that the "[UNIT]" part is omitted if there are no units
         """
-        if self.error_col:
-            base = self.full_error_name
-            if base is None:
-                raise ValueError(
-                    f"Error name is not defined for this parameter {self.as_base()}"
-                )
-        else:
-            base = self.full_whp_name
+        parts = self._name_parts
+        units = f" [{parts.unit}]" if parts.unit != "" else ""
 
-        if self.whp_unit is None:
-            key = base
-        else:
-            key = f"{base} [{self.whp_unit}]"
-
-        if self.flag_col:
-            key = f"{key}_FLAG_W"
-
-        return str(key)
+        return f"{parts.base}{units}{parts.alt}{parts.flag}{parts.url}"
 
     @property
+    @deprecated(
+        "WHPname.nc_name_flag is deprecated, use WHPname.nc_varname instead for the full and variant correct column label"
+    )
     def nc_name_flag(self) -> str:
         """The variable name of the "flag" ancillary variable for this parameter"""
         return f"{self.full_nc_name}_qc"
 
     @property
+    @deprecated(
+        "WHPname.nc_name_error is deprecated, use WHPname.nc_varname instead for the full and variant correct column label"
+    )
     def nc_name_error(self) -> str:
         """The variable name of the uncertainty ancillary variable for this parameter"""
         return f"{self.full_nc_name}_error"
@@ -252,25 +303,27 @@ class WHPName:
             base += ", flag=True"
         if self.error_col:
             base += ", error=True"
+        if self.url_col:
+            base += ", url=True"
         if self.alt_depth > 0:
             base += f", depth={self.alt_depth}"
         return f"WHPName({base})"
 
-    def get_nc_attrs(self, error=False):
+    def get_nc_attrs(self, error=None):
         """a dict containing the netCDF variable attributes needed for CF compliance for this variable"""
-        attrs = {
-            "whp_name": self.full_whp_name,
-        }
+        if error is True:
+            raise ValueError(
+                "Convert the WHPName to an error variant using as_error() before calling get_nc_attrs"
+            )
 
-        if error is True and self.full_error_name is not None:
-            attrs["whp_name"] = self.full_error_name
+        attrs = {"whp_name": self.ex_varname}
 
         if self.whp_unit is not None:
             attrs["whp_unit"] = self.whp_unit
 
         if (cf_name := self.cf) is not None:
             standard_name = f"{cf_name.name}"
-            if error is True:
+            if self.error_col:
                 standard_name = f"{standard_name} standard_error"
 
             attrs["standard_name"] = standard_name

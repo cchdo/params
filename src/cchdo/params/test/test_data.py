@@ -95,8 +95,9 @@ def test_whp_cf_property(whpname):
 )
 def test_whp_has_nc_name(whpname):
     assert whpname.nc_name is not None
-    assert whpname.nc_name_flag == f"{whpname.nc_name}_qc"
-    assert whpname.nc_name_error == f"{whpname.nc_name}_error"
+    assert whpname.as_flag().nc_varname == f"{whpname.nc_name}_qc"
+    assert whpname.as_error().nc_varname == f"{whpname.nc_name}_error"
+    assert whpname.as_url().nc_varname == f"{whpname.nc_name}_url"
 
 
 @pytest.mark.parametrize(
@@ -171,12 +172,13 @@ def test_nc_attrs(whpname: data.WHPName):
         assert "standard_name" not in attrs
 
     if whpname.error_name is not None:
-        err_attrs = whpname.get_nc_attrs(error=True)
+        error_name = whpname.as_error()
+        err_attrs = error_name.get_nc_attrs()
 
-        assert err_attrs["whp_name"] == whpname.error_name
+        assert err_attrs["whp_name"] == error_name.error_name
 
-        if whpname.cf_name is not None:
-            assert whpname.cf_name in err_attrs["standard_name"]
+        if error_name.cf_name is not None:
+            assert error_name.cf_name in err_attrs["standard_name"]
             assert " standard_error" in err_attrs["standard_name"]
 
 
@@ -286,7 +288,7 @@ def _unitless(param: data.WHPName):
 
 @pytest.mark.parametrize(
     "whpname",
-    filter(_unitless, data.WHPNames.values()),
+    list(filter(_unitless, data.WHPNames.values())),
     ids=lambda x: f"{x.whp_name}_[{x.whp_unit}]",
 )
 def test_odv_empty_unit_vatiations(whpname):
