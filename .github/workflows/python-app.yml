@@ -29,7 +29,7 @@ jobs:
         uvx ruff format --check
 
   pytest:
-    name: Pytest 
+    name: Pytest
 
     runs-on: ubuntu-24.04-arm
 
@@ -44,7 +44,7 @@ jobs:
     - name: Test with pytest
       run: uv run pytest --pyargs cchdo.params --cov-report xml --cov=src
     - name: Upload coverage to Coveralls
-      uses: coverallsapp/github-action@v2.3.0
+      uses: coverallsapp/github-action@v2.3.8
       continue-on-error: true
       with:
         file: ./coverage.xml
