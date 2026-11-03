@@ -242,7 +242,7 @@ class WHPName:
     )
     def nc_name_flag(self) -> str:
         """The variable name of the "flag" ancillary variable for this parameter"""
-        return f"{self.full_nc_name}_qc"
+        return f"{self.full_nc_name}_qc"  # ty: ignore[deprecated]
 
     @property
     @deprecated(
@@ -250,7 +250,7 @@ class WHPName:
     )
     def nc_name_error(self) -> str:
         """The variable name of the uncertainty ancillary variable for this parameter"""
-        return f"{self.full_nc_name}_error"
+        return f"{self.full_nc_name}_error"  # ty: ignore[deprecated]
 
     @property
     def data_type(self):
