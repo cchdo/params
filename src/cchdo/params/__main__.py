@@ -176,7 +176,7 @@ def gen_code():
     # auto generated, do not modify
     from cchdo.params.core import CFStandardName as CFStandardNameDC
 
-    cf_standard_names = dict()
+    cf_standard_names: dict[str, CFStandardNameDC] = dict()
     names = [
     {% for name in  cfnames -%}
     {{name.code}},

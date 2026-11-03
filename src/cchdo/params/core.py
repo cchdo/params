@@ -272,6 +272,9 @@ class WHPName:
         """
         from . import CFStandardNames  # noqa
 
+        if self.cf_name is None:
+            return None
+
         return CFStandardNames.get(self.cf_name)
 
     def __eq__(self, other):

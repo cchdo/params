@@ -2,7 +2,7 @@
 # auto generated, do not modify
 from cchdo.params.core import CFStandardName as CFStandardNameDC
 
-cf_standard_names = dict()
+cf_standard_names: dict[str, CFStandardNameDC] = dict()
 names = [
 CFStandardNameDC(
 name='acoustic_signal_roundtrip_travel_time_in_sea_water',

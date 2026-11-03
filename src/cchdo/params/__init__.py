@@ -374,7 +374,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         self._aliases[alias] = current
 
 
-class _CFStandardNames(UserDict[str | None, CFStandardName]): ...
+class _CFStandardNames(UserDict[str, CFStandardName]): ...
 
 
 def default_cf_standard_names() -> _CFStandardNames:
