@@ -6,6 +6,7 @@ Parameter Changes
 
 API Changes
 -----------
+* (BREAKING) Dropped support for anything other than ODV style "NAME [UNIT]" keys to lookup names, this means that the tuple style `(NAME, UNIT)` will not work.
 * Drop support for python 3.12, minimum is now 3.13
 * Add support for URL parameters
 * (deprecation) start deprecation cycle for the following properties:

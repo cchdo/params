@@ -118,10 +118,8 @@ class WHPName:
     alt_depth: int = field(default=0, repr=False)
     #: If this param represents an alternate parameter, how deep in the alternates are we.
     #: This is 0 for the builtin params
-    whp_name_alias: str | None = field(default=None, repr=False, compare=False)
+    whp_alias: str | None = field(default=None, repr=False, compare=False)
     #: If this param was instianciated from an alias, what was that alias name
-    whp_unit_alias: str | None = field(default=None, repr=False, compare=False)
-    #: If this param was instantiated from an alias, what was that alias unit
     error_col: bool = field(default=False)
     #: The name that found this param was for the uncertainty/error name
     flag_col: bool = field(default=False)
@@ -136,8 +134,8 @@ class WHPName:
             )
         return replace(self, alt_depth=depth)
 
-    def as_alias(self, param, unit) -> "WHPName":
-        return replace(self, whp_name_alias=param, whp_unit_alias=unit)
+    def as_alias(self, name) -> "WHPName":
+        return replace(self, whp_alias=name)
 
     def as_error(self) -> "WHPName":
         if self.flag_col or self.url_col:

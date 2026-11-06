@@ -5,12 +5,12 @@ from importlib.metadata import PackageNotFoundError, version
 from importlib.resources import files
 from json import loads
 from logging import getLogger
-from typing import Literal, NamedTuple, overload
+from typing import NamedTuple
 
 from ._cf_names import cf_standard_names as _cf_standard_names
 from ._whp_names import _aliases
 from ._whp_names import whp_names as _whp_names
-from .core import CFStandardName, WHPName
+from .core import CFStandardName, WHPName, WHPNameParts
 
 __all__ = ["CFStandardNames", "WHPNames"]
 
@@ -19,7 +19,7 @@ try:
 except PackageNotFoundError:
     __version__ = "999"
 
-WHPNameKey = str | tuple[str] | tuple[str, str | None]
+WHPNameKey = str | WHPName
 
 logger = getLogger(__name__)
 
@@ -46,98 +46,40 @@ class WHPNameGroups(NamedTuple):
     sample: frozenset[WHPName]
 
 
-@overload
-def normalize_odv_name(
-    name: str, return_parts: Literal[True]
-) -> tuple[str, str | None]: ...
+def normalize_odv_name(name: WHPNameKey) -> WHPNameParts:
+    alt = ""
+    flag = ""
+    url = ""
 
+    if isinstance(name, WHPName):
+        return name._name_parts
 
-@overload
-def normalize_odv_name(name: str, return_parts: Literal[False]) -> str: ...
-
-
-def normalize_odv_name(name: str, return_parts=False) -> str | tuple[str, str | None]:
-    name, flag = flag_name(name)
-    name, url = url_name(name)
-
-    unit: str | None = None
-    if not ("[" in name or "]" in name):
-        if return_parts:
-            return name, unit
-
-        return name.strip()
+    if (url_removed := name.removesuffix("_URL")) != name:
+        url = "_URL"
+        name = url_removed
+    if (flag_removed := name.removesuffix("_FLAG_W")) != name:
+        flag = "_FLAG_W"
+        name = flag_removed
+    if "_ALT_" in name:
+        name, depth = name.split("_ALT_")
+        depth = int(depth)
+        alt = f"_ALT_{depth}"
 
     if name.count("[") != name.count("]"):
         raise ValueError("Unbalanced unit brackets")
     units_start = name.find("[")
     units_end = name.rfind("]")
+    if units_start == -1:
+        units_start = units_end = len(name)
 
-    param = name[:units_start].strip()
-    if flag:
-        param = f"{param}_FLAG_W"
-    if url:
-        param = f"{param}_URL"
+    base = name[:units_start].strip()
     unit = name[units_start + 1 : units_end].strip()
-    if isinstance(unit, str) and unit.lower() in {"", "none", "nan"}:
-        unit = None
 
-    if return_parts:
-        return param, unit
+    # handle the case of including None units e.g. ensure "EXPOCODE [None]" works
+    if unit.lower() in ("none", "nan"):
+        unit = ""
 
-    if unit is None:
-        return param
-    else:
-        return f"{param} [{unit}]"
-
-
-def normalize_whp_name_key(
-    key: WHPNameKey | WHPName,
-) -> tuple[tuple[str, str | None], bool, bool]:
-    flag = False
-    url = False
-    unit: str | None = None
-    match key:
-        case str(_name):
-            name, flag = flag_name(_name)
-            name, url = url_name(name)
-            name, unit = normalize_odv_name(name, return_parts=True)
-        case [str(_name)]:
-            name: str = _name
-        case [str(_name), None]:
-            name: str = _name
-        case [str(_name), str(_unit)]:
-            name: str = _name
-            unit = _unit
-        case WHPName() as _whp_name:
-            name: str = _whp_name.ex_varname
-            unit = _whp_name.whp_unit
-        case _:
-            raise KeyError("whpname keys must be str or a tuple")
-    return (name, unit), flag, url
-
-
-def alt_depth(name: str) -> tuple[str, int]:
-    if "_ALT_" not in name:
-        return name, 0
-    _name, _depth = name.split("_ALT_", maxsplit=1)
-    try:
-        depth = int(_depth)
-    except ValueError as err:
-        raise ValueError("could not parse alternate number") from err
-
-    return _name, depth
-
-
-def flag_name(name: str) -> tuple[str, bool]:
-    if name.endswith("_FLAG_W"):
-        return name.removesuffix("_FLAG_W"), True
-    return name, False
-
-
-def url_name(name: str) -> tuple[str, bool]:
-    if name.endswith("_URL"):
-        return name.removesuffix("_URL"), True
-    return name, False
+    return WHPNameParts(base=base, unit=unit, alt=alt, flag=flag, url=url)
 
 
 class _WHPNames(dict[WHPNameKey, WHPName]):
@@ -171,7 +113,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._aliases: dict[WHPNameKey, tuple[str, str | None]] = dict()
+        self._aliases: dict[WHPNameKey, WHPNameKey] = dict()
 
     @cached_property
     def odv_names(self):
@@ -205,41 +147,39 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
             return param.as_error()
         return param
 
-    def __getitem__(self, key: WHPNameKey | WHPName) -> WHPName:
+    def __getitem__(self, key: WHPNameKey) -> WHPName:
         error = False
-        (name, unit), flag, url = normalize_whp_name_key(key)
+        alias_key = self._aliases.get(key)
+        whpname_parts = normalize_odv_name(alias_key or key)
 
-        alias_key = None
-        if (name, unit) in self._aliases:
-            alias_key = (name, unit)
-            name, unit = self._aliases[(name, unit)]
-
-        if not flag:
-            # try again after all the processing above
-            name, flag = flag_name(name)
-        name, depth = alt_depth(name)
-
-        if (name, unit) in self.error_cols:
-            name, unit = self.error_cols[(name, unit)]
+        base = whpname_parts.base
+        if whpname_parts.base in self.error_cols:
+            base = self.error_cols[base]
             error = True
 
-        param = super().__getitem__((name, unit))
+        if whpname_parts.unit == "":
+            internal_key = base
+        else:
+            internal_key = f"{base} [{whpname_parts.unit}]"
 
-        if depth != 0:
+        param = super().__getitem__(internal_key)
+
+        if whpname_parts.alt != "":
+            depth = int(whpname_parts.alt.removeprefix("_ALT_"))
             param = param.as_depth(depth)
 
-        if flag:
+        if whpname_parts.flag != "":
             param = param.as_flag()
 
         if error:
             param = param.as_error()
 
-        if url:
+        if whpname_parts.url:
             param = param.as_url()
 
         if alias_key is not None:
-            param = param.as_alias(*alias_key)
-            logger.info(f"{param} found using alias {alias_key}")
+            param = param.as_alias(key)
+            logger.info(f"{param} found using alias {key}")
 
         return param
 
@@ -247,14 +187,14 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         return super().__contains__(key) or key in self.odv_names
 
     @cached_property
-    def error_cols(self):
+    def error_cols(self) -> dict[str, str]:
         """A mapping of all the error names to their corresponding WHPName
 
         >>> WHPNames.error_cols["C14ERR"]
-        WHPName(whp_name='DELC14', whp_unit='/MILLE', cf_name=None)
+        "DELC14"
         """
         return {
-            (ex.error_name, ex.whp_unit): (ex.whp_name, ex.whp_unit)
+            ex.error_name: ex.whp_name
             for ex in self.values()
             if ex.error_name is not None
         }
@@ -356,13 +296,6 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
         :param current: any valid existing WHPNames key
         """
-        alias, _, _ = normalize_whp_name_key(alias)
-        current, flag, url = normalize_whp_name_key(current)
-        if flag:
-            current = (f"{current[0]}_FLAG_W", current[1])
-        if url:
-            current = (f"{current[0]}_URL", current[1])
-
         if alias in self:
             raise ValueError("Cannot override base parameter names")
         if alias in self._aliases:

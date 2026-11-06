@@ -2,12 +2,12 @@ import cchdo.params as data
 
 # some params to play with
 EXPOCODE = data.WHPNames["EXPOCODE"]
-CTDPRS = data.WHPNames[("CTDPRS", "DBAR")]
-CTDSAL = data.WHPNames[("CTDSAL", "PSS-78")]
-SALNTY = data.WHPNames[("SALNTY", "PSS-78")]
+CTDPRS = data.WHPNames["CTDPRS [DBAR]"]
+CTDSAL = data.WHPNames["CTDSAL [PSS-78]"]
+SALNTY = data.WHPNames["SALNTY [PSS-78]"]
 
-CTDTMP_90 = data.WHPNames[("CTDTMP", "ITS-90")]
-CTDTMP_68 = data.WHPNames[("CTDTMP", "IPTS-68")]
+CTDTMP_90 = data.WHPNames["CTDTMP [ITS-90]"]
+CTDTMP_68 = data.WHPNames["CTDTMP [IPTS-68]"]
 
 
 def test_ordering():

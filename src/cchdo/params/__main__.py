@@ -140,25 +140,25 @@ def gen_code():
     # auto generated, do not modify
     from cchdo.params.core import WHPName as WHPNameDC
 
-    whp_names = dict()
+    whp_names: dict[str, WHPNameDC] = dict()
     names = [
     {% for name in  whpnames -%}
     {{name.code}},
     {% endfor -%}
     ]
     for name in names:
-        whp_names[name.key] = name
+        whp_names[name.odv_key] = name
 
     _aliases = {
     {% for alias in aliases -%}
-    {{"(%r, %r)"| format(alias.old_name, alias.old_unit)}}: {{"(%r, %r)"| format(alias.whp_name, alias.whp_unit)}},
+    "{{alias.old_name}} [{{alias.old_unit}}]" : "{{alias.whp_name}} [{{alias.whp_unit}}]",
     {% endfor -%}
     }
 
     """
         )
     )
-
+    """{{"%r [%r]"| format(, )}}": "{{"%r [%r]"| format(alias.whp_name, alias.whp_unit)}}"""
     with database() as session:
         whpnames = session.execute(select(WHPName)).scalars().all()
         aliases = session.execute(select(Alias)).scalars().all()

@@ -67,7 +67,7 @@ whp_error_names = [
 
 @pytest.mark.parametrize("whpname", whp_error_names)
 def test_whp_error_names(whpname):
-    error_inst = data.WHPNames[(whpname.error_name, whpname.whp_unit)]
+    error_inst = data.WHPNames[f"{whpname.error_name} [{whpname.whp_unit}]"]
     assert error_inst == whpname
     assert error_inst.error_col is True
     assert data.WHPNames[data.to_odv((whpname.error_name, whpname.whp_unit))] == whpname
@@ -79,10 +79,8 @@ whp_unitless_names = [name for name in data.WHPNames.values() if name.whp_unit i
 @pytest.mark.parametrize("whpname", whp_unitless_names)
 def test_whp_no_unit_params(whpname: data.WHPName):
     str_name = whpname.whp_name
-    tuple_name = (str_name,)
 
     assert data.WHPNames[str_name] == whpname
-    assert data.WHPNames[tuple_name] == whpname
 
 
 @pytest.mark.parametrize("whpname", whp_cf_names)
@@ -308,8 +306,8 @@ def test_alt_depths(whpname: data.WHPName, depth: int):
     if depth == 0:
         assert data.WHPNames[whpname.odv_key].alt_depth == 0
     else:
-        name = f"{whpname.whp_name}_ALT_{depth}"
-        assert data.WHPNames[(name, whpname.whp_unit)].alt_depth == depth
+        name = whpname.as_depth(depth)
+        assert data.WHPNames[name.odv_key].alt_depth == depth
 
 
 @pytest.mark.parametrize(
@@ -320,5 +318,5 @@ def test_alt_depths(whpname: data.WHPName, depth: int):
 @pytest.mark.parametrize("depth", [-1])
 def test_alt_depths_bad(whpname: data.WHPName, depth: int):
     with pytest.raises(ValueError):
-        name = f"{whpname.whp_name}_ALT_{depth}"
-        data.WHPNames[(name, whpname.whp_unit)]
+        name = f"{whpname.whp_name} [{whpname.whp_unit}]_ALT_{depth}"
+        data.WHPNames[name]
