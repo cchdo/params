@@ -5,7 +5,7 @@ from importlib.metadata import PackageNotFoundError, version
 from importlib.resources import files
 from json import loads
 from logging import getLogger
-from typing import NamedTuple
+from typing import Any, NamedTuple
 
 from ._cf_names import cf_standard_names as _cf_standard_names
 from ._whp_names import _aliases
@@ -62,7 +62,10 @@ def normalize_odv_name(name: WHPNameKey) -> WHPNameParts:
         name = flag_removed
     if "_ALT_" in name:
         name, depth = name.split("_ALT_")
-        depth = int(depth)
+        try:
+            depth = int(depth)
+        except ValueError as err:
+            raise ValueError("Could not parse _ALT_ level") from err
         alt = f"_ALT_{depth}"
 
     if name.count("[") != name.count("]"):
@@ -150,7 +153,10 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
     def __getitem__(self, key: WHPNameKey) -> WHPName:
         error = False
         alias_key = self._aliases.get(key)
-        whpname_parts = normalize_odv_name(alias_key or key)
+        try:
+            whpname_parts = normalize_odv_name(alias_key or key)
+        except ValueError as err:
+            raise KeyError(key) from err
 
         base = whpname_parts.base
         if whpname_parts.base in self.error_cols:
@@ -183,8 +189,14 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
         return param
 
-    def __contains__(self, key: object) -> bool:
-        return super().__contains__(key) or key in self.odv_names
+    def __contains__(self, key: Any) -> bool:
+        if super().__contains__(key):
+            return True
+        try:
+            self[key]
+            return True
+        except KeyError:
+            return False
 
     @cached_property
     def error_cols(self) -> dict[str, str]:

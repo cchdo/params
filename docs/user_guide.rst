@@ -8,7 +8,7 @@ The WHPNames Collection
 
 Importing
 `````````
-The actual database is loaded in a lazy way, so the initial import should be fast. 
+The actual database is loaded in a lazy way, so the initial import should be fast.
 
 >>> from cchdo.params import WHPNames
 >>> WHPNames
@@ -18,58 +18,57 @@ The actual database is loaded in a lazy way, so the initial import should be fas
 Name Lookups
 ````````````
 These objects follow the standard python Mapping (e.g. dict) interface.
-Exchange parameters are looked up by ``(param, unit)`` tuple keys and will always return a |WHPName| object (more on these later).
+Exchange parameters are looked up via ODV style PARAM [UNIT] strings, optionally omitting the [UNIT] part for unitless parameters.
+If the parameter is unitless, the following varations will work: [], [None], [nan] (any capitalization)
 
->>> WHPNames[("CTDPRS", "DBAR")]
-WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
+The name grammer is as follows, with {} being used for optional parts and | for exclusive or.
 
-Common unambiguous variations on a parameter name are automatically converted to their canonical representation:
-
->>> WHPNames[("CTDPRS", "DBARS")]
-WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
-
-If the parameter has no units, use ``None`` in the units part of the tuple.
-
->>> WHPNames[("EXPOCODE", None)]
-WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
-
-As a connivence, parameters may be looked up via ODV style PARAM [UNIT] strings, omitting the [UNIT] part for unitless parameters.
+``PARAM{ [UNIT]}{_ALT_n}{_FLAG_W|_URL}``
 
 >>> WHPNames["EXPOCODE"]
-WHPName(whp_name='EXPOCODE', whp_unit=None, cf_name=None)
->>> WHPNames["EXPOCODE"] == WHPNames[("EXPOCODE", None)]
-True
+WHPName("EXPOCODE")
 >>> WHPNames["CTDPRS [DBAR]"]
-WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
+WHPName("CTDPRS [DBAR]")
 
 Aliases will return their canonical parameter object
 
 >>> WHPNames["CTDPRS [DBARS]"] # note the "s" at the end of the unit
-WHPName(whp_name='CTDPRS', whp_unit='DBAR', cf_name='sea_water_pressure')
+WHPName("CTDPRS [DBAR]")
+
+Aliases know where they came from
+>>> WHPNames["CTDPRS [DBARS]"].whp_alias # again note the 's'
+'CTDPRS [DBARS]'
 
 .. warning::
-  Currently the ``(param, unit)`` tuples are case sensitive.
+  The uncertainty names are a lookup table and not parsed name grammer.
+  This means they behave as though they are a base name.
+  For example, the error name for ``D15N_NO3 [/MILLE]`` would be ``D15N_NO3_ERROR [/MILLE]`` and not ``D15N_NO3 [/MILLE]_ERROR``
+
+  We have plans to change this to be grammer and alias all the historic names, but it is uncertain when this would be worked on.
+
+.. warning::
+  Currently the keys are case sensitive.
 
   >>> WHPNames["ExpoCode"]
   Traceback (most recent call last):
     File "<stdin>", line 1, in <module>
     File "/workspaces/params/cchdo/params/__init__.py", line 406, in __getitem__
       return self._cached_dict[key]
-  KeyError: ('ExpoCode', None)
+  KeyError: 'ExpoCode'
 
 .. danger::
   The ``units`` part of the key is expected to be the WHP unit for the parameter.
   This may deviate from the actual units associated with the parameters physical dimensions.
 
   For example, practical salinity is a dimensionless quantity.
-  In the SI system this is said to have the unit one with the symbol 1. 
+  In the SI system this is said to have the unit one with the symbol 1.
   See section 2.3.3 of [BIPM2019]_.
   You will see the value of 1 in the units attribute of netCDF files.
   However, in WPH Exchange files, the correct unit for practical salinity is PSS-78.
 
-  >>> WHPNames[("CTDSAL", "PSS-78")]
-  WHPName(whp_name='CTDSAL', whp_unit='PSS-78', cf_name='sea_water_practical_salinity')
-  >>> WHPNames[("CTDSAL", "PSS-78")].cf_unit
+  >>> WHPNames["CTDSAL [PSS-78]"]
+  WHPName("CTDSAL [PSS-78]")
+  >>> WHPNames["CTDSAL [PSS-78]"].cf_unit
   '1'
 
 Dict-like operations
@@ -79,7 +78,7 @@ Since |WHPNames| follows the python Mapping interface, you can do all the standa
 
 Membership tests:
 
->>> ("CTDSAL", "PSS-78") in WHPNames
+>>> "CTDSAL [PSS-78]" in WHPNames
 True
 
 Dimensionless membership tests also work:
@@ -87,22 +86,25 @@ Dimensionless membership tests also work:
 >>> "EXPOCODE" in WHPNames
 True
 
-Iterating the keys will always return the keys in their ``(param, unit)`` form.
+The full parameter space is checked for membership, so the following works:
+
+>>> "EXPOCODE_ALT_1" in WHPNames
+True
+
+Even though this is not directly in the keys:
+
+>>> "EXPOCODE_ALT_1" in WHPNames.keys()
+False
+
+Iterating the keys will always return the keys in their ``param [unit]`` form, with the [unit] omitted if unitless.
 
 >>> for key in WHPNames:
 ...   print(key)
 ...   break
-... 
-('EXPOCODE', None)
+...
+EXPOCODE
 
 The views returned by `.items()`, `.values()`, and `.keys()` also work as expected.
-
-.. warning::
-  Currently all the alias keys are included with the canonical keys, this may change in the future.
-  This means there will be more keys returned than there are actual WHPName values.
-  
-  >>> len(WHPNames) == len(set(WHPNames.values()))
-  False
 
 
 |WHPName| Groups
