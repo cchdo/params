@@ -13,6 +13,11 @@ class WHPNameParts(NamedTuple):
     flag: str  # "" if Not a flag
     url: str  # "" if not url
 
+    def as_odv_key(self) -> str:
+        units = f" [{self.unit}]" if self.unit != "" else ""
+
+        return f"{self.base}{units}{self.alt}{self.flag}{self.url}"
+
 
 @dataclass(frozen=True)
 class CFStandardName:
@@ -229,10 +234,7 @@ class WHPName:
 
         Note that the "[UNIT]" part is omitted if there are no units
         """
-        parts = self._name_parts
-        units = f" [{parts.unit}]" if parts.unit != "" else ""
-
-        return f"{parts.base}{units}{parts.alt}{parts.flag}{parts.url}"
+        return self._name_parts.as_odv_key()
 
     @property
     @deprecated(

@@ -7,6 +7,7 @@ Parameter Changes
 API Changes
 -----------
 * (BREAKING) Dropped support for anything other than ODV style "NAME [UNIT]" keys to lookup names, this means that the tuple style `(NAME, UNIT)` will not work.
+* Improve the `cchdo.params.to_odv` helper function to properly deal with alt, flag, and url params and placing the units in the right place.
 * Drop support for python 3.12, minimum is now 3.13
 * Add support for URL parameters
 * (deprecation) start deprecation cycle for the following properties:

@@ -24,20 +24,31 @@ WHPNameKey = str | WHPName
 logger = getLogger(__name__)
 
 
-def to_odv(key: tuple[str, str | None]):
+def to_odv(key: tuple[str, str | None]) -> str:
     """Transform a (param, unit) tuple into the correct ODV style PARAM [UNIT] string
+    This is a helper function for dealing with the two line param/unit pairs that occur in exchange files.
 
-    Does not check if the param exists
+    Does not check if the param exists, but does expect any grammar to be correct.
 
     >>> to_odv(("EXPOCODE", None))
     'EXPOCODE'
     >>> to_odv(("CTDPRS", "DBAR"))
     'CTDPRS [DBAR]'
+
+    It will handle alt parameters correctly
+    >>> to_odv(("OXYGEN_ALT_1", "UMOL/KG"))
+    'OXYGEN [UMOL/KG]_ALT_1'
     """
     name, unit = key
+    parts = normalize_odv_name(
+        name
+    )  # This takes everything apart and we can inject the unit in the right place later
     if unit is None:
-        return name
-    return f"{name} [{unit}]"
+        unit = ""
+    new_parts = WHPNameParts(
+        base=parts.base, unit=unit, alt=parts.alt, flag=parts.flag, url=parts.url
+    )
+    return new_parts.as_odv_key()
 
 
 class WHPNameGroups(NamedTuple):
