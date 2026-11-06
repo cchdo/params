@@ -157,6 +157,12 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
             whpname_parts = normalize_odv_name(alias_key or key)
         except ValueError as err:
             raise KeyError(key) from err
+        except AttributeError as err:
+            if "tuple" in str(err):
+                raise KeyError(
+                    "'tuple' object lookups are no longer supported, use ODV style strings instead"
+                ) from err
+            raise KeyError(key) from err
 
         base = whpname_parts.base
         if whpname_parts.base in self.error_cols:
