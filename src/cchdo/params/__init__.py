@@ -161,7 +161,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
 
     def __getitem__(self, key: WHPNameKey) -> WHPName:
         error = False
-        alias_key = self._aliases.get(key)
+        alias_key = self._aliases.get(normalize_odv_name(key).as_odv_key())
         try:
             whpname_parts = normalize_odv_name(alias_key or key)
         except ValueError as err:
@@ -323,6 +323,7 @@ class _WHPNames(dict[WHPNameKey, WHPName]):
         :param alias: tuple of (name, unit) to map to an existing name, unit must be None is unitless
         :param current: any valid existing WHPNames key
         """
+        alias = normalize_odv_name(alias).as_odv_key()
         if alias in self:
             raise ValueError("Cannot override base parameter names")
         if alias in self._aliases:
