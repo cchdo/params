@@ -45,10 +45,8 @@ def to_odv(key: tuple[str, str | None]) -> str:
     )  # This takes everything apart and we can inject the unit in the right place later
     if unit is None:
         unit = ""
-    new_parts = WHPNameParts(
-        base=parts.base, unit=unit, alt=parts.alt, flag=parts.flag, url=parts.url
-    )
-    return new_parts.as_odv_key()
+    parts = parts._replace(unit=unit)
+    return parts.as_odv_key()
 
 
 class WHPNameGroups(NamedTuple):
